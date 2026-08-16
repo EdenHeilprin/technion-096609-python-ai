@@ -4,7 +4,7 @@ The course is planned as 14 two-hour meetings. Approximately 11 introduce new ma
 
 | Meeting | Focus | Status |
 |---:|---|---|
-| 1 | VS Code, GitHub orientation, first Python | New material |
+| 1 | [VS Code, GitHub orientation, first Python](01-start/README.md) | Draft module available |
 | 2 | Types, variables, strings, input/output | New material |
 | 3 | Lists and dictionaries | New material |
 | 4 | Conditions, validation, edge cases | New material |

@@ -15,6 +15,7 @@ The renewed course is an introduction to Python for graduate behavioral-science 
 ## Where to start
 
 - [Course map](weeks/README.md)
+- [Week 1 prototype](weeks/01-start/README.md)
 - [Environment setup](resources/setup/README.md)
 - [Assignments](assignments/README.md)
 - [Capstone](capstone/README.md)
