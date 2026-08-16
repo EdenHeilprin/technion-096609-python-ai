@@ -10,7 +10,10 @@ The renewed course is an introduction to Python for graduate behavioral-science 
 - construction of a bounded experiment or survey-data pipeline;
 - responsible, unrestricted use of modern AI chats and coding agents.
 
-> **Planning status:** This repository is a local prototype. It is not yet the official syllabus, and it has not been published to GitHub.
+> **Planning status:** This is a public development prototype, not yet the official syllabus.
+
+- [Open the course website](https://edenheilprin.github.io/technion-096609-python-ai/)
+- [Browse the GitHub repository](https://github.com/EdenHeilprin/technion-096609-python-ai)
 
 ## Where to start
 
