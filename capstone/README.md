@@ -9,4 +9,6 @@ Two proposed pathways:
 
 Both pathways must demonstrate comparable Python substance, verification, reproducibility, documentation, and individual ownership.
 
-The actual papers and rubric have not yet been selected.
+See the [common capstone rubric and pathway parity map](rubric.md).
+
+The actual faculty papers and platform details have not yet been selected.

@@ -1,6 +1,6 @@
 # Syllabus
 
-The official syllabus is under development.
+The official syllabus is under development. See the [working course policies](policies/README.md).
 
 Planned sections:
 
