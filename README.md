@@ -17,19 +17,23 @@ The renewed course is an introduction to Python for graduate behavioral-science 
 
 ## Where to start
 
-- [Course map](weeks/README.md)
+- [Working syllabus](https://edenheilprin.github.io/technion-096609-python-ai/syllabus/)
+- [Public development roadmap](https://edenheilprin.github.io/technion-096609-python-ai/roadmap/)
+- [Course map](https://edenheilprin.github.io/technion-096609-python-ai/weeks/)
+- [Assessment architecture](https://edenheilprin.github.io/technion-096609-python-ai/assessment/)
 - [Week 1 prototype](weeks/01-start/README.md)
+- [Ungraded baseline/endline diagnostic](assignments/baseline-endline/README.md)
 - [Environment setup](resources/setup/README.md)
 - [Assignments](assignments/README.md)
-- [Capstone](capstone/README.md)
+- [Capstone](https://edenheilprin.github.io/technion-096609-python-ai/capstone/)
+- [Course policies](https://edenheilprin.github.io/technion-096609-python-ai/policies/)
 - [Curated resources](resources/README.md)
-- [Website prototype](docs/index.html)
 
 ## Platform roles
 
 - **Moodle:** official announcements, dates, grades, private communication, and authoritative submission records.
 - **This repository:** versioned course materials, code, data, instructions, examples, and corrections.
-- **GitHub Pages:** a friendly web view of the public course repository.
+- **GitHub Pages:** the student-friendly course portal and transparent development roadmap.
 
 ## Public/private boundary
 
