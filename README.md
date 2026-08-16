@@ -23,6 +23,8 @@ The renewed course is an introduction to Python for graduate behavioral-science 
 - [Assessment architecture](https://edenheilprin.github.io/technion-096609-python-ai/assessment/)
 - [Week 1 prototype](weeks/01-start/README.md)
 - [Ungraded baseline/endline diagnostic](assignments/baseline-endline/README.md)
+- [Practical Check 1 prototype](assessments/practical-check-1/README.md)
+- [Assessment prototypes](assessments/README.md)
 - [Environment setup](resources/setup/README.md)
 - [Assignments](assignments/README.md)
 - [Capstone](https://edenheilprin.github.io/technion-096609-python-ai/capstone/)
