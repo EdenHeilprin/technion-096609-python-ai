@@ -14,3 +14,7 @@ Assignment specifications will use a common structure:
 10. Privacy and rerun requirements
 
 Official deadlines and submission records remain in Moodle.
+
+## Available diagnostic
+
+- [Ungraded baseline/endline diagnostic](baseline-endline/README.md)

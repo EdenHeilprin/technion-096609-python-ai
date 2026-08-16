@@ -1,0 +1,8 @@
+title: "096609 · Python, Behavioral Research & AI"
+description: "A beginner-friendly Technion graduate course in Python, behavioral research, and AI-assisted coding."
+url: "https://edenheilprin.github.io"
+baseurl: "/technion-096609-python-ai"
+markdown: kramdown
+permalink: pretty
+exclude:
+  - README.md
