@@ -58,10 +58,10 @@ permalink: /roadmap/
 |---|---|---|
 | <span class="pill done">Established</span> | Evidence triangle | Product + verification + explanation/transfer |
 | <span class="pill done">Established</span> | Baseline/endline diagnostic | First ungraded, AI-permitted prototype plus private scoring guide completed |
-| <span class="pill next">Next</span> | Practical Check 1 | Individual executable debugging and extension task after Week 7 |
+| <span class="pill active">In progress</span> | Practical Check 1 | Public 75-minute repair task, checker, response note, private reference, hidden checks, and scoring guide built; clean-room and novice pilots remain |
 | <span class="pill next">Next</span> | Practical Check 2 | Synthetic CSV/pandas validation task after Week 10 |
 | <span class="pill done">Established</span> | Common capstone rubric | Shared dimensions and pathway parity map published |
-| <span class="pill next">Next</span> | Individual demonstration protocol | Prompt menu, timing, rubric, and recovery route |
+| <span class="pill active">In progress</span> | Individual demonstration protocol | Four prompt cards and compact 0–2 evidence rubric built with Practical Check 1; comparability pilot remains |
 
 ## Capstone development
 
@@ -107,5 +107,6 @@ None of these blocks the fundamentals, assessment prototypes, public syllabus, w
 
 ## Change log
 
+- **17 August 2026:** Practical Check 1 and its 5–7 minute individual demonstration built as public/private assessment prototypes; timing and difficulty pilots remain.
 - **17 August 2026:** public repository and Pages site launched; multi-page portal, full working syllabus, and baseline/endline diagnostic completed as first prototypes.
 - **16 August 2026:** legacy Moodle audit completed; course charter, fourteen-meeting map, assessment model, capstone pathways, Week 1 prototype, policies, and Moodle architecture documented.

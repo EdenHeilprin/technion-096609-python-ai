@@ -51,7 +51,7 @@ Each check is completed on a computer with the same normal AI and internet acces
 
 ### Practical Check 1 — after debugging/testing
 
-Students receive a flawed but plausible behavioral program and must:
+The working prototype provides a flawed but plausible behavioral-trial summary. In 75 minutes, students must:
 
 - translate the requirements into a small plan;
 - run the code and use the traceback/output as evidence;
@@ -59,6 +59,10 @@ Students receive a flawed but plausible behavioral program and must:
 - add a bounded adjacent behavior;
 - create checks that would catch at least one plausible wrong result;
 - submit a rerunnable artifact and concise verification explanation.
+
+The check is followed by a 5–7 minute individual demonstration. The instructor selects a small tracing, diagnosis, or adjacent-change prompt; the same tools remain available. Passing a public checker is necessary but does not replace hidden synthetic cases or transfer evidence.
+
+[Open the Practical Check 1 prototype](https://github.com/EdenHeilprin/technion-096609-python-ai/tree/main/assessments/practical-check-1)
 
 ### Practical Check 2 — after pandas
 
@@ -71,7 +75,7 @@ Students receive a small synthetic CSV export and must:
 - verify the result with counts, known cases, or invariants;
 - rerun from the raw synthetic input.
 
-The tasks reward effective programming evidence, not speed of syntax recall.
+The tasks reward effective programming evidence, not speed of syntax recall. Practical Check 1 remains a prototype until an instructor clean-room run and novice pilot confirm its timing and difficulty.
 
 ## Capstone — 40%
 
