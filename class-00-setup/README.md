@@ -34,7 +34,7 @@ If you already use Python or VS Code, do not uninstall anything. Your operating-
 - [Windows 10 or 11 setup guide](windows.md)
 - [macOS 12 or later setup guide](macos.md)
 
-Linux is not a supported setup path for this course. If you expect to use Linux, email the instructor before beginning.
+If you use Linux, follow Microsoft's [Getting Started with Python in VS Code](https://code.visualstudio.com/docs/python/python-tutorial) instead of the operating-system-specific guides above.
 
 ## If something does not work
 
