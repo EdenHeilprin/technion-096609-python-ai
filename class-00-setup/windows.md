@@ -35,7 +35,7 @@ Select **Python** published by Microsoft, not a similarly named extension. It ma
 
 ## 4. Download and extract the course repository
 
-1. Click **[Download all course files as a ZIP](https://github.com/EdenHeilprin/technion-096609-python-ai/archive/refs/heads/main.zip)**. This link downloads the entire course repository—not only the instruction page you are reading.
+1. Click **[Download the course files as a ZIP](https://github.com/EdenHeilprin/technion-096609-python-ai/archive/refs/heads/main.zip)**.
 2. Open **Downloads** in File Explorer and find `technion-096609-python-ai-main.zip`.
 3. Right-click that ZIP file and choose **Extract All...**.
 4. Click **Extract**.
