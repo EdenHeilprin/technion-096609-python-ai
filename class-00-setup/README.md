@@ -38,6 +38,6 @@ Use the [troubleshooting guide](troubleshooting.md). If you remain stuck, email 
 
 Please do not send passwords, API keys, student-ID numbers, or private research data in a help request.
 
-## Curious to see how the pieces fit together? (Optional)
+## Additional guidance from Microsoft (Optional)
 
-Everything required for Class 0 is already explained above. If you would enjoy a little more context, Microsoft's [Getting Started with Python in VS Code](https://code.visualstudio.com/docs/python/python-tutorial) offers a broader introduction to how Python, VS Code, and the Python extension work together.
+The steps above contain everything required for Class 0. If you need more context or detail while completing them, Microsoft's [Getting Started with Python in VS Code](https://code.visualstudio.com/docs/python/python-tutorial) provides a fuller explanation of how Python, VS Code, and the Python extension work together.
