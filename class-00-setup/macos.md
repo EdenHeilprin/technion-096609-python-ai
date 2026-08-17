@@ -40,11 +40,9 @@ Select **Python** published by Microsoft, not a similarly named extension. It ma
 
 ## 4. Download and extract the course repository
 
-1. Click **[Download all course files as a ZIP](https://github.com/EdenHeilprin/technion-096609-python-ai/archive/refs/heads/main.zip)**. This link downloads the entire course repository—not only the instruction page you are reading.
+1. Click **[Download the course files as a ZIP](https://github.com/EdenHeilprin/technion-096609-python-ai/archive/refs/heads/main.zip)**.
 2. In Downloads, double-click `technion-096609-python-ai-main.zip` if your Mac did not extract it automatically.
 3. Open the extracted folder and confirm that it contains `README.md` and `class-00-setup`.
-
-Use the download link in step 1. GitHub's small file-download icon downloads only the page currently displayed.
 
 ## 5. Open and trust the repository folder in VS Code
 
