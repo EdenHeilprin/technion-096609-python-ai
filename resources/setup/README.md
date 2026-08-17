@@ -1,29 +1,45 @@
-# Environment setup
+# Set up Python and VS Code
 
-## Primary supported path
+Class 1 uses one supported local path:
 
-- VS Code
-- Current supported Python version
-- VS Code Python extension
-- VS Code Jupyter extension
-- Git and a GitHub account
-- Institutionally available/free AI path
+- Visual Studio Code;
+- a current stable Python 3 interpreter;
+- the Microsoft Python extension;
+- the downloaded Week 1 folder.
 
-Detailed Windows and macOS instructions will be created and tested after the institutional-access response arrives.
+These are separate pieces. VS Code is the editor, the extension adds Python support, and the Python interpreter executes the file.
 
-## Fallback principle
+## Choose your guide
 
-No student should lose the first week because installation failed. A temporary browser-based path may be supplied while local setup is repaired, but the course's long-term environment is local VS Code.
+- [Windows setup](windows.md)
+- [macOS setup](macos.md)
+- [Browser fallback](browser-fallback.md) — no installation or paid account
 
-## Verification checklist
+## What to download
 
-Students should be able to:
+Use only the official sources:
 
-1. Open the course folder in VS Code.
-2. Select the intended Python interpreter.
-3. Run a `.py` file.
-4. Run a notebook cell.
-5. See a deliberate error and find its traceback.
-6. Clone or download the course repository.
-7. Commit and push a small change.
-8. Access the approved/free AI baseline.
+- [Python downloads](https://www.python.org/downloads/)
+- [Visual Studio Code download](https://code.visualstudio.com/Download)
+- [Microsoft Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+
+If you already have Python 3.12 or newer and VS Code can select it, do not reinstall merely to match another student's minor version.
+
+## Verification
+
+After setup:
+
+1. Download and unzip the Week 1 materials.
+2. Open the **folder** in VS Code, not only one file.
+3. Open setup/verify_setup.py inside the Week 1 folder.
+4. Select **Python: Select Interpreter** from the Command Palette.
+5. Choose the current Python 3 interpreter.
+6. Select **Run Python File**.
+
+Expected final line:
+
+    SETUP CHECK PASSED
+
+If this does not work after approximately 20 focused minutes, use the Moodle Technical Help template. Do not spend hours troubleshooting alone. The browser fallback preserves participation in Class 1.
+
+Official reference: [Python in Visual Studio Code](https://code.visualstudio.com/docs/languages/python).

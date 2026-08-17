@@ -1,9 +1,7 @@
 # Syllabus
 
-The complete [working syllabus is published on the course portal](https://edenheilprin.github.io/technion-096609-python-ai/syllabus/).
+Use the student-facing [course syllabus](https://edenheilprin.github.io/technion-096609-python-ai/syllabus/).
 
-It includes the course identity, learning outcomes, supported environment, weekly map, working assessment model, unrestricted-AI policy, capstone pathways, privacy/collaboration principles, accessibility, and open institutional questions.
+Moodle remains authoritative for official dates, submissions, grades, announcements, and final assessment details.
 
-The portal version is a transparent development draft. Moodle will remain authoritative for the final official syllabus, dates, grades, and submissions.
-
-See also the [detailed policy sources](policies/README.md).
+See also the [course policies](policies/README.md).

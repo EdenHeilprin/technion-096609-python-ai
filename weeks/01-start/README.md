@@ -1,153 +1,129 @@
-# Week 01 — Start: VS Code, GitHub, and first Python
+# Class 1 — one file, one run, one deliberate change
 
-## Why this matters
+Welcome to your first Python class. No previous programming experience is required.
 
-Research code becomes much less mysterious once you can identify the file, run it, observe what it does, and make one deliberate change. This meeting establishes that complete loop before we add more Python concepts or ask an agent to work across a project.
+## Before class
 
-## By the end of this meeting, you can
+1. Follow the [Windows setup](https://github.com/EdenHeilprin/technion-096609-python-ai/blob/main/resources/setup/windows.md) or [macOS setup](https://github.com/EdenHeilprin/technion-096609-python-ai/blob/main/resources/setup/macos.md).
+2. Download and unzip [the complete Class 1 materials](https://github.com/EdenHeilprin/technion-096609-python-ai/raw/main/weeks/01-start/week-01-materials.zip).
+3. Open the extracted week-01-materials folder in VS Code.
+4. Run setup/verify_setup.py.
+5. Complete the Moodle access survey.
 
-- identify the editor, Python interpreter, source file, terminal, and program output;
-- run a `.py` file in the supported VS Code setup;
-- use variables, basic arithmetic, and `print()` to summarize synthetic behavioral data;
-- predict the effect of a small edit, run it, and explain the observed result;
-- read the useful final line of a simple `NameError` and repair the cause;
-- explain the difference between receiving an AI suggestion and verifying that it works.
+Do not spend hours troubleshooting alone. Use Moodle Technical Help. A [browser fallback](https://github.com/EdenHeilprin/technion-096609-python-ai/blob/main/resources/setup/browser-fallback.md) is available and requires no installation or paid AI account.
 
-## Before class — about 10 minutes
+## By the end of class, you can
 
-1. Complete the short operating-system and access survey in Moodle.
-2. Open the course setup page and follow the supported path as far as you can.
-3. Bring the computer you expect to use for the course.
+- identify the source file, editor, Python interpreter, and output;
+- run a Python file in VS Code or the browser fallback;
+- predict and test one small code change;
+- read the final line of a simple NameError and repair it;
+- explain why a program that runs can still be wrong;
+- check a small synthetic behavioral-data summary.
 
-Do not spend hours troubleshooting alone. A zero-install fallback will be available in the first meeting, and setup issues belong in the Moodle Technical Help forum.
+## Class files
 
-## Files for this week
+- [First complete example](examples/reaction_time_summary.py)
+- [Core-practice starter](starter/first_research_script.py)
+- [Public self-check](checks/check_first_research_script.py)
+- [Setup check](setup/verify_setup.py)
+- [Browser-fallback notebook](fallback/week_01_browser_fallback.ipynb)
+- [Student handout](student-handout.md)
+- [Troubleshooting guide](troubleshooting.md)
+- Class slides: linked here after the final instructor rehearsal
 
-- [`examples/reaction_time_summary.py`](examples/reaction_time_summary.py) — the first complete program.
-- [`starter/first_research_script.py`](starter/first_research_script.py) — the core practice file you will edit.
-- [`checks/check_first_research_script.py`](checks/check_first_research_script.py) — a public self-check.
+## The learning loop
 
-## In class
+> locate the file → predict → run → inspect → change → rerun → explain
 
-### 1. Orient: file → interpreter → output
+### First run
 
-Open `reaction_time_summary.py`. Before running it, find:
-
-- a text value;
-- a number;
-- a variable name;
-- an arithmetic expression;
-- a line that displays a result.
-
-Run the file from VS Code. The important first success is not memorizing the button: it is knowing which file ran and where its output appeared.
-
-### 2. Predict → run → explain
-
-Without running again, predict what will happen after each change:
-
-1. Change `trial_2_ms` from `510` to `540`.
-2. Change `condition` from `"gain"` to `"loss"`.
-3. Remove the quotation marks around `"gain"`.
-
-Run after each prediction and explain the evidence. Restore the original file when finished.
-
-### 3. Read the first traceback
-
-Removing the quotation marks asks Python to find a variable named `gain`. Because that name has not been defined, Python reports a `NameError`.
-
-For now, use this three-part routine:
-
-1. read the final error line;
-2. locate the referenced line in your file;
-3. change one plausible cause and run again.
-
-We will learn a more systematic debugging process in Week 7; the habit begins now.
-
-### 4. Meet GitHub without turning it into a second programming language
-
-GitHub is the versioned home of the public course materials. In this meeting you need only be able to:
-
-- open the course repository;
-- navigate to a week;
-- download or clone the materials using the demonstrated route;
-- recognize that the history records intentional changes.
-
-Creating branches and resolving merge conflicts are not Week 1 learning outcomes.
-
-## Core practice — First Research Script
-
-Open `starter/first_research_script.py`. It contains synthetic data for one fictional participant and three trials.
-
-### Required core
-
-1. Calculate the mean reaction time from the three trial variables.
-2. Calculate the proportion of correct trials.
-3. Round accuracy to two decimal places.
-4. Print the five-line summary shown below.
-5. Run the public self-check.
+Open examples/reaction_time_summary.py and run it.
 
 Expected output:
 
-```text
-Participant: SYN001
-Condition: gain
-Mean reaction time (ms): 500.0
-Correct trials: 2 of 3
-Accuracy rate: 0.67
-```
+    Participant: SYN001
+    Condition: gain
+    Mean reaction time (ms): 500.0
 
-Run the program from the `01-start` folder:
+### Predict and change
 
-```bash
-python starter/first_research_script.py
-```
+Before each run:
 
-Then run the check:
+1. change trial_2_ms from 510 to 540 and predict the new mean;
+2. restore 510;
+3. change condition from “gain” to “loss” and predict which output line changes;
+4. restore “gain.”
 
-```bash
-python checks/check_first_research_script.py
-```
+### Read the first traceback
 
-Depending on the operating system and setup, the demonstrated command may be `python3` or the VS Code Run button. Use the course setup page as the authoritative guide.
+Remove the quotation marks around gain. Run the file and read the final error line.
 
-### Submit
+Ask:
 
-- `first_research_script.py`
-- Deadline and submission activity: Moodle
+- Which name did Python try to find?
+- Did we mean a variable name or text?
+- What is the smallest repair?
 
-Before submitting, close and reopen the file, run it once more, and compare all five output lines.
+Restore the quotation marks and rerun.
 
-## Stretch — optional
+## Core practice
 
-Add a fourth trial. Update the calculation and output so the program remains correct without manually typing the mean. Write down every line you had to change; later weeks will give us structures and loops that reduce this repetition.
+Open starter/first_research_script.py.
 
-## AI learning target — ask for an explanation, then test it
+Complete both TODO calculations:
 
-All AI tools are permitted. This week, deliberately practise using an available chat tool to explain evidence rather than replace the entire task.
+1. mean reaction time from the three trial variables;
+2. accuracy as correct trials divided by total trials, rounded to two digits.
 
-Suggested interaction:
+Required output:
 
-> I am a Python beginner. Explain the final line of this traceback in plain language. Give me two possible causes, but do not rewrite my whole program. [Paste the traceback and the relevant synthetic-data code only.]
+    Participant: SYN001
+    Condition: gain
+    Mean reaction time (ms): 500.0
+    Correct trials: 2 of 3
+    Accuracy rate: 0.67
 
-Before accepting the explanation:
+Run the program:
 
-1. state which cause you think applies;
-2. make one small change;
-3. rerun the file;
-4. decide whether the new output supports the explanation.
+    python starter/first_research_script.py
 
-Never paste passwords, access tokens, identifiable participant data, confidential research material, or private repository contents into a chat.
+Then run the public check:
 
-## Two-minute reflection
+    python checks/check_first_research_script.py
 
-Answer in your own words:
+The demonstrated command may be python3 on macOS. The VS Code Run button is also valid.
 
-1. What exactly happened between pressing Run and seeing output?
-2. What evidence convinced you that your calculation was correct?
-3. What can an AI explanation contribute, and what must you still do yourself?
+## AI learning target
 
-## Get help
+AI tools are permitted. No individual paid account is required in Class 1.
 
-- Ask conceptual and logistics questions in the Moodle Course Q&A.
-- Share privacy-safe errors in the Moodle Technical Help forum.
-- For a technical question, include your operating system, how you ran the file, the full error text, the smallest relevant code, and what you already tried.
+Ask an available tool for a bounded explanation:
+
+> I am a Python beginner. Explain the final line of this traceback in plain language. Give two possible causes, but do not rewrite the whole program.
+
+Then:
+
+1. decide which cause matches the actual line;
+2. predict the effect of one repair;
+3. make only that change;
+4. rerun;
+5. use the output as evidence.
+
+Never paste credentials, identifiable data, confidential research material, or private repository content into an AI chat.
+
+## Submit
+
+Submit first_research_script.py through Moodle. Moodle contains the authoritative deadline and submission activity.
+
+Before submitting:
+
+- reopen the file;
+- run it once more;
+- run the public check;
+- compare all five output lines;
+- confirm that the file contains only synthetic data.
+
+## Optional stretch
+
+Add a fourth trial and update the result. List every line you had to change. Later classes introduce structures and loops that reduce this repetition.

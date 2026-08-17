@@ -1,20 +1,9 @@
 # Assignments
 
-Assignment specifications will use a common structure:
+Assignment instructions and public starter files will appear here when they are released.
 
-1. Purpose and learning outcomes
-2. Required core
-3. Optional stretch
-4. Starter files and synthetic data
-5. Example input/output
-6. Public checks
-7. Exact submission files
-8. Concise rubric
-9. AI learning target
-10. Privacy and rerun requirements
+Available now:
 
-Official deadlines and submission records remain in Moodle.
+- [Class 1 core practice](../weeks/01-start/README.md#core-practice)
 
-## Available diagnostic
-
-- [Ungraded baseline/endline diagnostic](baseline-endline/README.md)
+Moodle is authoritative for deadlines, submissions, grades, and private feedback. Do not submit assessed work through a public GitHub pull request unless the instructor explicitly requests it.
