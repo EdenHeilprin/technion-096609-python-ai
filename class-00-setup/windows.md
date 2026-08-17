@@ -37,14 +37,14 @@ There may be many similarly named extensions. For Class 0, install only the one 
 2. Near the top of the repository, click the green **Code** button.
 3. Choose **Download ZIP**.
 4. Open your Downloads folder.
-5. Right-click `technion-096609-python-ai-main.zip`, choose **Extract All**, and complete the extraction.
+5. Right-click the ZIP file whose name begins with `technion-096609-python-ai`, choose **Extract All**, and complete the extraction.
 
 Do not work inside the ZIP file. You need the normal extracted folder.
 
 ## 5. Open the repository folder in VS Code
 
 1. In VS Code, choose **File → Open Folder**.
-2. Select the extracted folder named `technion-096609-python-ai-main`.
+2. Select the extracted folder whose name begins with `technion-096609-python-ai`.
 3. Click **Select Folder**.
 4. If VS Code asks whether you trust the authors of the files, choose **Yes, I trust the authors**.
 

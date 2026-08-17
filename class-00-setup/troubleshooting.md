@@ -23,7 +23,7 @@ On Windows, select **Add Python to PATH** if the installer shows that option. On
 
 ## VS Code opened one file, but I cannot see the course folders
 
-You opened a file instead of the repository folder. Choose **File → Open Folder** and select the extracted `technion-096609-python-ai-main` folder.
+You opened a file instead of the repository folder. Choose **File → Open Folder** and select the extracted folder whose name begins with `technion-096609-python-ai`.
 
 ## The downloaded files behave strangely or cannot be saved
 
