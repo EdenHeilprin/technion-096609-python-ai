@@ -2,6 +2,8 @@
 
 Follow these steps in order. You do not need to type any terminal commands.
 
+Already use Python or VS Code? **Do not uninstall them.** If you already have Python 3.13.x, you can skip section 1. If you use another Python version, keep it and install Python 3.13.15 alongside it for this course. If VS Code is already installed, you can skip section 2.
+
 ## 1. Install Python 3.13.15
 
 1. Open the official [Python 3.13.15 release page](https://www.python.org/downloads/release/python-31315/).
@@ -11,16 +13,14 @@ Follow these steps in order. You do not need to type any terminal commands.
 5. Choose **Install Now** and keep the default components.
 6. When the installer reports that setup was successful, close it.
 
-Do not install Python from the Microsoft Store for this course. Do not select the 32-bit, ARM64, embeddable, or source-code files.
+Use the installer marked **Recommended** and ignore the other files on the release page.
 
 ## 2. Install VS Code
 
 1. Open the official [VS Code download page](https://code.visualstudio.com/Download).
-2. Under Windows, download the **User Installer — x64**.
+2. Under Windows, download the **User Installer — x64**. This is the standard choice for almost all Windows computers.
 3. Open the installer and accept its default options.
 4. Open VS Code when installation finishes.
-
-If you know that your Windows computer uses an ARM processor, email the instructor before choosing a different installer.
 
 ## 3. Install the Microsoft Python extension
 

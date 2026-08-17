@@ -2,6 +2,8 @@
 
 Follow these steps in order. You do not need to type any Terminal commands.
 
+Already use Python or VS Code? **Do not uninstall them.** If you already have Python 3.13.x, you can skip section 1. If you use another Python version, keep it and install Python 3.13.15 alongside it for this course. If VS Code is already installed, you can skip section 2.
+
 ## 1. Install Python 3.13.15
 
 1. Open the official [Python 3.13.15 release page](https://www.python.org/downloads/release/python-31315/).

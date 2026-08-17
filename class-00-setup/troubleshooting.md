@@ -15,7 +15,7 @@ The Microsoft Python extension is probably not active. Confirm that it is instal
 ## No Python 3.13 interpreter appears
 
 1. Close VS Code completely.
-2. Reinstall Python 3.13.15 using your operating-system guide.
+2. Install or repair Python 3.13.15 using your operating-system guide. Do not uninstall any other Python version you use.
 3. Reopen VS Code and the extracted course folder.
 4. Run **Python: Select Interpreter** again.
 
