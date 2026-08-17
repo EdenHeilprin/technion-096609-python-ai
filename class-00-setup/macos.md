@@ -47,10 +47,12 @@ You should now have a normal folder named `technion-096609-python-ai-main`. Do n
 
 ## 5. Open the repository folder in VS Code
 
-1. In VS Code, choose **File → Open Folder**.
-2. Select the extracted folder whose name begins with `technion-096609-python-ai`.
+1. On the VS Code **Start** screen, click the blue **Open...** link beside the folder icon.
+2. In the window that opens, go to **Downloads** and select the extracted folder named `technion-096609-python-ai-main`.
 3. Click **Open**.
 4. If VS Code asks whether you trust the authors of the files, choose **Yes, I trust the authors**.
+
+If the **Start** screen is no longer visible, use the macOS menu bar at the top of the screen: choose **File → Open Folder...**, select the same folder, and click **Open**.
 
 The left Explorer panel should now show `README.md` and the `class-00-setup` folder.
 
