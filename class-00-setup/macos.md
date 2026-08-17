@@ -62,10 +62,11 @@ The Explorer panel should now list the repository contents, including `README.md
 
 ## 6. Select Python 3.13
 
-1. In the Explorer panel, expand `class-00-setup` and click `setup_check.py`. This activates the Python extension.
-2. Wait a few seconds, then click the Python version—or **Select Interpreter**—shown in the bottom status bar.
-3. If neither appears there, press `Command` + `Shift` + `P`, type `Python: Select Interpreter`, and select that command.
-4. Choose an interpreter whose version begins with **Python 3.13**. If one is marked **Recommended**, choose it.
+1. Confirm that VS Code no longer shows **Restricted Mode**. If it does, return to section 5 and trust the course folder.
+2. In the Explorer panel, expand `class-00-setup` and click `setup_check.py`. Wait a few seconds while the Python extension activates.
+3. Press `Command` + `Shift` + `P`.
+4. Type `Python: Select Interpreter` and select that command.
+5. Choose an interpreter whose version begins with **Python 3.13**. If one is marked **Recommended**, choose it.
 
 If several interpreters appear, do not choose Apple's system Python or one with a different version number. If no Python 3.13 interpreter appears, use the [troubleshooting guide](troubleshooting.md).
 
