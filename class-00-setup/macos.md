@@ -37,12 +37,13 @@ There may be many similarly named extensions. For Class 0, install only the one 
 
 ## 4. Download and extract the course repository
 
-1. Return to the [main repository page](../README.md).
-2. Near the top of the repository, click the green **Code** button.
-3. Choose **Download ZIP**.
-4. Open your Downloads folder and double-click the ZIP file whose name begins with `technion-096609-python-ai` if it was not extracted automatically.
+1. Click **[Download all course files as a ZIP](https://github.com/EdenHeilprin/technion-096609-python-ai/archive/refs/heads/main.zip)**. This link downloads the entire course repository—not only the instruction page you are reading.
+2. Open your Downloads folder and find `technion-096609-python-ai-main.zip`.
+3. If your Mac did not extract it automatically, double-click the ZIP file.
 
-You should now have a normal folder whose name begins with `technion-096609-python-ai`. Do not work inside the ZIP file.
+You should now have a normal folder named `technion-096609-python-ai-main`. Do not work inside the ZIP file.
+
+> **Important:** On GitHub, the **Code** tab beside **Preview** only changes how the current instruction page is displayed. The download arrow beside **Raw** downloads only that one page. Use the blue download link in step 1 to obtain all course files.
 
 ## 5. Open the repository folder in VS Code
 
