@@ -42,8 +42,6 @@ Select **Python** published by Microsoft, not a similarly named extension. It ma
 
 Open the extracted folder until you see `README.md` and `class-00-setup` together. That is the folder you will open in VS Code.
 
-Use the download link in step 1. GitHub's small file-download icon downloads only the page currently displayed.
-
 ## 5. Open and trust the repository folder in VS Code
 
 1. At the top of VS Code, open the **File** menu and choose **Open Folder...**.
