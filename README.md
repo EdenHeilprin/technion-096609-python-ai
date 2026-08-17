@@ -6,7 +6,7 @@ The formal catalog title is **Quantitative Models in Behavioral Sciences**. In p
 
 ## New students: start here
 
-Complete **[Class 0 — Computer Setup](class-00-setup/README.md)** before the deadline posted on Moodle.
+Complete **[Class 0 — Computer Setup](class-00-setup/README.md)**, then report whether everything worked through the Class 0 readiness check on Moodle.
 
 Class 0 will help you check or install the required free software and run one small Python file. You do not need a GitHub account yet, and you are not expected to understand the code yet. We will introduce free GitHub accounts later in the course.
 

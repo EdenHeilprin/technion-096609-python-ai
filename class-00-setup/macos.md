@@ -1,30 +1,33 @@
 # macOS Setup Guide
 
-Follow these steps in order. You do not need to type any Terminal commands.
+Follow these steps in order on a Mac running **macOS 12 or later**. You do not need to type any Terminal commands.
 
-Already use Python or VS Code? **Do not uninstall them.** If you already have Python 3.13.x, you can skip section 1. If you use another Python version, keep it and install Python 3.13.15 alongside it for this course. If VS Code is already installed, you can skip section 2.
+Already use Python or VS Code? **Do not uninstall them.** Skip the relevant installation section if you already have Python 3.13.x or VS Code. If you are unsure about your Python version, install Python 3.13.15 alongside your existing version.
 
 ## 1. Install Python 3.13.15
 
-1. Open the official [Python 3.13.15 release page](https://www.python.org/downloads/release/python-31315/).
-2. Scroll to **Files** and click **macOS installer**.
-3. Open the downloaded `.pkg` file.
-4. Continue through the installer using its default options.
-5. When installation finishes, open the `Python 3.13` folder in Applications.
-6. Double-click `Install Certificates.command`.
-7. Wait until its Terminal window reports `Successfully installed certifi` and `update complete`, then close that window.
+1. Click **[Download Python 3.13.15 for macOS](https://www.python.org/ftp/python/3.13.15/python-3.13.15-macos11.pkg)**.
+2. Open **Downloads** in Finder and double-click `python-3.13.15-macos11.pkg`.
+3. In the installer, choose **Continue**, accept the license, and use the default installation options.
+4. Choose **Install**. Enter your Mac login password if macOS asks for it.
+5. When the installer reports that the installation was successful, close it.
+6. In Finder, open **Applications**, then open the `Python 3.13` folder.
+7. Double-click `Install Certificates.command`.
+8. Wait until the Terminal window reports `update complete`, then close it.
 
-The official installer works on both Apple Silicon and Intel Macs. Do not install a source-code archive.
+The official installer works on both Apple Silicon and Intel Macs. You are opening Terminal only by double-clicking the supplied file; you do not need to type a command.
 
 ## 2. Install VS Code
 
-1. Open the official [VS Code download page](https://code.visualstudio.com/Download).
-2. Under Mac, choose the **Universal** download.
-3. Open the downloaded file.
-4. Move **Visual Studio Code** into your Applications folder if macOS does not do so automatically.
-5. Open VS Code from Applications.
+1. Click **[Download VS Code for macOS](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal-dmg)**. The Universal version works on both Apple Silicon and Intel Macs.
+2. Open **Downloads** in Finder and double-click `VSCode-darwin-universal.dmg`.
+3. A small Finder window will open. Drag the **Visual Studio Code** icon onto the **Applications** folder icon shown in that window.
+4. Wait for the copy to finish, then open **Applications** in Finder.
+5. Double-click **Visual Studio Code**.
 
 If macOS asks whether you want to open an application downloaded from the internet, choose **Open**.
+
+VS Code may offer sign-in, Copilot, theme, or introductory options. None is required for Class 0; you may close or skip those prompts.
 
 ## 3. Install the Microsoft Python extension
 
@@ -33,40 +36,46 @@ If macOS asks whether you want to open an application downloaded from the intern
 3. Select the extension named **Python**, published by **Microsoft**.
 4. Click **Install**.
 
-There may be many similarly named extensions. For Class 0, install only the one published by Microsoft.
+Select **Python** published by Microsoft, not a similarly named extension. It may automatically add other Microsoft Python components; that is normal.
 
 ## 4. Download and extract the course repository
 
-1. Return to the [main repository page](../README.md).
-2. Near the top of the repository, click the green **Code** button.
-3. Choose **Download ZIP**.
-4. Open your Downloads folder and double-click the ZIP file whose name begins with `technion-096609-python-ai` if it was not extracted automatically.
+1. Click **[Download all course files as a ZIP](https://github.com/EdenHeilprin/technion-096609-python-ai/archive/refs/heads/main.zip)**. This link downloads the entire course repository—not only the instruction page you are reading.
+2. In Downloads, double-click `technion-096609-python-ai-main.zip` if your Mac did not extract it automatically.
+3. Open the extracted folder and confirm that it contains `README.md` and `class-00-setup`.
 
-You should now have a normal folder whose name begins with `technion-096609-python-ai`. Do not work inside the ZIP file.
+Use the download link in step 1. GitHub's small file-download icon downloads only the page currently displayed.
 
-## 5. Open the repository folder in VS Code
+## 5. Open and trust the repository folder in VS Code
 
-1. In VS Code, choose **File → Open Folder**.
-2. Select the extracted folder whose name begins with `technion-096609-python-ai`.
+1. On the VS Code **Start** screen, click the blue **Open...** link beside the folder icon.
+2. In the window that opens, click **Downloads** in the left sidebar and select the normal extracted folder that you verified in section 4—not the ZIP file.
 3. Click **Open**.
 4. If VS Code asks whether you trust the authors of the files, choose **Yes, I trust the authors**.
+5. If a banner at the top says **Restricted Mode**, click **Manage** in that banner and then choose **Trust**.
 
-The left Explorer panel should now show `README.md` and the `class-00-setup` folder.
+If the **Start** screen is no longer visible, use the macOS menu bar at the top of the screen: choose **File → Open Folder...**, select the same folder, and click **Open**.
+
+Trust enables extensions and allows code to run. Trust this folder because you downloaded it from the official course repository; do not automatically trust unfamiliar folders.
+
+The Explorer panel should now list the repository contents, including `README.md` and the `class-00-setup` folder. It may also show files such as `.gitignore`.
 
 ## 6. Select Python 3.13
 
-1. Press `Command` + `Shift` + `P`.
-2. Type `Python: Select Interpreter` and select that command.
-3. Choose an interpreter whose version begins with **Python 3.13**.
+1. Confirm that VS Code no longer shows **Restricted Mode**. If it does, return to section 5 and trust the course folder.
+2. In the Explorer panel, expand `class-00-setup` and click `setup_check.py`. Wait a few seconds while the Python extension activates.
+3. Press `Command` + `Shift` + `P`.
+4. Type `Python: Select Interpreter` and select that command.
+5. Choose an interpreter whose version begins with **Python 3.13**. If one is marked **Recommended**, choose it.
 
 If several interpreters appear, do not choose Apple's system Python or one with a different version number. If no Python 3.13 interpreter appears, use the [troubleshooting guide](troubleshooting.md).
 
+After selection, the bottom status bar in VS Code should show a Python version beginning with `3.13`.
+
 ## 7. Run the setup check
 
-1. In the Explorer panel, open `class-00-setup`.
-2. Click `setup_check.py`.
-3. Click the triangular **Run Python File** button in the upper-right corner of the editor.
-4. Look at the Terminal panel that opens at the bottom of VS Code.
+1. With `setup_check.py` open, click the triangular **Run Python File** button in the upper-right corner of the editor.
+2. Look at the Terminal panel that opens at the bottom of VS Code.
 
 The final line should be:
 
@@ -78,6 +87,6 @@ You do not need to understand the Python code yet. Your task is only to run it s
 
 ## 8. Finish on Moodle
 
-Complete the **Class 0 readiness check** on Moodle before its deadline. If your output does not say `SETUP CHECK PASSED`, troubleshoot the setup before reporting completion.
+Complete the **Class 0 readiness check** on Moodle to report whether everything worked. If your output does not say `SETUP CHECK PASSED`, troubleshoot the setup before reporting completion.
 
 [Back to the Class 0 start page](README.md)

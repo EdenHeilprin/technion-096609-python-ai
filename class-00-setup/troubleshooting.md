@@ -5,12 +5,15 @@ Most setup problems are small and fixable. Work through the matching section bel
 ## I cannot find the Run button
 
 1. Confirm that `setup_check.py` is open in the editor.
-2. Open Extensions and confirm that **Python**, published by **Microsoft**, says **Installed**.
-3. Close and reopen VS Code.
+2. Open Extensions and confirm that **Python**, published by **Microsoft**, is installed and enabled.
+3. Wait for extension installation to finish, then close and reopen VS Code.
+4. Reopen `setup_check.py`.
+
+If the triangular button is still missing, open the Command Palette with `Command` + `Shift` + `P` on macOS or `Ctrl` + `Shift` + `P` on Windows. Run **Python: Run Python File in Terminal**.
 
 ## `Python: Select Interpreter` is missing
 
-The Microsoft Python extension is probably not active. Confirm that it is installed, then restart VS Code.
+First confirm that the course folder is trusted, then open `setup_check.py` and wait a few seconds. The Python extension activates when a Python file is open. If the command is still missing, confirm that **Python** published by Microsoft is installed and enabled, then restart VS Code.
 
 ## No Python 3.13 interpreter appears
 
@@ -23,7 +26,20 @@ On Windows, select **Add Python to PATH** if the installer shows that option. On
 
 ## VS Code opened one file, but I cannot see the course folders
 
-You opened a file instead of the repository folder. Choose **File → Open Folder** and select the extracted folder whose name begins with `technion-096609-python-ai`.
+You opened one file instead of the repository folder. Close that VS Code window, then open the normal extracted folder that contains both `README.md` and `class-00-setup`:
+
+- macOS Start screen: click **Open...**. If the Start screen is not visible, choose **File → Open Folder...** from the macOS menu bar.
+- Windows: choose **File → Open Folder...** from the top menu.
+
+Do not select the ZIP file or the `class-00-setup` folder by itself.
+
+## VS Code says Restricted Mode
+
+Click **Manage** in the Restricted Mode banner, then choose **Trust** for the course folder. Only trust folders obtained from a source you recognize; this folder came from the official course repository.
+
+## VS Code asks me to sign in or try Copilot
+
+Neither is required for Class 0. Close or skip the prompt and continue with the setup guide.
 
 ## The downloaded files behave strangely or cannot be saved
 
@@ -50,6 +66,10 @@ Read the final lines first; they usually contain the useful message. Check that:
 - you opened the extracted repository folder, not the ZIP file.
 
 Then close VS Code, reopen the folder, and try once more.
+
+## An installer says it cannot run on my computer
+
+Do not download a random alternative installer. Use the [help-request template](email-help-template.md) and include the computer model and the exact installer message.
 
 ## I am still stuck
 

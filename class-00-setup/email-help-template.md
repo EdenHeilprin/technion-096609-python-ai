@@ -12,7 +12,7 @@ Hello Eden,
 I am having trouble completing Class 0.
 
 Operating system: [Windows 10 / Windows 11 / macOS, including version if known]
-Computer type: [ordinary Windows / Windows ARM if known / Intel Mac / Apple Silicon Mac if known]
+Computer model: [for example, MacBook Air or Microsoft Surface; include it if known]
 Step where I became stuck: [step number and title]
 Exact error message: [copy the text here]
 What I already tried: [briefly describe your attempts]
