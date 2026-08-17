@@ -1,15 +1,16 @@
-# Technion 096609 — course repository under development
+# Technion 096609 — Introduction to Python for Behavioral Research
 
-This is the future technical-material repository for Technion course 096609, formally titled **Quantitative Models in Behavioral Sciences**.
+Welcome to the course repository.
 
-The course is currently being redesigned under instructor review. No syllabus, lesson, assignment, policy, or deadline in earlier repository history should be treated as current course information.
+The formal catalog title is **Quantitative Models in Behavioral Sciences**. In practice, this is an introductory Python course for graduate students in the behavioral sciences. No previous programming experience is assumed.
 
-No student materials are released here yet.
+## New students: start here
 
-When the course opens:
+Complete **[Class 0 — Computer Setup](class-00-setup/README.md)** before the deadline posted on Moodle.
 
-- Moodle will remain authoritative for announcements, dates, submissions, grades, and private communication.
-- This repository will contain approved code and technical materials.
-- Students will use the real repository interface deliberately as part of a gradual introduction to GitHub.
+Class 0 will help you check or install the required free software and run one small Python file. You do not need a GitHub account yet, and you are not expected to understand the code yet. We will introduce free GitHub accounts later in the course.
 
-Teaching is planned in Hebrew; written materials and code are planned in English.
+## What belongs where?
+
+- **Moodle** is the official source for announcements, dates, submissions, grades, and private communication.
+- **This GitHub repository** contains course code and technical learning materials.
