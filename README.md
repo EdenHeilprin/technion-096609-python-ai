@@ -10,6 +10,10 @@ Complete **[Class 0 — Computer Setup](class-00-setup/README.md)**, then report
 
 Class 0 will help you check or install the required free software and run one small Python file. You do not need a GitHub account yet, and you are not expected to understand the code yet. We will introduce free GitHub accounts later in the course.
 
+## Course classes
+
+- **[Class 1 — Your First Python Program](class-01/README.md)**
+
 ## What belongs where?
 
 - **Moodle** is the official source for announcements, dates, submissions, grades, and private communication.
