@@ -23,12 +23,16 @@ You are ready when all of the following are true:
 - You ran `setup_check.py` and saw `SETUP CHECK PASSED`.
 - You completed the Class 0 readiness check on Moodle.
 
-Estimated time: **30–45 minutes**. If you already use Python or VS Code, do not uninstall anything. Your operating-system guide explains what you can skip and how to keep your existing setup.
+Allow about **45–60 minutes**. It may take longer if an installation needs troubleshooting.
+
+Use the computer you expect to use during the course, with a stable internet connection and permission to install applications.
+
+If you already use Python or VS Code, do not uninstall anything. Your operating-system guide explains what you can skip and how to keep your existing setup.
 
 ## Follow the guide for your computer
 
-- [Windows setup guide](windows.md)
-- [macOS setup guide](macos.md)
+- [Windows 10 or 11 setup guide](windows.md)
+- [macOS 12 or later setup guide](macos.md)
 
 Linux is not a supported setup path for this course. If you expect to use Linux, email the instructor before beginning.
 

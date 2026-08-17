@@ -1,26 +1,28 @@
 # Windows Setup Guide
 
-Follow these steps in order. You do not need to type any terminal commands.
+Follow these steps in order on **Windows 10 or Windows 11**. You do not need to type any terminal commands.
 
-Already use Python or VS Code? **Do not uninstall them.** If you already have Python 3.13.x, you can skip section 1. If you use another Python version, keep it and install Python 3.13.15 alongside it for this course. If VS Code is already installed, you can skip section 2.
+Already use Python or VS Code? **Do not uninstall them.** Skip the relevant installation section if you already have Python 3.13.x or VS Code. If you are unsure about your Python version, install Python 3.13.15 alongside your existing version.
 
 ## 1. Install Python 3.13.15
 
-1. Open the official [Python 3.13.15 release page](https://www.python.org/downloads/release/python-31315/).
-2. Scroll to **Files** and click **Windows installer (64-bit)**. It is marked **Recommended**.
-3. Open the downloaded installer.
-4. On its first screen, select **Add Python to PATH** if that option appears.
+1. Click **[Download Python 3.13.15 for Windows](https://www.python.org/ftp/python/3.13.15/python-3.13.15-amd64.exe)**.
+2. Open **Downloads** in File Explorer and double-click `python-3.13.15-amd64.exe`.
+3. On the first installer screen, select the checkbox whose label includes **Add Python to PATH** if that option appears.
+4. If Windows asks whether to allow this application to make changes, choose **Yes**.
 5. Choose **Install Now** and keep the default components.
 6. When the installer reports that setup was successful, close it.
 
-Use the installer marked **Recommended** and ignore the other files on the release page.
+If Windows says that this installer cannot run on your computer, stop and use the [help-request template](email-help-template.md). Do not guess among other installer versions.
 
 ## 2. Install VS Code
 
-1. Open the official [VS Code download page](https://code.visualstudio.com/Download).
-2. Under Windows, download the **User Installer — x64**. This is the standard choice for almost all Windows computers.
-3. Open the installer and accept its default options.
-4. Open VS Code when installation finishes.
+1. Click **[Download VS Code for Windows](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user)**.
+2. Open **Downloads** in File Explorer and double-click the file whose name begins with `VSCodeUserSetup-x64-` and ends with `.exe`.
+3. Accept the license and keep the default installation options as you move through the installer.
+4. When installation finishes, select **Launch Visual Studio Code** if that option appears, then close the installer.
+
+VS Code may offer sign-in, Copilot, theme, or introductory options. None is required for Class 0; you may close or skip those prompts.
 
 ## 3. Install the Microsoft Python extension
 
@@ -29,42 +31,46 @@ Use the installer marked **Recommended** and ignore the other files on the relea
 3. Select the extension named **Python**, published by **Microsoft**.
 4. Click **Install**.
 
-There may be many similarly named extensions. For Class 0, install only the one published by Microsoft.
+Select **Python** published by Microsoft, not a similarly named extension. It may automatically add other Microsoft Python components; that is normal.
 
 ## 4. Download and extract the course repository
 
 1. Click **[Download all course files as a ZIP](https://github.com/EdenHeilprin/technion-096609-python-ai/archive/refs/heads/main.zip)**. This link downloads the entire course repository—not only the instruction page you are reading.
-2. Open your Downloads folder and find `technion-096609-python-ai-main.zip`.
-3. Right-click that ZIP file and choose **Extract All**.
-4. Accept the suggested location and click **Extract**.
+2. Open **Downloads** in File Explorer and find `technion-096609-python-ai-main.zip`.
+3. Right-click that ZIP file and choose **Extract All...**.
+4. Click **Extract**.
 
-Do not work inside the ZIP file. You need the normal extracted folder.
+Open the extracted folder until you see `README.md` and `class-00-setup` together. That is the folder you will open in VS Code.
 
-> **Important:** On GitHub, the **Code** tab beside **Preview** only changes how the current instruction page is displayed. The download arrow beside **Raw** downloads only that one page. Use the blue download link in step 1 to obtain all course files.
+Use the download link in step 1. GitHub's small file-download icon downloads only the page currently displayed.
 
-## 5. Open the repository folder in VS Code
+## 5. Open and trust the repository folder in VS Code
 
 1. At the top of VS Code, open the **File** menu and choose **Open Folder...**.
-2. In the window that opens, go to **Downloads** and select the extracted folder named `technion-096609-python-ai-main`.
+2. In the window that opens, go to the normal extracted folder that contains `README.md` and `class-00-setup`—not the ZIP file.
 3. Click **Select Folder**.
 4. If VS Code asks whether you trust the authors of the files, choose **Yes, I trust the authors**.
+5. If a banner at the top says **Restricted Mode**, click **Manage** in that banner and then choose **Trust**.
 
-The left Explorer panel should now show `README.md` and the `class-00-setup` folder.
+Trust enables extensions and allows code to run. Trust this folder because you downloaded it from the official course repository; do not automatically trust unfamiliar folders.
+
+The Explorer panel should now list the repository contents, including `README.md` and the `class-00-setup` folder. It may also show files such as `.gitignore`.
 
 ## 6. Select Python 3.13
 
-1. Press `Ctrl` + `Shift` + `P`.
-2. Type `Python: Select Interpreter` and select that command.
-3. Choose an interpreter whose version begins with **Python 3.13**.
+1. In the Explorer panel, expand `class-00-setup` and click `setup_check.py`. This activates the Python extension.
+2. Wait a few seconds, then click the Python version—or **Select Interpreter**—shown in the bottom status bar.
+3. If neither appears there, press `Ctrl` + `Shift` + `P`, type `Python: Select Interpreter`, and select that command.
+4. Choose an interpreter whose version begins with **Python 3.13**. If one is marked **Recommended**, choose it.
 
 If several interpreters appear, do not choose one with a different version number. If no Python 3.13 interpreter appears, use the [troubleshooting guide](troubleshooting.md).
 
+After selection, the bottom status bar in VS Code should show a Python version beginning with `3.13`.
+
 ## 7. Run the setup check
 
-1. In the Explorer panel, open `class-00-setup`.
-2. Click `setup_check.py`.
-3. Click the triangular **Run Python File** button in the upper-right corner of the editor.
-4. Look at the Terminal panel that opens at the bottom of VS Code.
+1. With `setup_check.py` open, click the triangular **Run Python File** button in the upper-right corner of the editor.
+2. Look at the Terminal panel that opens at the bottom of VS Code.
 
 The final line should be:
 
@@ -76,6 +82,6 @@ You do not need to understand the Python code yet. Your task is only to run it s
 
 ## 8. Finish on Moodle
 
-Complete the **Class 0 readiness check** on Moodle before its deadline. If your output does not say `SETUP CHECK PASSED`, troubleshoot the setup before reporting completion.
+Complete the **Class 0 readiness check** on Moodle to report whether everything worked. If your output does not say `SETUP CHECK PASSED`, troubleshoot the setup before reporting completion.
 
 [Back to the Class 0 start page](README.md)
