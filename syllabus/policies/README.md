@@ -1,9 +1,5 @@
 # Course policies
 
-Working student-facing drafts:
+Use the concise student-facing [course policies](https://edenheilprin.github.io/technion-096609-python-ai/policies/).
 
-- [AI use and accountability](ai-use-and-accountability.md)
-- [Privacy and research data](privacy-and-data.md)
-- [Collaboration and revision](collaboration-and-revision.md)
-
-Institutional policies and approved-tool conditions take precedence. Accessibility, detailed assessment recovery, and final tool-access policies will be added before publication.
+Moodle and Technion institutional rules remain authoritative.

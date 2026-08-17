@@ -12,13 +12,12 @@
     <header class="site-header">
       <a class="brand" href="{{ '/' | relative_url }}"><strong>096609</strong><span>Python · Behavioral Research · AI</span></a>
       <nav aria-label="Main navigation">
-        <a href="{{ '/syllabus/' | relative_url }}">Syllabus</a>
+        <a href="{{ '/start/' | relative_url }}">Start here</a>
+        <a href="{{ '/week-01/' | relative_url }}">Class 1</a>
+        <a href="{{ '/setup/' | relative_url }}">Setup</a>
         <a href="{{ '/weeks/' | relative_url }}">Course map</a>
-        <a href="{{ '/assessment/' | relative_url }}">Assessment</a>
+        <a href="{{ '/syllabus/' | relative_url }}">Syllabus</a>
         <a href="{{ '/policies/' | relative_url }}">Policies</a>
-        <a href="{{ '/capstone/' | relative_url }}">Capstone</a>
-        <a href="{{ '/roadmap/' | relative_url }}">Roadmap</a>
-        <a href="https://github.com/EdenHeilprin/technion-096609-python-ai">Repository ↗</a>
       </nav>
     </header>
 
@@ -27,7 +26,6 @@
         <p class="eyebrow">{{ page.eyebrow | default: "096609 course hub" }}</p>
         <h1>{{ page.title }}</h1>
         {% if page.lead %}<p class="page-lead">{{ page.lead }}</p>{% endif %}
-        {% if page.status %}<p class="page-status">{{ page.status }}</p>{% endif %}
       </header>
       <article class="page-content">
         {{ content }}

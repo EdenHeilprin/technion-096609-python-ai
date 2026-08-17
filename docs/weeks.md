@@ -2,74 +2,42 @@
 layout: page
 title: Course map
 eyebrow: Fourteen-meeting journey
-lead: Eleven meetings introduce the core language, research workflows, and agentic practice. Three protected meetings let beginners integrate, recover, rehearse, and demonstrate.
-status: Working sequence · Topics are stable enough to prototype; exact pacing remains adjustable
+lead: Build independent Python foundations first, then apply them to data, AI-assisted workflows, and behavioral-research software.
 permalink: /weeks/
 ---
 
-## The learning arc
-
-<div class="phase-grid">
-  <article><span>Meetings 1–7</span><h3>Understand the machine</h3><p>Run, represent, decide, repeat, organize, and repair. Students develop enough mental model to supervise larger changes.</p></article>
-  <article><span>Meetings 8–11</span><h3>Work like a researcher</h3><p>Use agents across files, persist structured data, transform it with pandas, and translate a method into a buildable specification.</p></article>
-  <article><span>Meetings 12–14</span><h3>Integrate and own the result</h3><p>Build, debug, rehearse, recover, and demonstrate—without adding a rushed final stack of unrelated topics.</p></article>
-</div>
-
 ## Meeting-by-meeting map
 
-| Meeting | Action and topic | Behavioral-science connection | AI/verification target | Main evidence |
-|---:|---|---|---|---|
-| 1 | **Start:** VS Code, GitHub, first Python | Tiny synthetic reaction-time/accuracy summary | Ask for an error explanation, then test it | Successful run + prediction + self-check |
-| 2 | **Represent values:** types, strings, conversion, input/output | Synthetic condition and participant labels | Ask for explanations/hints; verify with examples | Small core program |
-| 3 | **Represent collections:** lists and dictionaries | Trials, items, participant records | Read and critique generated representation choices | Data-representation exercise |
-| 4 | **Decide:** comparisons, Boolean logic, conditions, validation | Eligibility and branching with neutral synthetic data | Generate edge cases; decide which matter | Conditional task + cases |
-| 5 | **Repeat:** loops, counters, accumulators | Repeated trials, scoring, filtering | Compare two implementations using observed behavior | Loop task + trace |
-| 6 | **Organize:** functions, parameters, returns, scope | Reusable trial/scoring functions | Review a function contract and inspect the suggestion | Refactoring checkpoint |
-| 7 | **Repair:** tracebacks, assertions, debugging, tests | Diagnose a flawed mini research program | Debug plausible AI-generated defects | Practical Check 1 |
-| 8 | **Collaborate with an agent:** multi-file workflow | Small behavioral project in a repository | Context, scope, plans, diffs, tests, permissions, recovery | Reviewed agent-assisted change |
-| 9 | **Persist:** paths, files, CSV, rerun safety, pandas introduction | Stimuli and survey/experiment exports | Check file and schema assumptions | File/data lab |
-| 10 | **Transform:** pandas summaries and basic visualization | Clean a synthetic Qualtrics/oTree-style export | Detect wrong-row transformations and plausible output | Reproducible data task |
-| 11 | **Specify and build:** experiment/survey architecture | DM and OB capstone pathways | Human–AI specification and acceptance criteria | Capstone method brief |
-| 12 | **Integrate:** guided studio | Complete a thin end-to-end capstone path | Apply the full verification workflow | Capstone milestone |
-| 13 | **Clinic and rehearse** | Debugging, recovery, questions, demonstration preparation | Determined by cohort evidence | No major new topic |
-| 14 | **Demonstrate and consolidate** | Project demonstrations, studio, or contingency | Explain, diagnose, modify | Individual evidence |
+| Meeting | Main focus | What it enables |
+|---:|---|---|
+| 1 | [Start: VS Code and first Python](../week-01/) | Run, inspect, change, repair, and verify one program |
+| 2 | Types, strings, conversion, input/output | Represent values and understand what Python receives |
+| 3 | Lists and dictionaries | Represent trials, items, and participant records |
+| 4 | Conditions and validation | Make decisions and handle explicit cases |
+| 5 | Loops and accumulators | Process repeated trials and summaries |
+| 6 | Functions, parameters, and returns | Organize reusable behavior |
+| 7 | Tracebacks, assertions, debugging, and tests | Diagnose plausible but wrong programs |
+| 8 | Agentic coding workflow | Direct and verify a bounded multi-file change |
+| 9 | Paths, files, CSV, and pandas introduction | Persist and inspect research data |
+| 10 | Pandas transformations and visualization | Clean, summarize, and communicate structured data |
+| 11 | Experiment or survey architecture | Translate a published method into a buildable specification |
+| 12 | Integration studio | Complete a thin end-to-end research workflow |
+| 13 | Clinic and rehearsal | Repair gaps, ask questions, and prepare demonstrations |
+| 14 | Demonstration, studio, and contingency | Explain, diagnose, modify, and consolidate |
 
-## Available module
+Meetings 12–14 intentionally protect time for integration and recovery rather than adding a rushed stack of new topics.
 
-### Week 1 — Start
-
-The first teachable prototype is available now:
-
-- [Student lesson and task](https://github.com/EdenHeilprin/technion-096609-python-ai/tree/main/weeks/01-start)
-- [First complete Python example](https://github.com/EdenHeilprin/technion-096609-python-ai/blob/main/weeks/01-start/examples/reaction_time_summary.py)
-- [Starter practice](https://github.com/EdenHeilprin/technion-096609-python-ai/blob/main/weeks/01-start/starter/first_research_script.py)
-- [Dependency-free public check](https://github.com/EdenHeilprin/technion-096609-python-ai/blob/main/weeks/01-start/checks/check_first_research_script.py)
-
-## Repeated weekly structure
-
-Every content week follows the same internal order:
+## Repeated class structure
 
 1. why the topic matters;
-2. two to four observable outcomes;
-3. one short preparation resource and readiness check;
-4. runnable in-class code;
+2. observable outcomes;
+3. one short preparation activity;
+4. runnable code;
 5. predict/trace → run → explain → modify → test → reflect;
 6. required core practice with exact checks;
 7. optional stretch;
-8. one specific AI-learning target;
-9. exact submission contract and Moodle deadline;
-10. tested reference, common errors, and revision route.
+8. one deliberate AI-learning target;
+9. exact Moodle submission route;
+10. correction and support.
 
-The structure is intentionally predictable. Students should spend their effort understanding code—not decoding the course site.
-
-## What the map deliberately leaves out
-
-- advanced object-oriented programming;
-- broad software-engineering theory;
-- memorizing the pandas API;
-- statistical modelling already better served elsewhere;
-- several parallel IDE/tool support paths;
-- a late “AI lecture” disconnected from ordinary coding;
-- handwritten syntax examinations.
-
-Optional extensions may appear when the cohort is ready, but they will not silently become prerequisites for core success.
+Moodle contains the official schedule and any course-wide change.
