@@ -15,36 +15,15 @@ You should be able to:
 - predict how a small change will affect the output;
 - write and run a three-line Python program yourself.
 
-## First five minutes — get the current course files
+## Get the files for this class
 
-If your local course folder already contains `class-01`, you are ready. Otherwise:
+1. [Download the Class 1 files](class-01-files.zip?raw=1).
+2. Extract the downloaded ZIP file. It creates a folder named `class-01`.
+3. Find the course folder that you used in Class 0. This is the folder that already contains `class-00-setup`.
+4. Move the new `class-01` folder into that course folder, **next to** `class-00-setup`—not inside it.
+5. Open the course folder in VS Code. Its Explorer panel should now show both `class-00-setup` and `class-01`.
 
-1. [Download the current course files](https://github.com/EdenHeilprin/technion-096609-python-ai/archive/refs/heads/main.zip).
-2. Extract the downloaded ZIP file.
-3. Open the newly extracted repository folder in VS Code.
-
-We will do this together at the beginning of class.
-
-## Today's path
-
-### First teaching block
-
-1. **0–5 minutes:** download and open the current course files.
-2. **5–12 minutes:** course orientation and our approach to AI.
-3. **12–18 minutes:** distinguish the repository, VS Code, a Python file, and output.
-4. **18–25 minutes:** open and run the first program.
-5. **25–38 minutes:** understand value, variable, assignment, and `print()`.
-6. **38–47 minutes:** predict, change, save, and rerun the program.
-7. **47–50 minutes:** recap.
-
-### Second teaching block
-
-1. **50–56 minutes:** retrieve the four ideas from the first block.
-2. **56–65 minutes:** watch a three-line program being created from an empty file.
-3. **65–79 minutes:** write and run your own three-line program.
-4. **79–89 minutes:** make one deliberate change and explain its effect.
-5. **89–95 minutes:** optional arithmetic extension.
-6. **95–100 minutes:** consolidate what you learned.
+If your course folder already contains `class-01`, you do not need to download it again.
 
 ## Activity 1 — run an existing program
 
