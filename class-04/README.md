@@ -218,7 +218,7 @@ else:
 
 ## Use AI as a test designer
 
-Open a new AI chat. Paste the program you just wrote, followed by this prompt:
+Open a new AI chat. Paste the following prompt, followed by the program you just wrote:
 
 > I wrote a beginner Python program with these requirements:
 >
