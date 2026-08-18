@@ -134,3 +134,9 @@ Use this section whenever the terms from this class begin to blend together.
 4. Assignments create or update variables, expressions calculate values, and `print()` produces visible output.
 
 A useful habit is **predict → run → compare → explain**. Predict the output first, run the program, compare the actual output with your prediction, and explain any difference.
+
+## Companion tutorial
+
+For another clear explanation of the central ideas from this class, watch **[Variables — CS50P Shorts](https://www.youtube.com/watch?v=ylhcZZ7O3Tk)** (7 minutes).
+
+The video revisits variables, assignment, text, numbers, and `print()`, then gives a small preview of how values can be combined.
