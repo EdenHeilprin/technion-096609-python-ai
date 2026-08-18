@@ -169,12 +169,6 @@ Run the program with all four values. Then test one ordinary value inside the ra
 
 An **edge case** is an input at or near a boundary. Edge cases are especially useful because a program can work for an ordinary value while still being wrong at its limits.
 
-Ask an AI tool for additional tests using a focused request such as:
-
-> Suggest five integer test inputs for a rating that must be from 1 through 7. For each input, state which ordinary case or boundary it tests. Do not rewrite the program.
-
-Inspect the suggestions, choose at least three inputs, predict the result of each, and run them. The program—not the confidence of the explanation—determines whether a prediction is correct.
-
 ## More than two branches
 
 Use `elif` when a decision has more than two possible outcomes:
@@ -222,7 +216,37 @@ else:
 
 </details>
 
-Test every branch and boundary:
+## Use AI as a test designer
+
+Use any general-purpose AI chat assistant available to you. A free account is sufficient; no particular platform is required. Open a new chat—the assistant does not know anything about this class or your VS Code files unless you provide that information.
+
+Paste only the synthetic program you just wrote. Never paste real participant data or other confidential information into this activity.
+
+Use this prompt, followed by your code:
+
+> I wrote a beginner Python program with these requirements:
+>
+> - ratings outside 1–7 are invalid;
+> - ratings 1–3 are "Lower range";
+> - ratings 4–5 are "Middle range";
+> - ratings 6–7 are "Upper range".
+>
+> My code appears below.
+>
+> Create the smallest useful test table that checks every branch and every boundary. For each test, provide the input, the expected output according to the requirements, and why that test is necessary. Do not rewrite or correct my program. If you notice a possible mismatch, describe it without providing corrected code.
+
+Then:
+
+1. check whether the proposed tests include every branch and boundary;
+2. predict each result yourself;
+3. run every proposed test in VS Code;
+4. investigate any disagreement between the requirements, the AI prediction, and the actual output;
+5. compare your work with the test plan below.
+
+If an AI assistant is unavailable, create the same test table manually and continue with the remaining steps.
+
+<details>
+<summary>Compare with one complete test plan</summary>
 
 | Input | Expected output |
 | ---: | --- |
@@ -234,6 +258,10 @@ Test every branch and boundary:
 | `6` | `Upper range` |
 | `7` | `Upper range` |
 | `8` | `Invalid rating` |
+
+This is one complete plan. A different set can also be useful if it checks every branch and the values on both sides of each boundary.
+
+</details>
 
 For now, enter whole numbers. Handling input such as `hello` will be covered when we study errors and debugging.
 
