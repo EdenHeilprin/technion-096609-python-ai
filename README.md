@@ -18,3 +18,4 @@ Class 0 will help you check or install the required free software and run one sm
 ## Course classes
 
 - **[Class 1 — Your First Python Program](class-01/README.md)**
+- **[Class 2 — Types, Input, and Conversion](class-02/README.md)**
