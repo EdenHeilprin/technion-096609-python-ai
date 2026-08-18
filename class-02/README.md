@@ -16,7 +16,7 @@ You should be able to:
 
 ## Get the files for this class
 
-1. [Download the Class 2 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/agent/class-02-structure/class-02/class-02-files.zip).
+1. [Download the Class 2 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/class-02/class-02-files.zip).
 2. Extract the downloaded ZIP file and locate the resulting folder named `class-02`. On Windows, it may appear inside an additional folder named `class-02-files`.
 3. Move `class-02` into your local course folder, next to `class-00-setup` and `class-01`—not inside either of them.
 4. Open the course folder in VS Code. Its Explorer panel should now show `class-00-setup`, `class-01`, and `class-02`.
