@@ -77,17 +77,60 @@ Ready to begin
 
 Next, choose a different experiment name. Predict the output, make the change, save, rerun, and explain the result.
 
-## Optional extension — arithmetic
+## Activity 4 — arithmetic
 
-If time permits, open [`arithmetic_extension.py`](arithmetic_extension.py).
+Open [`arithmetic_extension.py`](arithmetic_extension.py).
 
 Predict `total_points` before running the file. Then change one number and predict the new result before running it again.
 
-## Before you leave
+## Class 1 reference
 
-Check that you can:
+Use this section whenever the terms from this class begin to blend together.
 
-- locate the repository, VS Code, a Python file, and its output;
-- point to a value, variable, assignment, and `print()` instruction;
-- run, change, save, and rerun a Python file;
-- write a small Python program yourself.
+### Files and tools
+
+| Term | Simple meaning |
+| --- | --- |
+| GitHub repository | The course project stored online. It contains the course files and their history. |
+| Local course folder | The downloaded copy on your computer. Editing this copy does not change the online repository. |
+| `README.md` | An instruction page that GitHub displays for a repository or folder. You are reading one now. |
+| VS Code | The application we use to open and edit code. VS Code asks Python to run the file. |
+| Python | The programming language used in this course. Python code must follow Python's rules. |
+| Python interpreter | The software installed in Class 0 that reads and carries out Python code. |
+| Python file | A plain-text file ending in `.py` that contains Python code. In this class, each `.py` file is a small program. |
+| Run | Ask the Python interpreter to carry out the code in a Python file. |
+| Output | Information produced when the program runs. In VS Code, it normally appears in the lower terminal panel. |
+
+### Reading the code
+
+| Term or symbol | Simple meaning | Example |
+| --- | --- | --- |
+| Line of code | One line written in a program. Python normally processes these lines from top to bottom. | `points_per_trial = 5` |
+| Value | A piece of information used by the program. | `"Dana"` or `6` |
+| Text value | Words or characters placed inside quotation marks. Text values are also called strings. | `"Option A"` |
+| Number value | A number written without quotation marks, so Python can use it in calculations. | `5` |
+| Variable | A name through which the program can refer to a value. | `participant_name` |
+| Variable name | The name chosen for a variable. It cannot contain spaces, so underscores often separate words. | `total_points` |
+| Assignment | Associates the variable name on the left with the value produced on the right. | `participant_name = "Dana"` |
+| `=` in an assignment | Read it as “gets the value.” It is not asking whether the two sides are equal. | `points_per_trial = 5` |
+| `print()` | Displays the value or text placed inside its parentheses. | `print(total_points)` |
+| Arithmetic expression | A calculation that Python evaluates to produce a number. | `trials_completed * points_per_trial` |
+| `*` | The Python symbol for multiplication. | `6 * 5` |
+
+### Small differences with different meanings
+
+| Code | Meaning |
+| --- | --- |
+| `participant_name` | Refer to the value stored in the variable named `participant_name`. |
+| `"participant_name"` | Use the actual text `participant_name`. |
+| `6` | Use the number six. |
+| `"6"` | Use the text character `6`, not a number for arithmetic. |
+
+### What happens when you run a file
+
+1. Save your changes.
+2. Select **Run Python File**.
+3. Python processes the program from top to bottom.
+4. Assignments create or update variables, expressions calculate values, and `print()` produces visible output.
+
+A useful habit is **predict → run → compare → explain**. Predict the output first, run the program, compare the actual output with your prediction, and explain any difference.
