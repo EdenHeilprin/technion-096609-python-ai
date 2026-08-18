@@ -2,7 +2,7 @@
 
 Today you will ask a user for information, distinguish text from numbers, convert text into a number, and use the result in a calculation.
 
-AI tools are permitted. The opening rehearsal is intentionally small, so first give yourself a brief attempt from memory before seeking help. This is practice—not an AI restriction.
+AI tools are permitted. For the rehearsal, try the task from memory first; consult the Class 1 materials or another tool if you become stuck.
 
 ## By the end of class
 
@@ -48,17 +48,7 @@ print("Ready to begin")
 
 Change the experiment name, predict the new output, and run the file again.
 
-## Activity 1 — recognize types
-
-Open [`types_demo.py`](types_demo.py). Before running it, predict the type of each value.
-
-```python
-participant_code = "P014"
-trials_completed = 6
-response_time = 1.42
-```
-
-Run the file and compare the output with your predictions. In output such as `<class 'str'>`, focus on the short name inside the quotation marks.
+## Three types to recognize
 
 | Python name | Meaning for today | Examples |
 | --- | --- | --- |
@@ -67,6 +57,18 @@ Run the file and compare the output with your predictions. In output such as `<c
 | `float` | A number containing a decimal point | `1.42`, `0.0` |
 
 `type(value)` asks Python which type a value has.
+
+## Activity 1 — recognize types
+
+Open [`types_demo.py`](types_demo.py). Before running it, predict the type of each value using the table above.
+
+```python
+participant_code = "P014"
+trials_completed = 6
+response_time = 1.42
+```
+
+Run the file and compare the output with your predictions. In output such as `<class 'str'>`, focus on the short name inside the quotation marks.
 
 The file also compares these two expressions:
 
@@ -77,6 +79,15 @@ The file also compares these two expressions:
 
 Predict both results before running them. Explain why the results differ even though the characters look similar.
 
+<details>
+<summary>Check your prediction</summary>
+
+`6 + 2` produces `8` because Python adds two integers.
+
+`"6" + "2"` produces `"62"` because Python joins two strings.
+
+</details>
+
 ## Activity 2 — collect text with `input()`
 
 Open [`input_demo.py`](input_demo.py). Read the code before running it.
@@ -85,13 +96,18 @@ Open [`input_demo.py`](input_demo.py). Read the code before running it.
 
 Run the file and enter a synthetic participant code such as `P014` and a condition such as `control`. Run it again with different values.
 
-Add this line temporarily and run the program again:
+Before running the next line, predict which type Python will report. Then add the line temporarily and run the program again:
 
 ```python
 print(type(participant_code))
 ```
 
+<details>
+<summary>Check your prediction</summary>
+
 The result is `str` because `input()` returns text.
+
+</details>
 
 ## Activity 3 — convert and calculate
 
@@ -168,3 +184,9 @@ In the points calculator, one piece of information changes form:
 5. `print()` displays the calculated result.
 
 A useful debugging question is: **What value does this variable hold right now, and what type is that value?**
+
+## Companion tutorial
+
+For another concise explanation, watch **[Type casting | Intro to CS — Python — Khan Academy](https://www.youtube.com/watch?v=y-FlANhhNiA)** (4 minutes).
+
+The video revisits `str`, `int`, `float`, `input()`, and conversion, and briefly shows why incompatible values can produce an error.
