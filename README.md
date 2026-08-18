@@ -15,6 +15,6 @@ Class 0 will help you check or install the required free software and run one sm
 - **Moodle** is the official source for announcements, dates, submissions, grades, and private communication.
 - **This GitHub repository** contains course code and technical learning materials.
 
-### Course classes
+## Course classes
 
 - **[Class 1 — Your First Python Program](class-01/README.md)**

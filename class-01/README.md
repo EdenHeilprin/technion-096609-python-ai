@@ -17,7 +17,7 @@ You should be able to:
 
 ## Get the files for this class
 
-1. [Download the Class 1 files](class-01-files.zip?raw=1).
+1. [Download the Class 1 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/agent/class-01-structure/class-01/class-01-files.zip).
 2. Extract the downloaded ZIP file and locate the resulting folder named `class-01`. On Windows, it may appear inside an additional folder named `class-01-files`.
 3. Find the course folder that you used in Class 0. This is the folder that already contains `class-00-setup`.
 4. Move the new `class-01` folder into that course folder, **next to** `class-00-setup`—not inside it.
