@@ -2,7 +2,7 @@
 
 Today you will ask yes-or-no questions in Python, use the answers to choose which code runs, and test whether a small program behaves correctly at its boundaries.
 
-AI tools are permitted. For the rehearsal, try to find the mistake yourself before consulting the Class 3 materials or another tool.
+For the rehearsal, try to find the mistake yourself first.
 
 ## By the end of class
 
@@ -218,11 +218,7 @@ else:
 
 ## Use AI as a test designer
 
-Use any general-purpose AI chat assistant available to you. A free account is sufficient; no particular platform is required. Open a new chat—the assistant does not know anything about this class or your VS Code files unless you provide that information.
-
-Paste only the synthetic program you just wrote. Never paste real participant data or other confidential information into this activity.
-
-Use this prompt, followed by your code:
+Open a new AI chat. Paste the program you just wrote, followed by this prompt:
 
 > I wrote a beginner Python program with these requirements:
 >
@@ -242,8 +238,6 @@ Then:
 3. run every proposed test in VS Code;
 4. investigate any disagreement between the requirements, the AI prediction, and the actual output;
 5. compare your work with the test plan below.
-
-If an AI assistant is unavailable, create the same test table manually and continue with the remaining steps.
 
 <details>
 <summary>Compare with one complete test plan</summary>
