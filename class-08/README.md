@@ -23,7 +23,7 @@ You will add the project folder during class.
 
 ## Get the files for this class
 
-1. [Download the Class 8 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/agent/class-08-codex-workflow/class-08/class-08-files.zip).
+1. [Download the Class 8 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/class-08/class-08-files.zip).
 2. Extract the downloaded ZIP file and locate the resulting folder named `class-08`. On Windows, it may appear inside an additional folder named `class-08-files`.
 3. Move `class-08` into your local course folder, next to `class-00-setup` through `class-07`—not inside any of them.
 4. Open the course folder in VS Code. Its Explorer panel should now also show `class-08`.
