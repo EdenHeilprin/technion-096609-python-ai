@@ -15,7 +15,7 @@ You should be able to:
 
 ## Get the files for this class
 
-1. [Download the Class 5 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/agent/class-05-structure/class-05/class-05-files.zip).
+1. [Download the Class 5 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/class-05/class-05-files.zip).
 2. Extract the downloaded ZIP file and locate the resulting folder named `class-05`. On Windows, it may appear inside an additional folder named `class-05-files`.
 3. Move `class-05` into your local course folder, next to `class-00-setup`, `class-01`, `class-02`, `class-03`, and `class-04`—not inside any of them.
 4. Open the course folder in VS Code. Its Explorer panel should now also show `class-05`.
