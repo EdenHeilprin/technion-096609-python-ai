@@ -1,0 +1,13 @@
+participant_code,trial_number,condition,choice,response_time_ms,points
+P001,1,control,left,842,6
+P001,2,control,right,1104,4
+P001,3,control,left,765,7
+P002,1,bonus,right,920,5
+P002,2,bonus,left,688,8
+P002,3,bonus,right,1015,4
+P003,1,control,left,1340,3
+P003,2,control,,,0
+P003,3,control,right,980,5
+P004,1,bonus,right,810,7
+P004,2,bonus,left,720,8
+P004,3,bonus,,,0
