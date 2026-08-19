@@ -24,3 +24,4 @@ Class 0 will help you check or install the required free software and run one sm
 - **[Class 5 — Loops, Counters, and Totals](class-05/README.md)**
 - **[Class 6 — Functions, Parameters, and Return Values](class-06/README.md)**
 - **[Class 7 — Errors, Tracebacks, and Tests](class-07/README.md)**
+- **[Class 8 — Working with Codex](class-08/README.md)**
