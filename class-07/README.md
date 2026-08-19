@@ -16,7 +16,7 @@ You should be able to:
 
 ## Get the files for this class
 
-1. [Download the Class 7 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/agent/class-07-debugging/class-07/class-07-files.zip).
+1. [Download the Class 7 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/class-07/class-07-files.zip).
 2. Extract the downloaded ZIP file and locate the resulting folder named `class-07`. On Windows, it may appear inside an additional folder named `class-07-files`.
 3. Move `class-07` into your local course folder, next to `class-00-setup`, `class-01`, `class-02`, `class-03`, `class-04`, `class-05`, and `class-06`—not inside any of them.
 4. Open the course folder in VS Code. Its Explorer panel should now also show `class-07`.
