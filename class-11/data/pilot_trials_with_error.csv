@@ -1,0 +1,13 @@
+participant_code,condition,trial_id,display_position,option_1,selected_key,choice,response_time_ms,timed_out
+P001,sure_first,T03,1,sure,1,sure,842,False
+P001,sure_first,T01,2,sure,2,risky,1140,False
+P001,sure_first,T04,3,sure,1,sure,690,False
+P001,sure_first,T02,4,sure,2,risky,970,False
+P002,risky_first,T02,1,risky,1,risky,755,False
+P002,risky_first,T04,2,risky,,,,True
+P002,risky_first,T01,3,risky,2,sure,1210,False
+P002,risky_first,T03,4,risky,1,risky,880,False
+P003,risky_first,T04,1,sure,1,sure,1330,False
+P003,risky_first,T02,2,risky,1,risky,640,False
+P003,risky_first,T03,3,risky,2,sure,1045,False
+P003,risky_first,T01,4,risky,1,risky,925,False
