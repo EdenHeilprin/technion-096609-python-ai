@@ -28,8 +28,8 @@ The loader must require the exact columns in the supplied file, exactly four uni
 
 ## Randomization
 
-- Assign each participant once to `persistent` or `transient` in the ordinary session config. Keep that assignment for all four rounds.
-- Provide one forced session config for each condition so the behavior can be piloted directly.
+- Assign each participant once to `persistent` or `transient` in the ordinary `sampling_decisions` session config. Keep that assignment for all four rounds.
+- Provide `sampling_decisions_persistent` and `sampling_decisions_transient` as forced session configs so each condition can be piloted directly.
 - Shuffle the four trial IDs once for each participant and preserve the resulting order across rounds.
 - Randomize the left-right mapping of Options A and B separately on every trial and store the mapping.
 - Generate the five available outcomes for each option on the server before the page is shown. Store the sequences so refreshing the page does not silently generate different outcomes.

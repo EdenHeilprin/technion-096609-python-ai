@@ -29,7 +29,7 @@ Do not add feedback conditions, timeout, bots, or custom export.
 ### Milestone 3 — feedback manipulation
 
 - Add the participant-level `persistent` and `transient` conditions.
-- Add one ordinary random-condition session config and one forced config for each condition.
+- Add `sampling_decisions` as the ordinary random-condition session config and `sampling_decisions_persistent` and `sampling_decisions_transient` as the forced configs.
 - Implement the two feedback behaviors exactly as specified.
 - Store condition in every trial row.
 - Manually pilot both forced configs and inspect their saved rows.
@@ -41,6 +41,7 @@ Do not add timeout, bots, custom export, payment, recruitment, or deployment.
 ### Milestone 4 — timeout and server-side integrity
 
 - Add the 90-second timeout.
+- Add `sampling_decisions_timeout_pilot` as a local 2-second timeout config without creating another experimental condition.
 - Enforce completed-choice relationships on the server.
 - Store explicit timeout state and clear side, choice, and timing fields after timeout.
 - Show completed-trial count on the final page.
