@@ -1,256 +1,156 @@
-# Class 12 — Build and Verify a Decision Experiment Slice
+# Class 12 — Build an oTree Experiment with Codex, Part II
 
-Class 11 ended with a specification for a small decision experiment. Today you will turn that specification into a working terminal prototype, run synthetic pilots, inspect the saved data, and verify that the result follows its contract.
+Continue the `sampling-study` project you built in Class 11. Today you will make it reliable enough to pilot and export: add timeout behavior, enforce data relationships, run automated oTree bots in both conditions, validate a trial-level export, and ask Codex for a final documentation and release audit.
 
 ## By the end of class
 
 You should be able to:
 
-- connect a build brief, data contract, program, tests, and saved CSV;
-- explain why experiment logic is easier to test when it is separated from keyboard input and screen output;
-- use a random seed to reproduce a condition assignment and trial order;
-- preserve both a raw key press and its condition-dependent meaning;
-- run a synthetic pilot from beginning to end;
-- validate a saved output file independently of the program that created it;
-- use Codex to implement one bounded change across several connected files;
-- review the resulting diff and rerun the relevant evidence yourself.
+- compare an existing project with its remaining milestones before editing;
+- specify how incomplete and timed-out trials must be stored;
+- direct Codex to add automated participant bots and run them in both conditions;
+- generate and inspect a synthetic trial-level export;
+- validate relationships between exported fields rather than checking columns by appearance;
+- request useful documentation without changing working behavior;
+- complete a final browser pilot and identify remaining limitations.
 
-## Get the files for this class
+## Continue your Class 11 project
 
-1. [Download the Class 12 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/agent/class-12-experiment-slice/class-12/class-12-files.zip).
-2. Extract the downloaded ZIP file and locate the resulting folder named `class-12`. On Windows, it may appear inside an additional folder named `class-12-files`.
-3. Move `class-12` into your local course folder, next to `class-00-setup` through `class-11`—not inside any of them.
-4. Open the course folder in VS Code. Its Explorer panel should now also show `class-12`.
+Open your existing `class-11/sampling-study` folder in VS Code and as the Codex project. Run `check_packages.py` once, then start `otree devserver` and confirm that one forced persistent session and one forced transient session still open correctly.
 
-If your course folder already contains `class-12`, you do not need to download it again.
+If your Class 11 project does not run after a reasonable debugging attempt, use the [tested Class 11 recovery checkpoint](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/agent/class-12-experiment-slice/class-12/class-11-recovery-checkpoint.zip). Extract it, preserve your original folder under a different name, and continue in the checkpoint's `sampling-study` folder.
 
-## Rehearsal — recover the path from method to evidence
+## Rehearsal — name the evidence
 
-The five steps below are out of order. Put them in a sensible sequence before revealing one possible answer.
+For each claim, decide whether the strongest immediate evidence is **browser behavior**, a **saved trial row**, or an **automated bot**:
 
-- build one thin end-to-end slice;
-- define the data contract;
-- inspect the method;
-- validate the saved output;
-- separate method facts, implementation decisions, and unresolved questions.
+1. A transient outcome disappears after 800 milliseconds.
+2. The same condition is stored on all four rows for one participant.
+3. A timeout never becomes a valid Option A or Option B choice.
 
 <details>
-<summary>Check one possible sequence</summary>
+<summary>Check the strongest evidence</summary>
 
-```text
-Inspect the method
-    ↓
-Separate facts, decisions, and unresolved questions
-    ↓
-Define the data contract
-    ↓
-Build one thin end-to-end slice
-    ↓
-Validate the saved output
-```
-
-A real project may revisit earlier steps, but it should not silently invent requirements or postpone all verification until the end.
+1. Browser behavior: directly observe the outcome appearing and disappearing.
+2. Saved trial rows: inspect the four stored condition values for one participant.
+3. Automated bot: submit an explicit timeout and assert that side and choice are blank. Inspecting the resulting row provides a second check.
 
 </details>
 
-## Four ideas to recognize
+## Activity 1 — audit the current project before changing it
 
-### 1. Separate the interaction from the experiment logic
+Stop the local server. In Codex, send:
 
-[`run_experiment.py`](run_experiment.py) displays options, waits for keyboard input, and writes a CSV. [`experiment_core.py`](experiment_core.py) contains smaller functions that assign a condition, order trials, map a key to a choice, and build one output row.
+> Read `AGENT_RULES.md`, `EXPERIMENT_SPEC.md`, `DATA_CONTRACT.md`, and `MILESTONES.md`, then inspect the complete current project without editing. Compare the current implementation with Milestones 4–6 only. Return a table with: required behavior, current evidence, missing or uncertain work, files likely to change, and the exact verification needed. Distinguish browser checks, bot checks, and export checks. Do not add requirements or begin implementation.
 
-The smaller core functions do not wait for a person. [`test_experiment_core.py`](test_experiment_core.py) can therefore call them with known inputs and check their outputs immediately.
+Check that the audit recognizes the current Class 11 experiment as the baseline. It should preserve the working four trials and two feedback conditions rather than propose a rewrite.
 
-| Part | Main responsibility |
-| --- | --- |
-| `run_experiment.py` | Coordinate one interactive session |
-| `experiment_core.py` | Apply the experiment's rules |
-| `test_experiment_core.py` | Check the rules with controlled examples |
-| `validate_output.py` | Reload a saved pilot and check its data contract |
+## Activity 2 — add timeout behavior and server-side integrity
 
-### 2. A seed makes a random path reproducible
+Send:
 
-The program needs random condition assignment and trial order. During development, we also need to reproduce a run that revealed a problem.
+> Implement Milestone 4 only. Add a 90-second decision-page timeout and `sampling_decisions_timeout_pilot` as a separate local session config that uses 2 seconds without creating a third experimental condition. For an ordinary completed trial, enforce on the server that both sample counts are exactly five and that the semantic choice matches the selected side. On timeout, set `timed_out` to true and clear selected side, semantic choice, `decision_rt_ms`, and `trial_rt_ms`; partial sample counts may remain. On ordinary completion, set `timed_out` to false. Make the final page report completed trials out of four. Preserve all Class 11 behavior. Add concise documentation for non-obvious integrity and timeout decisions, show the diff, run safe checks, and report exact manual pilot steps. Do not add bots or custom export yet.
+
+Review the diff, then run `otree devserver`.
+
+Pilot one ordinary forced-condition session and the 2-second timeout session.
+
+<details>
+<summary>Check Milestone 4</summary>
+
+**Ordinary trial:** five samples from both options are required; the selected side and semantic choice agree; `timed_out` is false; both timing fields are present.
+
+**Timeout trial:** the next page appears after about two seconds; `timed_out` is true; side, choice, and timing fields are blank; partial counts may remain.
+
+The 2-second config is a local testing convenience. The normal experiment still uses 90 seconds.
+
+</details>
+
+Stop the server before continuing.
+
+## Activity 3 — add automated pilots and the curated export
+
+Send:
+
+> Implement Milestone 5 only. Add oTree bots that cover: (1) ordinary valid left choices in all four rounds and (2) one explicit timeout while the other rounds complete normally. Run both cases under the forced persistent config and the forced transient config. Add a `custom_export` with exactly the 21 columns and field order in `DATA_CONTRACT.md`. Add an independent `validate_export.py` that accepts an exported CSV path, reloads it, and checks the contract's allowed values, four unique trials per participant, one condition per participant, left-right mapping, choice mapping, completed-row rules, timeout missingness, and valid sample outcomes. Generate synthetic exports, run the validator, show the diff, and report the exact commands and results. Do not change participant-facing behavior.
+
+Review the bot submissions and the export validator rather than relying only on the completion summary. Run the exact test and validation commands reported by Codex yourself.
+
+<details>
+<summary>Evidence required for Milestone 5</summary>
+
+- Both bot cases pass in both feedback conditions.
+- The exported file has exactly the 21 columns in `DATA_CONTRACT.md`.
+- Every synthetic participant has four trial rows and one condition.
+- Ordinary rows contain counts, a valid side and matching semantic choice, and timing values.
+- The timeout row has an explicit true timeout value and blank side, choice, and timing values.
+- `validate_export.py` finishes successfully on the new export.
+
+</details>
+
+## Activity 4 — request documentation without changing behavior
+
+Send:
+
+> Implement Milestone 6 as a documentation and release-audit task. First explain the current project architecture and data flow from `stimuli.csv` through participant interaction to the curated export. Then improve documentation only where it reduces a reader's work: module and function docstrings, concise comments for randomization, stable sample sequences, timing, timeout clearing, choice mapping, bots, and export validation, plus a project README with setup, run, test, pilot, and export instructions. Do not narrate obvious syntax and do not refactor or rename working code. Show the documentation-only diff. Then run the complete package check, both forced-condition bot suites, export generation, and independent export validation. Report every command, result, and remaining limitation.
+
+Inspect the diff before accepting it. Executable behavior should not change. Useful documentation should explain why a decision exists, what data move between parts, or how a claim is verified.
+
+<details>
+<summary>Reject documentation like this</summary>
 
 ```python
-rng = random.Random(seed)
-condition = rng.choice(CONDITIONS)
-rng.shuffle(ordered_trials)
+# Import random
+import random
+
+# Set the condition
+player.condition = participant.condition
 ```
 
-Using the same seed with the same code produces the same pseudorandom sequence. Changing the seed gives the generator a different starting point. A fixed seed does not remove the randomization mechanism; it makes one generated path repeatable for testing.
-
-### 3. Record the key and what the key meant
-
-Key `1` selects the first displayed option. Under `sure_first`, that means `sure`; under `risky_first`, it means `risky`.
-
-Saving only `selected_key` would make later analysis depend on reconstructing the display order. The output therefore stores all three:
-
-- `option_1`: what appeared first;
-- `selected_key`: what the participant pressed;
-- `choice`: the semantic decision, `sure` or `risky`.
-
-### 4. Validate the artifact, not only the running program
-
-A program can finish without an error and still save incomplete or contradictory data. The validator reopens the CSV as a new input and checks its columns, rows, allowed values, missingness, and relationships.
-
-That separation matters: the code that produces evidence should not be the only code trusted to judge that evidence.
-
-## Read the build brief and contract
-
-Open [`BUILD_BRIEF.md`](BUILD_BRIEF.md) and [`DATA_CONTRACT.md`](DATA_CONTRACT.md) before running the project.
-
-Identify:
-
-1. the method facts inherited from Class 11;
-2. the newly resolved invalid-key behavior;
-3. the known timing limitation of this terminal prototype;
-4. what one saved row represents;
-5. which fields are empty on a timeout.
-
-<details>
-<summary>Check the central distinctions</summary>
-
-- Four trials, one condition per participant, condition-dependent option order, keys `1` and `2`, a 12-second limit, and one row per trial are method facts.
-- Ignoring an invalid key while the original timer continues is a local implementation decision made for this prototype.
-- Terminal `input()` cannot automatically stop at exactly 12 seconds. A blank Enter simulates no response; a response entered after 12 seconds is also stored as a timeout once input returns.
-- One row represents one synthetic participant completing, or timing out on, one decision trial.
-- `selected_key`, `choice`, and `response_time_ms` are empty on a timeout.
+These comments merely repeat the syntax. A useful comment would explain why the participant-level assignment is copied into every trial row or why sample sequences are generated before rendering the page.
 
 </details>
 
-## Activity 1 — test and trace the experiment core
+## Activity 5 — final pilot and data inspection
 
-Open [`test_experiment_core.py`](test_experiment_core.py). For each test, name the requirement it checks before running the file.
+Run the project's documented verification sequence yourself. Then start `otree devserver` and complete one four-trial forced-condition pilot.
 
-Run it. A correct starting project prints:
+Before calling the project ready, inspect:
 
-```text
-All experiment-core tests passed
-```
+1. instructions, both feedback behaviors, sample limits, choice, timeout, and completion page;
+2. one participant's four stored trial rows;
+3. the curated export's columns and values;
+4. the independent validator result;
+5. the agent's list of remaining limitations.
 
-Choose one test and trace its values into the matching function in [`experiment_core.py`](experiment_core.py). Explain why that test would be awkward if the same function also called `input()`.
+The experiment is ready for a local synthetic pilot when all five checks agree. This class does not make it ready for real recruitment or public deployment.
 
-<details>
-<summary>Check one strong explanation</summary>
+## Before you leave
 
-`test_key_mapping()` supplies known keys and option orders directly to `choice_from_key()`. It checks all four mappings immediately. If the function also waited for keyboard input, every test case would require a person to press a key and the test would no longer be automatic or reliably repeatable.
+You should now have a functioning local oTree experiment that:
 
-</details>
-
-## Activity 2 — inspect reproducible randomization
-
-Open [`inspect_seeds.py`](inspect_seeds.py). Predict:
-
-1. whether the two runs using seed `12` will match;
-2. whether seed `27` must match seed `12`;
-3. whether every run should still contain all four trial identities exactly once.
-
-Run the file and compare the three session plans.
-
-<details>
-<summary>Check the output</summary>
-
-```text
-Seed 12: condition=risky_first, order=['T01', 'T02', 'T04', 'T03']
-Seed 12: condition=risky_first, order=['T01', 'T02', 'T04', 'T03']
-Seed 27: condition=risky_first, order=['T04', 'T01', 'T02', 'T03']
-```
-
-The repeated seed produces the same condition and order. The different seed produces a different order in this example. All three plans still contain each trial exactly once.
-
-</details>
-
-Change only the final seed from `27` to `12` and rerun the file. Restore `27` before continuing.
-
-## Activity 3 — run and validate two synthetic pilots
-
-Open [`run_experiment.py`](run_experiment.py). Keep the initial participant code `P900` and seed `12`.
-
-Run the program. On three trials, press `1` or `2`. On one trial, press Enter without typing a key to simulate no response. The program creates `output/P900.csv`.
-
-Open the CSV and connect each column to [`DATA_CONTRACT.md`](DATA_CONTRACT.md). Then open [`validate_output.py`](validate_output.py), keep `PARTICIPANT_CODE = "P900"`, and run it. A valid pilot prints:
-
-```text
-File: P900.csv
-Rows: 4
-Condition: risky_first
-All output checks passed
-```
-
-Now create a second pilot:
-
-1. In `run_experiment.py`, change `PARTICIPANT_CODE` to `"P901"` and `RANDOM_SEED` to `27`.
-2. Run all four trials, using only keys `1` and `2` this time.
-3. In `validate_output.py`, change `PARTICIPANT_CODE` to `"P901"` and run it.
-4. Run [`compare_pilots.py`](compare_pilots.py).
-
-<details>
-<summary>What should remain true across both pilots?</summary>
-
-- Each CSV has exactly four trial rows.
-- Each participant has one condition and each trial identity once.
-- `option_1` follows the assigned condition.
-- Every completed key maps to the recorded semantic choice.
-- The simulated timeout in `P900` has no key, choice, or response time.
-- `P901` has four completed rows.
-- The trial orders may differ because the seeds differ.
-
-</details>
-
-## Activity 4 — propagate one research-relevant field with Codex
-
-The program uses a seed but does not yet save it. Open [`FEATURE_REQUEST.md`](FEATURE_REQUEST.md), then open the `class-12` folder as a Codex project.
-
-Begin in **Read only** and send:
-
-> Read `FEATURE_REQUEST.md`, `DATA_CONTRACT.md`, `experiment_core.py`, `run_experiment.py`, `test_experiment_core.py`, and `validate_output.py`. Do not edit yet. Explain the smallest coherent change, file by file, and name the evidence that should pass afterward. Do not propose additional features.
-
-Compare the plan with the feature request. It should update the contract, row construction, session coordinator, tests, and output validator—not merely add a column at the final `to_csv()` call.
-
-Switch to **Auto** and send:
-
-> Implement exactly `FEATURE_REQUEST.md`. Update only the six files named in my previous message. Preserve all other experiment behavior. Run `test_experiment_core.py` when finished and summarize the diff and test result.
-
-Review the diff before accepting the result. Check that:
-
-- `random_seed` appears immediately after `participant_code` in the contract and column order;
-- every row receives the actual `RANDOM_SEED` used for that session;
-- the tests check the new field;
-- the validator requires an integer seed that is constant within the participant;
-- no unrelated behavior changed.
-
-Run `test_experiment_core.py` yourself. Then create a fresh pilot with participant `P902` and seed `44`, point `validate_output.py` to `P902`, and verify the new CSV.
-
-<details>
-<summary>Evidence of a complete implementation</summary>
-
-- The core tests print `All experiment-core tests passed`.
-- `output/P902.csv` contains `random_seed` as its second column.
-- Every row in that file stores `44`.
-- The output validator prints `All output checks passed`.
-- Earlier CSV files created before the contract change do not gain the new column automatically; the new pilot is the current evidence.
-
-</details>
+- assigns one of two feedback conditions per participant;
+- presents four randomized, CSV-defined lottery trials;
+- stores side mapping, sample sequences, counts, choice, timing, and timeout state;
+- behaves correctly in both feedback conditions;
+- passes ordinary and timeout bots;
+- produces a validated 21-column trial-level export;
+- contains documentation that helps a reader understand decisions and data flow.
 
 ## Class 12 reference
 
 | Term | Simple meaning |
 | --- | --- |
-| Terminal prototype | A working text-based version used to test logic before building the eventual interface |
-| Core logic | Rules that can run without waiting for screen or keyboard interaction |
-| Session coordinator | Code that connects loading, display, input, logic, and saving in the required order |
-| Pseudorandom | Generated by a repeatable algorithm while still behaving like random variation for this purpose |
-| Random seed | The starting value used to reproduce one pseudorandom sequence |
-| Reproducible run | A run whose condition and order can be generated again under the same code and seed |
-| Synthetic pilot | A trial run using invented participant details rather than research data |
-| Output validator | A separate program that reloads a saved artifact and checks its contract |
-| Regression test | A check that protects behavior that already worked before a change |
-| Field propagation | Carrying one value consistently from its source through code, saved data, tests, and validation |
-| Known limitation | A documented behavior that the current prototype does not yet implement fully |
+| Server-side validation | A rule checked by Python before submitted values are accepted |
+| Timeout | The page ends without an ordinary choice after its allowed time |
+| oTree bot | An automated participant that submits controlled values to pages |
+| Forced session config | A local pilot configuration that selects one known condition |
+| Custom export | A deliberately selected and ordered dataset produced from oTree records |
+| Data-integrity check | A test of relationships between stored values, not only their individual types |
+| Synthetic export | Data generated by test participants rather than real participants |
+| Regression | An earlier working behavior that becomes broken after a later change |
+| Release audit | A final comparison of requirements, implementation, tests, outputs, and limitations |
 
-## Companion tutorial
+## Additional guidance
 
-Watch Indently's 2:44 **[Why Is `random.seed()` So Important In Python?](https://www.youtube.com/watch?v=-7I9ffz-kHk)**.
-
-It demonstrates the central idea used in this class: a fixed seed makes a pseudorandom sequence repeatable. The video uses the module-level `random.seed()` function; our project uses `random.Random(seed)` to give this experiment its own generator without changing randomness elsewhere in a larger program.
+The official oTree documentation explains [participant treatments](https://otree.readthedocs.io/en/latest/treatments.html), [bots](https://otree.readthedocs.io/en/latest/bots.html), and [custom data exports](https://otree.readthedocs.io/en/latest/admin.html#custom-data-exports) in more detail.
