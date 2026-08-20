@@ -1,12 +1,12 @@
-"""Check that the packages required for Class 10 are ready."""
+"""Check that the packages required for Classes 11–12 are ready."""
 
 from importlib.metadata import PackageNotFoundError, version
 import sys
 
 
 REQUIRED_PACKAGES = {
-    "pandas": "3.0.5",
-    "matplotlib": "3.11.1",
+    "otree": "6.0.15",
+    "requests": "2.34.2",
 }
 
 problems = []

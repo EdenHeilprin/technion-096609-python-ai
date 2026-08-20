@@ -1,0 +1,5 @@
+trial_id,option_a_low,option_a_high,option_a_high_probability,option_b_low,option_b_high,option_b_high_probability
+T01,0,10,0.50,4,6,0.50
+T02,0,16,0.25,3,5,0.50
+T03,2,8,0.50,0,12,0.40
+T04,1,9,0.50,3,7,0.50

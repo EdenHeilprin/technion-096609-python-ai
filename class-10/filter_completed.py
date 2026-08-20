@@ -1,3 +1,5 @@
+"""Keep completed decision trials without changing the raw trial table."""
+
 from pathlib import Path
 
 import pandas as pd
@@ -7,6 +9,7 @@ data_path = Path(__file__).parent / "data" / "decision_trials.csv"
 
 trials = pd.read_csv(data_path)
 
+# A recorded response time is the study's definition of a completed trial.
 completed_mask = trials["response_time_ms"].notna()
 completed_trials = trials.loc[completed_mask].copy()
 

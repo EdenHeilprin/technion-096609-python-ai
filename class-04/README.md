@@ -66,6 +66,8 @@ trials_completed = 6       # assign the value 6
 trials_completed == 6      # ask whether the value equals 6
 ```
 
+The `#` symbol begins a **comment**. Python ignores the text after it when running the program; the comment helps a reader understand the intention behind the code.
+
 ## Activity 1 — predict comparison results
 
 Open [`comparisons_demo.py`](comparisons_demo.py). Before running it, predict the four Boolean results and the type reported on the final line.
@@ -276,6 +278,7 @@ For now, enter whole numbers. Handling input such as `hello` will be covered whe
 | Indentation | Spaces at the start of a line that show which block it belongs to | The four spaces before `print()` |
 | Edge case | A value at or near a boundary | `1` and `7` for an allowed range of `1`–`7` |
 | Validation | Checking whether information follows a rule | Is the rating inside the allowed range? |
+| Comment | Explanatory text after `#` that Python does not execute | `# include both boundaries` |
 
 ### Assignment is not equality testing
 

@@ -1,3 +1,5 @@
+"""Create a bonus column and condition summaries from completed trials."""
+
 from pathlib import Path
 
 import pandas as pd
@@ -11,6 +13,7 @@ completed_trials = trials.loc[trials["response_time_ms"].notna()].copy()
 analysis = completed_trials.loc[
     :, ["participant_code", "trial_number", "condition", "response_time_ms", "points"]
 ].copy()
+# The study pays ILS 0.05 for every point earned on a completed trial.
 analysis["bonus_payment_ils"] = (analysis["points"] * 0.05).round(2)
 
 summary = (

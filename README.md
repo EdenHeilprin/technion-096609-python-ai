@@ -27,5 +27,5 @@ Class 0 will help you check or install the required free software and run one sm
 - **[Class 8 — Working with Codex](class-08/README.md)**
 - **[Class 9 — Files, CSV, and Your First pandas DataFrame](class-09/README.md)**
 - **[Class 10 — Transforming, Summarizing, and Visualizing Data](class-10/README.md)**
-- **[Class 11 — From Research Method to Implementation Specification](class-11/README.md)**
-- **[Class 12 — Build and Verify a Decision Experiment Slice](class-12/README.md)**
+- **[Class 11 — Build an oTree Experiment with Codex, Part I](class-11/README.md)**
+- **[Class 12 — Build an oTree Experiment with Codex, Part II](class-12/README.md)**
