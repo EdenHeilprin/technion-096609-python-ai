@@ -1,3 +1,5 @@
+"""Compare the study's completion rule with a plausible but incorrect shortcut."""
+
 from pathlib import Path
 
 import pandas as pd
@@ -7,6 +9,7 @@ data_path = Path(__file__).parent / "data" / "decision_trials.csv"
 
 trials = pd.read_csv(data_path)
 
+# Zero-point trials can still be completed, so response time defines completion.
 completed_trials = trials.loc[trials["response_time_ms"].notna()].copy()
 positive_point_trials = trials.loc[trials["points"] > 0].copy()
 

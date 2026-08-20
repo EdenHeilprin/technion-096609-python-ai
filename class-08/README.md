@@ -162,7 +162,7 @@ The agent's explanation is useful context. The diff and executed results are evi
 
 ## Activity 2 — turn a request into an inspectable task
 
-Read the seven requirements in `PROJECT.md`. Imagine giving the agent only this request:
+Read the eight requirements in `PROJECT.md`. Imagine giving the agent only this request:
 
 > Fix the bonus code.
 
@@ -173,12 +173,13 @@ Write down at least three decisions that this request leaves unclear. Then draft
 - which familiar Python structures it may use;
 - what names or output must remain unchanged;
 - which tests it must add and run;
+- what documentation should help a reader understand;
 - whether it should begin editing immediately.
 
 <details>
 <summary>Check a precise task request</summary>
 
-> Read `PROJECT.md` and inspect all three Python files. Propose the smallest plan that satisfies every requirement. Keep the public function name, parameter name, `run_bonus.py`, and its output labels unchanged. Use the familiar arithmetic, comparison, `if`, assignment, and `return` approach rather than introducing a shortcut. Add the required above-cap assertion, then run `test_bonus_rules.py` and `run_bonus.py`. Before editing, show me the plan and wait for my confirmation.
+> Read `PROJECT.md` and inspect all three Python files. Propose the smallest plan that satisfies every requirement. Keep the public function name, parameter name, `run_bonus.py`, and its output labels unchanged. Use the familiar arithmetic, comparison, `if`, assignment, and `return` approach rather than introducing a shortcut. Add a concise function docstring explaining the conversion and maximum; do not add comments that merely restate individual lines. Add the required above-cap assertion, then run `test_bonus_rules.py` and `run_bonus.py`. Before editing, show me the plan and wait for my confirmation.
 
 This request is effective because the result and its verification are explicit. It does not prescribe every line of the implementation.
 
@@ -192,8 +193,9 @@ Do not approve the plan merely because it sounds confident. Check that it intend
 
 1. modify `bonus_rules.py`;
 2. add an above-cap assertion to `test_bonus_rules.py`;
-3. leave `run_bonus.py` unchanged;
-4. run both Python files.
+3. add one useful docstring to `points_to_bonus` without comment clutter;
+4. leave `run_bonus.py` unchanged;
+5. run both Python files.
 
 If the plan matches the task, reply:
 
@@ -213,6 +215,7 @@ Your diff should show:
 
 ```python
 def points_to_bonus(points):
+    """Convert points to bonus units, with a maximum of 5 units."""
     bonus = points / 100
 
     if bonus > 5:
