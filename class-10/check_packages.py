@@ -1,26 +1,35 @@
-required_pandas_version = "3.0.5"
-required_matplotlib_version = "3.11.1"
+"""Check that the packages required for Class 10 are ready."""
 
-try:
-    import pandas as pd
-except ModuleNotFoundError:
-    print("pandas is not installed. Return to the Class 9 installation guidance.")
-else:
-    if pd.__version__ == required_pandas_version:
-        print("pandas is ready:", pd.__version__)
-    else:
-        print("Installed pandas version:", pd.__version__)
-        print("Course pandas version:", required_pandas_version)
-        print("Return to the Class 9 installation guidance.")
+from importlib.metadata import PackageNotFoundError, version
+import sys
 
-try:
-    import matplotlib
-except ModuleNotFoundError:
-    print("matplotlib is not installed. Use the Class 10 installation command.")
-else:
-    if matplotlib.__version__ == required_matplotlib_version:
-        print("matplotlib is ready:", matplotlib.__version__)
-    else:
-        print("Installed matplotlib version:", matplotlib.__version__)
-        print("Course matplotlib version:", required_matplotlib_version)
-        print("Run the installation command in the Class 10 instructions.")
+
+REQUIRED_PACKAGES = {
+    "pandas": "3.0.5",
+    "matplotlib": "3.11.1",
+}
+
+problems = []
+
+for package_name, required_version in REQUIRED_PACKAGES.items():
+    try:
+        installed_version = version(package_name)
+    except PackageNotFoundError:
+        print(f"{package_name} is not ready: it is not installed")
+        problems.append(package_name)
+        continue
+
+    if installed_version != required_version:
+        print(
+            f"{package_name} is not ready: version {installed_version} is installed "
+            f"(course version: {required_version})"
+        )
+        problems.append(package_name)
+        continue
+
+    print(f"{package_name} is ready: {installed_version}")
+
+if problems:
+    print("\nPython used for this check:", sys.executable)
+    print("Next step: run install_packages.py, then run this check again.")
+    raise SystemExit(1)

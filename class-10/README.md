@@ -14,6 +14,7 @@ You should be able to:
 - create and label a simple bar chart;
 - save cleaned data, a summary table, and a plot;
 - verify that the pipeline kept the intended trials and produced the intended files;
+- use docstrings and comments to explain a program's purpose and non-obvious decisions;
 - use Codex to audit a plausible filtering rule, then verify its diagnosis against the data and executed output.
 
 ## Get the files for this class
@@ -25,7 +26,7 @@ You should be able to:
 
 If your course folder already contains `class-10`, you do not need to download it again.
 
-## Check the two packages
+## Prepare the two packages
 
 Open and run [`check_packages.py`](check_packages.py). The final lines should be:
 
@@ -34,29 +35,21 @@ pandas is ready: 3.0.5
 matplotlib is ready: 3.11.1
 ```
 
-If pandas is not ready, return to the [Class 9 installation guidance](../class-09/README.md#check-pandas-once) first.
+If either package is not ready, open and run [`install_packages.py`](install_packages.py) with the same VS Code Run button. When it finishes, run `check_packages.py` again.
 
-If only matplotlib is missing or its version differs, open **Terminal → New Terminal** in VS Code and run the relevant command:
+The installer uses the Python interpreter selected in VS Code, so no operating-system-specific path is required. If it reports an error, use the short [package setup troubleshooting guide](package-troubleshooting.md).
 
-**Windows**
+## Documentation helps readers follow longer code
 
-```text
-py -3.13 -m pip install --upgrade matplotlib==3.11.1
-```
+The activity files are now long enough that names and syntax alone do not explain every research decision.
 
-**macOS**
+- A **module docstring** appears at the top of a Python file and states the file's purpose.
+- A **function docstring** appears inside a function and states its contract.
+- A **comment** begins with `#` and explains a decision that would otherwise be unclear.
 
-```text
-/Library/Frameworks/Python.framework/Versions/3.13/bin/python3.13 -m pip install --upgrade matplotlib==3.11.1
-```
+Open [`filter_completed.py`](filter_completed.py). Its docstring states the script's overall purpose. The comment above `completed_mask` records why response time—not points—defines completion. Neither annotation narrates obvious syntax.
 
-If your selected Python interpreter has `.venv` in its path, use this command instead:
-
-```text
-python -m pip install --upgrade matplotlib==3.11.1
-```
-
-When installation finishes, close the terminal and run `check_packages.py` again.
+The short [`documentation guide`](DOCUMENTATION_GUIDE.md) gives examples and a standard to reuse when you or an AI tool documents a program.
 
 ## Rehearsal — reload and inspect the trial table
 
@@ -324,6 +317,34 @@ Open the `output` folder in VS Code and inspect all three files. Run the script 
 
 </details>
 
+### Ask Codex to document the complete pipeline
+
+Open the `class-10` folder as a Codex project, select **Auto**, and send:
+
+> Read `DOCUMENTATION_GUIDE.md` and `build_analysis.py`. First explain the script's data flow in order. Then add documentation only: (1) a short module docstring naming the input, the three outputs, and the script's purpose; and (2) concise comments for the completed-trial rule, bonus derivation, grouped summary, saved artifacts, and reload checks. Explain research decisions and verification—not obvious Python syntax. Do not refactor, rename, or change behavior. Show the diff, run the script, and confirm that the same three output files are created and all assertions pass.
+
+Review the diff before accepting it. Every added line should improve understanding; no executable line should change. Then run `build_analysis.py` yourself and verify the same terminal output and three saved files.
+
+<details>
+<summary>Check the kind of documentation we want</summary>
+
+Useful annotations include:
+
+```python
+"""Build checked analysis tables and a plot from data/decision_trials.csv.
+
+Outputs: cleaned_trials.csv, condition_summary.csv, and
+mean_points_by_condition.png.
+"""
+
+# Completion is defined by a recorded response time, so completed zero-point
+# trials remain in the analysis.
+```
+
+Avoid comments such as `# import pandas`, `# make a DataFrame`, or `# print rows`; they repeat syntax without explaining a decision.
+
+</details>
+
 ## Class 10 reference
 
 ### Central terms
@@ -344,6 +365,10 @@ Open the `output` folder in VS Code and inspect all three files. Run the script 
 | `groupby()` | Splits rows into groups so a calculation can be performed for each group |
 | Plot | A visual representation of selected data or a summary |
 | Pipeline | A repeatable sequence from input data through transformations to checked outputs |
+| Documentation | Explanatory text that records purpose, contracts, decisions, or limitations |
+| Module docstring | A description at the top of a Python file stating its purpose and important inputs or outputs |
+| Function docstring | A concise contract immediately inside a function |
+| Comment | Explanatory text after `#` that Python does not execute |
 
 ### Reusable transformation sequence
 
