@@ -28,3 +28,4 @@ Class 0 will help you check or install the required free software and run one sm
 - **[Class 9 — Files, CSV, and Your First pandas DataFrame](class-09/README.md)**
 - **[Class 10 — Transforming, Summarizing, and Visualizing Data](class-10/README.md)**
 - **[Class 11 — Build an oTree Experiment with Codex, Part I](class-11/README.md)**
+- **[Class 12 — Build an oTree Experiment with Codex, Part II](class-12/README.md)**
