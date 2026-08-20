@@ -1,4 +1,5 @@
 def classify_response_time(response_time):
+    """Return `fast` for times at or below 1000 ms; otherwise return `slow`."""
     if response_time <= 1000:
         speed_label = "fast"
     else:

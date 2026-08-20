@@ -1,4 +1,5 @@
 def show_task_name():
+    """Display the name of the current task."""
     print("Reaction-time task")
 
 
