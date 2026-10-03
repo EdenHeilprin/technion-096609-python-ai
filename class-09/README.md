@@ -24,31 +24,17 @@ You should be able to:
 
 If your course folder already contains `class-09`, you do not need to download it again.
 
-## Check pandas once
+## Prepare pandas
 
-Open and run [`check_pandas.py`](check_pandas.py). The final line should be:
+Open and run [`check_packages.py`](check_packages.py). The final line should be:
 
 ```text
 pandas is ready: 3.0.5
 ```
 
-If pandas is missing or the displayed version is different, open **Terminal → New Terminal** in VS Code and run the command for your operating system:
+If pandas is not ready, open and run [`install_packages.py`](install_packages.py) with the same VS Code Run button. When it finishes, run `check_packages.py` again.
 
-**Windows**
-
-```text
-py -3.13 -m pip install --upgrade pandas==3.0.5
-```
-
-**macOS**
-
-```text
-/Library/Frameworks/Python.framework/Versions/3.13/bin/python3.13 -m pip install --upgrade pandas==3.0.5
-```
-
-When the command finishes, close the terminal and run `check_pandas.py` again.
-
-If the command reports `externally-managed-environment`, use the short [local-environment fallback](pandas-environment.md).
+The installer uses the Python interpreter selected in VS Code, so no operating-system-specific path is required. If it reports an error, use the short [package setup troubleshooting guide](package-troubleshooting.md).
 
 ## Rehearsal — reconstruct one trial record
 

@@ -11,6 +11,7 @@ You should be able to:
 - distinguish a parameter from an argument;
 - use `return` to send a result back to the caller;
 - store and use a returned value;
+- recognize a function docstring that explains the function's contract;
 - explain why parameters and variables created inside a function are local to that call;
 - move familiar loop-and-condition logic into a reusable function.
 
@@ -105,6 +106,7 @@ A function becomes more flexible when it receives information through a **parame
 
 ```python
 def show_trial(stimulus):
+    """Display one stimulus for the current trial."""
     print("Stimulus:", stimulus)
 
 show_trial("circle")
@@ -118,6 +120,25 @@ The two related terms describe different places:
 | Argument | In a function call; the actual value supplied | `"circle"` |
 
 During `show_trial("circle")`, the argument `"circle"` becomes the current value of the parameter `stimulus`. A later call can provide a different argument without changing the function definition.
+
+## A docstring records the function's job
+
+The text immediately inside `show_trial()` is a **docstring**:
+
+```python
+def show_trial(stimulus):
+    """Display one stimulus for the current trial."""
+    print("Stimulus:", stimulus)
+```
+
+Triple quotes mark the docstring. It gives a reader a concise description of what the function does. For a function that returns a value, a useful docstring can also state what enters and what is returned:
+
+```python
+def classify_response_time(response_time):
+    """Return `fast` for times at or below 1000 ms; otherwise return `slow`."""
+```
+
+The docstring explains the contract rather than narrating every line. It does not replace clear function names, tests, or the code itself.
 
 ## Activity 2 — call one function with different arguments
 
@@ -159,6 +180,7 @@ Some functions display an action. Other functions calculate a result that the re
 
 ```python
 def classify_response_time(response_time):
+    """Return `fast` for times at or below 1000 ms; otherwise return `slow`."""
     if response_time <= 1000:
         speed_label = "fast"
     else:
@@ -253,6 +275,7 @@ Try to write and test the complete program before revealing an example.
 
 ```python
 def count_fast_responses(response_times):
+    """Return the number of response times at or below 1000 ms."""
     fast_count = 0
 
     for response_time in response_times:
@@ -356,11 +379,13 @@ The three executed tests do not prove correctness for every possible list, but t
 | Return value | The result sent back to the caller | The final count |
 | Local scope | The region inside one function call where its parameters and variables exist | `fast_count` inside the function |
 | Contract | A concise description of expected inputs, behavior, and returned result | “Returns the number of times at or below 1000” |
+| Docstring | A concise description placed inside a function to record its purpose or contract | `"""Return the number of fast responses."""` |
 
 ### Definition and call
 
 ```python
 def classify_response_time(response_time):
+    """Return `fast` for times at or below 1000 ms; otherwise return `slow`."""
     if response_time <= 1000:
         speed_label = "fast"
     else:
