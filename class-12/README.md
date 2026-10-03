@@ -18,7 +18,7 @@ You should be able to:
 
 Open your existing `class-11/sampling-study` folder in VS Code and as the Codex project. Run `check_packages.py` once, then start `otree devserver` and confirm that one forced persistent session and one forced transient session still open correctly.
 
-If your Class 11 project does not run after a reasonable debugging attempt, use the [tested Class 11 recovery checkpoint](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/agent/class-12-experiment-slice/class-12/class-11-recovery-checkpoint.zip). Extract it, preserve your original folder under a different name, and continue in the checkpoint's `sampling-study` folder.
+If your Class 11 project does not run after a reasonable debugging attempt, use the [tested Class 11 recovery checkpoint](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/class-12/class-11-recovery-checkpoint.zip). Extract it, preserve your original folder under a different name, and continue in the checkpoint's `sampling-study` folder.
 
 ## Rehearsal — name the evidence
 

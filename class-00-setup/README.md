@@ -1,6 +1,6 @@
 # Class 0 — Computer Setup
 
-**Complete this setup before Class 1.** When you finish, use the Class 0 readiness check on Moodle to tell the instructor whether everything worked successfully. *(The Moodle link will be added before the course opens.)*
+**Complete this setup before Class 1.** After working through the guide, submit the [Class 0 readiness check](https://moodle26.technion.ac.il/mod/feedback/view.php?id=29766) on Moodle—whether everything worked or you still need help.
 
 No previous programming experience is required. You are preparing three separate pieces:
 

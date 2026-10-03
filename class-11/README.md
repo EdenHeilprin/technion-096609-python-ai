@@ -16,7 +16,7 @@ You should be able to:
 
 ## Get the files for this class
 
-1. [Download the Class 11 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/agent/class-11-method-to-specification/class-11/class-11-files.zip).
+1. [Download the Class 11 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/class-11/class-11-files.zip).
 2. Extract the ZIP file and locate the folder named `class-11`.
 3. Move `class-11` into your local course folder, next to `class-00-setup` through `class-10`—not inside any of them.
 4. Open `class-11/sampling-study` in VS Code. Open that same `sampling-study` folder as the Codex project.

@@ -81,6 +81,6 @@ You do not need to understand the Python code yet. Your task is only to run it s
 
 ## 8. Finish on Moodle
 
-Complete the **Class 0 readiness check** on Moodle to report whether everything worked. If your output does not say `SETUP CHECK PASSED`, troubleshoot the setup before reporting completion.
+Submit the [Class 0 readiness check](https://moodle26.technion.ac.il/mod/feedback/view.php?id=29766) on Moodle, whether everything worked or you still need help. If you are stuck, email Eden using the [help-request template](email-help-template.md).
 
 [Back to the Class 0 start page](README.md)

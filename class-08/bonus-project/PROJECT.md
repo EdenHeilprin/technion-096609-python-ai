@@ -25,3 +25,4 @@ The completed change must satisfy all of these requirements:
 5. The implementation uses familiar arithmetic, comparison, `if`, assignment, and `return` rather than a new shortcut.
 6. The tests include an above-cap case using 750 points.
 7. Both Python programs run successfully after the change.
+8. `points_to_bonus` has a concise docstring explaining the conversion and maximum; do not add comments that merely restate individual lines.
