@@ -218,29 +218,6 @@ else:
 
 </details>
 
-## Use AI as a test designer
-
-Open a new AI chat. Paste the following prompt, followed by the program you just wrote:
-
-> I wrote a beginner Python program with these requirements:
->
-> - ratings outside 1–7 are invalid;
-> - ratings 1–3 are "Lower range";
-> - ratings 4–5 are "Middle range";
-> - ratings 6–7 are "Upper range".
->
-> My code appears below.
->
-> Create the smallest useful test table that checks every branch and every boundary. For each test, provide the input, the expected output according to the requirements, and why that test is necessary. Do not rewrite or correct my program. If you notice a possible mismatch, describe it without providing corrected code.
-
-Then:
-
-1. check whether the proposed tests include every branch and boundary;
-2. predict each result yourself;
-3. run every proposed test in VS Code;
-4. investigate any disagreement between the requirements, the AI prediction, and the actual output;
-5. compare your work with the test plan below.
-
 <details>
 <summary>Compare with one complete test plan</summary>
 
@@ -260,6 +237,59 @@ This is one complete plan. A different set can also be useful if it checks every
 </details>
 
 For now, enter whole numbers. Handling input such as `hello` will be covered when we study errors and debugging.
+
+## Build a small research tool with AI
+
+Imagine you are preparing a behavioral experiment. Before entering the main task, participants complete a practice round. You need a small program that tells the researcher what should happen next.
+
+The practice rules are:
+
+- A complete practice round contains **10 trials**.
+- Participants who have not finished all 10 trials should finish the round.
+- After completing the round, participants with **at least 8 correct answers** can start the main task.
+- Participants with fewer than 8 correct answers should repeat practice.
+
+### 1. Describe the task to AI
+
+Open your preferred AI tool. You can write your own request or start with this:
+
+> I’m preparing a behavioral experiment and need a small Python program to help a researcher decide what a participant should do after practice.
+>
+> A practice round has 10 trials. The program should ask how many trials the participant has completed and how many answers were correct.
+>
+> If the round is unfinished, tell the participant to finish practice. After all 10 trials, participants with at least 8 correct answers can start the main task; otherwise, they should repeat practice.
+>
+> Reject impossible counts: completed trials must be between 0 and 10, and correct answers must be between 0 and the number of completed trials.
+>
+> I’m a beginner. I know variables, input(), int(), print(), comparisons, if/elif/else, and and/or. Please write a simple version using those concepts and briefly explain how it makes its decision. Assume I enter whole numbers.
+
+AI can write the first version. Your job is to decide whether that version does what you need.
+
+### 2. Read it, then run it
+
+Create `practice_adviser.py` inside your `class-04` folder and paste the proposed code.
+
+Before running it, identify:
+
+- where the program collects and converts the inputs;
+- where it rejects impossible counts;
+- where it checks whether practice is complete;
+- where it decides whether the participant can continue.
+
+If a part is unclear, ask AI to explain it or provide a simpler version. This program should not require installing anything.
+
+### 3. Check whether it follows the rules
+
+Run the program with these cases. Compare its message with the required decision; the exact wording can differ.
+
+| Completed trials | Correct answers | Required decision |
+| ---: | ---: | --- |
+| 8 | 8 | Finish the practice round |
+| 10 | 7 | Repeat practice |
+| 10 | 8 | Start the main task |
+| 10 | 10 | Start the main task |
+| 3 | 4 | Reject the impossible counts |
+| 11 | 8 | Reject the impossible counts |
 
 ## Class 4 reference
 
