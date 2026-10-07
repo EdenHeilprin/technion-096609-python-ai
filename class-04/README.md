@@ -236,8 +236,6 @@ This is one complete plan. A different set can also be useful if it checks every
 
 </details>
 
-For now, enter whole numbers. Handling input such as `hello` will be covered when we study errors and debugging.
-
 ## Build a small research tool with AI
 
 Imagine you are preparing a behavioral experiment. Before entering the main task, participants complete a practice round. You need a small program that tells the researcher what should happen next.
