@@ -23,7 +23,7 @@ Class 0 will help you check or install the required free software and run one sm
 - **[Class 4 — Comparisons and Decisions](class-04/README.md)**
 - **[Class 5 — Loops, Counters, and Totals](class-05/README.md)**
 - **[Class 6 — Functions, Parameters, and Return Values](class-06/README.md)**
-- **[Class 7 — Errors, Tracebacks, and Tests](class-07/README.md)**
+- **[Class 7 — Debugging with AI](class-07/README.md)**
 - **[Class 8 — Working with Codex](class-08/README.md)**
 - **[Class 9 — Files, CSV, and Your First pandas DataFrame](class-09/README.md)**
 - **[Class 10 — Transforming, Summarizing, and Visualizing Data](class-10/README.md)**
