@@ -1,6 +1,8 @@
 # Class 6 — Functions, Parameters, and Return Values
 
-Today you will package familiar Python instructions into named, reusable functions. You will pass information into a function, return a result, and call the same function with more than one dataset.
+At the end of a game, you need to convert each participant's points into a bonus payment. Instead of copying the same calculation for every participant, you can write it once as a **function** and reuse it. If the payment rule changes, you update it in one place.
+
+Today you will build that function, learn how to pass in different values and return results, and use functions to process more than one dataset.
 
 ## By the end of class
 
@@ -60,123 +62,99 @@ Total points: 10
 
 </details>
 
-## A function gives a task a name
+## Write the payment rule once, use it for every participant
 
-A **function** is a named block of instructions that performs a task. We first define the task, then call the function whenever we want Python to perform it.
+The game pays **10 pence for each point**. Two participants earned 12 and 25 points. This function calculates and displays a bonus for either score:
 
 ```python
-def show_task_name():
-    print("Reaction-time task")
+def show_bonus(points):
+    bonus_pence = points * 10
+    print("Bonus (pence):", bonus_pence)
 
-show_task_name()
+show_bonus(12)
+show_bonus(25)
 ```
 
-The first two lines form the **function definition**:
+A **function** is a named, reusable block of instructions. The first three lines form its **definition**:
 
-- `def` begins a new function definition.
-- `show_task_name` is the function name.
-- The parentheses `()` hold any parameters. This first function has none.
-- The colon `:` begins the function body.
-- The indented line is the **function body**.
+- `def` begins the definition, and `show_bonus` is the function name.
+- `points` is a **parameter**: a name for the information this function receives.
+- The colon `:` starts the body; the indented lines are the instructions that belong to it.
 
-The final line is a **function call**. A definition teaches Python how to perform the task; a call tells Python to perform it now. The function body does not run merely because Python reads the definition.
+The final two lines are **function calls**. Each call supplies a score and runs the same calculation. For another participant, add another call—not another copy of the calculation and output code.
 
-## Activity 1 — predict definition and call order
+A definition tells Python how to perform the task; a call tells it to perform the task now. Reading the definition alone does not run its body.
 
-Open [`function_call_demo.py`](function_call_demo.py). Before running it, predict all three output lines and their order.
+### Parameter versus argument
+
+| Term | Where it appears | Example |
+| --- | --- | --- |
+| Parameter | In the definition; a name for incoming information | `points` |
+| Argument | In a call; the value or expression supplied | `12` in `show_bonus(12)` |
+
+During `show_bonus(12)`, `points` has the value `12`. During `show_bonus(25)`, it has the value `25`. The definition stays the same.
+
+## Activity 1 — calculate bonuses for different participants
+
+Open [`function_call_demo.py`](function_call_demo.py). Predict its output before running it.
 
 <details>
 <summary>Check your prediction</summary>
 
 ```text
-Before the function call
-Reaction-time task
-After the function call
+Bonus (pence): 120
+Bonus (pence): 250
 ```
 
-Python stores the function instructions when it reads the definition. The body runs later, when Python reaches `show_task_name()`.
+Python first reads the definition. The first call then uses 12 points; the second uses 25 points.
 
 </details>
 
-Run the file. Then add a second call to `show_task_name()` immediately after the first call. Predict the new output before running the file again.
+Run the file, then add `show_bonus(8)` for a third participant. Predict the new bonus and run it again.
 
-## Parameters make a function reusable
-
-A function becomes more flexible when it receives information through a **parameter**.
-
-```python
-def show_trial(stimulus):
-    """Display one stimulus for the current trial."""
-    print("Stimulus:", stimulus)
-
-show_trial("circle")
-```
-
-The two related terms describe different places:
-
-| Term | Where it appears | Example |
-| --- | --- | --- |
-| Parameter | In the function definition; a name for incoming information | `stimulus` |
-| Argument | In a function call; the actual value supplied | `"circle"` |
-
-During `show_trial("circle")`, the argument `"circle"` becomes the current value of the parameter `stimulus`. A later call can provide a different argument without changing the function definition.
+What would happen if the file contained only the definition, with no calls? Test this by temporarily placing `#` at the beginning of each call line, then restore the calls.
 
 ## A docstring records the function's job
 
-The text immediately inside `show_trial()` is a **docstring**:
+We can document the payment function's job with a **docstring** immediately after its header:
 
 ```python
-def show_trial(stimulus):
-    """Display one stimulus for the current trial."""
-    print("Stimulus:", stimulus)
+def show_bonus(points):
+    """Display the bonus in pence at 10 pence per point."""
+    bonus_pence = points * 10
+    print("Bonus (pence):", bonus_pence)
 ```
 
-Triple quotes mark the docstring. It gives a reader a concise description of what the function does. For a function that returns a value, a useful docstring can also state what enters and what is returned:
+Use `#` comments to explain individual lines or choices. A **docstring** uses triple quotes as the first statement in a function and describes the function as a whole; Python also makes it available through `help()`. Neither prints a message when you call the function.
 
-```python
-def classify_response_time(response_time):
-    """Return `fast` for times at or below 1000 ms; otherwise return `slow`."""
-```
+A function's **contract** is its agreement with the caller: what it accepts and what it does or returns. A useful docstring summarizes that agreement.
 
-The docstring explains the contract rather than narrating every line. It does not replace clear function names, tests, or the code itself.
+## Activity 2 — change the payment rule in one place
 
-## Activity 2 — call one function with different arguments
+Open [`parameter_demo.py`](parameter_demo.py). It contains the documented function and calls for scores of `12`, `25`, and `8`.
 
-Open [`parameter_demo.py`](parameter_demo.py). Predict the output, then run it.
+For the next game, the rate increases to **15 pence per point**. Change the calculation inside the function and update its docstring to match. Leave all three calls unchanged.
 
-Add this third call:
-
-```python
-show_trial("triangle")
-```
-
-Next, add the following line inside the function body, immediately below its existing `print()` line:
-
-```python
-print("Respond now")
-```
-
-Predict the complete output before running the program again. One change to the function body should affect all three calls.
+Predict the new bonuses, then run the program.
 
 <details>
 <summary>Check the complete output</summary>
 
 ```text
-Stimulus: circle
-Respond now
-Stimulus: square
-Respond now
-Stimulus: triangle
-Respond now
+Bonus (pence): 180
+Bonus (pence): 375
+Bonus (pence): 120
 ```
 
-The function is defined once but called three times. Each call supplies its own argument.
+One change to the calculation updates all three bonuses. The payment rule lives in the function; the calls provide the different scores.
 
 </details>
 
 ## A returned value leaves the function
 
-Some functions display an action. Other functions calculate a result that the rest of the program needs. The `return` statement sends a value from the function back to the line that called it.
+Our payment function displays a bonus. If we wanted to add that bonus to a participation fee, the rest of the program would need the calculated number—not just a printed message. The `return` statement sends a value back to the line that called the function.
+
+The same idea applies to a response-time label that another part of an experiment needs:
 
 ```python
 def classify_response_time(response_time):
@@ -318,50 +296,40 @@ The local counter begins at `0` during every call. An empty list produces zero l
 
 </details>
 
-## Review a function contract with AI
+## Use AI to build a reusable bonus calculator
 
-A **function contract** states what callers may provide and what the function promises to return or do. Use your completed `count_fast_responses` function for this contract review.
+Your next experiment records points separately for each trial. You need to turn each participant's list of points into a payment: **10 pence per point**, a maximum bonus of **300 pence**, and a fixed participation fee of **100 pence** on top.
 
-Open a new AI chat. Paste the following prompt, followed by your complete function definition:
+### 1. Describe the task to AI
 
-> Review the Python function below against this contract:
+Open your preferred AI tool. You can write your own request or start with this:
+
+> Write a Python function named `calculate_bonus(trial_points)` for an experiment. Its input is a list of non-negative whole-number points earned on individual trials.
 >
-> - Its exact name is `count_fast_responses`.
-> - It accepts one list of integer response times.
-> - It returns the number of values less than or equal to `1000`.
-> - It returns `0` for an empty list.
-> - It does not print anything.
-> - It does not change the supplied list.
+> Add the points, convert the total at 10 pence per point, and cap the bonus at 300 pence. Return the bonus as a whole number of pence. An empty list should return 0.
 >
-> For each requirement, report `Met` or `Not met` and cite the specific line or behavior that supports your judgment. Do not rewrite the function if every requirement is met. If one is not met, show only the smallest necessary change.
+> Use one `for` loop with a running total, multiplication, an `if` statement for the cap, and one final `return`. Keep printing outside the function.
 >
-> My function appears below.
+> Add a concise docstring stating the input, payment rule, and returned value. Include clear English `#` comments explaining each code line and its purpose, so a beginner can understand the code itself.
+>
+> Below the function, show a call with `[3, 5, 2]`. Store the returned bonus, add a participation fee of 100 pence outside the function, and print both the bonus and the total payment, clearly labeled in pence.
 
-Check the review against the code yourself. Then run these calls and compare the actual values with the contract:
+### 2. Read it, then run it
 
-```python
-print(count_fast_responses([1200, 700, 900]))
-print(count_fast_responses([1000, 1001]))
-print(count_fast_responses([]))
-```
+Create `bonus_calculator.py` inside `class-06` and paste the proposed code.
 
-The expected values are `2`, `1`, and `0`. If the review and the executed results disagree, the executed evidence determines whether the function met the tested requirement.
+Read its documentation and locate the running total, conversion, cap, and returned value. Check that the participation fee is added **after** the function returns, so it is not included in the bonus cap. Then run it.
 
-<details>
-<summary>What a sound review should notice</summary>
+### 3. Check the payment rules
 
-For the example implementation:
+Replace the argument in the example call with each list below. Predict the result, run the program, and compare both printed amounts with the table.
 
-- the function name and single parameter match the contract;
-- the counter increases only for values satisfying `<= 1000`;
-- the returned result is an integer count;
-- an empty list leaves the counter at `0`;
-- there is no `print()` inside the function;
-- the loop reads values from the list but never assigns to an index or calls a method that changes it.
-
-The three executed tests do not prove correctness for every possible list, but they provide direct evidence for an ordinary case, the boundary, and the empty-list case.
-
-</details>
+| Trial points | Expected bonus (pence) | Total payment including fee (pence) |
+| --- | ---: | ---: |
+| `[3, 5, 2]` | 100 | 200 |
+| `[12, 9, 15]` | 300 | 400 |
+| `[10, 20]` | 300 | 400 |
+| `[]` | 0 | 100 |
 
 ## Class 6 reference
 

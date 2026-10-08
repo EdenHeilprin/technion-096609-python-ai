@@ -1,8 +1,7 @@
-def show_task_name():
-    """Display the name of the current task."""
-    print("Reaction-time task")
+def show_bonus(points):
+    bonus_pence = points * 10
+    print("Bonus (pence):", bonus_pence)
 
 
-print("Before the function call")
-show_task_name()
-print("After the function call")
+show_bonus(12)
+show_bonus(25)

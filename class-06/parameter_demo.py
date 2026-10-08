@@ -1,7 +1,9 @@
-def show_trial(stimulus):
-    """Display one stimulus for the current trial."""
-    print("Stimulus:", stimulus)
+def show_bonus(points):
+    """Display the bonus in pence at 10 pence per point."""
+    bonus_pence = points * 10
+    print("Bonus (pence):", bonus_pence)
 
 
-show_trial("circle")
-show_trial("square")
+show_bonus(12)
+show_bonus(25)
+show_bonus(8)
