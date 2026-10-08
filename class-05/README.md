@@ -250,49 +250,43 @@ The value `1000` is included because the condition uses `<=`. The value `1001` i
 
 </details>
 
-## Compare two implementations with AI
+## Use AI to summarize pilot data
 
-Restore the original list in `response_time_summary.py`. Open a new AI chat, paste the following prompt, and then paste your complete program:
+A pilot experiment records response times, but some trials have no response. You need a summary that counts those missed responses without including them in the average response time.
 
-> I wrote the beginner Python program below to calculate the total response time and count response times no greater than 1000.
+### 1. Describe the task to AI
+
+Open your preferred AI tool. You can write your own request or start with this:
+
+> These are response times from a pilot experiment, in milliseconds:
 >
-> Suggest one shorter implementation that produces exactly the same two output lines for any list of integer response times.
+> `response_times = [1200, 800, -1, 1000, -1]`
 >
-> - Keep an explicit `for` loop for counting the fast responses.
-> - You may replace the total-calculation steps with one relevant built-in function.
-> - Do not use list comprehensions, user-defined functions, imports, `while`, `break`, or `continue`.
-> - Show the revised code, then explain the change in no more than three bullets.
+> A value of `-1` means no response was recorded.
 >
-> My code appears below.
+> Write a simple Python program that prints the number of recorded responses, the number of missed responses, and the mean response time excluding missed responses.
+>
+> If no responses were recorded, print "No recorded response times" instead of calculating a mean.
+>
+> Use one `for` loop, explicit counters, and a running total. Use only variables, lists, `if`/`else`, arithmetic, and `print()`.
+>
+> Include clear English `#` comments explaining each code line and its purpose, so a beginner can understand the program by reading it.
 
-Inspect the suggestion. It should replace the running-total calculation with `sum(response_times)` while retaining a loop for the conditional count.
+### 2. Read it, then run it
 
-1. Predict whether the original and revised programs will produce the same results.
-2. Run both programs with the original list.
-3. Run both programs with `[1000, 1001]`.
-4. Confirm or reject the claim that the implementations are equivalent for these tests.
-5. Decide which version makes the step-by-step accumulation easier to see, and which is shorter.
+Create `pilot_summary.py` inside your `class-05` folder and paste the proposed code.
 
-<details>
-<summary>Compare with one likely shorter version</summary>
+Read its comments and identify which values contribute to the total and which count is used to calculate the mean. Then run it.
 
-```python
-response_times = [1200, 700, 1500, 900, 1100]
+### 3. Check three cases
 
-total_response_time = sum(response_times)
-fast_response_count = 0
+Replace the list with each case below, run the program, and compare its output with the expected results.
 
-for response_time in response_times:
-    if response_time <= 1000:
-        fast_response_count = fast_response_count + 1
-
-print("Total response time:", total_response_time)
-print("Fast responses:", fast_response_count)
-```
-
-`sum(response_times)` is a built-in shortcut that adds the numeric values in the list. The explicit accumulator is longer, but it exposes every update and therefore helps us understand how the total is built.
-
-</details>
+| Response times | Recorded | Missed | Expected mean or message |
+| --- | ---: | ---: | --- |
+| `[1200, 800, -1, 1000, -1]` | 3 | 2 | 1000 ms |
+| `[600, 1000]` | 2 | 0 | 800 ms |
+| `[-1, -1]` | 0 | 2 | "No recorded response times" |
 
 ## Class 5 reference
 
@@ -346,21 +340,11 @@ Indentation determines whether a line runs once or repeats. Initializing `total`
 
 If the list is empty, the loop body runs zero times. A counter or total initialized to `0` therefore remains `0`.
 
-### Explicit process and built-in shortcut
+### Calculate a mean from recorded responses
 
-These two versions can produce the same total:
+The **mean** is the total of the recorded response times divided by the number of recorded responses. In the pilot-data activity, exclude `-1` from both that total and that count.
 
-```python
-total = 0
-for value in values:
-    total = total + value
-```
-
-```python
-total = sum(values)
-```
-
-The explicit loop shows the state change on every iteration. `sum()` expresses the completed operation more concisely. Understanding the explicit version makes it easier to inspect the shortcut and verify AI-generated alternatives.
+Calculate the mean after the loop, when both values are complete. If the recorded-response count is `0`, display "No recorded response times" instead of dividing by zero.
 
 ## Companion tutorial
 
