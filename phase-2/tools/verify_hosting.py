@@ -152,6 +152,8 @@ def exercise_server(origin, rest_key, admin_password):
     """Check access controls, then compare a known journey with its protected CSV."""
     anonymous = Client(origin)
     api = Client(origin, rest_key)
+    for path in ["/static/choice_task/study.css", "/static/choice_task/confidence.js"]:
+        require(anonymous.request(path).status == 200, "Production participant asset could not be served.")
     for path in ["/sessions", "/ExportIndex"]:
         response = anonymous.request(path, follow=False)
         require(response.status in {302, 303, 307}, "Anonymous administration was not redirected.")
@@ -263,7 +265,7 @@ def main():
     executable = Path(sys.executable).parent / "otree"
     require(executable.is_file(), "The current Python environment lacks its oTree command.")
     schema = "ci_verify_" + secrets.token_hex(12)
-    connection = psycopg2.connect(database_url, connect_timeout=5)
+    connection = psycopg2.connect(database_url, connect_timeout=5, options="")
     connection.autocommit = True
     schema_created = False
     process = None
