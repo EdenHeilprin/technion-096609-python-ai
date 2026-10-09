@@ -1,0 +1,18 @@
+{{ block title }}Sure or gamble?{{ endblock }}
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'choice_task/study.css' }}">
+{{ endblock }}
+
+{{ block content }}
+<p class="eyebrow">A short classroom study</p>
+<section class="study-panel">
+    <h2>Six decisions. Your preferences.</h2>
+    <p>In each round, choose between a guaranteed number of points and a gamble:
+        a <strong>50% chance of 10 points</strong> or a <strong>50% chance of 0 points</strong>.</p>
+    <p>Then tell us how confident you are in your choice. There are no right or wrong answers.</p>
+    <p class="study-note">The points are hypothetical: no money is paid. We do not ask for your name.
+        Your responses will be discussed as a group in class.</p>
+</section>
+<button class="study-button" type="submit">Start the study</button>
+{{ endblock }}

@@ -15,7 +15,7 @@ Class 0 will help you check or install the required free software and run one sm
 - **Moodle** is the official source for announcements, dates, submissions, grades, and private communication.
 - **This GitHub repository** contains course code and technical learning materials.
 
-## Course classes
+## Phase 1 — Python foundations
 
 - **[Class 1 — Your First Python Program](class-01/README.md)**
 - **[Class 2 — Types, Input, and Conversion](class-02/README.md)**
@@ -24,8 +24,15 @@ Class 0 will help you check or install the required free software and run one sm
 - **[Class 5 — Loops, Counters, and Totals](class-05/README.md)**
 - **[Class 6 — Functions, Parameters, and Return Values](class-06/README.md)**
 - **[Class 7 — Debugging with AI](class-07/README.md)**
-- **[Class 8 — Working with Codex](class-08/README.md)**
-- **[Class 9 — Files, CSV, and Your First pandas DataFrame](class-09/README.md)**
-- **[Class 10 — Transforming, Summarizing, and Visualizing Data](class-10/README.md)**
-- **[Class 11 — Build an oTree Experiment with Codex, Part I](class-11/README.md)**
-- **[Class 12 — Build an oTree Experiment with Codex, Part II](class-12/README.md)**
+
+## Phase 2 — Direct a complete research workflow
+
+One small study connects building an experiment, improving its pages, collecting responses, analyzing data, and writing an evidence-grounded report. Start with the **[Phase 2 overview](phase-2/README.md)**.
+
+- **[Class 8 — From Chatting to Delegating with Codex](class-08/README.md)**
+- **[Class 9 — Build Your First Experiment with Codex](class-09/README.md)**
+- **[Class 10 — Turn a Prototype into a Study](class-10/README.md)**
+- **[Class 11 — From Choices to Evidence](class-11/README.md)**
+- **[Class 12 — Direct a Research Workflow](class-12/README.md)**
+
+Each Phase 2 class has a self-contained download and a route that works without further AI usage. Keep each class in its own folder so your earlier work stays intact.

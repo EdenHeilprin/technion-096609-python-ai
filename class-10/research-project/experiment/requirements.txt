@@ -1,0 +1,3 @@
+otree==6.0.15
+# Server-only PostgreSQL driver; local student setup uses the root requirements and SQLite.
+psycopg2==2.9.13

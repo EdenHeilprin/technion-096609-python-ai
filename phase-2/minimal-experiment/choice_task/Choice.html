@@ -1,0 +1,32 @@
+{{ block title }}Which would you choose?{{ endblock }}
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'choice_task/study.css' }}">
+{{ endblock }}
+
+{{ block content }}
+<p class="eyebrow">One decision</p>
+<p>The points are hypothetical: no money is paid. We do not ask for your name.</p>
+
+<!-- The radio buttons share one name, so only one answer can be selected. -->
+<fieldset class="study-panel">
+    <legend>Choose one option</legend>
+    <div class="option-grid">
+        <label class="option-card" for="choice-sure">
+            <input id="choice-sure" type="radio" name="choice" value="sure" required>
+            <span><span class="option-heading">Guaranteed</span>
+                <span class="option-value">{{ player.sure_points }} points</span>
+                <span class="option-detail">For certain</span></span>
+        </label>
+        <label class="option-card" for="choice-gamble">
+            <input id="choice-gamble" type="radio" name="choice" value="gamble" required>
+            <span><span class="option-heading">Gamble</span>
+                <span class="option-value">10 or 0 points</span>
+                <span class="option-detail">50% chance of each outcome</span></span>
+        </label>
+    </div>
+    {{ formfield_errors 'choice' }}
+</fieldset>
+
+<button class="study-button" type="submit">Save my choice</button>
+{{ endblock }}

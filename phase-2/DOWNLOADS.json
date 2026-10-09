@@ -1,0 +1,32 @@
+[
+  {
+    "file": "class-08/class-08-files.zip",
+    "bytes": 146842,
+    "sha256": "76e8cb47ba1b36f30a2ee3fca8d98841a4e7ad9d1838a15a81886d917c3a0dee",
+    "files": 73
+  },
+  {
+    "file": "class-09/class-09-files.zip",
+    "bytes": 37328,
+    "sha256": "947e97ecf1a2e50f3d58d1c16fe4621866e2c4a987408dd6d8ec7b15fd0274d0",
+    "files": 41
+  },
+  {
+    "file": "class-10/class-10-files.zip",
+    "bytes": 47534,
+    "sha256": "3f2a9529e26eeaa44fe6f27c5d1f0febae977147e181e3952aec1cf104ee5b99",
+    "files": 47
+  },
+  {
+    "file": "class-11/class-11-files.zip",
+    "bytes": 66928,
+    "sha256": "106cf09df2b4a481a346487ae3d3f0d2e7858c819e86a00d4c74245091517037",
+    "files": 62
+  },
+  {
+    "file": "class-12/class-12-files.zip",
+    "bytes": 41104,
+    "sha256": "e9d5969790df74f735beb959cee60cc9ce1fbf4fdd39fb1cd4ed41e06df31890",
+    "files": 35
+  }
+]

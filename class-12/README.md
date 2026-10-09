@@ -1,156 +1,132 @@
-# Class 12 — Build an oTree Experiment with Codex, Part II
+# Class 12 — Direct a Research Workflow
 
-Continue the `sampling-study` project you built in Class 11. Today you will make it reliable enough to pilot and export: add timeout behavior, enforce data relationships, run automated oTree bots in both conditions, validate a trial-level export, and ask Codex for a final documentation and release audit.
+Your experiment, data, and analysis now belong to one project. Today you will use that context to answer one further question, explain the work accurately, and leave a project that someone else can continue.
 
-## By the end of class
+The goal is a small, complete research handoff: **a question, a reproducible result, a short Method and Results draft, and clear instructions for the next researcher.**
 
-You should be able to:
+## Get ready
 
-- compare an existing project with its remaining milestones before editing;
-- specify how incomplete and timed-out trials must be stored;
-- direct Codex to add automated participant bots and run them in both conditions;
-- generate and inspect a synthetic trial-level export;
-- validate relationships between exported fields rather than checking columns by appearance;
-- request useful documentation without changing working behavior;
-- complete a final browser pilot and identify remaining limitations.
+1. [Download the Class 12 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/class-12/class-12-files.zip).
+2. Extract to a new `class-12` folder. Open `class-12/research-project` in VS Code and Codex, and follow [SETUP.md](SETUP.md).
+3. Run `analysis/analyze_choices.py`. With the default data, open `outputs/synthetic_choices/choice_by_offer.png`, `outputs/synthetic_choices/summary.json`, and `outputs/synthetic_choices/exclusions.csv`.
 
-## Continue your Class 11 project
+This download includes the completed reference project, so you can start without replacing Class 11 work. Use this fresh project for the route below. If you prefer to continue your completed Class 11 project, copy the reference `analysis/explore_confidence.py` from the Class 12 download into its `analysis` folder when needed. Keep the selected data settings consistent throughout today's tasks.
 
-Open your existing `class-11/sampling-study` folder in VS Code and as the Codex project. Run `check_packages.py` once, then start `otree devserver` and confirm that one forced persistent session and one forced transient session still open correctly.
+The default source is fictional teaching data. To use a classroom export, follow `data/CODEBOOK.md`; do not describe synthetic records as actual participants.
 
-If your Class 11 project does not run after a reasonable debugging attempt, use the [tested Class 11 recovery checkpoint](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/class-12/class-11-recovery-checkpoint.zip). Extract it, preserve your original folder under a different name, and continue in the checkpoint's `sampling-study` folder.
+**Today's route:** choose a question, agree on its calculation, implement and check, draft Method/Results, and hand off the project.
 
-## Rehearsal — name the evidence
+## 1. Choose one question worth answering
 
-For each claim, decide whether the strongest immediate evidence is **browser behavior**, a **saved trial row**, or an **automated bot**:
+Pick **one**, or propose another question that the recorded variables can answer:
 
-1. A transient outcome disappears after 800 milliseconds.
-2. The same condition is stored on all four rows for one participant.
-3. A timeout never becomes a valid Option A or Option B choice.
+- **Confidence:** How does mean reported confidence vary across guaranteed offers?
+- **Individual differences:** Do participants all gamble at similar rates, or does the overall average hide a wide range?
+- **A closer comparison:** How do gamble rates compare for the 4-point and 6-point guaranteed offers, using the same included participants?
 
-<details>
-<summary>Check the strongest evidence</summary>
+Keep this extension descriptive. The study has repeated observations from the same people, and offer/order are confounded. If you use the synthetic file, the result describes the teaching fixture rather than human behavior.
 
-1. Browser behavior: directly observe the outcome appearing and disappearing.
-2. Saved trial rows: inspect the four stored condition values for one participant.
-3. Automated bot: submit an explicit timeout and assert that side and choice are blank. Inspecting the resulting row provides a second check.
+Create `docs/MY_QUESTION.md` with three short lines:
 
-</details>
-
-## Activity 1 — audit the current project before changing it
-
-Stop the local server. In Codex, send:
-
-> Read `AGENT_RULES.md`, `EXPERIMENT_SPEC.md`, `DATA_CONTRACT.md`, and `MILESTONES.md`, then inspect the complete current project without editing. Compare the current implementation with Milestones 4–6 only. Return a table with: required behavior, current evidence, missing or uncertain work, files likely to change, and the exact verification needed. Distinguish browser checks, bot checks, and export checks. Do not add requirements or begin implementation.
-
-Check that the audit recognizes the current Class 11 experiment as the baseline. It should preserve the working four trials and two feedback conditions rather than propose a rewrite.
-
-## Activity 2 — add timeout behavior and server-side integrity
-
-Send:
-
-> Implement Milestone 4 only. Add a 90-second decision-page timeout and `sampling_decisions_timeout_pilot` as a separate local session config that uses 2 seconds without creating a third experimental condition. For an ordinary completed trial, enforce on the server that both sample counts are exactly five and that the semantic choice matches the selected side. On timeout, set `timed_out` to true and clear selected side, semantic choice, `decision_rt_ms`, and `trial_rt_ms`; partial sample counts may remain. On ordinary completion, set `timed_out` to false. Make the final page report completed trials out of four. Preserve all Class 11 behavior. Add concise documentation for non-obvious integrity and timeout decisions, show the diff, run safe checks, and report exact manual pilot steps. Do not add bots or custom export yet.
-
-Review the diff, then run `otree devserver`.
-
-Pilot one ordinary forced-condition session and the 2-second timeout session.
-
-<details>
-<summary>Check Milestone 4</summary>
-
-**Ordinary trial:** five samples from both options are required; the selected side and semantic choice agree; `timed_out` is false; both timing fields are present.
-
-**Timeout trial:** the next page appears after about two seconds; `timed_out` is true; side, choice, and timing fields are blank; partial counts may remain.
-
-The 2-second config is a local testing convenience. The normal experiment still uses 90 seconds.
-
-</details>
-
-Stop the server before continuing.
-
-## Activity 3 — add automated pilots and the curated export
-
-Send:
-
-> Implement Milestone 5 only. Add oTree bots that cover: (1) ordinary valid left choices in all four rounds and (2) one explicit timeout while the other rounds complete normally. Run both cases under the forced persistent config and the forced transient config. Add a `custom_export` with exactly the 21 columns and field order in `DATA_CONTRACT.md`. Add an independent `validate_export.py` that accepts an exported CSV path, reloads it, and checks the contract's allowed values, four unique trials per participant, one condition per participant, left-right mapping, choice mapping, completed-row rules, timeout missingness, and valid sample outcomes. Generate synthetic exports, run the validator, show the diff, and report the exact commands and results. Do not change participant-facing behavior.
-
-Review the bot submissions and the export validator rather than relying only on the completion summary. Run the exact test and validation commands reported by Codex yourself.
-
-<details>
-<summary>Evidence required for Milestone 5</summary>
-
-- Both bot cases pass in both feedback conditions.
-- The exported file has exactly the 21 columns in `DATA_CONTRACT.md`.
-- Every synthetic participant has four trial rows and one condition.
-- Ordinary rows contain counts, a valid side and matching semantic choice, and timing values.
-- The timeout row has an explicit true timeout value and blank side, choice, and timing values.
-- `validate_export.py` finishes successfully on the new export.
-
-</details>
-
-## Activity 4 — request documentation without changing behavior
-
-Send:
-
-> Implement Milestone 6 as a documentation and release-audit task. First explain the current project architecture and data flow from `stimuli.csv` through participant interaction to the curated export. Then improve documentation only where it reduces a reader's work: module and function docstrings, concise comments for randomization, stable sample sequences, timing, timeout clearing, choice mapping, bots, and export validation, plus a project README with setup, run, test, pilot, and export instructions. Do not narrate obvious syntax and do not refactor or rename working code. Show the documentation-only diff. Then run the complete package check, both forced-condition bot suites, export generation, and independent export validation. Report every command, result, and remaining limitation.
-
-Inspect the diff before accepting it. Executable behavior should not change. Useful documentation should explain why a decision exists, what data move between parts, or how a claim is verified.
-
-<details>
-<summary>Reject documentation like this</summary>
-
-```python
-# Import random
-import random
-
-# Set the condition
-player.condition = participant.condition
+```text
+Question:
+Data source:
+The table or figure that would answer it:
 ```
 
-These comments merely repeat the syntax. A useful comment would explain why the participant-level assignment is copied into every trial row or why sample sequences are generated before rendering the page.
+Ask Codex to plan before writing code:
 
-</details>
+> Read `PROJECT.md`, `docs/MY_QUESTION.md`, `data/CODEBOOK.md`, `analysis/settings.py`, and the current analysis and outputs. Propose one simple descriptive calculation and one useful table or figure for my question. State what one row represents at each step, who is included, and the denominator or weighting. Reuse the existing inclusion rule. Identify any information the data cannot supply. Do not edit files yet.
 
-## Activity 5 — final pilot and data inspection
+Read the plan as the researcher. For confidence by offer, each included person supplies exactly one rating to each offer mean. For individual differences, use the **participant-level** table: a person with six trials is still one person. For the 4-versus-6 comparison, the two groups of rows come from the same people, not two independent samples.
 
-Run the project's documented verification sequence yourself. Then start `otree devserver` and complete one four-trial forced-condition pilot.
+**Without Codex:** choose the confidence question and write its calculation in your question file: include six-round completers, group their ratings by offer, and calculate each mean from one rating per included participant. Continue with the worked route below.
 
-Before calling the project ready, inspect:
+## 2. Implement the extension and check an actual number
 
-1. instructions, both feedback behaviors, sample limits, choice, timeout, and completion page;
-2. one participant's four stored trial rows;
-3. the curated export's columns and values;
-4. the independent validator result;
-5. the agent's list of remaining limitations.
+Once the plan answers your question, send:
 
-The experiment is ready for a local synthetic pilot when all five checks agree. This class does not make it ready for real recruitment or public deployment.
+> Implement the agreed extension in a separate, clearly named script under `analysis/`. Preserve the original CSV, inclusion rule, and base analysis. Use the existing data settings, rebuild from the selected source rather than relying on stale outputs, and save results in that source's output folder. Include clear English # comments that explain the important lines and concepts. Run the script. Show one result traced back to the contributing records and report the files created. Do not add unrelated analyses.
 
-## Before you leave
+Open the new table and image. Choose one value and follow the contributing rows. For a confidence mean, inspect the confidence ratings at that offer and check their count and sum; for a proportion, check its numerator and denominator. Ask about any line of code you cannot connect to the calculation.
 
-You should now have a functioning local oTree experiment that:
+### Worked route: confidence by offer
 
-- assigns one of two feedback conditions per participant;
-- presents four randomized, CSV-defined lottery trials;
-- stores side mapping, sample sequences, counts, choice, timing, and timeout state;
-- behaves correctly in both feedback conditions;
-- passes ordinary and timeout bots;
-- produces a validated 21-column trial-level export;
-- contains documentation that helps a reader understand decisions and data flow.
+`analysis/explore_confidence.py` is a complete reference for the first question. You can run it directly if Codex is unavailable, or compare it with your implementation after trying the task.
 
-## Class 12 reference
+Its central calculation is:
 
-| Term | Simple meaning |
+```python
+# One included participant supplies one rating at each offer.
+confidence = clean.groupby("sure_points", as_index=False).agg(
+    mean_confidence=("confidence", "mean"),
+    participant_count=("confidence", "size"),
+)
+```
+
+It rereads and validates the original CSV using the provided inclusion helper, then writes `confidence_by_offer.csv`, `confidence_by_offer.png`, and `confidence_summary.json` to the selected source's output folder. It does not depend on your Class 11 analysis script or its saved outputs. The confidence scale runs from 1 to 7. A confidence rating of 6 does not mean a 60% chance of winning.
+
+For the synthetic example, all six offer means use 15 fictional participants. The number of plot points—six—is the number of offers, not the sample size.
+
+## 3. Turn files into a grounded research description
+
+Now Codex has useful context: the implemented procedure, the variable meanings, the analysis decisions, and the actual outputs. Use it to draft two short sections in `docs/RESEARCH_SUMMARY.md`:
+
+> Draft a concise Method and Results in `docs/RESEARCH_SUMMARY.md` from this project's actual experiment code, page text, codebook, analysis scripts, and freshly generated outputs. Start by clearly identifying the selected data source as synthetic teaching data or an actual classroom pilot. Check that the main analysis and extension identify the same input file and source hash before combining their results. Describe the six fixed-order offers, 50/50 gamble, hypothetical points, required confidence scale, and inclusion rule only where supported by the implementation. Report the actual participant and trial counts, main result, and my chosen extension with appropriate rounding. Keep every numerical claim traceable to an output filename and row or field. Explain the offer/order limitation. Do not invent demographics, recruitment details, ethics approval, payment, or citations; place any needed unknown procedural facts under “To confirm.” Distinguish the implemented procedure from a hypothetical future improvement. Do not alter the experiment or analysis.
+
+Open the Markdown file in VS Code and preview it with **Cmd + Shift + V** on Mac or **Ctrl + Shift + V** on Windows ([VS Code Markdown guide](https://code.visualstudio.com/docs/languages/markdown)). It should read like a short research account, not a transcript of the agent's work.
+
+Check three things directly:
+
+1. **Procedure:** does the Method match what a participant actually sees? Open the choice page or run the experiment if needed.
+2. **Numbers:** do the included N, trial count, and one reported result match the generated files?
+3. **Meaning:** does the wording distinguish a descriptive pattern from a causal explanation—and synthetic examples from observations?
+
+Ask for a specific revision if any answer is no. For example:
+
+> This sentence claims that increasing the offer caused the decline. Our offers also changed with round order. Revise that interpretation without changing the numerical result.
+
+**Without Codex:** use [the writing guide](WRITING_GUIDE.md) to write the same two short sections from your outputs. Producing a Word document is an optional formatting step after the facts and wording are checked.
+
+## 4. Make the project understandable without your conversation
+
+Ask for a focused handoff:
+
+> Create `docs/HANDOFF.md` for someone opening this project without our conversation. Include the project question, experiment and analysis entry points, selected source and whether it is synthetic, inclusion rule, exact run order, generated outputs, my extension, known limitations, and one useful next step. Keep it concise. Link to existing explanations rather than duplicating them. Do not change working code. Identify any disagreement between the documents and implementation.
+
+**Without Codex:** create `docs/HANDOFF.md` yourself using these headings: **Question**, **Data source**, **Run order**, **Outputs**, **Extension**, **Limitations**, **Next step**. Under Run order, name the setup guide, `analysis/settings.py`, `analysis/analyze_choices.py`, and your extension script in that order. State where their results appear.
+
+Then close the chat and use **only the files** to explain how to rerun the work. A partner should be able to find the input, run the analysis, locate the figure, and identify the main limitation without asking what happened in the conversation. When working alone, close and reopen the project and follow your own handoff from the beginning.
+
+Keep real classroom exports, derived participant data, and private notes out of public sharing. The supplied fictional example can be shared with its source label and provenance intact.
+
+## 5. Explain your result and your decisions
+
+Give a short demonstration:
+
+- State your question and show the figure or table that answers it.
+- Trace one number to the underlying records.
+- Show one useful contribution from Codex and one judgment you made yourself.
+- Name a limitation and propose a next study or project change that would address it.
+
+For example, counterbalancing offer order could help separate offer size from order. That is a proposal for a new experiment version, not a repair we should silently make to an already-collected dataset.
+
+## Optional: revisit the project from another angle
+
+If time and access allow, use a separate conversation to ask a second research question or request a read-only review of the draft against its evidence. Give it the relevant project files and ask for concrete discrepancies, not a general approval. Bring back only the useful finding; keep the finished core analysis intact.
+
+## Your completed Phase 2 project
+
+You should now be able to open a project and locate:
+
+| Part | What it contributes |
 | --- | --- |
-| Server-side validation | A rule checked by Python before submitted values are accepted |
-| Timeout | The page ends without an ordinary choice after its allowed time |
-| oTree bot | An automated participant that submits controlled values to pages |
-| Forced session config | A local pilot configuration that selects one known condition |
-| Custom export | A deliberately selected and ordered dataset produced from oTree records |
-| Data-integrity check | A test of relationships between stored values, not only their individual types |
-| Synthetic export | Data generated by test participants rather than real participants |
-| Regression | An earlier working behavior that becomes broken after a later change |
-| Release audit | A final comparison of requirements, implementation, tests, outputs, and limitations |
+| `experiment/` | The participant experience and saved variables |
+| `data/` | The untouched input and its codebook/provenance |
+| `analysis/` | Reproducible calculations with readable explanations |
+| `outputs/` | Traceable tables, figures, and source-specific results |
+| `docs/` | Your question, evidence-grounded research summary, and handoff |
 
-## Additional guidance
+The transferable skill is choosing a useful goal, supplying the relevant context, directing manageable tasks, checking the evidence, and leaving work that can be continued.
 
-The official oTree documentation explains [participant treatments](https://otree.readthedocs.io/en/latest/treatments.html), [bots](https://otree.readthedocs.io/en/latest/bots.html), and [custom data exports](https://otree.readthedocs.io/en/latest/admin.html#custom-data-exports) in more detail.
+[Setup](SETUP.md) · [Troubleshooting](TROUBLESHOOTING.md)

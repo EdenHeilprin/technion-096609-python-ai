@@ -1,0 +1,66 @@
+name: Phase 2 student downloads
+on:
+  push:
+    paths:
+      - 'phase-2/**'
+      - 'class-08/**'
+      - 'class-09/**'
+      - 'class-10/**'
+      - 'class-11/**'
+      - 'class-12/**'
+      - '.github/workflows/phase-2-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  student-download:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    env:
+      PYTHONUTF8: '1'
+      PYTHONUNBUFFERED: '1'
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.13'
+      - name: Install from a fresh student ZIP and verify all five classes
+        run: python phase-2/tools/ci_student_smoke.py
+  production-database:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: course_ci
+          POSTGRES_PASSWORD: course_ci_only
+          POSTGRES_DB: course_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgres://course_ci:course_ci_only@localhost:5432/course_ci
+      PYTHONUTF8: '1'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.13'
+      - name: Install deployment requirements into the disposable runner
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libpq-dev build-essential
+          python -m pip install -r phase-2/project/experiment/requirements.txt
+      - name: Verify production authentication and Postgres responses
+        run: python phase-2/tools/verify_hosting.py

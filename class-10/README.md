@@ -1,396 +1,186 @@
-# Class 10 — Transforming, Summarizing, and Visualizing Data
+# Class 10 — Turn a Prototype into a Study
 
-Class 9 established what a trial-data file contains. Today you will turn a synthetic decision-making export into a small reproducible analysis: define the rows that answer the question, create a derived bonus column, summarize the completed trials by condition, and save both tables and a plot.
+One choice can tell us what someone preferred at one particular offer. To examine how preferences vary, we need several offers—and an interface that presents each one clearly.
 
-## By the end of class
+Today, you will use Codex to extend the prototype into a six-choice experiment, collect confidence ratings, improve the participant interface with HTML/CSS/JavaScript, and inspect the recorded results.
 
-You should be able to:
+Our question is: **how does choosing the gamble vary as the guaranteed alternative increases?**
 
-- create and inspect a Boolean mask;
-- filter DataFrame rows with `.loc` without changing the raw data;
-- select the columns needed for an analysis;
-- create a new column from an existing numeric column;
-- use `groupby()` to calculate summaries for each condition;
-- create and label a simple bar chart;
-- save cleaned data, a summary table, and a plot;
-- verify that the pipeline kept the intended trials and produced the intended files;
-- use docstrings and comments to explain a program's purpose and non-obvious decisions;
-- use Codex to audit a plausible filtering rule, then verify its diagnosis against the data and executed output.
+## Start from a clean copy
 
-## Get the files for this class
+1. [Download the Class 10 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/class-10/class-10-files.zip) and extract the `class-10` folder.
+2. Keep it beside your Class 9 folder. Do not replace your Class 9 work. If `class-10` already exists, give this new copy a different name.
+3. Stop any experiment server still running from Class 9 with **Ctrl+C** in its terminal.
+4. Open the new `class-10/research-project` folder in VS Code and Codex. Follow [SETUP.md](SETUP.md) to prepare and check its environment.
 
-1. [Download the Class 10 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/class-10/class-10-files.zip).
-2. Extract the downloaded ZIP file and locate the resulting folder named `class-10`. On Windows, it may appear inside an additional folder named `class-10-files`.
-3. Move `class-10` into your local course folder, next to `class-00-setup` through `class-09`—not inside any of them.
-4. Open the course folder in VS Code. Its Explorer panel should now also show `class-10`.
+This download starts with the working one-choice experiment from Class 9, without your previous test database. It also includes a separate full-study checkpoint in `checkpoints/full/research-project`.
 
-If your course folder already contains `class-10`, you do not need to download it again.
+Keep all work below inside this new project. Its `experiment`, `data`, and `docs` folders now belong to Class 10.
 
-## Prepare the two packages
+## 1. Specify what changes—and what stays the same
 
-Open and run [`check_packages.py`](check_packages.py). The final lines should be:
+Read [the extension brief](EXTENSION_BRIEF.md). The guaranteed offers become:
+
+```python
+[2, 3, 4, 6, 7, 8]
+```
+
+The gamble stays the same on every round: a 50% chance of 10 points and a 50% chance of 0 points. After each choice, the participant reports confidence in that choice from **1 — Not at all confident** to **7 — Very confident**.
+
+Before asking Codex to build, write a prediction in `docs/PREDICTION.md`: at which guaranteed offers do you expect more people to choose the gamble? Why?
+
+The gamble's expected value is:
+
+```python
+0.5 * 10 + 0.5 * 0  # 5 points
+```
+
+That is a long-run average, not a promised outcome. A participant can prefer certainty, so expected value does not supply a single correct choice.
+
+Send Codex:
+
+> Read `PROJECT.md`, `AGENTS.md`, `docs/EXTENSION_BRIEF.md`, and the existing experiment. Plan the change from one choice to the six-round `full-v1` study. Explain how the offer is selected for each round, where choice and confidence are saved, and how the export will represent six responses from one participant. Keep the current package versions and environment helpers. Do not edit yet.
+
+Check the plan for the six offers, fixed gamble, required confidence, and the same nine-column export. Then send:
+
+> Implement that plan. Use concise English `#` comments to explain the Python lines and concepts, and suitable comments for HTML/CSS/JavaScript. Keep the implementation focused on the extension brief. Run the checks available to you, report actual results, and list the browser checks that remain for me. Do not describe a check as passed unless it was executed.
+
+## 2. Understand the repeated rounds
+
+Open `experiment/choice_task/__init__.py`. Find the offer list and the number of rounds. Then locate the code that selects an offer using the current `round_number`.
+
+oTree numbers rounds from **1**; Python list positions begin at **0**. The selection will therefore use the equivalent of:
+
+```python
+sure_points = offers[round_number - 1]
+```
+
+Predict the results before checking them:
+
+| Round number | List position | Sure points |
+| --- | --- | --- |
+| 1 | 0 | 2 |
+| 3 | 2 | 4 |
+| 6 | 5 | 8 |
+
+Each round has its own `Player` record, so the next answer does not overwrite the previous round's answer. The participant code connects those records to the same person.
+
+Everyone receives offers in the same ascending order in this pilot. **Offer and position therefore change together.** If gambling becomes less common later, this study alone cannot separate the effect of the offer from effects of order, practice, or fatigue. Keep that limitation in mind when interpreting the data in Class 11.
+
+## 3. Improve what the participant sees
+
+Run `run_experiment.py` from the root of `research-project` and open [http://localhost:8000](http://localhost:8000). Choose **Sessions → Create new session**, select **Sure or gamble — six decisions** (the `sure_or_gamble` configuration), enter **2 participants**, and choose **Create**. Open the first participant link.
+
+You should see a short introduction followed by the first choice. On each choice page, look for the current round, both options, and the confidence question.
+
+The interface has four complementary parts:
+
+| Part | Job | Example in your project |
+| --- | --- | --- |
+| Python | Study rules, valid values, and saved responses | `choice_task/__init__.py` |
+| HTML | Page structure and labeled inputs | `choice_task/Choice.html` |
+| CSS | Spacing, sizing, contrast, and layout | `_static/choice_task/study.css` |
+| JavaScript | Immediate behavior in the browser | `_static/choice_task/confidence.js` |
+
+Those paths are inside `experiment`. Open the three interface files and find one recognizable element in each: a heading or form, a style rule, and the JavaScript that responds to a confidence selection.
+
+Choose confidence **2**, then **6**, without submitting yet. The small selected-value preview should update immediately. This is JavaScript changing the current page; the form is saved by oTree when you submit it.
+
+Now make one practical improvement. Narrow the browser window to approximately phone width. Look for text that is cramped, buttons that are hard to use, or information that is easy to miss. Ask Codex to improve one specific issue. For example:
+
+> On a narrow screen, make the two alternatives easier to compare by stacking them vertically with equal visual weight and generous spacing. Keep the wording, option order, offers, form values, and study behavior unchanged. Explain the CSS changes and let me verify the page before making further changes.
+
+Use your own observation if the page already stacks well. A useful improvement might instead clarify a heading or make the progress indicator easier to read. Refresh the page and compare wide and narrow views. If a style looks unchanged, try a hard refresh: **Cmd+Shift+R** on Mac or **Ctrl+Shift+R** on Windows.
+
+Keep both options equally easy to see and select. A visual improvement should not accidentally tell participants which answer you prefer.
+
+## 4. Test the participant journey
+
+Create a **new session** after the interface change so you can test from the beginning. Use the first participant link for this full path:
+
+1. On the first choice page, submit without answering. It must not advance.
+2. Select a choice but leave confidence unanswered. It must still not advance.
+3. Select confidence **1**, then change it to **7**. Check that the preview follows your selection. Neither value should be selected automatically on a new round.
+4. Refresh the page before submitting. Your current selections should remain selected in the same browser.
+5. Complete the six rounds, recording your answers as you go. Use this known sequence for an easy export check:
+
+| Round | Sure offer | Choice to select | Confidence |
+| --- | --- | --- | --- |
+| 1 | 2 | Gamble | 7 |
+| 2 | 3 | Gamble | 6 |
+| 3 | 4 | Gamble | 5 |
+| 4 | 6 | Sure | 5 |
+| 5 | 7 | Sure | 6 |
+| 6 | 8 | Sure | 7 |
+
+After round 6, you should reach the final acknowledgement. Refresh that page; it should not create another response or restart the study.
+
+Use the second participant link to complete **only the first two rounds**, then close that participant tab. This intentionally unfinished case will help you recognize incomplete records.
+
+Record any failed check with its inputs and observed behavior, then ask Codex to fix that specific problem. Retest the affected path after the change.
+
+The server—not just JavaScript—must enforce the allowed answers. Ask Codex to check and explain where the Python code rejects missing choices, invalid choice values, and confidence outside 1–7. If it can run a direct submission check, ask for its actual result; otherwise record that it reviewed the code rather than tested the submission.
+
+## 5. Export and recognize a participant's records
+
+Return to oTree's **Data** page. Under **Custom exports**, find **`choice_task (custom_export)`** and choose **CSV**. Save it as `data/class10_pilot.csv` inside this project.
+
+Open it in VS Code. The header remains:
 
 ```text
-pandas is ready: 3.0.5
-matplotlib is ready: 3.11.1
+session_code,participant_code,study_version,round_number,sure_points,gamble_high,gamble_probability,choice,confidence
 ```
 
-If either package is not ready, open and run [`install_packages.py`](install_packages.py) with the same VS Code Run button. When it finishes, run `check_packages.py` again.
+Find the codes for your final test session. For the completed participant, check:
 
-The installer uses the Python interpreter selected in VS Code, so no operating-system-specific path is required. If it reports an error, use the short [package setup troubleshooting guide](package-troubleshooting.md).
+- Six rows share the same participant and session codes.
+- `study_version` is `full-v1`.
+- Rounds 1–6 contain offers 2, 3, 4, 6, 7, and 8, respectively.
+- Choices and confidence values match your six test responses.
+- The gamble remains `10` with probability `0.5` on every row.
 
-## Documentation helps readers follow longer code
+For the unfinished participant, rounds they did not submit should have blank response fields. A created participant record is not proof that the participant finished.
 
-The activity files are now long enough that names and syntax alone do not explain every research decision.
+Your export may also contain earlier sessions. Identify records using the combination of **session code, participant code, and round number**; those three values identify one expected row. Keep the original export unchanged.
 
-- A **module docstring** appears at the top of a Python file and states the file's purpose.
-- A **function docstring** appears inside a function and states its contract.
-- A **comment** begins with `#` and explains a decision that would otherwise be unclear.
+## 6. Leave a usable handoff
 
-Open [`filter_completed.py`](filter_completed.py). Its docstring states the script's overall purpose. The comment above `completed_mask` records why response time—not points—defines completion. Neither annotation narrates obvious syntax.
+Ask Codex:
 
-The short [`documentation guide`](DOCUMENTATION_GUIDE.md) gives examples and a standard to reuse when you or an AI tool documents a program.
+> Write `docs/CLASS10_NOTES.md` explaining the implemented study, the purpose of its Python/HTML/CSS/JavaScript files, and my interface change. Include the fixed-order limitation and the actual checks performed. Identify `data/class10_pilot.csv` as a local test export; do not treat its known test answers as research findings. Separate passed checks from checks not yet performed.
 
-## Rehearsal — reload and inspect the trial table
+Read the note and correct anything that does not match what you did. Keep the project and export: Class 11 will show how to turn rows like these into checked tables and figures.
 
-Create a new Python file inside `class-10` named `class_10_rehearsal.py`. Begin with this supplied path setup:
+## Collecting responses together
 
-```python
-from pathlib import Path
+When your instructor shares the hosted study link or QR code, you can take part from your phone or laptop. The instructor will collect the class export from that server. Your own `localhost` link is for your own computer; it is not the link to share with the class.
 
-import pandas as pd
+If you are reviewing alone, your local completed and unfinished test participants are enough to finish this lesson. Class 11 also supplies clearly labeled synthetic data for practicing analysis.
 
+## If you need the working checkpoint
 
-data_path = Path(__file__).parent / "data" / "decision_trials.csv"
-```
+Stop the running server with **Ctrl+C**. Open `checkpoints/full/research-project` from this download as a **separate folder** in VS Code and Codex. Follow `SETUP.md` for that folder and start from **Improve what the participant sees** above.
 
-Then write three lines from memory that:
+Keep your original attempt. The checkpoint lets you inspect the implementation, make your own interface improvement, and perform every browser/export check without generating the full study again. If you have no remaining AI allowance, make a small wording or spacing change directly in the commented HTML/CSS files and write `docs/CLASS10_NOTES.md` yourself.
 
-1. load the CSV file into a DataFrame named `trials`;
-2. print its shape;
-3. print the missing-value count for every column.
+## Optional — improve the design, not only the page
 
-Run the file before revealing an example.
+Sketch a study version that could help separate offer effects from order effects. What would change for the participant? What additional information would you need to save to analyze it correctly?
 
-<details>
-<summary>Check one possible version</summary>
+Discuss or ask Codex to critique your proposal **without implementing it in the core project**. Class 12 will give you room for a focused extension.
 
-```python
-from pathlib import Path
+## Quick reference
 
-import pandas as pd
+| Term | Simple meaning | Example here |
+| --- | --- | --- |
+| Round | One repeated decision in the experiment | Sure 4 versus the gamble in round 3 |
+| HTML | The structure and labeled content of a web page | A heading and a confidence form |
+| CSS | Rules controlling the page's appearance | Cards stack on a narrow screen |
+| JavaScript | Code that responds within the browser | The selected-confidence preview |
+| Validation | Checking whether a submitted response is allowed | Confidence must be an integer from 1 to 7 |
+| Participant code | A generated code linking one participant's records | The same code on six round rows |
+| Row key | Values that identify one expected record | Session + participant + round |
+| Incomplete response | A record without all required submitted answers | Blank choice and confidence on an unvisited round |
+| Confounding | Two things vary together, so their effects cannot be separated by this design | Higher offers always occur later |
 
-
-data_path = Path(__file__).parent / "data" / "decision_trials.csv"
-
-trials = pd.read_csv(data_path)
-print(trials.shape)
-print(trials.isna().sum())
-```
-
-The shape is `(12, 6)`. The `choice` and `response_time_ms` columns each contain two missing values.
-
-</details>
-
-## Begin with the analytical question
-
-The file [`data/decision_trials.csv`](data/decision_trials.csv) contains 12 synthetic trials from two experimental conditions. Two trials timed out. One completed trial earned zero points.
-
-Our question is:
-
-> Among completed trials, what are the mean response time, points, and trial-level bonus payment for each condition?
-
-For this class, a **completed trial** means a trial with a recorded response time. That definition—not a convenient-looking value—determines which rows belong in the analysis.
-
-The raw CSV is the record of what was collected. The scripts will read it but never overwrite it. Filtered and summarized results will be stored as new objects and new files.
-
-## A Boolean mask selects rows
-
-This expression checks every value in one column:
-
-```python
-completed_mask = trials["response_time_ms"].notna()
-```
-
-The result is a pandas **Series** containing one Boolean value for every row:
-
-- `True` means that the response time is present;
-- `False` means that it is missing.
-
-The mask can select the rows where the condition is `True`:
-
-```python
-completed_trials = trials.loc[completed_mask].copy()
-```
-
-- `.loc[...]` selects rows by the supplied condition.
-- `.copy()` creates an independent DataFrame for the analysis.
-- `trials` still refers to all 12 raw rows.
-
-## Activity 1 — keep the completed trials
-
-Open [`filter_completed.py`](filter_completed.py). Before running it, predict:
-
-1. how many values in `completed_mask` are `True`;
-2. how many rows remain in `completed_trials`;
-3. whether the raw `trials` DataFrame changes shape.
-
-Run the file.
-
-<details>
-<summary>Check the output</summary>
-
-```text
-Raw rows: 12
-Completed rows: 10
-Timed-out rows: 2
-Missing response times after filtering: 0
-```
-
-The raw DataFrame still has 12 rows. Filtering created a separate 10-row DataFrame; it did not delete anything from the source CSV or from `trials`.
-
-</details>
-
-Change `.notna()` to `.isna()` and predict the four displayed numbers. Run the file, then restore `.notna()` and rerun it successfully.
-
-## A plausible filter can still encode the wrong rule
-
-The two timed-out rows happen to have zero points, so this shortcut may look reasonable:
-
-```python
-positive_point_trials = trials.loc[trials["points"] > 0].copy()
-```
-
-But points and completion do not mean the same thing. A participant can complete a trial and earn zero points.
-
-## Activity 2 — audit the filtering rule
-
-Open [`audit_filter.py`](audit_filter.py). Inspect the two filters and predict whether they keep the same rows. Then run the file.
-
-<details>
-<summary>Check the central result</summary>
-
-```text
-Completed by response time: 10
-Rows with positive points: 9
-
-Completed zero-point trials:
-participant_code  trial_number  points
-            P003             1       0
-```
-
-The positive-points shortcut wrongly removes participant `P003`'s first trial even though that trial has a recorded response time.
-
-</details>
-
-Open the `class-10` folder as a Codex project and select **Read only**. Send:
-
-> Inspect `data/decision_trials.csv` and `audit_filter.py` without editing. The analysis defines a completed trial as one with a recorded response time. Compare that rule with the `points > 0` shortcut. Identify the exact completed row that the shortcut loses, explain why it is lost, and name the printed output that verifies each claim.
-
-Check the response against the CSV and the output you ran. The useful answer is the one supported by those two sources of evidence.
-
-## Select columns and create a derived column
-
-An analysis table often keeps only the variables needed for its question:
-
-```python
-analysis = completed_trials.loc[
-    :, ["participant_code", "trial_number", "condition", "response_time_ms", "points"]
-].copy()
-```
-
-Inside `.loc[rows, columns]`, the colon means **all rows** and the list names the columns to keep.
-
-Suppose every point is worth ILS 0.05. This line creates a new value for every analysis row:
-
-```python
-analysis["bonus_payment_ils"] = (analysis["points"] * 0.05).round(2)
-```
-
-pandas applies the multiplication to the entire `points` column. A separate Python loop is not needed.
-
-## Summarize “for each condition”
-
-`groupby()` is useful when the question can be phrased as **for each group**. Here the group is `condition`.
-
-```python
-summary = analysis.groupby("condition", as_index=False).agg(
-    completed_trials=("trial_number", "count"),
-    mean_response_time_ms=("response_time_ms", "mean"),
-    mean_points=("points", "mean"),
-    mean_bonus_payment_ils=("bonus_payment_ils", "mean"),
-)
-```
-
-The named summaries inside `.agg()` follow one pattern:
-
-```text
-new_column_name=(source_column, calculation)
-```
-
-`as_index=False` keeps `condition` as an ordinary column in the resulting DataFrame. `.round(2)` can then make the displayed numeric results easier to read.
-
-## Activity 3 — derive and summarize
-
-Open [`derive_and_summarize.py`](derive_and_summarize.py). Before running it, predict:
-
-1. how many rows the analysis table contains;
-2. how many rows the condition summary contains;
-3. which condition has the larger mean points value.
-
-Run the file and inspect both tables.
-
-<details>
-<summary>Check the condition summary</summary>
-
-```text
-condition  completed_trials  mean_response_time_ms  mean_points  mean_bonus_payment_ils
-    bonus                 5                  830.6          6.4                    0.32
-  control                 5                 1006.2          4.4                    0.22
-```
-
-The summary has one row for each of the two conditions. These numbers describe the supplied synthetic trials; they are not a statistical test.
-
-</details>
-
-Temporarily change `groupby("condition", ...)` to `groupby("participant_code", ...)`. Predict how many summary rows will appear, run the file, and then restore `condition`.
-
-## A plot turns one summary into a visual comparison
-
-pandas can pass a DataFrame summary to matplotlib:
-
-```python
-axis = summary.plot.bar(
-    x="condition",
-    y="mean_points",
-    legend=False,
-)
-```
-
-The chart should state what its axes represent:
-
-```python
-axis.set_xlabel("Condition")
-axis.set_ylabel("Mean points per completed trial")
-```
-
-The figure can be saved as a PNG file before it is displayed:
-
-```python
-figure = axis.get_figure()
-figure.savefig(plot_path, dpi=150)
-```
-
-## Activity 4 — run and verify the complete pipeline
-
-Open [`build_analysis.py`](build_analysis.py). Trace the script from its source path to its three output paths. Identify the assertions that check:
-
-- the raw row count;
-- the completed row count;
-- the expected conditions and summary size;
-- the reloaded output tables;
-- the saved plot file.
-
-Run the script. A plot window should open. Close it after inspecting the title, axes, and two bars. If no plot window appears, open `output/mean_points_by_condition.png` in VS Code instead.
-
-The terminal should include:
-
-```text
-Analysis rows: 10
-Summary rows: 2
-Saved: cleaned_trials.csv
-Saved: condition_summary.csv
-Saved: mean_points_by_condition.png
-All pipeline checks passed
-```
-
-Open the `output` folder in VS Code and inspect all three files. Run the script a second time. The same checked outputs should be replaced, not duplicated.
-
-<details>
-<summary>What the complete pipeline preserves</summary>
-
-- `data/decision_trials.csv` remains unchanged with 12 rows.
-- `cleaned_trials.csv` contains the 10 completed trials and the derived bonus column.
-- `condition_summary.csv` contains one row for `bonus` and one for `control`.
-- `mean_points_by_condition.png` visualizes the summary's `mean_points` column.
-- Reloading both CSV outputs reproduces their expected rows and columns.
-
-</details>
-
-### Ask Codex to document the complete pipeline
-
-Open the `class-10` folder as a Codex project, select **Auto**, and send:
-
-> Read `DOCUMENTATION_GUIDE.md` and `build_analysis.py`. First explain the script's data flow in order. Then add documentation only: (1) a short module docstring naming the input, the three outputs, and the script's purpose; and (2) concise comments for the completed-trial rule, bonus derivation, grouped summary, saved artifacts, and reload checks. Explain research decisions and verification—not obvious Python syntax. Do not refactor, rename, or change behavior. Show the diff, run the script, and confirm that the same three output files are created and all assertions pass.
-
-Review the diff before accepting it. Every added line should improve understanding; no executable line should change. Then run `build_analysis.py` yourself and verify the same terminal output and three saved files.
-
-<details>
-<summary>Check the kind of documentation we want</summary>
-
-Useful annotations include:
-
-```python
-"""Build checked analysis tables and a plot from data/decision_trials.csv.
-
-Outputs: cleaned_trials.csv, condition_summary.csv, and
-mean_points_by_condition.png.
-"""
-
-# Completion is defined by a recorded response time, so completed zero-point
-# trials remain in the analysis.
-```
-
-Avoid comments such as `# import pandas`, `# make a DataFrame`, or `# print rows`; they repeat syntax without explaining a decision.
-
-</details>
-
-## Class 10 reference
-
-### Central terms
-
-| Term | Simple meaning |
-| --- | --- |
-| Raw data | The original recorded data, preserved without overwriting |
-| Analysis rule | A substantive definition that determines which data answer the question |
-| Boolean mask | One `True` or `False` value for every DataFrame row |
-| Filter | A selection that keeps rows meeting a stated condition |
-| Series | A one-dimensional pandas object; one DataFrame column is a Series |
-| `.loc` | A pandas selector for rows and columns by labels or a Boolean condition |
-| `.copy()` | Creates an independent DataFrame from a selection |
-| Derived column | A new column calculated from existing values |
-| Vectorized operation | One pandas expression applied across a column without an explicit Python loop |
-| Group | Rows sharing a category value, such as one experimental condition |
-| Aggregation | A calculation that reduces several values to a summary, such as count or mean |
-| `groupby()` | Splits rows into groups so a calculation can be performed for each group |
-| Plot | A visual representation of selected data or a summary |
-| Pipeline | A repeatable sequence from input data through transformations to checked outputs |
-| Documentation | Explanatory text that records purpose, contracts, decisions, or limitations |
-| Module docstring | A description at the top of a Python file stating its purpose and important inputs or outputs |
-| Function docstring | A concise contract immediately inside a function |
-| Comment | Explanatory text after `#` that Python does not execute |
-
-### Reusable transformation sequence
-
-```python
-trials = pd.read_csv(data_path)
-
-completed_mask = trials["response_time_ms"].notna()
-completed_trials = trials.loc[completed_mask].copy()
-
-analysis = completed_trials.loc[:, required_columns].copy()
-analysis["bonus_payment_ils"] = (analysis["points"] * 0.05).round(2)
-
-summary = analysis.groupby("condition", as_index=False).agg(
-    completed_trials=("trial_number", "count"),
-    mean_points=("points", "mean"),
-)
-```
-
-The syntax matters, but the decisions come first: define the relevant rows, preserve the raw data, name the required columns, state each derived quantity, and verify the resulting tables.
-
-## Companion tutorial
-
-Watch Microsoft Developer's 3:33 **[How to Analyze and Clean a Dataset](https://www.youtube.com/watch?v=5qGjczWTrDQ)**.
-
-It begins with an analytical question, then filters relevant rows, checks missingness, removes unrelated columns, and creates derived columns. This class applies the same reasoning to synthetic decision-making trials and continues through grouped summaries, saved tables, and a checked plot.
+Further reference: [oTree templates](https://otree.readthedocs.io/en/latest/templates.html), [oTree forms and validation](https://otree.readthedocs.io/en/latest/forms.html), [oTree data exports](https://otree.readthedocs.io/en/latest/admin.html#export-data).

@@ -1,0 +1,49 @@
+{{ block title }}Which would you choose?{{ endblock }}
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'choice_task/study.css' }}">
+{{ endblock }}
+
+{{ block content }}
+<p class="eyebrow">Decision {{ player.round_number }} of {{ C.NUM_ROUNDS }}</p>
+
+<!-- A fieldset and its legend connect the two radio buttons as one question. -->
+<fieldset class="study-panel">
+    <legend>Choose one option</legend>
+    <div class="option-grid">
+        <label class="option-card" for="choice-sure">
+            <input id="choice-sure" type="radio" name="choice" value="sure" required>
+            <span><span class="option-heading">Guaranteed</span>
+                <span class="option-value">{{ player.sure_points }} points</span>
+                <span class="option-detail">For certain</span></span>
+        </label>
+        <label class="option-card" for="choice-gamble">
+            <input id="choice-gamble" type="radio" name="choice" value="gamble" required>
+            <span><span class="option-heading">Gamble</span>
+                <span class="option-value">10 or 0 points</span>
+                <span class="option-detail">50% chance of each outcome</span></span>
+        </label>
+    </div>
+    {{ formfield_errors 'choice' }}
+</fieldset>
+
+<fieldset class="study-panel" aria-describedby="confidence-anchors">
+    <legend>How confident are you in your choice?</legend>
+    <p id="confidence-anchors" class="study-note">1 = Not at all confident · 7 = Very confident</p>
+    <div class="confidence-options">
+        {{ for number in form.confidence }}
+        <label class="confidence-option">{{ number }}<span>{{ number.label.text }}</span></label>
+        {{ endfor }}
+    </div>
+    {{ formfield_errors 'confidence' }}
+    <!-- This preview is useful feedback, not the source of the saved response. -->
+    <p id="confidence-preview" class="confidence-preview" aria-live="polite">Choose a confidence rating</p>
+</fieldset>
+
+<button class="study-button" type="submit">Save and continue</button>
+<p class="study-note after-button">Your selection is saved when you continue.</p>
+{{ endblock }}
+
+{{ block scripts }}
+<script src="{{ static 'choice_task/confidence.js' }}"></script>
+{{ endblock }}

@@ -1,315 +1,158 @@
-# Class 8 — Working with Codex
+# Class 8 — From Chatting to Delegating with Codex
 
-Today you will use Codex as a coding agent on a small decision-making research project. The goal is not merely to obtain working code. You will define the task, control the folder and permissions, inspect the proposed plan, review every change, run tests, and correct or revert an unwanted edit.
+You have learned enough Python to follow a program, make changes, and investigate a problem. Now we change the scale of what you can do: work with an AI assistant inside a project containing code, data, and research documents.
 
-## By the end of class
+Today is a live demonstration with decisions for you to make along the way. You do not need to install Codex during class. In Class 9, you will start building your own experiment with it.
 
-You should be able to:
+**The question connecting Classes 8–12:** How does choosing a gamble vary as the guaranteed alternative increases?
 
-- open a bounded local project in Codex;
-- distinguish an ordinary AI chat from a coding agent that can inspect, edit, and run project files;
-- give the agent useful context, a precise goal, scope limits, and success checks;
-- ask for a plan before authorizing changes;
-- choose read-only or editing permissions for the current task;
-- inspect a code diff rather than relying only on the agent's summary;
-- rerun tests and add an independent check;
-- steer a correction or revert a change you do not want.
+We will go from taking part in a small experiment to inspecting its code, analyzing its data, and drafting a short research report. The interesting part is not how quickly text appears. It is how a clear goal becomes working, checkable files.
 
-## Before class — prepare Codex
+## Materials
 
-Install the [ChatGPT desktop app](https://learn.chatgpt.com/docs/quickstart), sign in with a ChatGPT account, and select **Codex** in the app. Codex is included in the [free ChatGPT plan](https://learn.chatgpt.com/docs/pricing); a paid subscription is not required for this class.
+**[Download the Class 8 files](https://github.com/EdenHeilprin/technion-096609-python-ai/raw/refs/heads/main/class-08/class-08-files.zip)** and extract them into a new folder. The download includes the complete demonstration project and this lesson.
 
-You will add the project folder during class.
+- **In class:** follow the demonstration; open the files if useful. Keep a note of a task you would like to delegate in your own work.
+- **Reviewing independently:** follow [SETUP.md](SETUP.md), then use the replay route at the end of this lesson. Working checkpoints and evidence-linked examples let you inspect the full workflow without a paid AI subscription.
 
-## Get the files for this class
+## 1. Start as a participant
 
-1. [Download the Class 8 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/class-08/class-08-files.zip).
-2. Extract the downloaded ZIP file and locate the resulting folder named `class-08`. On Windows, it may appear inside an additional folder named `class-08-files`.
-3. Move `class-08` into your local course folder, next to `class-00-setup` through `class-07`—not inside any of them.
-4. Open the course folder in VS Code. Its Explorer panel should now also show `class-08`.
+Open the experiment link or scan the QR code shown in class. Make six choices between a guaranteed number of points and a gamble. After each choice, indicate how confident you are.
 
-Use the downloaded ZIP for this class. Its `bonus-project` folder contains the clean local history that Codex uses to display changes; nothing in that history is uploaded anywhere.
+The points are hypothetical. The activity does not ask for your name.
 
-## Rehearsal — correct one executable expectation
+Before looking at results, discuss:
 
-Create a new Python file inside `class-08` named `class_08_rehearsal.py`. The function below should convert points to bonus units and cap the result at 5:
+- Which offers made the decision difficult?
+- What would you expect the graph of gamble choices against guaranteed points to look like?
+- What information must the program save for us to draw that graph?
 
-```python
-def points_to_bonus(points):
-    bonus = points / 100
+The gamble is always a 50% chance of 10 points and a 50% chance of 0. The guaranteed offer changes. There are already several decisions that the researcher—not Codex—must make: the offers, their order, the response scale, and the question the graph should answer.
 
-    if bonus > 5:
-        bonus = 5
+## 2. Give Codex a project, not a pile of pasted messages
 
-    return bonus
-```
+The instructor opens `research-project` in Codex. It contains:
 
-Copy the function, then correct the expected result in this assertion:
+| Location | What it contributes |
+|---|---|
+| `docs/STUDY_SPEC.md` | Study decisions and the meaning of the data |
+| `experiment/` | The oTree experiment participants use |
+| `data/` | A CSV file and its codebook |
+| `analysis/` | Python scripts that inspect and analyze the CSV |
+| `outputs/` | Generated tables, figures, and numerical summaries |
+| `AGENTS.md` | Standing instructions for work in this project |
 
-```python
-assert points_to_bonus(750) == 7.5
-```
+Instead of copying the experiment into a chat, start with a bounded request:
 
-Add one printed confirmation after the assertion and run the file.
+> Read PROJECT.md, docs/STUDY_SPEC.md, and the experiment and analysis files. Do not edit anything yet. Explain the route from a participant clicking an answer to one row in the exported CSV, then to the planned figure. Point me to the relevant files. Flag anything you cannot verify from these files.
 
-<details>
-<summary>Check one possible version</summary>
+Follow one response through that route. Python stores it; an HTML template displays the page; a CSV carries it into the analysis. Codex can connect those files, but we can inspect the evidence ourselves.
 
-```python
-def points_to_bonus(points):
-    bonus = points / 100
+### Three controls worth understanding
 
-    if bonus > 5:
-        bonus = 5
+- **Project and files:** check that Codex is looking at the intended folder. A file somewhere on your computer is not necessarily part of the current task's context.
+- **Permissions:** the permission mode determines what actions can run without approval. “Ask for approval” can still allow routine workspace edits; it is not a read-only mode. For inspection, explicitly ask for no edits. Read an approval request before accepting it.
+- **Model and reasoning effort:** use the available controls to balance a difficult planning task against a small routine edit. More reasoning is not automatically useful for every task. Faster options, when offered, can trade additional usage for lower latency; check the displayed terms.
 
-    return bonus
+Codex works with local files, but model requests are sent to an online service. Use the supplied synthetic data or the instructor-approved classroom export, not unrelated personal or confidential research files.
 
+## 3. Delegate a change you can see and test
 
-assert points_to_bonus(750) == 5
-print("Rehearsal test passed")
-```
+You have just made six decisions, but the final page only acknowledges completion. A useful addition would let you review your choices and confidence together: **a personal response summary, shown after the study ends**.
 
-</details>
+First, ask for a plan:
 
-## A coding agent works with a project
+> Inspect the local experiment. Plan a read-only summary on the final page, showing this participant's six guaranteed offers, recorded choices, and confidence ratings. Use their submitted round records, not invented example values or other participants' data. Keep the study rules, response pages, validation, and export unchanged. Do not implement yet. Explain which Python and HTML files need changes and show the proposed table layout.
 
-In an ordinary chat, you provide the code or information you want discussed. A coding agent can work inside a folder that you select: it can inspect related files, propose or make edits, and run commands such as the project's tests.
+Check that the plan displays already-saved answers without changing how the study collects them. Then authorize it:
 
-That added ability makes three choices important:
+> Implement the agreed final-page summary in this local project only. Make it readable on a narrow screen. Add clear English # comments explaining the Python and appropriate comments in HTML/CSS. Run the checks available to you, report their actual results, and tell me which browser checks remain. Do not deploy or change the saved fields or export.
 
-| Choice | Question to answer |
-| --- | --- |
-| Project | Which folder may the agent inspect and change? |
-| Permission | Should this task be read-only, or may the agent edit and run code? |
-| Evidence | What output, tests, and changed lines will show that the task is complete? |
+Compare the changed files with their earlier versions. Complete a fresh test participant, noting the choices and confidence you enter. On the final page, check that all six rows match those responses. Check the narrow-screen layout and compare one displayed response with the participant's CSV record.
 
-For this class, open only the `class-08/bonus-project` folder as the Codex project. This keeps the task separate from your other course files.
+**What would count as success?** The participant can review their own actual answers, and the study still collects and exports the same data. A pleasing table filled with made-up examples would not count.
 
-## The project has four pieces of context
+**Working reference:** the download includes `checkpoints/participant-summary/research-project`. To inspect the finished interface without an AI request, stop the current server with **Ctrl+C**, open that checkpoint as a separate project, follow [SETUP.md](SETUP.md) for its environment, and run its `run_experiment.py`. Complete all six rounds to reach the summary. Keep the original project intact.
 
-Open `bonus-project` in VS Code and inspect its contents:
+This is different from “give me some code”: Codex can inspect relevant files, edit them, run commands, and report what happened. You remain responsible for the request and for accepting the result.
 
-| File | Role |
-| --- | --- |
-| [`PROJECT.md`](bonus-project/PROJECT.md) | Describes the current rule and the requested change |
-| [`bonus_rules.py`](bonus-project/bonus_rules.py) | Defines `points_to_bonus` |
-| [`run_bonus.py`](bonus-project/run_bonus.py) | Calls the function with several point totals |
-| [`test_bonus_rules.py`](bonus-project/test_bonus_rules.py) | Records executable expectations |
+## 4. Turn the responses into an answer
 
-The line below appears at the top of the two runnable files:
+The instructor downloads the custom oTree export into `data/`. We use the supplied synthetic file if live data are unavailable. The active source is named in `analysis/settings.py` and on the generated figure.
 
-```python
-from bonus_rules import points_to_bonus
-```
+Here is an analysis request with the important decisions already stated:
 
-It makes the function defined in `bonus_rules.py` available in the current file. You do not need to write imports independently today; you only need to recognize which file supplies the function.
+> Read docs/STUDY_SPEC.md and data/CODEBOOK.md. Check the active data file in analysis/settings.py. Use the existing analysis scripts to summarize gamble choices at each guaranteed offer. Include only participants with six valid completed rounds, and show how many were excluded. Preserve the original CSV. Run the analysis and check the output against the input. Give me the figure and a short factual description, identifying whether the data are synthetic or classroom responses.
 
-## Activity 1 — establish the baseline, then ask for inspection
+Inspect three pieces of evidence:
 
-Before opening Codex, use VS Code to run `test_bonus_rules.py`. It should display:
+1. A few CSV rows: what does one row represent?
+2. `outputs/<data-file-name>/summary.json`: how many participants and decisions were included?
+3. `choice_by_offer.png`: does the pattern match the table behind it?
 
-```text
-All bonus-rule tests passed
-```
+The folder uses the data filename without `.csv`; for the supplied example it is `outputs/synthetic_choices/`. A JSON file stores named values, such as an included-participant count.
 
-Then run `run_bonus.py` and predict its three output lines before revealing them.
+Look for familiar Python ideas inside `analysis/analyze_choices.py`: variables, functions, comparisons, and grouping repeated observations. Class 11 will unpack the analysis.
 
-<details>
-<summary>Check the baseline output</summary>
+The offers always increase in the same order. That makes this a useful descriptive classroom pilot, but offer size and order are mixed together. A downward line does not by itself prove what caused the change.
 
-```text
-250 points -> 2.5 bonus units
-500 points -> 5.0 bonus units
-750 points -> 7.5 bonus units
-```
+## 5. Use parallel work and forks for a reason
 
-The baseline is internally consistent, but it does not yet implement the requested maximum of 5 units.
+### Two independent checks
 
-</details>
+One reviewer can inspect the experiment while another checks the analysis. They need not wait for each other:
 
-In the ChatGPT desktop app, select **Codex** and add `bonus-project` as a local project. If the app presents an **Add** menu, choose **Files and folders** and select that folder.
+> Use two subagents for independent, read-only checks. One should compare experiment/ against docs/STUDY_SPEC.md. The other should compare the active data, analysis scripts, and generated summaries against the analysis rules. Give each a bounded task. Neither should change files. Bring back concrete discrepancies with file references, and verify any important finding before proposing a fix.
 
-Type `/permissions` and choose **Read only**. Then send:
+Subagents are useful when tasks are separable. They consume additional usage, and two agents agreeing is not proof. Follow one important claim back to a file or an executed check. When agents make changes, assign separate files or working copies so their edits do not collide.
 
-> Inspect this project without changing any files. State the purpose of each file, trace what happens when `run_bonus.py` processes 750 points, list the test cases that already exist, and state which two files you would run to verify the current project.
+### A side question without losing the main thread
 
-Compare the response with the files and the output you already observed. A useful inspection should identify the missing cap without claiming that the current tests fail.
+In the current Codex chat, type `/fork` in the composer and choose a new **local chat** rather than a worktree. This copies the conversation so far into a separate chat. In that branch, ask:
 
-<details>
-<summary>What a sound inspection should notice</summary>
+> Without changing files, explain what randomizing the offer order would change in this study. What would stay the same in the analysis, and what would need to be recorded differently? Keep the answer grounded in our current project.
 
-- `PROJECT.md` requests a maximum bonus of 5 units.
-- `bonus_rules.py` currently returns `points / 100` without applying that maximum.
-- `run_bonus.py` therefore displays `7.5` for 750 points.
-- The existing tests cover 0, 250, and 500 points, but no value above 500.
-- `test_bonus_rules.py` and `run_bonus.py` are the two files to execute.
+Return to the main conversation afterward. A fork gives you a separate conversational path; it does **not** automatically give you a separate copy of your files. Keep the exploration read-only unless you deliberately create an isolated alternative.
 
-</details>
+## 6. Go from code and evidence to research writing
 
-## A reviewable agent workflow
+The project now contains the implemented experiment, a specification, raw data, analysis code, and numerical outputs. Ask Codex to connect them:
 
-Use this loop for a bounded coding change:
+> Draft a short Method and descriptive Results section in outputs/<active-data-folder>/report.md, using the experiment files, docs/STUDY_SPEC.md, data/CODEBOOK.md, and the generated summaries. Replace <active-data-folder> with the actual output folder. Identify the data source and whether it is synthetic. Trace every numerical claim to an output. Do not invent recruitment, demographics, payments, ethics approval, or significance tests. Put unresolved information in a short “To confirm” list. Mention the fixed-order limitation.
 
-1. **Inspect** the project and reproduce its current behavior.
-2. **Specify** the goal, relevant context, scope limits, and success checks.
-3. **Plan** the smallest justified change before editing.
-4. **Authorize** the agent to work within the selected project.
-5. **Review** the diff—the exact lines added and removed.
-6. **Test** the changed behavior and related existing behavior.
-7. **Correct or revert** anything that is unsupported or outside the task.
+Check one sentence about the procedure against the experiment. Check one numerical sentence against a table. Is a possible explanation clearly distinguished from something the data actually show?
 
-The agent's explanation is useful context. The diff and executed results are evidence.
+Finally, make the work easy to resume:
 
-## Activity 2 — turn a request into an inspectable task
+> Update docs/DECISIONS.md with the decisions we actually made. Create docs/HANDOFF.md with the current state, changed files, commands that worked, data source, checks completed, and the next task. Do not record credentials or participant-level responses there.
 
-Read the eight requirements in `PROJECT.md`. Imagine giving the agent only this request:
+A long conversation has limited working context. Short, accurate project documents let a new conversation—or a colleague—resume from a durable record. A file is useful context when it is relevant and read, not simply because it exists.
 
-> Fix the bonus code.
+The download also includes a [worked research summary](worked-examples/RESEARCH_SUMMARY.md) and [worked handoff](worked-examples/HANDOFF.md), with synthetic reference results in `reference-results/`. They illustrate the finished artifacts without claiming that fictional responses came from the class.
 
-Write down at least three decisions that this request leaves unclear. Then draft a better request that tells the agent:
+## Replay on your own
 
-- where the authoritative requirements are;
-- what it should inspect before editing;
-- which familiar Python structures it may use;
-- what names or output must remain unchanged;
-- which tests it must add and run;
-- what documentation should help a reader understand;
-- whether it should begin editing immediately.
+After following [SETUP.md](SETUP.md):
 
-<details>
-<summary>Check a precise task request</summary>
+1. Run `run_experiment.py`, open the local address, and try the six-round study. The instructor's public link is not required for this route.
+2. Stop the server with **Ctrl+C** in its terminal when finished.
+3. Run `analysis/inspect_data.py`, then `analysis/analyze_choices.py`, using **Run Python File** in VS Code. Both use the supplied synthetic CSV by default.
+4. Open `outputs/synthetic_choices/choice_by_offer.png` and `outputs/synthetic_choices/summary.json`. The reference includes **15 complete synthetic participants, 90 analyzed decisions, and 46 gamble choices**; one incomplete participant is excluded.
+5. From the downloaded class folder, open `worked-examples/RESEARCH_SUMMARY.md`. Check one procedural sentence against the experiment and one numerical sentence against the outputs you just regenerated. Open `worked-examples/HANDOFF.md` and locate its data source and run order. The bundled `reference-results/` provides the same synthetic results for comparison.
+6. To see the final-page improvement, open the separate `checkpoints/participant-summary/research-project`, prepare its environment, and complete the six-round study as described in **Working reference** above. Do not overwrite your original project.
+7. If you have Codex access, try one bounded read-only request from this lesson. Without access, trace a CSV column through the experiment and analysis files yourself. The experiment, analysis, and worked writing examples remain available without an AI response.
 
-> Read `PROJECT.md` and inspect all three Python files. Propose the smallest plan that satisfies every requirement. Keep the public function name, parameter name, `run_bonus.py`, and its output labels unchanged. Use the familiar arithmetic, comparison, `if`, assignment, and `return` approach rather than introducing a shortcut. Add a concise function docstring explaining the conversion and maximum; do not add comments that merely restate individual lines. Add the required above-cap assertion, then run `test_bonus_rules.py` and `run_bonus.py`. Before editing, show me the plan and wait for my confirmation.
+Before Class 9, complete the **Codex** part of [SETUP.md](SETUP.md) if you will use it on your laptop. The next class starts from a small scaffold: you will build the experiment rather than watch it.
 
-This request is effective because the result and its verification are explicit. It does not prescribe every line of the implementation.
+## A compact delegation reference
 
-</details>
+| Include in a request | Example |
+|---|---|
+| Goal | Show participants their recorded responses after completion |
+| Relevant context | The final-page template, saved round records, and study specification |
+| Boundaries | Do not change fields or export columns |
+| Permission to act | Plan first; implement after agreement |
+| Evidence of completion | Run checks, inspect the page, verify a saved response |
+| Handoff | Changed files, results, unresolved points, next task |
 
-## Activity 3 — authorize, review, and verify the change
-
-Type `/permissions` and choose **Auto**, which allows Codex to edit and run code inside the selected project. Send the precise task request above.
-
-Do not approve the plan merely because it sounds confident. Check that it intends to:
-
-1. modify `bonus_rules.py`;
-2. add an above-cap assertion to `test_bonus_rules.py`;
-3. add one useful docstring to `points_to_bonus` without comment clutter;
-4. leave `run_bonus.py` unchanged;
-5. run both Python files.
-
-If the plan matches the task, reply:
-
-> Proceed with that plan. Keep the scope minimal and report the files changed and the verification results.
-
-When Codex finishes, open the **Changes** or review pane. If a scope selector is shown, choose **Last turn**. Inspect the diff line by line.
-
-Your diff should show:
-
-- a comparison and capped assignment inside `points_to_bonus`;
-- an assertion that 750 points return 5;
-- no change to `run_bonus.py`;
-- no unrelated new files.
-
-<details>
-<summary>Check one valid implementation</summary>
-
-```python
-def points_to_bonus(points):
-    """Convert points to bonus units, with a maximum of 5 units."""
-    bonus = points / 100
-
-    if bonus > 5:
-        bonus = 5
-
-    return bonus
-```
-
-One required new test is:
-
-```python
-assert points_to_bonus(750) == 5
-```
-
-</details>
-
-Now return to VS Code and independently run both files. The final runner output should be:
-
-```text
-250 points -> 2.5 bonus units
-500 points -> 5.0 bonus units
-750 points -> 5 bonus units
-```
-
-Add these two assertions yourself to `test_bonus_rules.py` and rerun it:
-
-```python
-assert points_to_bonus(499) == 4.99
-assert points_to_bonus(501) == 5
-```
-
-These neighboring cases check both sides of the boundary rather than repeating the same kind of example.
-
-## Activity 4 — inspect and revert an unwanted change
-
-Send Codex this deliberately temporary request:
-
-> In `run_bonus.py`, change only the output label `bonus units` to `payment`. Make no other change.
-
-Open the review pane and select **Last turn**. Confirm that the diff contains exactly one changed line in `run_bonus.py`.
-
-The label change is outside the approved project requirement. Use the review pane to **revert** the change to `run_bonus.py`. Then run `run_bonus.py` in VS Code and confirm that:
-
-- the original `bonus units` label is restored;
-- the 5-unit cap still works;
-- your two independent assertions still pass.
-
-Reverting is not a failure. It is how you keep a correct project state after inspecting a change you do not want.
-
-## Class 8 reference
-
-### Central terms
-
-| Term | Simple meaning |
-| --- | --- |
-| Coding agent | An AI system that can inspect and act on files and commands within a selected project |
-| Project or workspace | The folder that supplies the agent's local code and context |
-| Scope | The files, behavior, and boundaries included in the requested task |
-| Requirement | A condition the completed change must satisfy |
-| Acceptance check | Executable or observable evidence that a requirement is met |
-| Plan | The proposed sequence of work before files are changed |
-| Diff | The exact lines added, removed, or replaced relative to the earlier project state |
-| Read-only | Permission to inspect without changing files |
-| Auto | Permission for Codex to edit and run code inside the selected project |
-| Revert | Restore an earlier file state by discarding a selected change |
-
-### Context can live in files
-
-A project document such as `PROJECT.md` can record the goal, file roles, constraints, and success checks once. The task request can then tell the agent to read that source rather than repeating every detail from memory.
-
-### A precise request is not necessarily long
-
-A useful task request answers four questions:
-
-1. What result is required?
-2. What existing context should be inspected?
-3. What must remain unchanged?
-4. What evidence will demonstrate success?
-
-### Review both behavior and scope
-
-A program may pass its tests while still containing an unnecessary file or label change. Review asks two different questions:
-
-- Does the new behavior satisfy the requirements?
-- Did the agent change only what the task justified?
-
-### Verification is independent
-
-If the agent says that tests passed, rerun them yourself. Add at least one meaningful case that was not the agent's only evidence. Here, `499` and `501` check the two sides of the cap boundary.
-
-## Companion tutorial
-
-Watch OpenAI's 4:21 **[Introducing the Codex app](https://www.youtube.com/watch?v=HFM3se4lNiw)**.
-
-The tour shows projects, agent tasks, progress, diff review, line-specific feedback, and running the result. This class applies that same cycle to a much smaller project whose complete code and tests you can inspect yourself.
-
-For current interface guidance, use OpenAI's [desktop-app quickstart](https://learn.chatgpt.com/docs/quickstart) and [code-review guide](https://learn.chatgpt.com/docs/code-review).
+Current product details: [Codex setup](https://learn.chatgpt.com/docs/quickstart), [permissions](https://learn.chatgpt.com/docs/permission-modes), [speed options](https://learn.chatgpt.com/docs/agent-configuration/speed), [subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents?surface=app), and [desktop slash commands, including `/fork`](https://learn.chatgpt.com/docs/reference/slash-commands). Controls and available models can differ between accounts and versions.

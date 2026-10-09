@@ -1,0 +1,47 @@
+{{ block title }}Thank you{{ endblock }}
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'choice_task/study.css' }}">
+<style>
+    /* A compact table stays readable on a phone without changing the choice pages. */
+    .response-table { width: 100%; border-collapse: collapse; margin: 14px 0 20px; }
+    .response-table caption { caption-side: top; color: var(--ink); font-weight: 700; }
+    .response-table th, .response-table td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+    .response-table thead { background: #eaf6f2; }
+    .response-table th { font-weight: 700; }
+    @media (max-width: 540px) {
+        .response-table { font-size: .84rem; line-height: 1.5; }
+        .response-table th, .response-table td { padding: 10px 4px; }
+    }
+</style>
+{{ endblock }}
+
+{{ block content }}
+<p class="eyebrow">Study complete</p>
+<section class="study-panel">
+    <h2>Your six responses are recorded.</h2>
+    <!-- This table reads saved values; there are no answer inputs on the receipt. -->
+    <table class="response-table">
+        <caption>Your saved responses</caption>
+        <thead>
+            <tr>
+                <th scope="col">Round</th>
+                <th scope="col">Guaranteed points</th>
+                <th scope="col">Your choice</th>
+                <th scope="col">Confidence (1–7)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ for response in responses }}
+            <tr>
+                <th scope="row">{{ response.round_number }}</th>
+                <td>{{ response.sure_points }}</td>
+                <td>{{ response.choice_label }}</td>
+                <td>{{ response.confidence }}</td>
+            </tr>
+            {{ endfor }}
+        </tbody>
+    </table>
+    <p>You can close this tab and return to the class discussion.</p>
+</section>
+{{ endblock }}
