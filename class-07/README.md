@@ -22,7 +22,50 @@ You should be able to:
 
 If you already have these files, use your existing copy.
 
-## Warm-up — a quick fix you can make yourself
+## Rehearsal — reuse a function from Class 6
+
+Create `class_07_rehearsal.py` inside `class-07`. Try this from memory before opening the example below.
+
+A game pays **10 pence per point**. Two participants earned `12` and `25` points.
+
+1. Define `points_to_bonus(points)` to **return** the bonus in pence. Add a short docstring describing its purpose.
+2. Call the same function for both scores and store the results in `first_bonus` and `second_bonus`.
+3. Add a **100-pence participation fee** to `first_bonus` and store the result in `total_payment`. Print both bonuses and the first participant's total payment.
+
+Predict the three amounts before running your code. Why does this function need to return its result rather than only print it?
+
+<details>
+<summary>Check one possible version</summary>
+
+```python
+def points_to_bonus(points):
+    """Return the bonus in pence at 10 pence per point."""
+    return points * 10
+
+
+# Reuse the same payment rule for two participants.
+first_bonus = points_to_bonus(12)
+second_bonus = points_to_bonus(25)
+
+# Use a returned bonus in a further calculation.
+total_payment = 100 + first_bonus
+
+print("First bonus (pence):", first_bonus)
+print("Second bonus (pence):", second_bonus)
+print("First total payment (pence):", total_payment)
+```
+
+```text
+First bonus (pence): 120
+Second bonus (pence): 250
+First total payment (pence): 220
+```
+
+`return` makes the calculated bonus available to the caller. Printing alone would show it on screen, but would not supply the number for the total-payment calculation.
+
+</details>
+
+## First debugging task — a quick fix you can make yourself
 
 Open [`syntax_error_demo.py`](syntax_error_demo.py). A participant's choice should select the appropriate message. Spot the problem, run the file, then repair it.
 
