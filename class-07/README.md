@@ -220,6 +220,23 @@ The one-trial case also works in the original program. The two-trial case reveal
 
 You decide what the program should do. AI can help locate the cause, make execution easier to follow, and suggest revealing tests. The output—not the confidence of the explanation—shows whether a tested case works.
 
+## Class 7 reference
+
+### Central terms
+
+| Term | Simple meaning | Example |
+| --- | --- | --- |
+| Debugging | Finding the cause of a problem, repairing it, and checking the result | Trace the payment calculation to find where text was used instead of a number |
+| Syntax error | Code that breaks Python's writing rules and prevents the file from running | A missing colon after an `if` header |
+| Runtime error | An error raised when execution reaches an operation Python cannot perform | Adding an integer fee to a text bonus |
+| Logic error | Code that runs but does not produce the intended result | Returning the first trial's points instead of the total |
+| Traceback | A report showing the calls and line locations leading to a runtime error, followed by its type and message | Find the last `File ... line ...` entry for your file; the cause may be earlier |
+| `TypeError` | A runtime error caused by using a value of an unsuitable type for an operation | `100 + "120"` cannot add a number to text |
+| `NameError` | A runtime error raised when Python cannot find a name where it is used | A copied variable name contains a lookalike character and does not match the defined name |
+| Execution trace | A step-by-step record of which lines run and how values change | The first trial makes the total `4`; an early `return` skips the remaining trials |
+| Expected and actual results | What the program should produce, compared with what it really produces | Expected total: `15`; actual total: `4` |
+| Test case | A specific input with a known expected result used to check behavior | An empty trial list should give a total of `0` |
+
 ## Companion tutorial
 
 For another worked example, watch Khan Academy's 5:49 **[Debugging with stack traces | Intro to CS — Python](https://www.youtube.com/watch?v=WUoCSkSW4cs)**.
