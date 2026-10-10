@@ -1,65 +1,50 @@
-# Class 8 — From an Experiment to a Research Report
+# Class 8 — From Answers to Delegation
 
-Today, we will take part in a short experiment and follow its results all the way to a research report—with Codex helping along the way.
+We will use Codex to build a simple decision experiment, collect responses, analyze them, and draft a research report. In class, the instructor operates Codex and students join the experiment on their phones.
 
-This is a live demonstration. You only need your phone for the experiment; there is nothing to install or download.
+**We are building this lesson together.** The opening sequence below is ready for review. Deployment, analysis, and writing will follow after we test it.
 
-## 1. Meet Codex
+## Start here
 
-We begin with an introduction to Codex. Unlike copying code between a browser chat and an editor, we can give Codex a task inside a project and watch it work with the files.
+**[Download the Class 8 files](https://github.com/EdenHeilprin/technion-096609-python-ai/raw/refs/heads/main/class-08/class-08-files.zip)**
 
-During the demonstration, follow three things: **what we ask for, what Codex does, and the result we open together.**
+1. Extract the ZIP: double-click it on macOS, or right-click and choose **Extract All** on Windows.
+2. Move the extracted **class-08** folder into your course-work folder. For our walkthrough, use **Course Materials → 02 - My Student Work → class-08**.
+3. Open **class-08** as a new project in Codex. Keep this GitHub page open for the prompts.
 
-## 2. Take part in the experiment
+The folder starts with just two files:
 
-Scan the QR code shown in class. In each of six decisions, choose between:
+- **experiment-brief.docx** describes the experiment and how to build it.
+- **preregistration.docx** provides the research background, hypothesis, and analysis plan.
 
-- **Sure:** a guaranteed number of points.
-- **Gamble:** a 50% chance of 10 points and a 50% chance of 0 points.
+These documents give Codex the detailed context. You can introduce the study briefly without reading them aloud: participants make six choices between a sure **10 points** and a **50% chance of a larger prize**. The prize increases across choices. All points are hypothetical.
 
-The guaranteed amount changes. The points are hypothetical; no money is paid.
+Paste one prompt at a time and inspect the result before continuing.
 
-After everyone finishes: **at which offers was the choice difficult?**
+## 1. Get oriented
 
-## 3. Look behind the screen
-
-We open the experiment in Codex and connect the page you just saw to a few lines of Python.
-
-This list controls the guaranteed offers:
-
-```python
-SURE_OFFERS = [2, 3, 4, 6, 7, 8]
+```text
+Read experiment-brief.docx and preregistration.docx. Inspect the available Python environment. Summarize the research question and your proposed build in five short bullets. Flag any missing decision. Do not build or change anything yet.
 ```
 
-oTree displays the pages and saves the answers. The experiment's own rules still use familiar ideas: a list of offers, a loop, a saved value, and a condition for showing the final page.
+## 2. Build the experiment
 
-We then open the responses. Each row records one participant's choice at one offer.
+```text
+Build the experiment in experiment-brief.docx using oTree.
 
-## 4. Analyze our choices
+For its logic, use the Python we covered in Classes 1–7: variables, basic types and arithmetic, lists and dictionaries, if/elif/else, for loops, and simple functions with parameters and return values. Use only what the task needs. Add concise # comments explaining each meaningful step and unfamiliar oTree structure. Students must be able to follow the code.
 
-Our question is: **do people choose the gamble less often when the guaranteed alternative is larger?**
+Test it, then start otree devserver and give me the local link. Stop for my review.
+```
 
-We give Codex the response file and a short preregistration—a plan written before collecting the data. We ask it to explain its analysis plan, then carry it out.
+Try all six decisions. Then open the Python file: find the prize list, follow how one decision gets its prize, and locate where the response is stored.
 
-The result is one graph: the percentage choosing the gamble at each guaranteed offer. We check one point ourselves by counting the choices behind it.
+## 3. Make one visible improvement
 
-Does the pattern agree with our prediction? The offers appeared in increasing order, so we also consider what might change if their order were randomized.
+```text
+Replace the radio choices and Next button with two large, equally prominent choice buttons that work well on phones. Each click should save one choice and advance once. Keep the options, order, and data coding unchanged. Let me test the result.
+```
 
-## 5. Write from the evidence
+Try the updated experiment, including its opening and thank-you pages. Keep the generated files in this same **class-08** project.
 
-We ask Codex to draft two short sections:
-
-- **Method:** what participants actually did.
-- **Results:** what their responses showed.
-
-We check a sentence about the procedure against the experiment and a numerical claim against the results. We also see how a separate Codex reviewer can help check the draft, and how a conversation fork lets us explore an alternative design without losing the main discussion.
-
-## Your next project
-
-Next, you will set up Codex and oTree, then work individually or in pairs on an improvement to this experiment. You might add a condition, randomize the offers, or improve the participant pages.
-
-**What would you change—and what would that change help you learn?**
-
----
-
-[Teaching notes](Teaching%20Notes.md) · [Minimal project](minimal-project) · [Download demonstration files](https://github.com/EdenHeilprin/technion-096609-python-ai/raw/refs/heads/main/class-08/class-08-files.zip)
+We will continue from here after reviewing this opening sequence.

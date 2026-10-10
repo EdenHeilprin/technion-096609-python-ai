@@ -53,9 +53,12 @@ def verify_archive(number, folder):
             check(path.name not in {".env", ".DS_Store", "db.sqlite3"} and path.suffix not in {".pyc", ".db", ".sqlite3"}, f"Unexpected artifact: {entry}")
         archive.extractall(folder)
     lesson = folder / name
-    manifest = json.loads((lesson / "DOWNLOAD_MANIFEST.json").read_text(encoding="utf-8"))
+    # Class 8 starts with only two Word documents; its manifest stays online.
+    manifest_root = source if number == 8 else lesson
+    manifest = json.loads((manifest_root / "DOWNLOAD_MANIFEST.json").read_text(encoding="utf-8"))
     actual = {str(p.relative_to(lesson)).replace("\\", "/") for p in lesson.rglob("*") if p.is_file()}
-    check(actual == set(manifest) | {"DOWNLOAD_MANIFEST.json"}, f"{name}: exact manifest file set")
+    expected_files = set(manifest) if number == 8 else set(manifest) | {"DOWNLOAD_MANIFEST.json"}
+    check(actual == expected_files, f"{name}: exact manifest file set")
     for relative, expected in manifest.items():
         path = lesson / relative
         check(digest(path.read_bytes()) == expected, f"{name}: hash {relative}")
@@ -72,11 +75,11 @@ def verify_archive(number, folder):
                         target = urllib.parse.unquote(link.split("#")[0])
                         check((path.parent / target).exists(), f"Broken relative Markdown link: {relative} -> {link}")
     if number == 8:
-        check((lesson / "minimal-project/preregistration.txt").exists(), "Class8: supplied teaching plan")
-        with (lesson / "minimal-project/example_responses.csv").open(encoding="utf-8", newline="") as example:
-            rows = list(csv.DictReader(example))
-        check(len(rows) == 24 and len({row["participant"] for row in rows}) == 4, "Class8: four fictional participants, six choices each")
-        check(all(row["session"] == "FICTIONAL" and row["participant"].startswith("EXAMPLE_") for row in rows), "Class8: fictional data only")
+        check(actual == {"experiment-brief.docx", "preregistration.docx"}, "Class8: exactly two context documents")
+        for filename in sorted(actual):
+            with zipfile.ZipFile(lesson / filename) as document:
+                check(document.testzip() is None, f"Class8: intact {filename}")
+                check("word/document.xml" in document.namelist(), f"Class8: valid Word package {filename}")
     else:
         check((lesson / "research-project/docs/STUDY_SPEC.md").exists(), f"{name}: supplied study context")
     if number in {9, 10}:
@@ -203,15 +206,7 @@ def experiment_run(project, minimal=False, receipt=False):
 
 
 def runtime_checks(lessons):
-    environment = dict(os.environ, MPLBACKEND="Agg", MPLCONFIGDIR=str(lessons[8] / ".matplotlib"))
-    result = subprocess.run([sys.executable, str(lessons[8] / "Analysis reference.py")],
-                            env=environment, capture_output=True, text=True, encoding="utf-8", timeout=90)
-    check(result.returncode == 0, f"Class8 analysis reference: {result.stdout}\n{result.stderr}")
-    check("Participants with at least one recorded choice: 4" in result.stdout, "Class8 example participant count")
-    for offer, percent in [(2, 100), (3, 100), (4, 75), (6, 50), (7, 25), (8, 0)]:
-        check(f"{offer} sure points: {percent // 25}/4 chose Gamble ({percent:.1f}%)" in result.stdout,
-              f"Class8 example percentage at offer {offer}")
-    check((lessons[8] / "minimal-project/results.png").is_file(), "Class8 fallback figure generated")
+    # Class 8 has no supplied code to run at this stage.
     full_export = experiment_run(lessons[12] / "research-project")
     experiment_run(lessons[9] / "checkpoints/minimal/research-project", minimal=True)
     experiment_run(lessons[10] / "research-project", minimal=True)

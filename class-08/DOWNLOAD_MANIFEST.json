@@ -1,14 +1,4 @@
 {
-  "Analysis reference.py": "f4d0779c1446e3e53933d2b5e46f7a21d1641396425791b454a561c916115958",
-  "README.md": "ee7867a52eb89fb81c47d8df25eafdfd0a277594af219a35966973ea7ccf312b",
-  "Teaching Notes.md": "e47674df7ded0e4a04373e98fdeece3fdea51161abed7b8bab5353749da7759f",
-  "minimal-project/.gitignore": "1394ecc6504207e17a18e63ffb6f4bdc060c509742c4a5296fb9ed03130a3c5c",
-  "minimal-project/_static/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
-  "minimal-project/choice_task/Choice.html": "61ba7e4e2bcf3d0703dfe3167db9d9c3032ce8289200ff437ee84963585106cc",
-  "minimal-project/choice_task/ThankYou.html": "a98a8a81f4f0024a8b34f0034d24cb2b946752eb20f817c18e444bbc216a75f4",
-  "minimal-project/choice_task/__init__.py": "6a78666d5fec83673b58a653dac02fa4ed9139d3f0e3ee4176804dded229c271",
-  "minimal-project/example_responses.csv": "7c246e24e6f108cc4af85db1c7af4a86ceba0d946f87abe9556b066655097ff6",
-  "minimal-project/preregistration.txt": "e7a2605f7bf7d1f676cac0b60c4a6cde0703c9c74bc893fb42a73d31e48e12bf",
-  "minimal-project/requirements.txt": "f3ddd1752ff855211b239d45f68a9904a097ce2991773e867982b0cfb21453e5",
-  "minimal-project/settings.py": "7fe6bdc11b25b88d80f10e24ceb8249b534dd88d2ed89d90a61bb4169f396557"
+  "experiment-brief.docx": "b2a3dbde9807bb09dfbde618c51a0fbc04c787beff26e7b840e4c82867e6a2f5",
+  "preregistration.docx": "69297f90bc1e2fdf2a3a55da57b43b11cbcabde5801b2ff32b353bbf87cf0603"
 }

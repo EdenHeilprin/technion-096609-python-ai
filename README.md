@@ -27,12 +27,12 @@ Class 0 will help you check or install the required free software and run one sm
 
 ## Phase 2 — Direct a complete research workflow
 
-One small study connects building an experiment, improving its pages, collecting responses, analyzing data, and writing an evidence-grounded report. Start with the **[Phase 2 overview](phase-2/README.md)**.
+This phase connects building an experiment, collecting responses, analyzing data, and writing a research report. We are revising it one step at a time, starting with **Class 8**. Classes 9–12 remain the earlier version pending review.
 
-- **[Class 8 — From an Experiment to a Research Report](class-08/README.md)**
+- **[Class 8 — From Answers to Delegation](class-08/README.md)**
 - **[Class 9 — Build Your First Experiment with Codex](class-09/README.md)**
 - **[Class 10 — Turn a Prototype into a Study](class-10/README.md)**
 - **[Class 11 — From Choices to Evidence](class-11/README.md)**
 - **[Class 12 — Direct a Research Workflow](class-12/README.md)**
 
-Class 8 is a live demonstration: students participate and observe, with nothing to install or download. Classes 9–12 have self-contained downloads and working examples. Keep each class in its own folder so your earlier work stays intact.
+Class 8 is an instructor-led demonstration. To rehearse it yourself, its page contains the prompts and a two-file download for a fresh Codex project. Classes 9–12 retain their earlier downloads and working examples. Keep each class in its own folder so your earlier work stays intact.

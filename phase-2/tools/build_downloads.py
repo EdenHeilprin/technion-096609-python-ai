@@ -1,4 +1,4 @@
-"""Package Class 8's minimal demonstration and Classes 9–12's guided projects.
+"""Package Class 8's two context documents and Classes 9–12's guided projects.
 
 Run from any directory with Python 3.13. This only replaces named generated
 folders inside this repository; personal student folders are never targets.
@@ -89,25 +89,19 @@ def project_snapshot(destination, stage, brief=None):
 def build_class8():
     # An explicit list keeps classroom exports and generated results out of the ZIP.
     target = REPO / "class-08"
-    names = [
-        "README.md", "Teaching Notes.md", "Analysis reference.py",
-        "minimal-project/.gitignore", "minimal-project/_static/.gitkeep",
-        "minimal-project/preregistration.txt", "minimal-project/example_responses.csv",
-        "minimal-project/settings.py", "minimal-project/requirements.txt",
-        "minimal-project/choice_task/__init__.py", "minimal-project/choice_task/Choice.html",
-        "minimal-project/choice_task/ThankYou.html",
-    ]
+    names = ["experiment-brief.docx", "preregistration.docx"]
     manifest = {name: hashlib.sha256((target / name).read_bytes()).hexdigest() for name in sorted(names)}
     (target / "DOWNLOAD_MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     archive_path = target / "class-08-files.zip"
     with zipfile.ZipFile(archive_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
-        for name in sorted(names + ["DOWNLOAD_MANIFEST.json"]):
+        # Keep the maintainer manifest online, outside the two-file starter.
+        for name in sorted(names):
             info = zipfile.ZipInfo("class-08/" + name, (2026, 10, 10, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o100644 << 16
             archive.writestr(info, (target / name).read_bytes())
     return {"file": str(archive_path.relative_to(REPO)), "bytes": archive_path.stat().st_size,
-            "sha256": hashlib.sha256(archive_path.read_bytes()).hexdigest(), "files": len(manifest) + 1}
+            "sha256": hashlib.sha256(archive_path.read_bytes()).hexdigest(), "files": len(manifest)}
 
 
 def build_one(number):
