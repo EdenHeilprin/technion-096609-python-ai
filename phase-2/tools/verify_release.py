@@ -71,7 +71,14 @@ def verify_archive(number, folder):
                     if not re.match(r"(?:https?:|mailto:|#)", link):
                         target = urllib.parse.unquote(link.split("#")[0])
                         check((path.parent / target).exists(), f"Broken relative Markdown link: {relative} -> {link}")
-    check((lesson / "research-project/docs/STUDY_SPEC.md").exists(), f"{name}: supplied study context")
+    if number == 8:
+        check((lesson / "minimal-project/preregistration.txt").exists(), "Class8: supplied teaching plan")
+        with (lesson / "minimal-project/example_responses.csv").open(encoding="utf-8", newline="") as example:
+            rows = list(csv.DictReader(example))
+        check(len(rows) == 24 and len({row["participant"] for row in rows}) == 4, "Class8: four fictional participants, six choices each")
+        check(all(row["session"] == "FICTIONAL" and row["participant"].startswith("EXAMPLE_") for row in rows), "Class8: fictional data only")
+    else:
+        check((lesson / "research-project/docs/STUDY_SPEC.md").exists(), f"{name}: supplied study context")
     if number in {9, 10}:
         check((lesson / "research-project/data").is_dir(), f"{name}: export destination exists")
     if number == 9:
@@ -196,12 +203,20 @@ def experiment_run(project, minimal=False, receipt=False):
 
 
 def runtime_checks(lessons):
-    full_export = experiment_run(lessons[8] / "research-project")
-    experiment_run(lessons[8] / "checkpoints/participant-summary/research-project", receipt=True)
+    environment = dict(os.environ, MPLBACKEND="Agg", MPLCONFIGDIR=str(lessons[8] / ".matplotlib"))
+    result = subprocess.run([sys.executable, str(lessons[8] / "Analysis reference.py")],
+                            env=environment, capture_output=True, text=True, encoding="utf-8", timeout=90)
+    check(result.returncode == 0, f"Class8 analysis reference: {result.stdout}\n{result.stderr}")
+    check("Participants with at least one recorded choice: 4" in result.stdout, "Class8 example participant count")
+    for offer, percent in [(2, 100), (3, 100), (4, 75), (6, 50), (7, 25), (8, 0)]:
+        check(f"{offer} sure points: {percent // 25}/4 chose Gamble ({percent:.1f}%)" in result.stdout,
+              f"Class8 example percentage at offer {offer}")
+    check((lessons[8] / "minimal-project/results.png").is_file(), "Class8 fallback figure generated")
+    full_export = experiment_run(lessons[12] / "research-project")
     experiment_run(lessons[9] / "checkpoints/minimal/research-project", minimal=True)
     experiment_run(lessons[10] / "research-project", minimal=True)
     experiment_run(lessons[10] / "checkpoints/full/research-project")
-    for number, relative in [(8, "research-project"), (11, "checkpoints/analysis/research-project"), (12, "research-project")]:
+    for number, relative in [(11, "checkpoints/analysis/research-project"), (12, "research-project")]:
         project = lessons[number] / relative
         for script in ("inspect_data.py", "analyze_choices.py", "explore_confidence.py"):
             result = subprocess.run([sys.executable, str(project / "analysis" / script)], cwd=project.parent,

@@ -1,0 +1,29 @@
+SURE OR GAMBLE — TEACHING PREREGISTRATION
+
+This is a classroom exercise, not an externally registered study.
+The plan is prepared before collecting the classroom responses.
+
+QUESTION AND PREDICTION
+Do people choose a gamble less often when the guaranteed alternative is larger?
+We predict a generally decreasing percentage of Gamble choices as the sure offer increases.
+
+PROCEDURE
+Each participant makes six choices, in this order: 2, 3, 4, 6, 7, and 8 sure points.
+The gamble always offers a 50% chance of 10 points and a 50% chance of 0 points.
+Choices are hypothetical. There are no payments or identifying questions.
+
+DATA
+Use only the classroom session, keeping rehearsal sessions separate.
+Each CSV row contains a session code, participant code, sure offer, and choice.
+A blank choice means no response was recorded for that offer.
+
+ANALYSIS
+Include every recorded Sure or Gamble choice; do not replace missing choices.
+Report the number of participants with at least one recorded choice.
+For each offer, count Gamble choices and divide by the number of recorded choices at that offer.
+Plot these percentages against the six offers. Show the counts as well as the percentages.
+Describe whether the pattern follows the prediction; do not run a significance test.
+
+INTERPRETATION
+Because everyone sees the offers in the same increasing order, offer size and position change together.
+The graph describes this classroom's choices; it cannot separate those two influences.

@@ -4,7 +4,7 @@ Follow one small study from the participant's screen to a research summary. You 
 
 | Class | What you will do | What you will have afterward |
 | --- | --- | --- |
-| [8 — From prompts to delegation](../class-08/README.md) | Experience a study and follow a complete Codex demonstration | A map of the workflow and the prompts to replay it |
+| [8 — From an experiment to a research report](../class-08/README.md) | Make six choices, then watch Codex help analyze them and draft Method and Results | A concrete example of the whole research workflow |
 | [9 — Build your first oTree experiment](../class-09/README.md) | Set up your workspace and build one working choice | A local experiment you can run and inspect |
 | [10 — Shape the participant experience](../class-10/README.md) | Extend the study and improve its browser pages | A tested six-round study with confidence ratings and an export |
 | [11 — From responses to evidence](../class-11/README.md) | Inspect, summarize, and visualize the responses | A reproducible analysis and a figure |
@@ -12,7 +12,7 @@ Follow one small study from the participant's screen to a research summary. You 
 
 ## The study
 
-Would you prefer a guaranteed number of points or a 50–50 chance of 10 points versus 0? Across six choices, the guaranteed offer increases. You also rate your confidence. These are hypothetical choices, with no payment.
+Would you prefer a guaranteed number of points or a 50–50 chance of 10 points versus 0? Across six choices, the guaranteed offer increases. Class 8 records only these choices; later materials add confidence ratings. These are hypothetical choices, with no payment.
 
 Our starting question is: **how does the proportion choosing the gamble vary with the guaranteed offer?** Later, you can examine confidence or propose an improved design.
 
@@ -20,9 +20,9 @@ Our starting question is: **how does the proportion choosing the gamble vary wit
 
 **In class:** Class 8 is a demonstration led by the instructor. Join the experiment and help direct the investigation. In Classes 9–12, work in your own project, with a partner when useful.
 
-**Reviewing independently:** begin with Class 8's replay route. Every class has its own ZIP, instructions, and a working checkpoint. A checkpoint is a separate project to inspect or continue from; it does not overwrite your work.
+**Reviewing independently:** read the short [Class 8 lesson](../class-08/README.md). Its separate [teaching notes](../class-08/Teaching%20Notes.md) explain how to rehearse the demonstration. Classes 9–12 each have their own ZIP, instructions, and a working checkpoint. A checkpoint is a separate project to inspect or continue from; it does not overwrite your work.
 
-Download each class into a new folder. Keep the previous class folder intact. The study continues across classes, but each download is self-contained so an unfinished activity never blocks the next class.
+From Class 9, download each class into a new folder. Keep the previous class folder intact. Each download is self-contained so an unfinished activity never blocks the next class.
 
 ## Reuse the setup pattern
 

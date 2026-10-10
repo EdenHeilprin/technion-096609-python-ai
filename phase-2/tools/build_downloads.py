@@ -1,8 +1,9 @@
-"""Generate all five student downloads from one canonical research project.
+"""Package Class 8's minimal demonstration and Classes 9–12's guided projects.
 
 Run from any directory with Python 3.13. This only replaces named generated
 folders inside this repository; personal student folders are never targets.
 """
+import argparse
 import hashlib
 import json
 import shutil
@@ -85,7 +86,33 @@ def project_snapshot(destination, stage, brief=None):
             "Do not run otree startproject in this existing folder.\n", encoding="utf-8")
 
 
+def build_class8():
+    # An explicit list keeps classroom exports and generated results out of the ZIP.
+    target = REPO / "class-08"
+    names = [
+        "README.md", "Teaching Notes.md", "Analysis reference.py",
+        "minimal-project/.gitignore", "minimal-project/_static/.gitkeep",
+        "minimal-project/preregistration.txt", "minimal-project/example_responses.csv",
+        "minimal-project/settings.py", "minimal-project/requirements.txt",
+        "minimal-project/choice_task/__init__.py", "minimal-project/choice_task/Choice.html",
+        "minimal-project/choice_task/ThankYou.html",
+    ]
+    manifest = {name: hashlib.sha256((target / name).read_bytes()).hexdigest() for name in sorted(names)}
+    (target / "DOWNLOAD_MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    archive_path = target / "class-08-files.zip"
+    with zipfile.ZipFile(archive_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+        for name in sorted(names + ["DOWNLOAD_MANIFEST.json"]):
+            info = zipfile.ZipInfo("class-08/" + name, (2026, 10, 10, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o100644 << 16
+            archive.writestr(info, (target / name).read_bytes())
+    return {"file": str(archive_path.relative_to(REPO)), "bytes": archive_path.stat().st_size,
+            "sha256": hashlib.sha256(archive_path.read_bytes()).hexdigest(), "files": len(manifest) + 1}
+
+
 def build_one(number):
+    if number == 8:
+        return build_class8()
     class_name = f"class-{number:02d}"
     target = REPO / class_name
     with tempfile.TemporaryDirectory(prefix=f"{class_name}-build-") as temp:
@@ -98,19 +125,11 @@ def build_one(number):
         for name in ("SETUP.md", "TROUBLESHOOTING.md"):
             shutil.copyfile(PHASE / name, lesson / name)
         brief = target / ("BUILD_BRIEF.md" if number == 9 else "EXTENSION_BRIEF.md") if number in {9, 10} else None
-        stage = {8: "complete", 9: "scaffold", 10: "extension-start", 11: "analysis-start", 12: "complete"}[number]
+        stage = {9: "scaffold", 10: "extension-start", 11: "analysis-start", 12: "complete"}[number]
         project_snapshot(lesson / "research-project", stage, brief)
         if number in {9, 10, 11}:
             checkpoint, checkpoint_stage = {9: ("minimal", "minimal"), 10: ("full", "full-experiment"), 11: ("analysis", "complete")}[number]
             project_snapshot(lesson / "checkpoints" / checkpoint / "research-project", checkpoint_stage, brief)
-        if number == 8:
-            expected = PHASE / "example-results"
-            if not (expected / "summary.json").exists():
-                raise ValueError("Generate the verified synthetic example-results before packaging.")
-            shutil.copytree(expected, lesson / "reference-results")
-            project_snapshot(lesson / "checkpoints/participant-summary/research-project", "complete")
-            copy_source(PHASE / "showcase-improvement", lesson / "checkpoints/participant-summary/research-project")
-            shutil.copytree(PHASE / "worked-examples", lesson / "worked-examples")
         files = sorted(p for p in lesson.rglob("*") if p.is_file())
         manifest = {str(p.relative_to(lesson)): hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
         (lesson / "DOWNLOAD_MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
@@ -134,7 +153,13 @@ def build_one(number):
 
 
 if __name__ == "__main__":
-    results = [build_one(number) for number in range(8, 13)]
-    (PHASE / "DOWNLOADS.json").write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("classes", nargs="*", type=int, choices=range(8, 13))
+    args = parser.parse_args()
+    results = [build_one(number) for number in (args.classes or range(8, 13))]
+    index_path = PHASE / "DOWNLOADS.json"
+    previous = json.loads(index_path.read_text(encoding="utf-8")) if index_path.exists() else []
+    entries = {item["file"]: item for item in previous + results}
+    index_path.write_text(json.dumps([entries[name] for name in sorted(entries)], indent=2) + "\n", encoding="utf-8")
     for item in results:
         print(f"{item['file']}: {item['files']} files, {item['bytes']:,} bytes")

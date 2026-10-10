@@ -1,0 +1,2 @@
+otree==6.0.15
+matplotlib==3.11.1
