@@ -17,7 +17,7 @@ The folder starts with just two files:
 
 The research question: **How much extra expected value do people require to choose a gamble over a sure outcome?** Each participant makes seven choices between a sure **10 points** and a **50% chance of a varying prize**, otherwise **0**. Participants are randomly assigned to ascending or descending prize order. All points are hypothetical.
 
-Paste one prompt at a time and inspect the result before continuing.
+For Prompts 1–5, inspect each result before continuing. Prompts 6 and 7 can run in parallel in separate chats.
 
 ## 1. Get oriented
 
@@ -75,10 +75,41 @@ Save the cleaned data, tables, and figures in outputs; leave raw unchanged. Also
 Make the script runnable from start to finish in RStudio without Codex, using relative paths and brief run instructions at the top. Test it in a fresh R session, then open the R script in RStudio and results.html in my browser.
 ```
 
-### 6. Explore beyond the preregistration
+### 6. Branch in new chat — Explore beyond the preregistration
+
+After Prompt 5 finishes, choose **Branch in new chat** and keep the same project folder. Run this prompt in the new chat.
 
 ```text
-Suggest two useful exploratory analyses that go beyond the preregistration. Briefly explain what each could reveal and its limitations.
+Consider two useful exploratory analyses beyond the preregistration. Briefly compare them, choose the most promising based on scientific relevance and what the data can support, and run it in R.
 
-Wait for me to choose before implementing one in a separate, clearly labelled R script. Keep the preregistered analysis unchanged.
+Keep all exploratory code, outputs, and notes in an exploratory folder beside analysis. Treat all existing project files as read-only inputs.
+
+Write a simple, clearly commented exploratory.R that I can run independently in RStudio. Save a short results.html with readable tables or figures, an explanation of the findings, and their limitations. Clearly identify the work as exploratory. Open the script and results for me.
+```
+
+## Write the manuscript
+
+Return to the original chat for Prompt 7. The exploratory analysis can continue in its branch while the writing agents work from the completed preregistered analyses.
+
+### 7. Main chat — Write with parallel agents
+
+```text
+Read the project documents and create a writing folder beside analysis. Spawn four subagents, working in parallel as capacity allows:
+
+1. Journal guidelines: Read the current official Journal of Experimental Psychology: General submission guidelines. Save a concise, actionable summary in journal-guidelines.md, including the source links and access date.
+2. Literature: Find and read 5–8 relevant primary papers. Summarize the findings and limitations that will support our Introduction in literature.md, with verified references and DOI or source links.
+3. Method: Inspect the experiment, project documents, and data-preparation rules. Draft method.md with enough detail to replicate what was actually done, noting any departures from the preregistration.
+4. Results: Check the preregistered analysis code and outputs. Draft results.md, tracing reported numbers to their source tables or data and identifying the relevant tables and figures.
+
+Each agent writes only its assigned file in writing; all other project files are read-only. Do not use the exploratory folder.
+
+Wait for all four agents. Then act as lead author: verify citations and numerical claims, resolve inconsistencies, and integrate the work into a coherent manuscript.docx in writing. Include a title, abstract, Introduction, Method, Results, Discussion, references, and relevant tables and figures, following the journal guidelines. Keep conclusions proportionate to the design and evidence. Mark missing facts as [TO CONFIRM] rather than inventing them. Inspect the document's layout, then open it for me.
+```
+
+### 8. Revise with a custom skill
+
+This prompt uses the locally installed **global-revision-process** skill. Continue in the original chat after the manuscript is ready.
+
+```text
+Use $global-revision-process to review and improve the first three paragraphs of the Introduction in writing/manuscript.docx. Follow the skill's paragraph-by-paragraph revision workflow and show the proposed revisions here. Leave the saved manuscript unchanged until I approve them.
 ```
