@@ -13,9 +13,9 @@ We will use Codex to build a simple decision experiment, collect responses, anal
 The folder starts with just two files:
 
 - **experiment-brief.docx** describes the experiment and how to build it.
-- **preregistration.docx** provides the research background, hypothesis, and analysis plan.
+- **preregistration.docx** provides the hypothesis, design, and analysis plan.
 
-The research question: **Do people choose the gamble more often as its prize increases?** Each participant makes six choices between a sure **10 points** and a **50% chance of a larger prize**. All points are hypothetical.
+The research question: **How much extra expected value do people require to choose a gamble over a sure outcome?** Each participant makes seven choices between a sure **10 points** and a **50% chance of a varying prize**, otherwise **0**. Participants are randomly assigned to ascending or descending prize order. All points are hypothetical.
 
 Paste one prompt at a time and inspect the result before continuing.
 
@@ -35,7 +35,7 @@ Keep its Python logic understandable to a beginner: variables, basic types and a
 Test it in a laptop browser, then start otree devserver and give me the local participant link. Stop for my review.
 ```
 
-Try all six decisions. Then open the Python file: find the prize list, follow how one decision gets its prize, and locate where the response is stored.
+Try all seven decisions in each condition. Then open the Python file: find the prize list, follow how the assigned condition determines the order, and locate where the response is stored.
 
 ## 3. Improve the design
 
@@ -43,4 +43,6 @@ Try all six decisions. Then open the Python file: find the prize list, follow ho
 Give the experiment a cleaner, more polished design for laptop screens: a centered layout, larger readable text, generous spacing, and two matching choice cards with a clear selected state. Keep both options equally prominent and retain the Next button to confirm the choice. Use simple HTML and CSS with clear comments. Do not change the wording, choices, order, or recorded data. Let me test the result.
 ```
 
-Compare the updated design with the original. Try all six decisions and check the opening and thank-you pages. Keep the generated files in this same **class-08** project.
+Compare the updated design with the original. Try all seven decisions and check the opening and thank-you pages. Keep the generated files in this same **class-08** project.
+
+**Possible extension:** Add a third condition with randomly ordered decisions.

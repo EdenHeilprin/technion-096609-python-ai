@@ -14,7 +14,7 @@ Follow one small study from the participant's screen to a research summary. You 
 
 ## The revised Class 8 study
 
-Participants choose a sure **10 points** or a **50% chance of a larger prize**, otherwise zero. Across six decisions, the prize increases. The points are hypothetical. The two supplied Word documents specify the experiment and analysis plan.
+How much extra expected value do people require to choose a gamble over a sure outcome? Participants make **seven decisions** between a sure **10 points** and a **50% chance of a varying prize**, otherwise zero. They are randomly assigned to ascending or descending prize order. The points are hypothetical. The two supplied Word documents specify the experiment and analysis plan.
 
 ## The earlier study in Classes 9–12
 
