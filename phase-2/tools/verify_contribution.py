@@ -81,8 +81,14 @@ def rehearse():
         for command in commands:
             run(local, *shell, command)
         folder = local / "student-lessons/student-demo"
-        require((folder / "README.md").read_bytes() == (REPO / "class-10/lesson-template/README.md").read_bytes(),
-                "Template copy differs")
+        # Git can use CRLF in a Windows checkout. Check the copy against its
+        # actual source in this clone, then compare normalized text to the course.
+        for name in ("README.md", "requirements.txt"):
+            source = local / "class-10/lesson-template" / name
+            require((folder / name).read_bytes() == source.read_bytes(), f"Template copy differs: {name}")
+            require(source.read_text(encoding="utf-8") ==
+                    (REPO / "class-10/lesson-template" / name).read_text(encoding="utf-8"),
+                    f"Cloned template content differs: {name}")
         (folder / "README.md").write_text("# Test lesson\n\nA fictional contribution.\n", encoding="utf-8")
         (local / ".venv").mkdir()
         (local / ".venv/private-marker").write_text("not for submission", encoding="utf-8")
