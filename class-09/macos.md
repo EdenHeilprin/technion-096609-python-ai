@@ -4,13 +4,29 @@ Start with the extracted `class-09` folder open in VS Code. Python 3.13 and the 
 
 ## 1. Check Python and the folder
 
-Choose **Terminal → New Terminal** in VS Code. Run each command separately, pressing Enter after each:
+Choose **Terminal → New Terminal** in VS Code. A terminal panel opens below the editor. Run each command separately, pressing Enter after each:
 
 ```bash
 python3.13 --version
 ```
 
 Expect **Python 3.13.x**. If the command is not found, return to the Class 0 macOS guide; do not substitute an arbitrary Python version.
+
+Check that Python can run a simple calculation:
+
+```bash
+python3.13 -c "print(2 + 3)"
+```
+
+It should print **5**. The `-c` option runs the Python code inside the quotes.
+
+Now check which folder this terminal is using:
+
+```bash
+pwd
+```
+
+The displayed path should end in **class-09**. List its files:
 
 ```bash
 ls
@@ -32,34 +48,36 @@ This creates a `.venv` folder. No output usually means success.
 
 Wait for the command to finish. It installs the version in `requirements.txt` from Python's package index. You only need this installation once per project.
 
-```bash
-.venv/bin/python check_setup.py
-```
+## 3. Activate and check the environment
 
-Expect **CLASS 9 SETUP PASSED**, Python 3.13.x, and oTree 6.0.15.
-
-## 3. Select the environment in VS Code
-
-Press **Cmd+Shift+P**, choose **Python: Select Interpreter**, and select the interpreter in this folder's `.venv`. If it is not listed, choose **Enter interpreter path → Find** and select `.venv/bin/python`. In a Mac file picker, **Cmd+Shift+.** shows hidden folders such as `.venv`.
-
-## 4. Start oTree
-
-In the terminal, activate this project's environment:
+In the same terminal, run:
 
 ```bash
 source .venv/bin/activate
 ```
 
-Then start the server:
+Activation makes this terminal use the Python and packages inside `.venv`. Check them by running the supplied setup-check file:
+
+```bash
+python check_setup.py
+```
+
+It prints the Python version, the interpreter's location, and the oTree version. Its final line should be **CLASS 9 SETUP PASSED**. That means this project is using Python 3.13.x and oTree 6.0.15.
+
+Press **Cmd+Shift+P**, choose **Python: Select Interpreter**, and select the interpreter in this folder's `.venv`. If it is not listed, choose **Enter interpreter path → Find** and select `.venv/bin/python`. In a Mac file picker, **Cmd+Shift+.** shows hidden folders such as `.venv`.
+
+## 4. Start oTree
+
+Return to that same VS Code terminal and run:
 
 ```bash
 otree devserver
 ```
 
-The terminal stays busy while the server runs. Open **http://localhost:8000** in your browser. Keep the terminal open and [continue at Step 3 of the lesson](README.md#3-complete-a-run-and-find-your-answers).
+This starts oTree on your laptop. Wait for **Open your browser to http://localhost:8000/**. The terminal stays occupied because oTree is now serving the experiment's pages; that is expected. Leave it open and [continue at Step 3 of the lesson](README.md#3-complete-a-run-and-find-your-answers), where you will open the browser and create a session.
 
 To stop: click this terminal and press **Control+C**. To start again in the same terminal: run `otree devserver`. If you open a **new terminal**, activate `.venv` again first. You do not need to reinstall oTree or recreate `.venv`.
 
-Activation makes this terminal use the project's Python and oTree, including the extra process that oTree starts. Do not use the editor's Play button to run `__init__.py`; oTree starts the app for you.
+**Note:** use `otree devserver`, not the editor's Play button on `__init__.py`, to run this experiment.
 
 [Troubleshooting](TROUBLESHOOTING.md) · [Official oTree installation guide](https://otree.readthedocs.io/en/latest/install.html)

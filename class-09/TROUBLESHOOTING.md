@@ -12,6 +12,12 @@ Use **File → Open Folder** to open the extracted `class-09` folder, then **Ter
 
 Use the exact commands in your [Mac](macos.md) or [Windows](windows.md) guide. Activate `.venv` before `otree devserver`, even if you selected that interpreter in VS Code. Run `check_setup.py` using the guide's command and read the printed interpreter path. If an existing `.venv` uses the wrong Python, rename that folder to `.venv-old` and repeat the environment-creation step with Python 3.13.
 
+## The browser shows a different experiment or a TEST ONLY entry
+
+The Class 9 download has one configuration, **Sure or gamble**, and no separate **TEST ONLY** entry. A different list can mean an earlier project's oTree is still running at `localhost:8000`; changing the folder in VS Code does not stop it.
+
+Find the VS Code terminal where you started the earlier experiment and press **Control+C** there. Then open `class-09` in VS Code, create a new terminal, check the folder with `pwd` on Mac or `cd` in Windows Command Prompt, activate this folder's `.venv`, and run `otree devserver`. Refresh the browser. Do not delete the earlier project's database.
+
 ## Package installation fails
 
 Check your connection and the complete error message. Retry the same install command after restoring access. Do not disable certificate verification or download replacement installers from an unofficial site. A managed university laptop may need IT help.
@@ -22,7 +28,7 @@ Open a **Command Prompt** terminal using the dropdown beside the terminal's **+*
 
 ## The browser cannot open localhost
 
-The terminal must still be running `devserver`, without an error. Use `http://localhost:8000`, not `https`. If port 8000 is already in use, stop your earlier devserver with Control+C. Alternatively append `8001` to the start command and use `http://localhost:8001`.
+In VS Code, look at the terminal where you entered `otree devserver`. It should show the browser address, not an error. Use `http://localhost:8000`, not `https`. If port 8000 is already in use, stop your earlier experiment with Control+C in its terminal. To keep that experiment running instead, use `otree devserver 8001` for Class 9 and open `http://localhost:8001`.
 
 ## My edit is not visible
 

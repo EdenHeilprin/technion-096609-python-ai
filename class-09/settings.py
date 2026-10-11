@@ -2,7 +2,7 @@
 SESSION_CONFIGS = [
     dict(
         name='seven_choices',
-        display_name='Seven choices — local practice',
+        display_name='Sure or gamble',
         num_demo_participants=2,
         app_sequence=['choice_task'],
         is_test=True,

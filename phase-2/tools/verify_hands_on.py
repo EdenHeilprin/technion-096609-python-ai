@@ -77,14 +77,20 @@ def check_experiment(project):
     with (project / "server-test.log").open("w", encoding="utf-8") as log:
         process = start_server(project, port, log)
         try:
+            configs = json.loads(get(client, base + "/api/session_configs")[1])
+            check(len(configs) == 1 and configs[0]["display_name"] == "Sure or gamble",
+                  "One experiment configuration with the lesson's displayed name")
+            demo = get(client, base)[1]
+            check("Sure or gamble" in demo and "TEST ONLY" not in demo, "No duplicate test demo")
             session = json.loads(get(client, base + "/api/sessions",
                                     {"session_config_name": "seven_choices", "num_participants": 2}, True)[1])
             info = json.loads(get(client, base + "/api/sessions/" + session["code"])[1])
-            # Read the same wide export named in the lesson, including blank runs.
-            export_url = base + "/api/export_wide?session_code=" + session["code"]
+            # Use the same per-app download as the lesson, including blank runs.
+            export_url = base + "/api/export_app?app=choice_task"
             initial = list(csv.DictReader(io.StringIO(get(client, export_url)[1])))
-            check(len(initial) == 2, "Two participant rows in wide export")
-            conditions = {row["participant.code"]: row["choice_task.1.player.condition"] for row in initial}
+            check(len(initial) == 14, "Fourteen participant-round rows in per-app export")
+            conditions = {row["participant.code"]: row["player.condition"] for row in initial
+                          if row["subsession.round_number"] == "1"}
             check(set(conditions.values()) == {"ascending", "descending"}, "Both orders assigned")
             for index, person in enumerate(info["participants"]):
                 code = person["code"]
@@ -115,19 +121,24 @@ def check_experiment(project):
                 expected[code] = (prizes, answers, page[0])
             raw = get(client, export_url)[1]
             rows = list(csv.DictReader(io.StringIO(raw)))
+            check(len(rows) == 14, "Two completed runs contribute fourteen decisions")
             for row in rows:
                 prizes, answers, _ = expected[row["participant.code"]]
-                for number in range(1, 8):
-                    check(int(row[f"choice_task.{number}.player.prize"]) == prizes[number - 1], "Saved prize")
-                    check(row[f"choice_task.{number}.player.choice"] == answers[number - 1], "Saved response")
-                check(bool(row["choice_task.1.player.completed_at"]), "Completion recorded")
-            check("All apps (wide format)" in get(client, base + "/ExportIndex")[1], "Export label matches lesson")
+                number = int(row["subsession.round_number"])
+                check(int(row["player.prize"]) == prizes[number - 1], "Saved prize")
+                check(row["player.choice"] == answers[number - 1], "Saved response")
+                check(row["session.code"] == session["code"], "Exported session identifier")
+                if number == 1:
+                    check(bool(row["player.completed_at"]), "Completion recorded")
+            export_page = get(client, base + "/ExportIndex")[1]
+            check("Per-app data" in export_page and 'id="app-choice_task"' in export_page,
+                  "Per-app CSV button matches lesson")
         finally:
             save_and_stop(process, port)
-        # Apply the exact tiny lesson edit only inside the disposable test copy.
+        # Apply the manual wording edit only inside the disposable test copy.
         thanks = project / "choice_task/ThankYou.html"
         original = thanks.read_text(encoding="utf-8")
-        revised = "Your seven decisions have been saved. Thank you for your time."
+        revised = "Your seven decisions have been saved."
         thanks.write_text(original.replace("Your seven decisions have been recorded.", revised), encoding="utf-8")
         process = start_server(project, port, log)
         try:
@@ -136,8 +147,18 @@ def check_experiment(project):
                 check(revised in get(client, url)[1], "Saved HTML edit appears after restart/refresh")
         finally:
             save_and_stop(process, port)
+        # Check the subsequent formatting task separately from the manual edit.
+        formatted = 'Your seven decisions have been <strong style="color: #166534;">saved</strong>.'
+        thanks.write_text(original.replace("Your seven decisions have been recorded.", formatted), encoding="utf-8")
+        process = start_server(project, port, log)
+        try:
+            check(get(client, export_url)[1] == raw, "Formatting leaves saved responses unchanged")
+            for _, _, url in expected.values():
+                check(formatted in get(client, url)[1], "Bold, dark-green saved word renders")
+        finally:
+            save_and_stop(process, port)
             thanks.write_text(original, encoding="utf-8")
-    print("PASS: Class 9 consent, details, both seven-round orders, saved export, restart, HTML edit")
+    print("PASS: Class 9 single configuration, both orders, per-app CSV, restart, manual and formatting edits")
 
 
 def check_python(lesson):
