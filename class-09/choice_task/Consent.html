@@ -1,0 +1,14 @@
+{{ block title }}Sure or gamble{{ endblock }}
+{{ block styles }}
+<!-- Use the same readable layout on every participant page. -->
+<link rel="stylesheet" href="{{ static 'choice_task/design.css' }}">
+{{ endblock }}
+{{ block content }}
+<!-- Explain the task and consent before collecting any choices. -->
+<p>You will make seven decisions between 10 points for sure and a gamble with a 50% chance of a prize and a 50% chance of 0 points.</p>
+<p>All points are hypothetical. There is no monetary payment, and you will not see lottery outcomes.</p>
+<p>Participation is voluntary. You may stop at any time by closing this tab.</p>
+<p>Analysis will be assisted by AI. Only group results will be shared.</p>
+{{ formfields }}
+<button class="otree-btn-next btn btn-primary">Continue</button>
+{{ endblock }}

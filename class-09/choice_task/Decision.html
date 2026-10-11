@@ -1,0 +1,39 @@
+{{ block title }}Decision {{ player.round_number }} of {{ total_rounds }}{{ endblock }}
+{{ block styles }}
+<!-- Use the same readable layout on every participant page. -->
+<link rel="stylesheet" href="{{ static 'choice_task/design.css' }}">
+{{ endblock }}
+{{ block content }}
+<!-- Identify each choice by its payoff distribution; keep the sure outcome on the left. -->
+<p>Which option would you choose? The points are hypothetical.</p>
+<fieldset class="choice-fieldset">
+    <legend>Choose one option</legend>
+    <div class="options">
+        <!-- Clicking anywhere on a card selects its radio; only Next submits it. -->
+        <label class="option">
+            <span class="option-outcomes" id="option-a-outcomes">
+                <strong>100% chance of {{ sure_points }} points</strong>
+            </span>
+            <span class="option-control">
+                <input type="radio" name="choice" value="sure" required
+                       aria-labelledby="option-a-outcomes"
+                       {{ if form.choice.data == 'sure' }}checked{{ endif }}>
+            </span>
+        </label>
+        <label class="option">
+            <span class="option-outcomes" id="option-b-outcomes">
+                <strong>50% chance of {{ player.prize }} points</strong>
+                <span>50% chance of 0 points</span>
+            </span>
+            <span class="option-control">
+                <input type="radio" name="choice" value="gamble" required
+                       aria-labelledby="option-b-outcomes"
+                       {{ if form.choice.data == 'gamble' }}checked{{ endif }}>
+            </span>
+        </label>
+    </div>
+</fieldset>
+<!-- Keep oTree's validation messages and the explicit confirmation button. -->
+{{ formfield_errors 'choice' }}
+{{ next_button }}
+{{ endblock }}

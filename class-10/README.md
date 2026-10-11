@@ -1,186 +1,194 @@
-# Class 10 — Turn a Prototype into a Study
+# Class 10 — Python Files and Your First GitHub Project
 
-One choice can tell us what someone preferred at one particular offer. To examine how preferences vary, we need several offers—and an interface that presents each one clearly.
+Turn a CSV of decisions into a small, reusable summary program. Then share the code on GitHub and review a change before merging it.
 
-Today, you will use Codex to extend the prototype into a six-choice experiment, collect confidence ratings, improve the participant interface with HTML/CSS/JavaScript, and inspect the recorded results.
+## 1. Open and run the project
 
-Our question is: **how does choosing the gamble vary as the guaranteed alternative increases?**
+**[Download Class 10 files](https://github.com/EdenHeilprin/technion-096609-python-ai/raw/refs/heads/main/class-10/class-10-files.zip)**
 
-## Start from a clean copy
+Extract the ZIP and keep `class-10` next to your earlier class folders. Open it in VS Code and select your Python 3.13 interpreter. No new packages are needed.
 
-1. [Download the Class 10 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/class-10/class-10-files.zip) and extract the `class-10` folder.
-2. Keep it beside your Class 9 folder. Do not replace your Class 9 work. If `class-10` already exists, give this new copy a different name.
-3. Stop any experiment server still running from Class 9 with **Ctrl+C** in its terminal.
-4. Open the new `class-10/research-project` folder in VS Code and Codex. Follow [SETUP.md](SETUP.md) to prepare and check its environment.
-
-This download starts with the working one-choice experiment from Class 9, without your previous test database. It also includes a separate full-study checkpoint in `checkpoints/full/research-project`.
-
-Keep all work below inside this new project. Its `experiment`, `data`, and `docs` folders now belong to Class 10.
-
-## 1. Specify what changes—and what stays the same
-
-Read [the extension brief](EXTENSION_BRIEF.md). The guaranteed offers become:
-
-```python
-[2, 3, 4, 6, 7, 8]
-```
-
-The gamble stays the same on every round: a 50% chance of 10 points and a 50% chance of 0 points. After each choice, the participant reports confidence in that choice from **1 — Not at all confident** to **7 — Very confident**.
-
-Before asking Codex to build, write a prediction in `docs/PREDICTION.md`: at which guaranteed offers do you expect more people to choose the gamble? Why?
-
-The gamble's expected value is:
-
-```python
-0.5 * 10 + 0.5 * 0  # 5 points
-```
-
-That is a long-run average, not a promised outcome. A participant can prefer certainty, so expected value does not supply a single correct choice.
-
-Send Codex:
-
-> Read `PROJECT.md`, `AGENTS.md`, `docs/EXTENSION_BRIEF.md`, and the existing experiment. Plan the change from one choice to the six-round `full-v1` study. Explain how the offer is selected for each round, where choice and confidence are saved, and how the export will represent six responses from one participant. Keep the current package versions and environment helpers. Do not edit yet.
-
-Check the plan for the six offers, fixed gamble, required confidence, and the same nine-column export. Then send:
-
-> Implement that plan. Use concise English `#` comments to explain the Python lines and concepts, and suitable comments for HTML/CSS/JavaScript. Keep the implementation focused on the extension brief. Run the checks available to you, report actual results, and list the browser checks that remain for me. Do not describe a check as passed unless it was executed.
-
-## 2. Understand the repeated rounds
-
-Open `experiment/choice_task/__init__.py`. Find the offer list and the number of rounds. Then locate the code that selects an offer using the current `round_number`.
-
-oTree numbers rounds from **1**; Python list positions begin at **0**. The selection will therefore use the equivalent of:
-
-```python
-sure_points = offers[round_number - 1]
-```
-
-Predict the results before checking them:
-
-| Round number | List position | Sure points |
-| --- | --- | --- |
-| 1 | 0 | 2 |
-| 3 | 2 | 4 |
-| 6 | 5 | 8 |
-
-Each round has its own `Player` record, so the next answer does not overwrite the previous round's answer. The participant code connects those records to the same person.
-
-Everyone receives offers in the same ascending order in this pilot. **Offer and position therefore change together.** If gambling becomes less common later, this study alone cannot separate the effect of the offer from effects of order, practice, or fatigue. Keep that limitation in mind when interpreting the data in Class 11.
-
-## 3. Improve what the participant sees
-
-Run `run_experiment.py` from the root of `research-project` and open [http://localhost:8000](http://localhost:8000). Choose **Sessions → Create new session**, select **Sure or gamble — six decisions** (the `sure_or_gamble` configuration), enter **2 participants**, and choose **Create**. Open the first participant link.
-
-You should see a short introduction followed by the first choice. On each choice page, look for the current round, both options, and the confidence question.
-
-The interface has four complementary parts:
-
-| Part | Job | Example in your project |
-| --- | --- | --- |
-| Python | Study rules, valid values, and saved responses | `choice_task/__init__.py` |
-| HTML | Page structure and labeled inputs | `choice_task/Choice.html` |
-| CSS | Spacing, sizing, contrast, and layout | `_static/choice_task/study.css` |
-| JavaScript | Immediate behavior in the browser | `_static/choice_task/confidence.js` |
-
-Those paths are inside `experiment`. Open the three interface files and find one recognizable element in each: a heading or form, a style rule, and the JavaScript that responds to a confidence selection.
-
-Choose confidence **2**, then **6**, without submitting yet. The small selected-value preview should update immediately. This is JavaScript changing the current page; the form is saved by oTree when you submit it.
-
-Now make one practical improvement. Narrow the browser window to approximately phone width. Look for text that is cramped, buttons that are hard to use, or information that is easy to miss. Ask Codex to improve one specific issue. For example:
-
-> On a narrow screen, make the two alternatives easier to compare by stacking them vertically with equal visual weight and generous spacing. Keep the wording, option order, offers, form values, and study behavior unchanged. Explain the CSS changes and let me verify the page before making further changes.
-
-Use your own observation if the page already stacks well. A useful improvement might instead clarify a heading or make the progress indicator easier to read. Refresh the page and compare wide and narrow views. If a style looks unchanged, try a hard refresh: **Cmd+Shift+R** on Mac or **Ctrl+Shift+R** on Windows.
-
-Keep both options equally easy to see and select. A visual improvement should not accidentally tell participants which answer you prefer.
-
-## 4. Test the participant journey
-
-Create a **new session** after the interface change so you can test from the beginning. Use the first participant link for this full path:
-
-1. On the first choice page, submit without answering. It must not advance.
-2. Select a choice but leave confidence unanswered. It must still not advance.
-3. Select confidence **1**, then change it to **7**. Check that the preview follows your selection. Neither value should be selected automatically on a new round.
-4. Refresh the page before submitting. Your current selections should remain selected in the same browser.
-5. Complete the six rounds, recording your answers as you go. Use this known sequence for an easy export check:
-
-| Round | Sure offer | Choice to select | Confidence |
-| --- | --- | --- | --- |
-| 1 | 2 | Gamble | 7 |
-| 2 | 3 | Gamble | 6 |
-| 3 | 4 | Gamble | 5 |
-| 4 | 6 | Sure | 5 |
-| 5 | 7 | Sure | 6 |
-| 6 | 8 | Sure | 7 |
-
-After round 6, you should reach the final acknowledgement. Refresh that page; it should not create another response or restart the study.
-
-Use the second participant link to complete **only the first two rounds**, then close that participant tab. This intentionally unfinished case will help you recognize incomplete records.
-
-Record any failed check with its inputs and observed behavior, then ask Codex to fix that specific problem. Retest the affected path after the change.
-
-The server—not just JavaScript—must enforce the allowed answers. Ask Codex to check and explain where the Python code rejects missing choices, invalid choice values, and confidence outside 1–7. If it can run a direct submission check, ask for its actual result; otherwise record that it reviewed the code rather than tested the submission.
-
-## 5. Export and recognize a participant's records
-
-Return to oTree's **Data** page. Under **Custom exports**, find **`choice_task (custom_export)`** and choose **CSV**. Save it as `data/class10_pilot.csv` inside this project.
-
-Open it in VS Code. The header remains:
+Open `summarize_choices.py`, save it, and choose **Run Python File in Terminal**. You should see:
 
 ```text
-session_code,participant_code,study_version,round_number,sure_points,gamble_high,gamble_probability,choice,confidence
+Decisions: 14
+Gamble choices: 7
+Gamble choices (%): 50.0
+Saved: ...summary.csv
 ```
 
-Find the codes for your final test session. For the completed participant, check:
+Open the new `summary.csv`. It contains one summary row. Running the program again updates this file; it does not change `sample_choices.csv`.
 
-- Six rows share the same participant and session codes.
-- `study_version` is `full-v1`.
-- Rounds 1–6 contain offers 2, 3, 4, 6, 7, and 8, respectively.
-- Choices and confidence values match your six test responses.
-- The gamble remains `10` with probability `0.5` on every row.
+Our input contains **two fictional participants, each making seven choices**. It is a small, tidy teaching example, not a raw oTree export. Each row is one decision. You can check every count yourself.
 
-For the unfinished participant, rounds they did not submit should have blank response fields. A created participant record is not proof that the participant finished.
+## 2. Read a file instead of typing the data into Python
 
-Your export may also contain earlier sessions. Identify records using the combination of **session code, participant code, and round number**; those three values identify one expected row. Keep the original export unchanged.
+Open `sample_choices.csv` in VS Code. Its first line names the columns:
 
-## 6. Leave a usable handoff
+```csv
+participant_id,condition,round_number,prize,choice
+```
 
-Ask Codex:
+The remaining lines contain the values. A **CSV** is a plain-text table: commas separate its columns.
 
-> Write `docs/CLASS10_NOTES.md` explaining the implemented study, the purpose of its Python/HTML/CSS/JavaScript files, and my interface change. Include the fixed-order limitation and the actual checks performed. Identify `data/class10_pilot.csv` as a local test export; do not treat its known test answers as research findings. Separate passed checks from checks not yet performed.
+Return to the Python file. Its first lines import two **modules**: reusable Python tools. `csv` handles CSV tables; `pathlib` handles file paths. Both come with Python, so there is nothing to install.
 
-Read the note and correct anything that does not match what you did. Keep the project and export: Class 11 will show how to turn rows like these into checked tables and figures.
+```python
+import csv
+from pathlib import Path
 
-## Collecting responses together
+folder = Path(__file__).resolve().parent
+input_file = folder / "sample_choices.csv"
+```
 
-When your instructor shares the hosted study link or QR code, you can take part from your phone or laptop. The instructor will collect the class export from that server. Your own `localhost` link is for your own computer; it is not the link to share with the class.
+`__file__` identifies this script. The next steps obtain its folder and construct the path to a file beside it. Here, `/` joins a folder and filename; it is not arithmetic. This works on Mac and Windows without writing your personal Desktop path into the code.
 
-If you are reviewing alone, your local completed and unfinished test participants are enough to finish this lesson. Class 11 also supplies clearly labeled synthetic data for practicing analysis.
+Now find the reading block:
 
-## If you need the working checkpoint
+```python
+with open(input_file, newline="", encoding="utf-8") as file:
+    reader = csv.DictReader(file)
+    choices = list(reader)
+```
 
-Stop the running server with **Ctrl+C**. Open `checkpoints/full/research-project` from this download as a **separate folder** in VS Code and Codex. Follow `SETUP.md` for that folder and start from **Improve what the participant sees** above.
+`with open(...)` opens the file and closes it when the indented block ends. `DictReader` turns each row into a **dictionary**, using the column headings as keys. `list(reader)` collects those dictionaries into a list.
 
-Keep your original attempt. The checkpoint lets you inspect the implementation, make your own interface improvement, and perform every browser/export check without generating the full study again. If you have no remaining AI allowance, make a small wording or spacing change directly in the commented HTML/CSS files and write `docs/CLASS10_NOTES.md` yourself.
+**Try it:** temporarily add `print(choices[0])` just below the block and run the script. Find the keys `prize` and `choice`. You are back to the lists and dictionaries from Class 3.
 
-## Optional — improve the design, not only the page
+One detail matters: values read from this CSV are **strings**. To calculate the expected value of the first gamble:
 
-Sketch a study version that could help separate offer effects from order effects. What would change for the participant? What additional information would you need to save to analyze it correctly?
+```python
+first_prize = int(choices[0]["prize"])
+gamble_ev = 0.5 * first_prize
+print("First gamble EV:", gamble_ev)
+```
 
-Discuss or ask Codex to critique your proposal **without implementing it in the core project**. Class 12 will give you room for a focused extension.
+The result is **1.0 point**. Remove these temporary inspection lines after checking them.
 
-## Quick reference
+## 3. Follow the calculation and saved output
 
-| Term | Simple meaning | Example here |
-| --- | --- | --- |
-| Round | One repeated decision in the experiment | Sure 4 versus the gamble in round 3 |
-| HTML | The structure and labeled content of a web page | A heading and a confidence form |
-| CSS | Rules controlling the page's appearance | Cards stack on a narrow screen |
-| JavaScript | Code that responds within the browser | The selected-confidence preview |
-| Validation | Checking whether a submitted response is allowed | Confidence must be an integer from 1 to 7 |
-| Participant code | A generated code linking one participant's records | The same code on six round rows |
-| Row key | Values that identify one expected record | Session + participant + round |
-| Incomplete response | A record without all required submitted answers | Blank choice and confidence on an unvisited round |
-| Confounding | Two things vary together, so their effects cannot be separated by this design | Higher offers always occur later |
+Find the loop that counts `gamble` responses. It is the familiar combination of a list, loop, dictionary lookup, `if`, and counter.
 
-Further reference: [oTree templates](https://otree.readthedocs.io/en/latest/templates.html), [oTree forms and validation](https://otree.readthedocs.io/en/latest/forms.html), [oTree data exports](https://otree.readthedocs.io/en/latest/admin.html#export-data).
+Next, the `percentage` function converts a count and total into a percentage. We round it to one decimal place for display.
+
+The writing block creates a CSV:
+
+```python
+with open(output_file, "w", newline="", encoding="utf-8") as file:
+    writer = csv.writer(file)
+    writer.writerow(["choice", "count", "percentage"])
+    writer.writerow(["gamble", gamble_count, gamble_percentage])
+```
+
+`"w"` means **write**, replacing the previous contents of this output file. Each `writerow` writes one row. Keep `output_file` different from `input_file` so you never overwrite the source data.
+
+**Check your interpretation:** 50% of what? It is 50% of the **14 decisions**, not 50% of participants. Each participant contributes seven responses.
+
+## 4. Put your working program on GitHub
+
+Git records versions of files. GitHub hosts repositories and lets people inspect, discuss, and share changes. The program still runs on your computer.
+
+1. Sign in to [GitHub](https://github.com), or create a free account and verify your email.
+2. Select **+ → New repository**. Name it `choice-summary`, choose **Public** if you want classmates to see it, and enable **Add a README file**. You may choose Private instead; only invited people will be able to access it.
+3. Create the repository. Use **Add file → Upload files** to upload only `summarize_choices.py` and `sample_choices.csv` from your local folder.
+4. Use the commit message **Add working choice summary** and commit these initial files to `main`.
+5. Open `README.md` on GitHub, select its pencil/edit button, and replace the initial text with the description below. Commit the change to `main`.
+
+```markdown
+# Choice summary
+
+A small Python program that summarizes fictional sure-versus-gamble choices.
+The sample contains 14 decisions from two fictional participants.
+
+## Run
+
+Download and extract the repository. Open the folder in VS Code.
+With Python 3.13 selected, run summarize_choices.py using Run Python File in Terminal.
+No additional packages are needed.
+
+The program reads sample_choices.csv and writes summary.csv beside the script.
+The initial version reports 7 gamble choices out of 14 decisions (50.0%).
+
+Based on the Class 10 exercise in Technion course 096609:
+https://github.com/EdenHeilprin/technion-096609-python-ai/tree/main/class-10
+```
+
+A **commit** is a recorded version with a message explaining the change. Open the repository's commit history and find your uploads and README edit.
+
+Only upload the two named teaching files. Do not upload your Class 9 database, exports, `.venv`, passwords, or real participant data. Uploading in the browser does **not** automatically synchronize your local folder.
+
+## 5. Improve the program on a branch
+
+The summary currently reports only gamble choices. Make it report **sure choices too**.
+
+1. On GitHub, open the branch selector labeled `main`. Type `add-sure-summary` and create that branch from `main`. A branch lets you propose changes while leaving the main version intact.
+2. In **VS Code**, edit your local `summarize_choices.py`:
+   - Calculate `sure_count` from the total and gamble count.
+   - Call `percentage` again to calculate `sure_percentage`.
+   - Print both new values.
+   - Add a second data row to the output CSV for `sure`.
+3. Save and run the entire file. Check that the two counts sum to **14** and the two percentages sum to **100.0**. For these data, both choices have count **7** and percentage **50.0**.
+4. With `add-sure-summary` still selected on GitHub, upload the revised `summarize_choices.py`. Confirm that you are committing to that branch. Use **Report sure choices alongside gambles** as the commit message.
+5. Edit the branch's README to mention the two-row output, and commit that edit on the same branch.
+
+<details>
+<summary>Need a hint for the Python change?</summary>
+
+After the gamble percentage is calculated, add:
+
+```python
+sure_count = total_decisions - gamble_count
+sure_percentage = percentage(sure_count, total_decisions)
+print("Sure choices:", sure_count)
+print("Sure choices (%):", sure_percentage)
+```
+
+Inside the output-writing block, below the gamble row, add:
+
+```python
+    writer.writerow(["sure", sure_count, sure_percentage])
+```
+
+Keep this last line indented so it runs while the output file is still open.
+
+</details>
+
+**An extra check:** temporarily change one `sure` response in the sample to `gamble`. Predict the output, then run the script: gamble **8 / 57.1%**, sure **6 / 42.9%**. Restore that response and rerun before sharing your final version. This checks more than the easy 50–50 case.
+
+## 6. Review, merge, and share
+
+1. Open **Pull requests → New pull request** in your repository. Set **base: main** and **compare: add-sure-summary**.
+2. Review the **diff**: removed lines appear red, added lines green. Check that only your intended Python and README changes appear.
+3. Create the pull request. Describe the improvement and the two checks you ran.
+4. Show a partner the diff. Can they explain why `total_decisions - gamble_count` gives the sure count for this dataset? Have them check the output too.
+5. Once satisfied, choose **Merge pull request → Confirm merge**. Return to `main` and check that it now contains the updated program.
+
+A **pull request** proposes a change; a **merge** incorporates it into the target branch. In your own repository, you control this decision. A branch in your repository is separate from a fork, which is your own copy of someone else's repository.
+
+Finally, select **Code → Download ZIP** on `main`. Extract it to a separate folder and run that downloaded program. This checks that someone else receives everything needed, not just the copy that happens to work on your computer.
+
+Show a partner your repository and give a **two-minute explanation**: what goes in, what comes out, one important line of Python, and the change visible in your pull request.
+
+## Optional: use Codex as a reviewer
+
+After completing your edit, open the local `class-10` folder in Codex and ask:
+
+```text
+Review summarize_choices.py without changing files. Does it count both choices correctly and preserve the input CSV? Explain one line I might misunderstand, and suggest one concrete check I can run myself. Keep your response short.
+```
+
+Check its answer against the code and your results. The exercise is complete without this step if you have no Codex usage available.
+
+## Reference
+
+| Tool | Purpose |
+| --- | --- |
+| `import csv` | Use Python's CSV tools |
+| `Path(__file__).resolve().parent` | Locate the folder containing this script |
+| `csv.DictReader(file)` | Read rows as dictionaries |
+| `with open(...)` | Open a file and close it after the block |
+| `int(...)` | Convert text to a whole number |
+| `writer.writerow([...])` | Save one CSV row |
+| Commit / branch / pull request / merge | Record / propose separately / review / incorporate a change |
+
+Further help: [Python CSV documentation](https://docs.python.org/3.13/library/csv.html), [GitHub's Hello World walkthrough](https://docs.github.com/en/get-started/using-github/hello-world), [creating a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository), [uploading files](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository), and [creating a pull request](https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request).

@@ -27,12 +27,12 @@ Class 0 will help you check or install the required free software and run one sm
 
 ## Phase 2 — Direct a complete research workflow
 
-This phase connects building an experiment, collecting responses, analyzing data, and writing a research report. We are revising it one step at a time, starting with **Class 8**. Classes 9–12 remain the earlier version pending review.
+This phase connects building an experiment, collecting responses, analyzing data, and writing a research report. Class 8 demonstrates the workflow; Classes 9 and 10 move to hands-on setup, Python files, and GitHub. Classes 11–12 remain the earlier version pending review.
 
 - **[Class 8 — From Answers to Delegation](class-08/README.md)**
-- **[Class 9 — Build Your First Experiment with Codex](class-09/README.md)**
-- **[Class 10 — Turn a Prototype into a Study](class-10/README.md)**
+- **[Class 9 — Codex and oTree Setup](class-09/README.md)**
+- **[Class 10 — Python Files and Your First GitHub Project](class-10/README.md)**
 - **[Class 11 — From Choices to Evidence](class-11/README.md)**
 - **[Class 12 — Direct a Research Workflow](class-12/README.md)**
 
-Class 8 is an instructor-led demonstration. To rehearse it yourself, its page contains the prompts and a two-file download for a fresh Codex project. Classes 9–12 retain their earlier downloads and working examples. Keep each class in its own folder so your earlier work stays intact.
+Class 8 contains prompts and a two-file download for a fresh Codex project. Class 9 provides a working experiment; Class 10 provides a small CSV and Python program. Keep each class in its own folder so your earlier work stays intact.

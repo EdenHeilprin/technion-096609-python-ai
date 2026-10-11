@@ -1,0 +1,12 @@
+{{ block title }}About you{{ endblock }}
+{{ block styles }}
+<!-- Use the same readable layout on every participant page. -->
+<link rel="stylesheet" href="{{ static 'choice_task/design.css' }}">
+{{ endblock }}
+{{ block content }}
+<!-- Collect details only once, using a reusable ID rather than a real name. -->
+<p>Enter your Prolific ID or a made-up classroom ID. Please do not enter your real name. Reuse the same ID if you restart.</p>
+<p>Age and gender are optional.</p>
+{{ formfields }}
+<button class="otree-btn-next btn btn-primary">Start decisions</button>
+{{ endblock }}

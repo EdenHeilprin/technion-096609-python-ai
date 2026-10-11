@@ -80,13 +80,14 @@ def verify_archive(number, folder):
             with zipfile.ZipFile(lesson / filename) as document:
                 check(document.testzip() is None, f"Class8: intact {filename}")
                 check("word/document.xml" in document.namelist(), f"Class8: valid Word package {filename}")
-    else:
+    elif number in {11, 12}:
         check((lesson / "research-project/docs/STUDY_SPEC.md").exists(), f"{name}: supplied study context")
-    if number in {9, 10}:
-        check((lesson / "research-project/data").is_dir(), f"{name}: export destination exists")
     if number == 9:
-        check(not (lesson / "research-project/experiment/choice_task").exists(), "Class9 is genuinely a scaffold")
-        check((lesson / "checkpoints/minimal/research-project/experiment/choice_task/__init__.py").is_file(), "Class9 recovery")
+        check((lesson / "choice_task/__init__.py").is_file(), "Class9 supplies the working seven-choice app")
+        check((lesson / "requirements.txt").read_text().strip() == "otree==6.0.15", "Class9 pinned oTree")
+    if number == 10:
+        check((lesson / "summarize_choices.py").is_file(), "Class10 independent Python program")
+        check((lesson / "sample_choices.csv").is_file(), "Class10 fictional teaching data")
     if number == 11:
         check(not (lesson / "research-project/analysis/analyze_choices.py").exists(), "Class11 preserves the build task")
         check((lesson / "checkpoints/analysis/research-project/analysis/analyze_choices.py").is_file(), "Class11 recovery")
@@ -208,9 +209,8 @@ def experiment_run(project, minimal=False, receipt=False):
 def runtime_checks(lessons):
     # Class 8 has no supplied code to run at this stage.
     full_export = experiment_run(lessons[12] / "research-project")
-    experiment_run(lessons[9] / "checkpoints/minimal/research-project", minimal=True)
-    experiment_run(lessons[10] / "research-project", minimal=True)
-    experiment_run(lessons[10] / "checkpoints/full/research-project")
+    # Revised Classes 9 and 10 are checked in their own fresh environment by
+    # verify_hands_on.py. Keep the unrevised Class 11/12 checks intact here.
     for number, relative in [(11, "checkpoints/analysis/research-project"), (12, "research-project")]:
         project = lessons[number] / relative
         for script in ("inspect_data.py", "analyze_choices.py", "explore_confidence.py"):

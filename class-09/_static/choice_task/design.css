@@ -1,0 +1,39 @@
+/* Shared laptop layout: center the task and give text room to breathe. */
+body { background: #f3f5f8; color: #233044; font-size: 19px; line-height: 1.65; }
+.otree-body.container { max-width: 1040px; margin: 32px auto; padding: 32px 40px; background: white; border: 1px solid #e1e6ed; border-radius: 20px; box-shadow: 0 12px 36px rgba(35, 48, 68, 0.06); }
+.otree-title { font-size: 32px; font-weight: 650; letter-spacing: -0.5px; margin: 0 0 24px; padding-top: 0; }
+.otree-form p { margin-bottom: 22px; }
+.form-group { margin-bottom: 28px; }
+.form-control { font-size: 19px; min-height: 48px; border-radius: 8px; }
+.form-check { margin-bottom: 10px; }
+input[type="radio"], input[type="checkbox"] { accent-color: #3458a6; width: 20px; height: 20px; }
+.btn-primary { background: #3458a6; border-color: #3458a6; font-size: 19px; font-weight: 600; padding: 12px 32px; border-radius: 10px; margin-top: 12px; }
+.btn-primary:hover { background: #294784; border-color: #294784; }
+.btn:focus-visible { outline: 3px solid #233044; outline-offset: 4px; }
+
+/* Both options have the same size, colors, typography, and selection treatment. */
+.choice-fieldset { border: 0; padding: 0; margin: 30px 0 24px; min-width: 0; }
+.choice-fieldset legend { font-size: 19px; margin-bottom: 16px; }
+.options { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.option { position: relative; display: flex; flex-direction: column; justify-content: center; text-align: center; min-height: 220px; padding: 28px; margin: 0; border: 2px solid #d9e0e9; border-radius: 14px; background: #fff; cursor: pointer; transition: background 120ms, border-color 120ms; }
+.option:hover { border-color: #8a9bb7; background: #f8faff; }
+.option-outcomes { display: block; margin: 0; font-size: 26px; line-height: 1.5; }
+.option-outcomes strong, .option-outcomes span { display: block; }
+.option-outcomes strong { font-size: inherit; margin-bottom: 10px; }
+.option-outcomes strong:last-child { margin-bottom: 0; }
+/* Hide the radio dots visually while retaining keyboard focus and validation. */
+.option-control input[type="radio"] { position: absolute; width: 1px; height: 1px; padding: 0; margin: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+/* Native radio buttons keep keyboard support and submit the original choice values. */
+.option:has(input:checked) { border-color: #3458a6; background: #edf2ff; box-shadow: 0 0 0 1px #3458a6; }
+.option:has(input:focus-visible) { outline: 3px solid #233044; outline-offset: 4px; }
+
+/* Keep the page usable if the browser window becomes narrower than a laptop. */
+@media (max-width: 760px) {
+    .otree-body.container { margin: 20px auto; padding: 28px 24px; }
+    .options { gap: 16px; }
+    .option { padding: 20px; }
+}
+@media (max-width: 540px) {
+    .options { grid-template-columns: 1fr; }
+    .option { min-height: 200px; }
+}

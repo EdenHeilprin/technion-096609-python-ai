@@ -1,0 +1,15 @@
+participant_id,condition,round_number,prize,choice
+example_a,ascending,1,2,sure
+example_a,ascending,2,8,sure
+example_a,ascending,3,14,sure
+example_a,ascending,4,20,sure
+example_a,ascending,5,26,gamble
+example_a,ascending,6,32,gamble
+example_a,ascending,7,38,gamble
+example_b,descending,1,38,gamble
+example_b,descending,2,32,gamble
+example_b,descending,3,26,gamble
+example_b,descending,4,20,gamble
+example_b,descending,5,14,sure
+example_b,descending,6,8,sure
+example_b,descending,7,2,sure

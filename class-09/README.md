@@ -1,185 +1,91 @@
-# Class 9 — Build Your First Experiment with Codex
+# Class 9 — Codex and oTree Setup
 
-In Class 8, you saw a research workflow carried out with Codex. Today, you direct one yourself: turn a short study specification into an experiment that runs in a browser and records a participant's choice.
+Run the seven-choice experiment from Class 8 on your own laptop, then make and check one small change with Codex.
 
-Your first version asks one question: **would you prefer 4 points for sure, or a 50% chance of 10 points and a 50% chance of 0?** These are hypothetical points. There is no correct answer; the experiment records a preference.
+You need the Python 3.13 and VS Code setup from [Class 0](https://github.com/EdenHeilprin/technion-096609-python-ai/tree/main/class-00-setup). This lesson uses **oTree 6.0.15** in a separate project environment. Keep any other Python installations you already use.
 
-By the end, you will have a working oTree project, a checked response in an exported file, and a clear understanding of where the page, study rules, and recorded answer come from.
+## 1. Download and open the project
 
-## Get your workspace ready
+**[Download Class 9 files](https://github.com/EdenHeilprin/technion-096609-python-ai/raw/refs/heads/main/class-09/class-09-files.zip)**
 
-1. [Download the Class 9 files](https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/class-09/class-09-files.zip).
-2. Extract the ZIP. Find the `class-09` folder inside it and place it in your local course folder. If you already have a `class-09`, keep that folder and give this new copy a different name, such as `class-09-review`.
-3. In VS Code, choose **File → Open Folder** and open this download's `research-project` folder—not the whole course folder or just `experiment`.
-4. Complete the short [setup guide](SETUP.md). It covers Codex access, selecting this local project, and running `setup_environment.py` followed by `check_environment.py`.
+Extract the ZIP: double-click it on Mac, or right-click → **Extract All** on Windows. Move the extracted `class-09` folder into your course-work folder, next to your earlier classes. Open that folder in VS Code using **File → Open Folder**. Trust the folder if VS Code asks, after checking that it came from this repository.
 
-The project has its own `.venv`, a folder holding its Python environment. The setup does not replace your existing Python installation. Use the project's Python environment as explained in the setup guide.
+You should see `settings.py`, `requirements.txt`, and the `choice_task` folder directly in the Explorer. This is an already working experiment; you do not need to ask AI to build it again.
 
-You will work in this structure:
+## 2. Install oTree and start the experiment
 
-```text
-class-09/
-├── README.md
-├── BUILD_BRIEF.md
-├── SETUP.md
-├── research-project/           ← open this folder in VS Code and Codex
-│   ├── PROJECT.md
-│   ├── AGENTS.md
-│   ├── setup_environment.py
-│   ├── check_environment.py
-│   ├── run_experiment.py
-│   ├── experiment/             ← the browser experiment goes here
-│   ├── data/                   ← exported responses go here
-│   └── docs/BUILD_BRIEF.md      ← the task Codex will implement
-└── checkpoints/minimal/research-project/
-```
+Follow **only the guide for your computer**, then return to Step 3:
 
-The starter contains the project setup and a build brief, **not a finished experiment**. You will ask Codex to build it. The checkpoint is a separate working example if you need it later.
+- **[macOS setup](macos.md)**
+- **[Windows setup](windows.md)**
 
-## 1. Define the task before generating code
+The guide creates `.venv`: a folder containing this project's Python environment and installed packages. The experiment's code stays outside it. Installing oTree here does not replace the packages used by your other projects.
 
-Read [the build brief](BUILD_BRIEF.md). It says what the participant should see, what must be recorded, and how you will check the result.
+## 3. Complete a run and find your answers
 
-Then begin a Codex chat attached to your `research-project` folder. Send:
+With the server running, open **[http://localhost:8000](http://localhost:8000)** in your laptop browser.
 
-> Read `PROJECT.md`, `AGENTS.md`, and `docs/BUILD_BRIEF.md`, then inspect the starter files. Explain your plan for building this one-choice oTree experiment. Identify the files you need to create or change and how you will verify that a submitted answer is recorded. Do not edit yet. Ask me if a requirement is genuinely unclear.
+1. Open **Sessions → Create new session**. Choose **Seven choices — local practice** and **2 participants**, then create the session.
+2. Open the session's **Links** tab. Open one participant link and complete consent and details, using a made-up ID such as `practice-a`.
+3. Complete all **seven decisions**. Note your first and last prize and at least one choice. Stop at the thank-you page.
+4. Open the second participant link with a different made-up ID, `practice-b`. Its prizes should appear in the opposite order. Complete this run too.
+5. Return to the administrator page and open **Data**. Download the CSV labeled **All apps (wide format)**. Create an `exports` folder inside `class-09` and save the file there.
+6. Open the CSV in Excel or RStudio. There is one row per participant, with separate columns for each round. Find `choice_task.1.player.condition`, then the `prize` and `choice` columns for rounds 1–7. Check them against the responses you entered.
 
-Check the plan against the brief. You are looking for **one choice page followed by a final acknowledgement**, not a larger study.
+Each participant sees the same prizes: **2, 8, 14, 20, 26, 32, 38**, either ascending or descending. The sure option stays at **10 points**. A stored choice is `sure` or `gamble`.
 
-Three ideas will help you follow the plan:
+`localhost` means **this computer**. Sending that link to someone else does not give them access to your experiment.
 
-| Part | Its job in this project |
-| --- | --- |
-| Python | Defines the study settings, available responses, saved fields, and page order. |
-| HTML template | Defines the text and form that a participant sees in the browser. |
-| oTree | Connects those pages to participant records and saves submitted responses. |
+## 4. Stop and restart it yourself
 
-The familiar Python ideas still matter. The answers are strings, the offer is a number, a list gives the page order, and functions provide information for the page or export.
+Click the terminal running the server and press **Control+C** on either operating system. Start it again using the same command from your setup guide, then reopen `http://localhost:8000`.
 
-## 2. Delegate the build
+Your completed runs remain in the local database. Open an existing session to inspect them, or create a new session for another test. Do not run `resetdb` to restart the server: that command deletes saved responses.
 
-Once the plan matches the brief, send:
+## 5. Install Codex and open this folder
 
-> Implement the plan for the `minimal-v1` study in `experiment/`, using the existing pinned oTree environment. Follow `docs/BUILD_BRIEF.md` exactly. Add concise English `#` comments explaining the Python lines, concepts, and functions so a beginner can follow them; explain the HTML with appropriate HTML comments. Keep the provided environment helpers and package versions unchanged. Run the checks you can perform, report their actual results, and tell me which browser checks remain for me. Stop after this minimal version works.
+1. Use OpenAI's **[official desktop download and setup page](https://learn.chatgpt.com/docs/quickstart)**. Install the app for your operating system and sign in with your **ChatGPT account**. The current desktop app includes Codex; select **Codex** in its ChatGPT/Codex selector. If you already have the Codex desktop app, use it.
+2. Add/open a **local project** and select this exact `class-09` folder. Keep the work on your computer, not in a cloud environment. On Windows, follow the app's native setup prompts; this lesson does not require WSL.
+3. Keep the normal project-limited permissions. On Windows, select **Ask for approval** below the composer. Review requests for access outside the project or for network access; do not select unrestricted/full access just to complete this lesson.
 
-Watch the work: Codex is creating files in your project, not merely displaying code for you to copy. When a permission request appears, read the requested action and location before approving it. Keep the normal project-scoped permissions; this task does not need unrestricted computer access.
+On Mac, check **Apple menu → About This Mac**: the [current Mac desktop download](https://learn.chatgpt.com/docs/app) is labeled **Apple Silicon**. If you have an Intel Mac or the installer reports an unsupported operating system, complete the local oTree steps and manual edit, then contact the instructor for a compatible Codex route.
 
-When Codex finishes, look for these files in VS Code:
+The [Free plan currently includes limited Codex access](https://learn.chatgpt.com/docs/pricing), subject to availability and usage limits. No paid subscription or API key is required for this activity. If access is unavailable or you reach a limit, use the manual alternative below and try the Codex step when access returns.
 
-- `experiment/settings.py`: the session configuration named `sure_or_gamble`.
-- `experiment/choice_task/__init__.py`: the study's Python logic and saved fields.
-- `experiment/choice_task/Choice.html`: the participant's choice page.
-- `experiment/choice_task/ThankYou.html`: the final acknowledgement.
+## 6. Make one change and verify it
 
-Inspect Codex's change summary alongside the files. If a detail is unclear, select a short section and ask what it does in this experiment.
+First, open `choice_task/ThankYou.html` in VS Code. Notice the sentence `Your seven decisions have been recorded.`
 
-## 3. Run it as a participant
-
-1. In VS Code, open `run_experiment.py` in the root of `research-project` and choose **Run Python File**.
-2. Leave that terminal running. Open [http://localhost:8000](http://localhost:8000) in your browser. `localhost` means your own computer.
-3. In oTree administration, choose **Sessions → Create new session**. Select **Sure or gamble — one decision** (the configuration named `sure_or_gamble` in Python), enter **2 participants**, and choose **Create**.
-4. Open the first participant's start link in a new tab. Keep the administration tab open so you can return to it.
-
-Before choosing anything, check that the page describes both options completely. Press the submit button (**Save my choice** in the checkpoint) without choosing: you should remain on the choice page with a request to answer.
-
-Choose the sure option and continue. You should reach the final acknowledgement.
-
-Open the second participant's start link and choose the gamble. Complete that participant too. These two test participants give you known answers to find in the data.
-
-If the page fails, give Codex the **exact error text or a screenshot**, the action you took, and the expected result. For example:
-
-> I ran `run_experiment.py` and opened the first participant link. Instead of the choice page, I see this error: [paste the error]. Find the cause in the existing project, make the smallest necessary fix, and rerun the relevant check. Keep the study specification unchanged.
-
-Use [troubleshooting](TROUBLESHOOTING.md) for environment or server-start problems.
-
-## 4. Find the responses you just recorded
-
-Return to the administration interface and open **Data**. Under **Custom exports**, find **`choice_task (custom_export)`** and choose **CSV**. It is the compact course export, not oTree's wider all-app export.
-
-Save it inside `research-project/data` as `class09_pilot.csv`, then open it in VS Code. CSV is a plain-text table: the first line names the columns and each later line contains a record.
-
-Its header should be:
+In your Class 9 Codex project, send:
 
 ```text
-session_code,participant_code,study_version,round_number,sure_points,gamble_high,gamble_probability,choice,confidence
+Read README.md and choice_task/ThankYou.html. Change the final message to “Your seven decisions have been saved. Thank you for your time.” Keep everything else unchanged. Show me the edit and explain briefly what the HTML does. Do not access exports or the database.
 ```
 
-Find the rows belonging to your two participant codes:
+Inspect the changed file yourself. Only that sentence should change. Save it, restart the server, and refresh a completed participant's thank-you page. Does the displayed message match the requested edit?
 
-| Check | Expected result |
+**Manual alternative:** replace that sentence directly in `ThankYou.html`, save, and perform the same check. Local editing, running oTree, and checking responses use no Codex allowance.
+
+## A quick map of the code
+
+| File | What it controls |
 | --- | --- |
-| Study version | `minimal-v1` |
-| Round | `1` |
-| Guaranteed offer | `4` |
-| Gamble | High outcome `10`; probability `0.5` |
-| First participant's choice | `sure` |
-| Second participant's choice | `gamble` |
-| Confidence | Blank; this version has no confidence question |
+| `settings.py` | The session listed on the administrator page |
+| `choice_task/__init__.py` | Prizes, order assignment, saved responses, and page sequence |
+| `choice_task/*.html` | The words and forms shown to participants |
+| `_static/choice_task/design.css` | Colors, spacing, and layout |
+| `requirements.txt` | The required oTree version |
 
-If you created other sessions, the export can contain their records too. Use `session_code` and `participant_code` to identify these two tests. Extra rows are not automatically duplicates.
+In `__init__.py`, find `PRIZES` and `prize_for_round`. Recognize the list, function, parameter, `if`, and `return`? Those are the same Python tools you already know. The classes and oTree-specific methods connect that logic to pages and saved responses.
 
-This closes the first complete loop: **a requirement became a page, a participant used it, and the answer became data.** A good-looking page alone would not establish that the experiment works.
+## Ready to continue?
 
-## 5. Connect the page to its Python
+- [ ] The setup check prints **CLASS 9 SETUP PASSED**.
+- [ ] I completed seven decisions in each order and found the saved answers in the CSV.
+- [ ] I can stop and restart oTree without Codex.
+- [ ] I opened this folder in Codex and checked a small edit, or noted the account/access issue to resolve.
+- [ ] I can point to the Python logic, the HTML page, and the CSS styling.
 
-Open `experiment/choice_task/__init__.py` and find the saved field named `choice`, then the page class named `Choice`. oTree uses `class` blocks to organize the app. For today, read them as labeled sections with different jobs:
+For a problem, see [Troubleshooting](TROUBLESHOOTING.md). To rebuild the experiment from scratch later, use the [Class 8 prompts](https://github.com/EdenHeilprin/technion-096609-python-ai/tree/main/class-08) in a **different, empty folder**.
 
-- `C`: study constants, such as the number of rounds.
-- `Player`: fields saved for one participant in one round.
-- `Choice`: the page that collects a response.
-
-In `Choice`, look for:
-
-```python
-form_model = 'player'
-form_fields = ['choice']
-```
-
-Together, these tell oTree that the page submits the `choice` field to that participant's record. In `Choice.html`, find the form that displays it.
-
-Then find `page_sequence`. Its list determines the page order. Follow the path from the `choice` field to the form, then back to the `choice` column in your exported CSV.
-
-If you get stuck, ask:
-
-> Trace one answer through this project: where is the allowed value `gamble` defined, where does the participant select it, how is it saved, and where does it enter the custom export? Point to the relevant lines and explain them in plain English. Do not edit anything.
-
-## Optional: make one deliberate improvement
-
-If you spotted wording that could be clearer, choose **one improvement** without changing the offers, probabilities, or saved values. If the page is already clear, you can skip this extension.
-
-Describe the specific change to Codex. Inspect the changed text, run the project again if you stopped it, and create a **new test session**. Confirm that the new wording appears and both options still work.
-
-Finally, ask:
-
-> Create `docs/CLASS09_NOTES.md` with a brief record of the implemented study, the files responsible for the page and saved response, my wording change, and the checks we actually completed. Separate executed checks from any checks we have not performed.
-
-You now have a runnable project and a short explanation that another person—or a future Codex chat—can use.
-
-## If you need the working checkpoint
-
-Stop any running server with **Ctrl+C** in its terminal. Open `checkpoints/minimal/research-project` from the Class 9 download as a **separate folder** in VS Code and Codex. Follow `SETUP.md` for that folder, then continue from **Run it as a participant** above.
-
-Your original attempt stays in the first `research-project`. Compare its files with the checkpoint to understand the difference. You can complete the browser tests, response export, and code tracing without a further AI request. For the wording improvement, edit the relevant text in `Choice.html` yourself and write a short `docs/CLASS09_NOTES.md` recording what you changed and tested.
-
-## Ready for Class 10
-
-Keep your project and CSV. You are ready when you can run the experiment, find a known response in its export, and point to the files that control the question and save the answer.
-
-Next, this one-choice prototype will become a six-choice study with confidence ratings and a clearer participant interface.
-
-## Quick reference
-
-| Term | Simple meaning | Example here |
-| --- | --- | --- |
-| Specification | A precise description of the requested behavior | One required choice, then an acknowledgement |
-| Local project | Files that Codex can work with as one project | Your `research-project` folder |
-| Virtual environment | A separate set of Python packages for a project | `.venv` |
-| Server | A running program that responds to browser requests | The process started by `run_experiment.py` |
-| Template | A page layout filled with study content | `Choice.html` |
-| Field | A named value stored in a participant record | `choice` |
-| Form | Inputs a participant fills and submits | Sure-or-gamble radio buttons |
-| Session | One created run of the study with participant records | Your two-participant test |
-| CSV | A text file arranged as rows and columns | `class09_pilot.csv` |
-| Checkpoint | A separate known-working project to inspect or continue from | `checkpoints/minimal/research-project` |
-
-Further reference: [oTree forms](https://otree.readthedocs.io/en/latest/forms.html), [oTree pages](https://otree.readthedocs.io/en/latest/pages.html), [Codex local projects](https://learn.chatgpt.com/docs/projects?surface=app).
+[Next: Class 10 — Python Files and Your First GitHub Project](https://github.com/EdenHeilprin/technion-096609-python-ai/tree/main/class-10)
