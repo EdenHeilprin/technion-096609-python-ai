@@ -1,0 +1,98 @@
+# Git and GitHub setup
+
+Install two free tools: **Git** records file versions, and **GitHub CLI** (`gh`) connects your terminal to your GitHub account. These steps do not require a paid GitHub or AI plan.
+
+## 1. Create or check your account
+
+Sign in to **[GitHub](https://github.com)**, or create an account and verify your email. Note your **username**, which is different from your email address. Use your own account, not your partner's password.
+
+## 2. Open VS Code's terminal
+
+Open **VS Code** and choose **Terminal → New Terminal**. Beside the terminal's `+` button, use the dropdown to open **zsh** on Mac or **PowerShell** on Windows. The commands in this lesson use those shells.
+
+Enter these commands separately:
+
+```text
+git --version
+gh --version
+```
+
+Each should print a version number. If both work, skip to Step 4. If one is missing, install only that tool using your computer's section below.
+
+## 3. Install missing tools
+
+### Mac
+
+**Git:** if `git --version` opens an Apple developer-tools installation window, choose **Install**, accept the terms, and let it finish. You do not need the full Xcode app. If no window appears and Git is unavailable, enter:
+
+```bash
+xcode-select --install
+```
+
+Wait for the installation to finish before continuing. This can take several minutes.
+
+**GitHub CLI:** open the **[official latest release](https://github.com/cli/cli/releases/latest)**. Expand **Assets** if necessary and download the file ending in **`macOS_universal.pkg`**. Open that installer and follow its prompts. It supports both Apple Silicon and Intel Macs; do not download the source-code ZIP.
+
+If you already use Homebrew, `brew install gh` is an alternative. You do not need to install Homebrew just for this lesson.
+
+### Windows
+
+In VS Code's **PowerShell** terminal, run the command for each missing tool:
+
+```powershell
+winget install --id Git.Git -e --source winget
+winget install --id GitHub.cli -e --source winget
+```
+
+Accept the installation prompts and let each command finish. If Git asks which editor to use, select **Visual Studio Code**. Keep its recommended PATH option, **Git from the command line and also from 3rd-party software**.
+
+If `winget` is unavailable, use the installers instead: **[Git for Windows](https://git-scm.com/install/windows)** and **[GitHub CLI releases](https://github.com/cli/cli/releases/latest)**. For GitHub CLI, download the Windows `.msi` matching your processor: `amd64` for standard Intel/AMD laptops, or `arm64` for Windows on ARM. Check **Windows Settings → System → About → System type** if unsure.
+
+### Check the installation
+
+Completely quit and reopen VS Code so it can find the new tools. Open a new **zsh** or **PowerShell** terminal and run again:
+
+```text
+git --version
+gh --version
+```
+
+Both must now show version numbers. If not, stop and get help rather than continuing with commands that depend on them.
+
+## 4. Sign in from the terminal
+
+Enter:
+
+```bash
+gh auth login --hostname github.com --git-protocol https --web
+```
+
+If asked whether to authenticate Git with your GitHub credentials, choose **Yes**. The terminal shows a one-time code and asks you to continue in the browser. Follow that prompt, paste the code on GitHub's page, check that the browser is signed into **your** account, and authorize GitHub CLI. Do not paste your password or authentication code into an AI chat.
+
+Back in the terminal, run:
+
+```bash
+gh auth setup-git --hostname github.com
+gh auth status
+```
+
+The first command lets Git use your GitHub CLI sign-in for future pushes. The second should confirm your GitHub username and a successful login. If an existing login is already correct, keep it; there is no need to log out.
+
+Return to **[Class 10, Step 3](README.md#3-prepare-your-tools-and-folder)** to create the empty working folder. Commit name/email settings come after cloning because we will set them for this repository only.
+
+## When a step does not work
+
+| What you see | What to do |
+| --- | --- |
+| `git` or `gh` is not recognized | Finish installing that tool, completely reopen VS Code, and check its version in a new terminal. |
+| macOS cannot verify the GitHub CLI installer's developer | Confirm the file came from the official `cli/cli` release linked above. For this specific installer, follow Apple's [Open Anyway instructions](https://support.apple.com/en-us/102445) in **System Settings → Privacy & Security**. Do not disable security globally or bypass a malware warning. |
+| Authentication fails | Run `gh auth status`; repeat Step 4 if needed. Do not use your GitHub password as a terminal token. |
+| “Not a git repository” after the cloning step | Open the cloned folder with **File → Open Folder**, create a new terminal, and check `pwd`. |
+| The destination folder is not empty | Keep its contents. Create a separate empty folder for this contribution; do not delete earlier work to make cloning succeed. |
+| The branch already exists | You may already have completed that step. Run `git status` and `git branch --show-current`; continue on `add-my-lesson` if already there. Otherwise ask before switching. |
+| “Nothing to commit” | Save your edited file, run `git status --short`, and confirm that you changed the copy inside your lesson folder. |
+| A push is rejected or a PR reports conflicts | Stop and ask for help. Do not force-push or reset your files. |
+
+For help, show the command, its error, and the result of `pwd`, without passwords or tokens. You can email **[edenheilprin@campus.technion.ac.il](mailto:edenheilprin@campus.technion.ac.il)** with that information.
+
+Official references: [Git installation](https://git-scm.com/install), [GitHub CLI installation](https://github.com/cli/cli#installation), [CLI sign-in](https://cli.github.com/manual/gh_auth_login), and [commit email privacy](https://docs.github.com/en/account-and-profile/how-tos/email-preferences/setting-your-commit-email-address).

@@ -8,6 +8,7 @@ on:
       - 'class-10/**'
       - 'class-11/**'
       - 'class-12/**'
+      - 'student-lessons/**'
       - '.github/workflows/phase-2-checks.yml'
   workflow_dispatch:
 permissions:
@@ -29,7 +30,7 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: '3.13'
-      - name: Install from a fresh student ZIP and verify all five classes
+      - name: Check downloads and rehearse the local contribution workflow
         run: python phase-2/tools/ci_student_smoke.py
   production-database:
     runs-on: ubuntu-latest

@@ -12,7 +12,7 @@ Class 0 will help you check or install the required free software and run one sm
 
 ## What belongs where?
 
-- **Moodle** is the official source for announcements, dates, submissions, grades, and private communication.
+- **Moodle** is the official source for announcements, dates, grades, and private communication. Submit work there when requested; student lesson contributions use GitHub pull requests as explained in Class 10.
 - **This GitHub repository** contains course code and technical learning materials.
 
 ## Phase 1 — Python foundations
@@ -27,12 +27,11 @@ Class 0 will help you check or install the required free software and run one sm
 
 ## Phase 2 — Direct a complete research workflow
 
-This phase connects building an experiment, collecting responses, analyzing data, and writing a research report. Class 8 demonstrates the workflow; Classes 9 and 10 move to hands-on setup, Python files, and GitHub. Classes 11–12 remain the earlier version pending review.
+This phase connects building an experiment, collecting responses, analyzing data, and writing a research report. Class 8 demonstrates the workflow; Class 9 gets it running on your laptop. In Class 10, you use GitHub to contribute a lesson of your own.
 
 - **[Class 8 — From Answers to Delegation](class-08/README.md)**
 - **[Class 9 — Codex and oTree Setup](class-09/README.md)**
-- **[Class 10 — Python Files and Your First GitHub Project](class-10/README.md)**
-- **[Class 11 — From Choices to Evidence](class-11/README.md)**
-- **[Class 12 — Direct a Research Workflow](class-12/README.md)**
+- **[Class 10 — Create and Contribute Your Own Lesson](class-10/README.md)**
+- **[Classes 11–13 — Student-led Lessons](student-lessons/)** — pairs teach approximately 30-minute lessons on distinct, approved topics.
 
-Class 8 contains prompts and a two-file download for a fresh Codex project. Class 9 provides a working experiment; Class 10 provides a small CSV and Python program. Keep each class in its own folder so your earlier work stays intact.
+Class 8 contains prompts and a two-file download for a fresh Codex project. Class 9 provides a working experiment. In Class 10, you fork and clone this repository, build your lesson, and submit a pull request for review. Keep earlier class work intact.

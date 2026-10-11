@@ -1,4 +1,4 @@
-"""Check Classes 9/10 in disposable extracted projects, never personal work."""
+"""Check Class 9 in a disposable extracted project, never personal work."""
 import argparse
 import csv
 import http.cookiejar
@@ -161,48 +161,15 @@ def check_experiment(project):
     print("PASS: Class 9 single configuration, both orders, per-app CSV, restart, manual and formatting edits")
 
 
-def check_python(lesson):
-    script = lesson / "summarize_choices.py"
-    source = lesson / "sample_choices.csv"
-    original = source.read_bytes()
-
-    def run():
-        # Run from outside the project: paths must follow the script, not cwd.
-        result = subprocess.run([sys.executable, str(script)], cwd=lesson.parent,
-                                capture_output=True, text=True, timeout=30)
-        check(result.returncode == 0, result.stdout + result.stderr)
-        with (lesson / "summary.csv").open(newline="", encoding="utf-8") as file:
-            return list(csv.DictReader(file))
-
-    check(run() == [{"choice": "gamble", "count": "7", "percentage": "50.0"}], "Starter output")
-    check(source.read_bytes() == original, "Input unchanged")
-    text = script.read_text(encoding="utf-8")
-    solution = text.replace("# Exercise: calculate and print the sure count and percentage here.",
-                            'sure_count = total_decisions - gamble_count\nsure_percentage = percentage(sure_count, total_decisions)\nprint("Sure choices:", sure_count)\nprint("Sure choices (%):", sure_percentage)')
-    solution = solution.replace("    # Exercise: add a second row for sure choices here.",
-                                '    writer.writerow(["sure", sure_count, sure_percentage])')
-    script.write_text(solution, encoding="utf-8")
-    check(run() == [{"choice": "gamble", "count": "7", "percentage": "50.0"},
-                    {"choice": "sure", "count": "7", "percentage": "50.0"}], "Exercise solution")
-    source.write_bytes(original.replace(b"2,sure", b"2,gamble", 1))
-    check(run() == [{"choice": "gamble", "count": "8", "percentage": "57.1"},
-                    {"choice": "sure", "count": "6", "percentage": "42.9"}], "Student's additional check")
-    source.write_bytes(original)
-    script.write_text(text, encoding="utf-8")
-    print("PASS: Class 10 starter, relative paths, unchanged input, exercise solution, changed-response check")
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--class9", type=Path, required=True)
-    parser.add_argument("--class10", type=Path, required=True)
     args = parser.parse_args()
     # Test copies guarantee the caller's files and responses cannot be edited.
     with tempfile.TemporaryDirectory(prefix="hands on check ") as temporary:
         root = Path(temporary)
-        for number, source in [(9, args.class9), (10, args.class10)]:
-            shutil.copytree(source, root / f"class-{number:02d}",
-                            ignore=shutil.ignore_patterns(".venv", "__pycache__", "*.sqlite3", "*.db", "exports", "*.zip"))
+        shutil.copytree(args.class9, root / "class-09",
+                        ignore=shutil.ignore_patterns(".venv", "__pycache__", "*.sqlite3", "*.db", "exports", "*.zip"))
         try:
             check_experiment(root / "class-09")
         except Exception:
@@ -210,4 +177,3 @@ if __name__ == "__main__":
             if log.exists():
                 print(log.read_text(encoding="utf-8", errors="replace"), file=sys.stderr)
             raise
-        check_python(root / "class-10")

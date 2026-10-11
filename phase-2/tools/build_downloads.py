@@ -1,4 +1,6 @@
-"""Package current Classes 8–10 and the unrevised Class 11/12 projects.
+"""Package Classes 8/9 and the retained earlier Class 11/12 projects.
+
+Class 10 teaches forking and cloning; it deliberately has no ZIP download.
 
 Run from any directory with Python 3.13. This only replaces named generated
 folders inside this repository; personal student folders are never targets.
@@ -68,7 +70,7 @@ def build_class8():
 def build_one(number):
     if number == 8:
         return build_class8()
-    if number in {9, 10}:
+    if number == 9:
         return build_hands_on(number)
     class_name = f"class-{number:02d}"
     target = REPO / class_name
@@ -115,7 +117,6 @@ def build_hands_on(number):
             "choice_task/__init__.py", "choice_task/Consent.html",
             "choice_task/Details.html", "choice_task/Decision.html",
             "choice_task/ThankYou.html", "_static/choice_task/design.css"],
-        10: ["README.md", ".gitignore", "summarize_choices.py", "sample_choices.csv"],
     }[number]
     target = REPO / f"class-{number:02d}"
     manifest = {name: hashlib.sha256((target / name).read_bytes()).hexdigest()
@@ -134,12 +135,13 @@ def build_hands_on(number):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("classes", nargs="*", type=int, choices=range(8, 13))
+    parser.add_argument("classes", nargs="*", type=int, choices=(8, 9, 11, 12))
     args = parser.parse_args()
-    results = [build_one(number) for number in (args.classes or range(8, 13))]
+    results = [build_one(number) for number in (args.classes or (8, 9, 11, 12))]
     index_path = PHASE / "DOWNLOADS.json"
     previous = json.loads(index_path.read_text(encoding="utf-8")) if index_path.exists() else []
-    entries = {item["file"]: item for item in previous + results}
+    entries = {item["file"]: item for item in previous + results
+               if item["file"] != "class-10/class-10-files.zip"}
     index_path.write_text(json.dumps([entries[name] for name in sorted(entries)], indent=2) + "\n", encoding="utf-8")
     for item in results:
         print(f"{item['file']}: {item['files']} files, {item['bytes']:,} bytes")

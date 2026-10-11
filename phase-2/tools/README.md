@@ -1,16 +1,14 @@
 # Maintainer tools
 
-Students use their class README; they do not need these release tools.
+Students use their class README; these tools check releases in disposable folders.
 
-Classes 9 and 10 are now authored directly in their class folders. Class 9 contains the seven-choice local oTree app from the successful Class 8 project, with public-hosting credentials and Prolific completion redirects omitted. Class 10 contains the CSV/Python/GitHub exercise. `build_downloads.py 9 10` packages only an explicit allowlist of their source files; it must not regenerate the old scaffolds or checkpoints. `verify_hands_on.py` exercises both presentation orders, validation, saved exports, restart persistence, and the Class 10 starter and exercise solution in disposable copies.
+- **Class 8:** `build_downloads.py 8` packages only the two authored Word documents. The personal live-generated project is not a release source.
+- **Class 9:** authored directly in `class-09`. Run `build_downloads.py 9` after edits. `verify_hands_on.py --class9 class-09` checks both orders, saved responses, restart persistence, and the two thank-you-page edits in a temporary copy.
+- **Class 10:** students fork and clone the course, so there is **no Class 10 ZIP**. Its README, Git setup guide, and two-file lesson template are authored directly. `verify_contribution.py` checks local links and rehearses clone/branch/copy/commit/push/revision commands using disposable local repositories. It does not impersonate a student account or test GitHub login or PR creation against the live course.
+- **Earlier Classes 11/12:** the old materials remain in Git for reference, but current course navigation points to student-led lessons in `student-lessons`. The old packages still come from `phase-2/project`. Do not regenerate or remove them as part of a Class 10 change.
+- **Release checks:** `verify_release.py` checks ZIP contents, manifests, syntax, and links for Classes 8, 9, and the retained earlier 11/12 packages. `--runtime` also exercises the earlier experiment/analysis package. `ci_student_smoke.py` installs the Class 9 and earlier Class 12 environments separately and runs their checks plus the Class 10 local Git rehearsal on macOS, Windows, and Linux.
+- **Hosting check:** `verify_hosting.py` targets only the disposable CI Postgres service, never a live research database or Heroku app.
 
-- Class 8's current starter is its two authored Word files, packaged by `build_downloads.py 8`. Its live-generated personal project is not a release source. Edit the Classes 9/10 sources in their class folders and package them with `build_downloads.py 9 10`.
-- The unrevised Classes 11/12 still use canonical code in `phase-2/project`; do not hand-edit their generated `research-project` or checkpoint copies. Older `phase-2/minimal-experiment` and `phase-2/showcase-improvement` directories are historical, not the current Class 8 starter.
-- Only when revising Classes 11/12, use their project environment and `build_example_results.py` to regenerate the synthetic worked results, then `build_downloads.py 11 12` to package them. The builder replaces only its named generated children in this repository.
-- Run `verify_release.py --runtime` in the course environment for archive/source/hash/link/privacy checks and disposable local participant/export/analysis runs.
-- `ci_student_smoke.py` extracts Classes 9 and 10, creates a fresh Python 3.13 environment from Class 9's requirement, and runs their checks. It separately installs the old Class 12 environment for the unchanged Class 11/12 checks. The GitHub workflow runs this on macOS, Windows, and Linux. These checks do not substitute for a novice's manual Codex sign-in or operating-system installer walkthrough.
-- `verify_hosting.py` is restricted to the disposable Linux CI Postgres service. It tests the production server's authentication and data path, not Heroku provisioning or a live course URL. It must never be pointed at a real research database.
+`DOWNLOADS.json` identifies the released ZIPs; `DOWNLOAD_MANIFEST.json` records their source hashes. Fixed ZIP metadata make unchanged builds byte-for-byte identical. Personal student-work folders are never build targets.
 
-`DOWNLOADS.json` identifies the released archives. Each class's `DOWNLOAD_MANIFEST.json` hashes the files inside its archive (excluding the manifest itself). ZIP metadata are fixed so unchanged sources produce identical ZIP bytes.
-
-Only synthetic example data and their derived outputs belong in the public release. Real exports, secrets, environments, databases, and personal student work must remain outside it.
+These checks do not replace a student's installer/sign-in walkthrough or the instructor's pedagogical review. Public data must be fictional or appropriately prepared for sharing; never package real classroom exports, secrets, databases, or environments.

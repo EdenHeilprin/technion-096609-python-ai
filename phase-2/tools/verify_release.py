@@ -85,9 +85,6 @@ def verify_archive(number, folder):
     if number == 9:
         check((lesson / "choice_task/__init__.py").is_file(), "Class9 supplies the working seven-choice app")
         check((lesson / "requirements.txt").read_text().strip() == "otree==6.0.15", "Class9 pinned oTree")
-    if number == 10:
-        check((lesson / "summarize_choices.py").is_file(), "Class10 independent Python program")
-        check((lesson / "sample_choices.csv").is_file(), "Class10 fictional teaching data")
     if number == 11:
         check(not (lesson / "research-project/analysis/analyze_choices.py").exists(), "Class11 preserves the build task")
         check((lesson / "checkpoints/analysis/research-project/analysis/analyze_choices.py").is_file(), "Class11 recovery")
@@ -209,8 +206,8 @@ def experiment_run(project, minimal=False, receipt=False):
 def runtime_checks(lessons):
     # Class 8 has no supplied code to run at this stage.
     full_export = experiment_run(lessons[12] / "research-project")
-    # Revised Classes 9 and 10 are checked in their own fresh environment by
-    # verify_hands_on.py. Keep the unrevised Class 11/12 checks intact here.
+    # Class 9 and the Class 10 contribution workflow have separate checks.
+    # Keep the retained earlier Class 11/12 checks intact here.
     for number, relative in [(11, "checkpoints/analysis/research-project"), (12, "research-project")]:
         project = lessons[number] / relative
         for script in ("inspect_data.py", "analyze_choices.py", "explore_confidence.py"):
@@ -239,7 +236,7 @@ if __name__ == "__main__":
     parser.add_argument("--runtime", action="store_true")
     args = parser.parse_args()
     with tempfile.TemporaryDirectory(prefix="course-phase2-check-") as temp:
-        lessons = {number: verify_archive(number, Path(temp)) for number in range(8, 13)}
+        lessons = {number: verify_archive(number, Path(temp)) for number in (8, 9, 11, 12)}
         if args.runtime:
             runtime_checks(lessons)
     print(f"RELEASE CHECKS PASSED: {CHECKS}")

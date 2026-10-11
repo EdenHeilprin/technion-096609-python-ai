@@ -126,7 +126,6 @@ In `__init__.py`, find `PRIZES` and `prize_for_round`. Recognize the list, funct
 
 When finished, stop oTree with **Control+C** in the VS Code terminal. Your files and saved responses stay on your computer. For help with a step, see [Troubleshooting](TROUBLESHOOTING.md).
 
-## Complementary videos
+## Companion tutorial
 
-- **[Getting Started with Python in VS Code — Visual Studio Code](https://www.youtube.com/watch?v=D2cwvpJSBX4&t=149s), 02:29–04:50.** A visual explanation of virtual environments and selecting a Python interpreter. It shows VS Code's environment-creation menu; we created the same kind of `.venv` through terminal commands.
-- **[HTML in 100 Seconds — Fireship](https://www.youtube.com/watch?v=ok-plXXHlWw).** Watch the full short video for an overview of how tags structure a web page. Connect it to the `<p>` and `<strong>` tags you edited today. Pause or slow playback when needed.
+**[HTML in 100 Seconds — Fireship](https://www.youtube.com/watch?v=ok-plXXHlWw).** Watch the full short video for an overview of how tags structure a web page. Connect it to the `<p>` and `<strong>` tags you edited today. Pause or slow playback when needed.
