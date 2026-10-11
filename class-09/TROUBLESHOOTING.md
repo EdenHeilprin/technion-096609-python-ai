@@ -10,7 +10,7 @@ Use **File → Open Folder** to open the extracted `class-09` folder, then **Ter
 
 ## Wrong Python or oTree version
 
-Use the exact command in your [Mac](macos.md) or [Windows](windows.md) guide, including `.venv`. Running a plain `python` or `otree` command may use another installation. Run `check_setup.py` using the guide's command and read the printed interpreter path. If an existing `.venv` uses the wrong Python, rename that folder to `.venv-old` and repeat the environment-creation step with Python 3.13.
+Use the exact commands in your [Mac](macos.md) or [Windows](windows.md) guide. Activate `.venv` before `otree devserver`, even if you selected that interpreter in VS Code. Run `check_setup.py` using the guide's command and read the printed interpreter path. If an existing `.venv` uses the wrong Python, rename that folder to `.venv-old` and repeat the environment-creation step with Python 3.13.
 
 ## Package installation fails
 
@@ -18,7 +18,7 @@ Check your connection and the complete error message. Retry the same install com
 
 ## PowerShell says scripts are disabled
 
-Use `.\.venv\Scripts\python.exe` and `.\.venv\Scripts\otree.exe` as shown in the Windows guide. You do not need to run `Activate.ps1` or change the execution policy. An automatic-activation warning from VS Code does not stop these direct commands.
+Open a **Command Prompt** terminal using the dropdown beside the terminal's **+** button. Follow the Windows guide there, using `activate.bat` before `otree devserver`. You do not need `Activate.ps1` or a PowerShell execution-policy change.
 
 ## The browser cannot open localhost
 

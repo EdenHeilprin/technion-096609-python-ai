@@ -4,15 +4,15 @@ Start with the **extracted** `class-09` folder open in VS Code, not the ZIP prev
 
 ## 1. Check Python and the folder
 
-Choose **Terminal → New Terminal** in VS Code. Use **PowerShell** (select it from the terminal's dropdown if necessary). Run each command separately, pressing Enter after each:
+In VS Code, open the dropdown beside the terminal's **+** button and choose **Command Prompt**. If no terminal is visible, choose **Terminal → New Terminal** first. Use Command Prompt for the commands below, not PowerShell. Run each command separately, pressing Enter after each:
 
-```powershell
+```bat
 py -3.13 --version
 ```
 
 Expect **Python 3.13.x**. If `py` or that version is not found, return to the Class 0 Windows guide; do not substitute an arbitrary Python version.
 
-```powershell
+```bat
 dir
 ```
 
@@ -20,19 +20,19 @@ You should see `settings.py`, `requirements.txt`, and `choice_task`. If not, reo
 
 ## 2. Create this project's environment
 
-```powershell
+```bat
 py -3.13 -m venv .venv
 ```
 
 This creates a `.venv` folder. No output usually means success.
 
-```powershell
+```bat
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
 Wait for the command to finish. It installs the version in `requirements.txt` from Python's package index. You only need this installation once per project.
 
-```powershell
+```bat
 .\.venv\Scripts\python.exe check_setup.py
 ```
 
@@ -44,16 +44,22 @@ Press **Ctrl+Shift+P**, choose **Python: Select Interpreter**, and select the in
 
 ## 4. Start oTree
 
-In the terminal, run:
+In the Command Prompt terminal, activate this project's environment:
 
-```powershell
-.\.venv\Scripts\otree.exe devserver
+```bat
+.\.venv\Scripts\activate.bat
+```
+
+You should see `(.venv)` at the start of the prompt. Then start the server:
+
+```bat
+otree devserver
 ```
 
 The terminal stays busy while the server runs. Open **http://localhost:8000** in your browser. Keep the terminal open and [continue at Step 3 of the lesson](README.md#3-complete-a-run-and-find-your-answers).
 
-To stop: click this terminal and press **Ctrl+C**. To start again: run `.\.venv\Scripts\otree.exe devserver` from the `class-09` folder. You do not need to reinstall oTree or recreate `.venv`.
+To stop: click this terminal and press **Ctrl+C**. To start again in the same terminal: run `otree devserver`. If you open a **new Command Prompt terminal**, activate `.venv` again first. You do not need to reinstall oTree or recreate `.venv`.
 
-These commands run `.exe` files directly. They do not require PowerShell script activation or a change to your execution policy. Do not use the editor's Play button to run `__init__.py`; oTree starts the app for you.
+Activation makes this terminal use the project's Python and oTree, including the extra process that oTree starts. Command Prompt uses `activate.bat`, so no PowerShell execution-policy change is needed. Do not use the editor's Play button to run `__init__.py`; oTree starts the app for you.
 
 [Troubleshooting](TROUBLESHOOTING.md) · [Official oTree installation guide](https://otree.readthedocs.io/en/latest/install.html) · [OpenAI's native Windows app guide](https://learn.chatgpt.com/docs/windows/windows-app)

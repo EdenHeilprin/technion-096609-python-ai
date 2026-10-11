@@ -7,7 +7,7 @@ import zipfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-with tempfile.TemporaryDirectory(prefix="student-download-") as temp:
+with tempfile.TemporaryDirectory(prefix="student download ") as temp:
     for number in (9, 10):
         with zipfile.ZipFile(REPO / f"class-{number:02d}/class-{number:02d}-files.zip") as archive:
             archive.extractall(temp)
@@ -16,6 +16,15 @@ with tempfile.TemporaryDirectory(prefix="student-download-") as temp:
     setup_python = setup_project / ".venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
     subprocess.run([str(setup_python), "-m", "pip", "install", "-r", "requirements.txt"], cwd=setup_project, check=True)
     subprocess.run([str(setup_python), "check_setup.py"], cwd=setup_project, check=True)
+    # Exercise the activation commands students actually use, not only absolute
+    # executable paths. oTree's devserver child also needs this environment.
+    if os.name == "nt":
+        activation = ["cmd.exe", "/d", "/c",
+                      r'call .venv\Scripts\activate.bat && python check_setup.py && otree --version']
+    else:
+        activation = ["/bin/bash", "-c",
+                      "source .venv/bin/activate && python check_setup.py && otree --version"]
+    subprocess.run(activation, cwd=setup_project, check=True)
     subprocess.run([str(setup_python), str(REPO / "phase-2/tools/verify_hands_on.py"),
                     "--class9", str(setup_project), "--class10", str(Path(temp) / "class-10")], check=True)
     # Class 8 is watch-only; Class 12 retains the full student environment.

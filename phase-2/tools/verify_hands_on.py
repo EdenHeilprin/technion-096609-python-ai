@@ -18,6 +18,18 @@ import urllib.request
 from verify_release import check, get, stop_server, submit
 
 
+def save_and_stop(process, port):
+    # On Windows our non-interactive runner uses taskkill, not the student's
+    # Ctrl+C. Flush via oTree's own devserver reload endpoint before killing it;
+    # otherwise taskkill discards the in-memory database and creates a fake bug.
+    try:
+        if os.name == "nt" and process.poll() is None:
+            with urllib.request.urlopen(f"http://127.0.0.1:{port}/SaveDB", data=b"save", timeout=10) as response:
+                check(response.status == 200, "oTree flushes the development database")
+    finally:
+        stop_server(process)
+
+
 def start_server(project, port, log):
     executable = Path(sys.executable).parent / ("otree.exe" if os.name == "nt" else "otree")
     environment = dict(os.environ)
@@ -100,7 +112,7 @@ def check_experiment(project):
                 check(bool(row["choice_task.1.player.completed_at"]), "Completion recorded")
             check("All apps (wide format)" in get(client, base + "/ExportIndex")[1], "Export label matches lesson")
         finally:
-            stop_server(process)
+            save_and_stop(process, port)
         # Apply the exact tiny lesson edit only inside the disposable test copy.
         thanks = project / "choice_task/ThankYou.html"
         original = thanks.read_text(encoding="utf-8")
@@ -112,7 +124,7 @@ def check_experiment(project):
             for _, _, url in expected.values():
                 check(revised in get(client, url)[1], "Saved HTML edit appears after restart/refresh")
         finally:
-            stop_server(process)
+            save_and_stop(process, port)
             thanks.write_text(original, encoding="utf-8")
     print("PASS: Class 9 consent, details, both seven-round orders, saved export, restart, HTML edit")
 
@@ -159,5 +171,11 @@ if __name__ == "__main__":
         for number, source in [(9, args.class9), (10, args.class10)]:
             shutil.copytree(source, root / f"class-{number:02d}",
                             ignore=shutil.ignore_patterns(".venv", "__pycache__", "*.sqlite3", "*.db", "exports", "*.zip"))
-        check_experiment(root / "class-09")
+        try:
+            check_experiment(root / "class-09")
+        except Exception:
+            log = root / "class-09/server-test.log"
+            if log.exists():
+                print(log.read_text(encoding="utf-8", errors="replace"), file=sys.stderr)
+            raise
         check_python(root / "class-10")

@@ -44,16 +44,22 @@ Press **Cmd+Shift+P**, choose **Python: Select Interpreter**, and select the int
 
 ## 4. Start oTree
 
-In the terminal, run:
+In the terminal, activate this project's environment:
 
 ```bash
-.venv/bin/otree devserver
+source .venv/bin/activate
+```
+
+Then start the server:
+
+```bash
+otree devserver
 ```
 
 The terminal stays busy while the server runs. Open **http://localhost:8000** in your browser. Keep the terminal open and [continue at Step 3 of the lesson](README.md#3-complete-a-run-and-find-your-answers).
 
-To stop: click this terminal and press **Control+C**. To start again: run `.venv/bin/otree devserver` from the `class-09` folder. You do not need to reinstall oTree or recreate `.venv`.
+To stop: click this terminal and press **Control+C**. To start again in the same terminal: run `otree devserver`. If you open a **new terminal**, activate `.venv` again first. You do not need to reinstall oTree or recreate `.venv`.
 
-These commands call the project's executables directly, so no environment-activation command is needed. Do not use the editor's Play button to run `__init__.py`; oTree starts the app for you.
+Activation makes this terminal use the project's Python and oTree, including the extra process that oTree starts. Do not use the editor's Play button to run `__init__.py`; oTree starts the app for you.
 
 [Troubleshooting](TROUBLESHOOTING.md) · [Official oTree installation guide](https://otree.readthedocs.io/en/latest/install.html)
