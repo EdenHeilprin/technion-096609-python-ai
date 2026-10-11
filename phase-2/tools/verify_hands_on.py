@@ -19,15 +19,26 @@ from verify_release import check, get, stop_server, submit
 
 
 def save_and_stop(process, port):
-    # On Windows our non-interactive runner uses taskkill, not the student's
-    # Ctrl+C. Flush via oTree's own devserver reload endpoint before killing it;
-    # otherwise taskkill discards the in-memory database and creates a fake bug.
+    # The non-interactive runner stops a process tree, not a terminal's Ctrl+C.
+    # Flush via oTree's own devserver reload endpoint first; Windows taskkill
+    # otherwise discards the in-memory database and creates a fake bug.
     try:
-        if os.name == "nt" and process.poll() is None:
+        if process.poll() is None:
             with urllib.request.urlopen(f"http://127.0.0.1:{port}/SaveDB", data=b"save", timeout=10) as response:
                 check(response.status == 200, "oTree flushes the development database")
     finally:
         stop_server(process)
+        # The launcher can exit before its child closes the listening socket.
+        # Do not mistake that old child for the next server's readiness probe.
+        for attempt in range(100):
+            try:
+                with socket.create_connection(("127.0.0.1", port), timeout=0.2):
+                    pass
+            except OSError:
+                break
+            time.sleep(0.1)
+        else:
+            raise RuntimeError("The previous devserver is still listening after shutdown")
 
 
 def start_server(project, port, log):
