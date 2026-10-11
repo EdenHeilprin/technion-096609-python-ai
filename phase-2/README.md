@@ -5,7 +5,7 @@ Follow a research workflow, run an experiment on your own laptop, and then contr
 | Class | What you will do | What you will have afterward |
 | --- | --- | --- |
 | [8 — From Answers to Delegation](../class-08/README.md) | Follow prompts from experiment building to analysis and writing | A complete research-workflow demonstration |
-| [9 — Codex and oTree Setup](../class-09/README.md) | Install, run, inspect, and edit the experiment | A working seven-choice experiment on your laptop |
+| [9 — Codex, oTree, and GitHub Setup](../class-09/README.md) | Run and edit the experiment; prepare Git and GitHub | A working experiment and the tools for contributing a lesson |
 | [10 — Create and Contribute Your Own Lesson](../class-10/README.md) | Prepare a lesson and propose it through a GitHub pull request | A contribution ready for instructor review |
 | [11–13 — Student-led Lessons](../student-lessons/README.md) | Teach and participate in approximately 30-minute lessons | New practical skills and experience presenting to an audience |
 

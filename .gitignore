@@ -12,3 +12,7 @@ venv/
 student_data/
 outputs/private/
 class-*/output/
+student-lessons/**/*.db
+student-lessons/**/*.sqlite3
+student-lessons/**/*.sqlite3-*
+student-lessons/**/exports/

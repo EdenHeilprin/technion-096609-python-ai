@@ -32,7 +32,8 @@ def require(condition, message):
 
 
 def check_links():
-    pages = list((REPO / "class-10").rglob("*.md")) + [REPO / "student-lessons/README.md"]
+    pages = (list((REPO / "class-10").rglob("*.md"))
+             + [REPO / "student-lessons/README.md", REPO / "class-09/git-setup.md"])
     for page in pages:
         text = page.read_text(encoding="utf-8")
         for link in re.findall(r"\]\(([^\s)]+)\)", text):
@@ -40,6 +41,17 @@ def check_links():
                 target = unquote(link.split("#")[0])
                 require((page.parent / target).exists(), f"Broken link in {page}: {link}")
     require(not (REPO / "class-10/class-10-files.zip").exists(), "Class 10 uses a clone, not an obsolete ZIP")
+    lesson = (REPO / "class-10/README.md").read_text(encoding="utf-8")
+    depth = 0
+    for line in lesson.splitlines():
+        if line.startswith("<details>"):
+            depth += 1
+        elif line.startswith("</details>"):
+            depth -= 1
+            require(depth >= 0, "An alternative route has an unmatched closing tag")
+        if line.startswith("## ") or "— everyone" in line:
+            require(depth == 0, "A shared section is hidden inside an optional route")
+    require(depth == 0, "An alternative route is not closed")
     print("PASS: Class 10 template and local links")
 
 
@@ -72,12 +84,20 @@ def rehearse():
         git(local, "config", "user.name", "Student test")
         git(local, "config", "user.email", "student@example.invalid")
         require(git(local, "branch", "--show-current") == "add-my-lesson", "Wrong working branch")
-        commands = [
-            "mkdir student-lessons/student-demo",
-            "cp class-10/lesson-template/README.md student-lessons/student-demo/README.md",
-            "cp class-10/lesson-template/requirements.txt student-lessons/student-demo/requirements.txt",
-        ]
-        shell = ["powershell", "-NoProfile", "-NonInteractive", "-Command"] if os.name == "nt" else ["/bin/sh", "-c"]
+        if os.name == "nt":
+            commands = [
+                r"mkdir student-lessons\student-demo",
+                r"copy class-10\lesson-template\README.md student-lessons\student-demo\README.md",
+                r"copy class-10\lesson-template\requirements.txt student-lessons\student-demo\requirements.txt",
+            ]
+            shell = ["cmd.exe", "/d", "/c"]
+        else:
+            commands = [
+                "mkdir student-lessons/student-demo",
+                "cp class-10/lesson-template/README.md student-lessons/student-demo/README.md",
+                "cp class-10/lesson-template/requirements.txt student-lessons/student-demo/requirements.txt",
+            ]
+            shell = ["/bin/sh", "-c"]
         for command in commands:
             run(local, *shell, command)
         folder = local / "student-lessons/student-demo"
@@ -93,6 +113,13 @@ def rehearse():
         (local / ".venv").mkdir()
         (local / ".venv/private-marker").write_text("not for submission", encoding="utf-8")
         require(git(local, "check-ignore", ".venv/private-marker") == ".venv/private-marker", "Environment not ignored")
+        experiment = folder / "experiment"
+        (experiment / "exports").mkdir(parents=True)
+        for relative in ("db.sqlite3", "db.db", "exports/practice.csv"):
+            marker = experiment / relative
+            marker.write_text("not for submission", encoding="utf-8")
+            path = marker.relative_to(local).as_posix()
+            require(git(local, "check-ignore", path) == path, f"Runtime data not ignored: {path}")
         git(local, "add", "--", "student-lessons/student-demo")
         staged = git(local, "diff", "--cached", "--name-only").splitlines()
         require(len(staged) == 2 and all(name.startswith("student-lessons/student-demo/") for name in staged),

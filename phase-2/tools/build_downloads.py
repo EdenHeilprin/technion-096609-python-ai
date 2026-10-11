@@ -112,7 +112,7 @@ def build_one(number):
 def build_hands_on(number):
     # These lessons are authored directly. Only explicitly reviewed files ship.
     names = {
-        9: ["README.md", "macos.md", "windows.md", "TROUBLESHOOTING.md",
+        9: ["README.md", "macos.md", "windows.md", "git-setup.md", "TROUBLESHOOTING.md",
             ".gitignore", "requirements.txt", "check_setup.py", "settings.py",
             "choice_task/__init__.py", "choice_task/Consent.html",
             "choice_task/Details.html", "choice_task/Decision.html",

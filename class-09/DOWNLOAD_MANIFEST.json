@@ -1,6 +1,6 @@
 {
   ".gitignore": "083ec999fa2bc301005dd8e6f816f123e56cc58ffb5cac8ad3ff221c78dbbd68",
-  "README.md": "789f76ff62fbbe56ace3b31e54609aea1142a7301cd731570478045c54488965",
+  "README.md": "a2de51c566dc1efc143bb22dd50afb74a0b6370a8e81dd5f777b72acebefabea",
   "TROUBLESHOOTING.md": "bd6cef3de6dabb5da264ed69ecdd230fdd5bd0b8af50be70ba022dd92707c379",
   "_static/choice_task/design.css": "9f94dcd3cb0eba6d0315b47c93bb833861e71e0026bb76f1156184a9d1d05f69",
   "check_setup.py": "3315e033a414a5ca215fe534326686219855e64b28928af00e0e575b4ce938e0",
@@ -9,6 +9,7 @@
   "choice_task/Details.html": "5cda43f2bc6b8fe69f671315a8122f4ec52b5ae4c7c4562cc8efe17a29af96e3",
   "choice_task/ThankYou.html": "ec9a0e750f1add4ba4c4485de6a758abd0da24f4bbe3860a3d7ea8acb44c9675",
   "choice_task/__init__.py": "c5d487ec333a740208f6bf6d73443d805f7ea2819ad0679bb74c34f6e0407b86",
+  "git-setup.md": "168eba0476d04ea8c561f46fc63bbb8cd7c26b0db3fed3766c05d15bdb62e226",
   "macos.md": "47e40c0a941552cac9a419a6758730249ea2d33f9b2fcb5e7edc4dac382b36cc",
   "requirements.txt": "921163943036e7777c24f6232f14af83cbc3cfbabea867b3e33b204697f4afc1",
   "settings.py": "0f03c414587cec87d02ddaea38b65eb409841386edf6c419663e665b53cab39e",

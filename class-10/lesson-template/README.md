@@ -1,6 +1,6 @@
 # [A clear title describing what the lesson teaches]
 
-**Presenters:** [chosen names or GitHub handles]
+**Presenters:** [Both names]
 
 [Introduce the practical problem in two sentences. Explain why this tool or idea helps.]
 
@@ -11,11 +11,16 @@
 
 ## Get ready
 
-[List files, software, and exact steps to run the example. For Python, use Python 3.13, list external packages in requirements.txt, and explain how to select the environment and use VS Code's play button. Name the terminal's starting folder before giving commands. For a conceptual lesson, list only what is needed.]
+[Replace the list below with the steps a classmate needs. Include only steps your example actually requires.]
+
+1. [Which folder to open, and in which application.]
+2. [Any installation needed. Give the exact command and say where to paste it.]
+3. [Which file or page to open and how to run the example. Name the button and where it is—for example, the triangle ▶ at the upper right of VS Code's code editor. For an experiment, give the oTree start command instead.]
+4. [What should appear when it works.]
 
 ## A worked example
 
-[Show a small example and explain its result. Put runnable Python in demo.py, with clear English # comments for unfamiliar code. Link to that file here. Keep any fictional input data in this folder and locate it relative to the script, not a personal Desktop path.]
+[Show a small example and explain its result. If it uses a Python script, put it in demo.py, with clear English # comments for unfamiliar code, and link to it here. Keep any fictional input data in this folder and locate it relative to the script, not a personal Desktop path.]
 
 **Expected result:** [A concrete output, figure, or interpretation to check.]
 

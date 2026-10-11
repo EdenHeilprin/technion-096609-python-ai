@@ -1,6 +1,8 @@
-# Class 9 — Codex and oTree Setup
+# Class 9 — Codex, oTree, and GitHub Setup
 
 In Class 8, you saw how Codex could build an experiment. Today, you will run that experiment on your own laptop, find its saved responses, and change its thank-you page—first by hand, then with Codex.
+
+You will also install Git and connect your GitHub account, ready to contribute your own lesson in Class 10.
 
 You need the Python 3.13 and VS Code setup from [Class 0](https://github.com/EdenHeilprin/technion-096609-python-ai/tree/main/class-00-setup). This lesson uses **oTree 6.0.15** in a separate project environment. Keep any other Python installations you already use.
 
@@ -105,6 +107,12 @@ Replace the paragraph with:
 
 </details>
 
+## 8. Set up Git and GitHub
+
+So far, you have used GitHub to download the course. In Class 10, you will use it to propose a lesson of your own. We will prepare the tools together now.
+
+Follow **[Git and GitHub setup](git-setup.md)**. It covers account sign-in, installing Git and GitHub CLI on Mac or Windows, and finding the email address Git will use to label your work. The guide starts by stopping oTree so the terminal is ready for new commands.
+
 ## A quick map of the code
 
 | File | What it controls |
@@ -123,9 +131,13 @@ In `__init__.py`, find `PRIZES` and `prize_for_round`. Recognize the list, funct
 - [ ] I completed both presentation orders and found my saved decisions in the per-app CSV.
 - [ ] I changed the thank-you text by hand and saw the new wording in the browser.
 - [ ] I checked the bold, green word after the Codex edit or manual alternative.
+- [ ] Git and GitHub CLI are installed, and `gh auth status` shows my own account.
+- [ ] I have my GitHub username and noreply address ready for Class 10.
 
-When finished, stop oTree with **Control+C** in the VS Code terminal. Your files and saved responses stay on your computer. For help with a step, see [Troubleshooting](TROUBLESHOOTING.md).
+If oTree is still running, stop it with **Control+C** in its VS Code terminal. Your files and saved responses stay on your computer. For help with a step, see [Troubleshooting](TROUBLESHOOTING.md).
 
-## Companion tutorial
+## Companion tutorials
 
 **[HTML in 100 Seconds — Fireship](https://www.youtube.com/watch?v=ok-plXXHlWw).** Watch the full short video for an overview of how tags structure a web page. Connect it to the `<p>` and `<strong>` tags you edited today. Pause or slow playback when needed.
+
+**Before Class 10, strongly recommended: [A brief introduction to Git for beginners — GitHub](https://www.youtube.com/watch?v=r8jQ9hVA2qs).** Watch **00:00–03:06** for version control, repositories, commits, and branches, then **08:29 to the end** for Git versus GitHub. These ideas explain how a change on your laptop eventually reaches the course online. Use our setup guide for installation; focus here on recognizing what each tool does. After watching, can you explain why saving an edited file does not update GitHub?

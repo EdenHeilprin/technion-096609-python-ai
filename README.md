@@ -30,7 +30,7 @@ Class 0 will help you check or install the required free software and run one sm
 This phase connects building an experiment, collecting responses, analyzing data, and writing a research report. Class 8 demonstrates the workflow; Class 9 gets it running on your laptop. In Class 10, you use GitHub to contribute a lesson of your own.
 
 - **[Class 8 — From Answers to Delegation](class-08/README.md)**
-- **[Class 9 — Codex and oTree Setup](class-09/README.md)**
+- **[Class 9 — Codex, oTree, and GitHub Setup](class-09/README.md)**
 - **[Class 10 — Create and Contribute Your Own Lesson](class-10/README.md)**
 - **[Classes 11–13 — Student-led Lessons](student-lessons/)** — pairs teach approximately 30-minute lessons on distinct, approved topics.
 
