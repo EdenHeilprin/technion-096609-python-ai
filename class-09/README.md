@@ -141,3 +141,7 @@ If oTree is still running, stop it with **Control+C** in its VS Code terminal. Y
 **[HTML in 100 Seconds — Fireship](https://www.youtube.com/watch?v=ok-plXXHlWw).** Watch the full short video for an overview of how tags structure a web page. Connect it to the `<p>` and `<strong>` tags you edited today. Pause or slow playback when needed.
 
 **Before Class 10, strongly recommended: [A brief introduction to Git for beginners — GitHub](https://www.youtube.com/watch?v=r8jQ9hVA2qs).** Watch **00:00–03:06** for version control, repositories, commits, and branches, then **08:29 to the end** for Git versus GitHub. These ideas explain how a change on your laptop eventually reaches the course online. Use our setup guide for installation; focus here on recognizing what each tool does. After watching, can you explain why saving an edited file does not update GitHub?
+
+---
+
+[Back to the course](https://github.com/EdenHeilprin/technion-096609-python-ai)

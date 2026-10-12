@@ -407,3 +407,7 @@ Test a function by calling it with chosen arguments and comparing its actual ret
 For another concise explanation, watch Khan Academy's 4:41 **[Functions | Intro to CS — Python](https://www.youtube.com/watch?v=UmNKiV7Lekk)**.
 
 It explains code duplication, function definitions, parameters, arguments, return values, function calls, and why functions improve reuse and organization—the same conceptual path used in this class.
+
+---
+
+[Back to the course](https://github.com/EdenHeilprin/technion-096609-python-ai)

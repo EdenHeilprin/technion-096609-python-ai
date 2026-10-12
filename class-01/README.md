@@ -140,3 +140,7 @@ A useful habit is **predict → run → compare → explain**. Predict the outpu
 For another clear explanation of the central ideas from this class, watch **[Variables — CS50P Shorts](https://www.youtube.com/watch?v=ylhcZZ7O3Tk)** (7 minutes).
 
 The video revisits variables, assignment, text, numbers, and `print()`, then gives a small preview of how values can be combined.
+
+---
+
+[Back to the course](https://github.com/EdenHeilprin/technion-096609-python-ai)

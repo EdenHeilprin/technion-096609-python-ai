@@ -351,3 +351,7 @@ Calculate the mean after the loop, when both values are complete. If the recorde
 For a concise explanation of the exact list loop used in this class, watch the final two-minute segment of Khan Academy's **[List iteration | Intro to CS — Python](https://www.youtube.com/watch?v=jNjRP0tVY5s&t=170s)**, beginning at `2:50`.
 
 The segment explains the `for`/`in` structure, the loop variable, descriptive singular names, and how Python visits each list item in order.
+
+---
+
+[Back to the course](https://github.com/EdenHeilprin/technion-096609-python-ai)

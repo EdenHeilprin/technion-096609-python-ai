@@ -346,3 +346,7 @@ For two concise explanations from Khan Academy:
 2. **[if-elif-else | Intro to CS — Python](https://www.youtube.com/watch?v=q0bQrGhdPm4)** (5 minutes) explains two-way and multi-way decisions, the order of conditions, and why only the first matching branch runs.
 
 Together they reinforce the control-flow structure used in Activities 2 and 4.
+
+---
+
+[Back to the course](https://github.com/EdenHeilprin/technion-096609-python-ai)

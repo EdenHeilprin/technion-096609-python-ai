@@ -384,3 +384,7 @@ For your **30-minute presentation**, introduce the problem, demonstrate a small 
 **[Git Explained in 100 Seconds — Fireship](https://www.youtube.com/watch?v=hwP7WQkmECE).** Watch the full short video. Revisit **00:33** for staging, **00:39** for committing, and **01:12** for branching. The video uses the older branch name `master`; this course uses `main`. Here, you propose a merge through a PR and the repository owner performs it.
 
 Further help: [GitHub's fork walkthrough](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo), [PRs from forks](https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request-from-a-fork), and [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow).
+
+---
+
+[Back to the course](https://github.com/EdenHeilprin/technion-096609-python-ai)

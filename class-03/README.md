@@ -291,3 +291,7 @@ For a short review of each collection type:
 2. **[Dictionaries | Intro to CS — Python — Khan Academy](https://www.youtube.com/watch?v=nf26Yv5JTOc)** (4 minutes) explains key-value pairs, retrieving values by key, and updating a dictionary.
 
 Together they reinforce the exact distinction used throughout this class: lists organize values by position, while dictionaries organize values by meaningful labels.
+
+---
+
+[Back to the course](https://github.com/EdenHeilprin/technion-096609-python-ai)

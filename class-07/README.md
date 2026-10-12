@@ -240,3 +240,7 @@ You decide what the program should do. AI can help locate the cause, make execut
 ## Companion tutorial
 
 For another worked example, watch Khan Academy's 5:49 **[Debugging with stack traces | Intro to CS — Python](https://www.youtube.com/watch?v=WUoCSkSW4cs)**.
+
+---
+
+[Back to the course](https://github.com/EdenHeilprin/technion-096609-python-ai)

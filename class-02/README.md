@@ -190,3 +190,7 @@ A useful debugging question is: **What value does this variable hold right now, 
 For another concise explanation, watch **[Type casting | Intro to CS — Python — Khan Academy](https://www.youtube.com/watch?v=y-FlANhhNiA)** (4 minutes).
 
 The video revisits `str`, `int`, `float`, `input()`, and conversion, and briefly shows why incompatible values can produce an error.
+
+---
+
+[Back to the course](https://github.com/EdenHeilprin/technion-096609-python-ai)

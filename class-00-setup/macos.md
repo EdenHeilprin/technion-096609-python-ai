@@ -83,8 +83,8 @@ SETUP CHECK PASSED
 
 You do not need to understand the Python code yet. Your task is only to run it successfully.
 
-## 8. Finish on Moodle
+## 8. Ready for Class 1
 
-Submit the [Class 0 readiness check](https://moodle26.technion.ac.il/mod/feedback/view.php?id=29766) on Moodle, whether everything worked or you still need help. If you are stuck, email Eden using the [help-request template](email-help-template.md).
+If you saw `SETUP CHECK PASSED`, your setup is complete. Bring this laptop to Class 1. If a step did not work, email the instructor using the [help-request template](email-help-template.md).
 
 [Back to the Class 0 start page](README.md)

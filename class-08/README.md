@@ -113,3 +113,7 @@ This prompt uses the locally installed **global-revision-process** skill. Contin
 ```text
 Use $global-revision-process to review and improve the first three paragraphs of the Introduction in writing/manuscript.docx. Follow the skill's paragraph-by-paragraph revision workflow and show the proposed revisions here. Leave the saved manuscript unchanged until I approve them.
 ```
+
+---
+
+[Back to the course](https://github.com/EdenHeilprin/technion-096609-python-ai)

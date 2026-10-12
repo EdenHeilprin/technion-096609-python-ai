@@ -1,6 +1,6 @@
 # Class 0 — Computer Setup
 
-**Complete this setup before Class 1.** After working through the guide, submit the [Class 0 readiness check](https://moodle26.technion.ac.il/mod/feedback/view.php?id=29766) on Moodle—whether everything worked or you still need help.
+**Complete this setup before Class 1.** Follow the guide for your computer below.
 
 No previous programming experience is required. You are preparing three separate pieces:
 
@@ -21,7 +21,6 @@ You are ready when all of the following are true:
 - You opened the repository folder in VS Code.
 - You selected a Python 3.13.x interpreter.
 - You ran `setup_check.py` and saw `SETUP CHECK PASSED`.
-- You completed the Class 0 readiness check on Moodle.
 
 Allow about **45–60 minutes**. It may take longer if an installation needs troubleshooting.
 
@@ -45,3 +44,7 @@ Please do not send passwords, API keys, student-ID numbers, or private research 
 ## Additional guidance from Microsoft (Optional)
 
 The steps above contain everything required for Class 0. If you need more context or detail while completing them, Microsoft's [Getting Started with Python in VS Code](https://code.visualstudio.com/docs/python/python-tutorial) provides a fuller explanation of how Python, VS Code, and the Python extension work together.
+
+---
+
+[Back to the course](https://github.com/EdenHeilprin/technion-096609-python-ai)
