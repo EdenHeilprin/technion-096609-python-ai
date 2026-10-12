@@ -6,7 +6,7 @@ The formal catalog title is **Quantitative Models in Behavioral Sciences**. In p
 
 ## New students: start here
 
-1. Read the **[Course syllabus](SYLLABUS.md)** for the current schedule, learning outcomes, and pass/fail requirements. The plan is tentative and may be updated during the course.
+1. Read the **[Course syllabus](00-syllabus/README.md)** for the current schedule, learning outcomes, and pass/fail requirements. The plan is tentative and may be updated during the course.
 2. Before the first meeting, complete **[Class 0 — Computer Setup](class-00-setup/README.md)**.
 
 Class 0 will help you check or install the required free software and run one small Python file. You do not need a GitHub account yet, and you are not expected to understand the code yet. We will introduce free GitHub accounts later in the course.

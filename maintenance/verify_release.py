@@ -78,7 +78,7 @@ def verify_links():
         "https://github.com/EdenHeilprin/technion-096609-python-ai/raw/refs/heads/main/",
         "https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/",
     )
-    roots = sorted(REPO.glob("*.md")) + [REPO / "maintenance", REPO / "student-lessons"]
+    roots = sorted(REPO.glob("*.md")) + [REPO / "00-syllabus", REPO / "maintenance", REPO / "student-lessons"]
     roots += sorted(REPO.glob("class-*"))
     pages = []
     for root in roots:

@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - '*.md'
+      - '00-syllabus/**'
       - 'maintenance/**'
       - 'class-*/**'
       - 'student-lessons/**'
