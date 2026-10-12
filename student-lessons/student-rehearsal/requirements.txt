@@ -1,0 +1,2 @@
+# Add only external packages used by your lesson, with the versions you tested.
+pandas==3.0.6
