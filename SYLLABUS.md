@@ -21,7 +21,7 @@ This course introduces Python programming and the practical use of AI tools in b
 
 ## Learning outcomes
 
-Alongside Python fundamentals, the course develops practical research skills: working with English-language materials, directing and checking AI-assisted work, collaborating through GitHub, and teaching and presenting ideas clearly.
+Alongside Python fundamentals, the course develops practical research skills: directing and checking AI-assisted work, collaborating through GitHub, and teaching and presenting ideas clearly.
 
 - Write and explain Python programs using variables, lists, dictionaries, conditions, loops, and functions.
 - Locate errors, test expected behavior, and document the purpose of code.
