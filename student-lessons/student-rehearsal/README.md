@@ -2,7 +2,7 @@
 
 **Presenters:** Student Rehearsal A and Student Rehearsal B
 
-You have response times from people who saw brief or detailed task instructions. We will use a small fictional CSV to see how pandas reads a table and calculates an average for each group.
+You have response times from people who saw brief or detailed task instructions. We will use a small fictional CSV to see how pandas reads a table and calculates an average for each group. Times are in milliseconds (ms): 1000 ms is one second.
 
 ## By the end of this lesson
 
