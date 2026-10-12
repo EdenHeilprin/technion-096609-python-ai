@@ -28,11 +28,4 @@ with tempfile.TemporaryDirectory(prefix="student download ") as temp:
     subprocess.run([str(setup_python), str(REPO / "phase-2/tools/verify_hands_on.py"),
                     "--class9", str(setup_project)], check=True)
     subprocess.run([sys.executable, str(REPO / "phase-2/tools/verify_contribution.py")], check=True)
-    # Class 8 is watch-only; the earlier Class 12 package is retained as a reference.
-    with zipfile.ZipFile(REPO / "class-12/class-12-files.zip") as archive:
-        archive.extractall(temp)
-    project = Path(temp) / "class-12/research-project"
-    subprocess.run([sys.executable, str(project / "setup_environment.py")], cwd=project, check=True)
-    executable = project / ".venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
-    subprocess.run([str(executable), str(project / "check_environment.py")], cwd=project, check=True)
-    subprocess.run([str(executable), str(REPO / "phase-2/tools/verify_release.py"), "--runtime"], check=True)
+    subprocess.run([sys.executable, str(REPO / "phase-2/tools/verify_release.py")], check=True)

@@ -263,7 +263,7 @@ For **every topic**, have your partner follow the page. Improve any instruction 
 <details>
 <summary>Record the library version you tested, if you installed one manually</summary>
 
-From the outer Class 10 folder, run `.venv/bin/python -m pip show pandas` on Mac or `.venv\Scripts\python.exe -m pip show pandas` on Windows, replacing `pandas` with your package. Find **Version** in the output and change its line in `requirements.txt` to `package-name==that-version`. Built-in modules need no line. The oTree starter already specifies its version.
+From the outer Class 10 folder, run `.venv/bin/python -m pip list` on Mac or `.venv\Scripts\python.exe -m pip list` on Windows. Find your library in the **Package** column and its version beside it. In `requirements.txt`, add `==` followed by that version after the package name. For example, if the table shows pandas version 3.0.6, write `pandas==3.0.6`. Built-in modules need no line. The oTree starter already specifies its version.
 
 </details>
 
