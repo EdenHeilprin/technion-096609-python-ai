@@ -1,5 +1,5 @@
 # Keep the generated ZIP manifests valid across checkout platforms.
-phase-2/** text=auto eol=lf
+maintenance/** text=auto eol=lf
 class-08/** text=auto eol=lf
 class-09/** text=auto eol=lf
 class-10/** text=auto eol=lf

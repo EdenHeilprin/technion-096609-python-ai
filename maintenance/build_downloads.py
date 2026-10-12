@@ -9,8 +9,8 @@ import json
 import zipfile
 from pathlib import Path
 
-PHASE = Path(__file__).resolve().parents[1]
-REPO = PHASE.parent
+MAINTENANCE = Path(__file__).resolve().parent
+REPO = MAINTENANCE.parent
 FILES = {
     8: ["experiment-brief.docx", "preregistration.docx"],
     9: ["README.md", "macos.md", "windows.md", "git-setup.md", "TROUBLESHOOTING.md",
@@ -61,4 +61,4 @@ if __name__ == "__main__":
         print(f"{item['file']}: {item['files']} files, {item['bytes']:,} bytes")
     # Rebuild the complete current index; never carry forward retired packages.
     entries = [describe(number) for number in (8, 9)]
-    (PHASE / "DOWNLOADS.json").write_text(json.dumps(entries, indent=2) + "\n", encoding="utf-8")
+    (MAINTENANCE / "DOWNLOADS.json").write_text(json.dumps(entries, indent=2) + "\n", encoding="utf-8")

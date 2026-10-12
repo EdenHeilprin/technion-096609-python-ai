@@ -3,10 +3,11 @@ on:
   push:
     paths:
       - 'README.md'
-      - 'phase-2/**'
+      - 'maintenance/**'
       - 'class-*/**'
       - 'student-lessons/**'
-      - '.github/workflows/phase-2-checks.yml'
+      - '.gitattributes'
+      - '.github/workflows/course-checks.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -27,4 +28,4 @@ jobs:
         with:
           python-version: '3.13'
       - name: Check student downloads, local experiment, and contribution workflow
-        run: python phase-2/tools/ci_student_smoke.py
+        run: python maintenance/ci_student_smoke.py

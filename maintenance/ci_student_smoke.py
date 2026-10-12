@@ -6,7 +6,7 @@ import tempfile
 import zipfile
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parents[2]
+REPO = Path(__file__).resolve().parents[1]
 with tempfile.TemporaryDirectory(prefix="student download ") as temp:
     for number in (9,):
         with zipfile.ZipFile(REPO / f"class-{number:02d}/class-{number:02d}-files.zip") as archive:
@@ -25,7 +25,7 @@ with tempfile.TemporaryDirectory(prefix="student download ") as temp:
         activation = ["/bin/bash", "-c",
                       "source .venv/bin/activate && python check_setup.py && otree --version"]
     subprocess.run(activation, cwd=setup_project, check=True)
-    subprocess.run([str(setup_python), str(REPO / "phase-2/tools/verify_hands_on.py"),
+    subprocess.run([str(setup_python), str(REPO / "maintenance/verify_hands_on.py"),
                     "--class9", str(setup_project)], check=True)
-    subprocess.run([sys.executable, str(REPO / "phase-2/tools/verify_contribution.py")], check=True)
-    subprocess.run([sys.executable, str(REPO / "phase-2/tools/verify_release.py")], check=True)
+    subprocess.run([sys.executable, str(REPO / "maintenance/verify_contribution.py")], check=True)
+    subprocess.run([sys.executable, str(REPO / "maintenance/verify_release.py")], check=True)

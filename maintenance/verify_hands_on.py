@@ -1,4 +1,4 @@
-"""Check Class 9 in a disposable extracted project, never personal work."""
+"""Check Class 9 in a disposable project; never change personal work."""
 import argparse
 import csv
 import http.cookiejar

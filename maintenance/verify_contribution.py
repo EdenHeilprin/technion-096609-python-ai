@@ -11,7 +11,7 @@ import subprocess
 import tempfile
 from urllib.parse import unquote
 
-REPO = Path(__file__).resolve().parents[2]
+REPO = Path(__file__).resolve().parents[1]
 
 
 def run(folder, *command):

@@ -16,7 +16,7 @@ import zipfile
 from html.parser import HTMLParser
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parents[2]
+REPO = Path(__file__).resolve().parents[1]
 CHECKS = 0
 
 
@@ -78,7 +78,7 @@ def verify_links():
         "https://github.com/EdenHeilprin/technion-096609-python-ai/raw/refs/heads/main/",
         "https://raw.githubusercontent.com/EdenHeilprin/technion-096609-python-ai/refs/heads/main/",
     )
-    roots = [REPO / "README.md", REPO / "phase-2", REPO / "student-lessons"]
+    roots = [REPO / "README.md", REPO / "maintenance", REPO / "student-lessons"]
     roots += sorted(REPO.glob("class-*"))
     pages = []
     for root in roots:
@@ -100,7 +100,7 @@ def verify_links():
 
 
 def verify_index():
-    entries = json.loads((REPO / "phase-2/DOWNLOADS.json").read_text(encoding="utf-8"))
+    entries = json.loads((REPO / "maintenance/DOWNLOADS.json").read_text(encoding="utf-8"))
     expected = {f"class-{number:02d}/class-{number:02d}-files.zip" for number in (8, 9)}
     check(len(entries) == 2 and {item["file"] for item in entries} == expected, "Download index contains missing or retired packages")
     for item in entries:
