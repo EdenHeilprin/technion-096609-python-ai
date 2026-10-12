@@ -26,7 +26,7 @@
 
 ## Try it yourself
 
-[Give one precise activity. For code, change or extend the example. For a conceptual lesson, compare cases or justify a decision. Supply enough information to attempt it independently.]
+[Give one precise activity. For code, change or extend the example. For a conceptual lesson, compare cases or justify a decision. For an experiment improvement, discuss the original and revised designs after the presenters' local demonstration: what can the revised design reveal more clearly? Supply enough information to attempt the activity independently.]
 
 <details>
 <summary>Answer and discussion</summary>

@@ -39,17 +39,19 @@ Work in pairs. **Get the instructor's approval before building your lesson**, in
 | **Cleaning text** | Turn inconsistent response labels into consistent ones using `.strip()`, `.lower()`, and `.replace()` | [String methods](https://docs.python.org/3.13/library/stdtypes.html#string-methods) |
 | **Useful built-in tools** | Use `enumerate`, `zip`, or `sorted` to label trials, pair stimuli with answers, or rank scores | [Built-in functions](https://docs.python.org/3.13/library/functions.html) |
 | **Reusable modules** | Put a function in one `.py` file and use it from another | [Modules](https://docs.python.org/3.13/tutorial/modules.html) |
-| **Python's history** | Explain why Python was created and how it grew; show an early example or design choice alongside something recognizable in today's Python | [Python's origins](https://docs.python.org/3.13/faq/general.html#why-was-python-created-in-the-first-place) |
+| **Python's history** | Tell Python's origin story, show three or four milestones, and connect its development to uses in research | [Python's origins](https://docs.python.org/3.13/faq/general.html#why-was-python-created-in-the-first-place) |
 | **A GitHub tutorial** | Give a guided live tour: find a file, inspect its history, and follow a proposed change through a pull request | [Hello World](https://docs.github.com/en/get-started/start-your-journey/hello-world) |
 | **Improve the experiment scientifically** | Identify one methodological weakness, change the experiment to address it, and demonstrate the original and revised versions | [Class 9 experiment](../class-09/) |
 
-For the **experiment improvement**, connect the change to a research question. For example, fixed ascending/descending orders may make it hard to separate payoff preferences from order effects. A randomized-order condition could help investigate that. Explain the weakness, implement one focused change, let classmates try it, and show what the resulting data would allow you to learn more clearly. A prettier interface alone is not a methodological improvement; you do not need to collect enough data to prove the improvement during the lesson.
+For the **experiment improvement**, identify a methodological weakness and explain why it matters. For example, a randomized-order condition could help distinguish payoff preferences from order effects. Implement one focused change and **demonstrate the original and revised versions locally on your laptop**, sharing your screen. Explain what you changed, its scientific merit, and what the resulting data would help you learn. Classmates discuss the design rather than participate in the experiment; no online deployment is needed.
 
-You may also propose another subject. Python history is a good option if you prefer a less technical presentation: use a live example, a short comparison, or an audience question rather than a long list of dates. `random` is a built-in **module**; libraries such as pandas need installation.
+For **Python's history**, organize the lesson around three questions: **Who created Python, and why? How did it develop and spread? How did it become useful in research?** Use a short timeline of three or four milestones and show two concrete applications, such as analyzing a dataset and building a web experiment. This is an option for a less technical presentation.
+
+You may also propose another subject. `random` is a built-in **module**; libraries such as pandas need installation.
 
 ### What to prepare
 
-Use the [lesson template](lesson-template/README.md): **one clear goal, a live example, and a small activity with an answer or expected result**. Keep the code short and explain it with concise English `#` comments. Include the files needed to repeat it and links to your sources. Slides are optional; your lesson page can be your presentation.
+Use the [lesson template](lesson-template/README.md): **one clear goal, a live example, and a small activity with an answer or expected result**. For the experiment-improvement topic, the activity is a discussion of the design you demonstrate. Keep the code short and explain it with concise English `#` comments. Include the files needed to repeat it and links to your sources. Slides are optional; your lesson page can be your presentation.
 
 ## 2. Understand where your work will go
 
@@ -159,7 +161,7 @@ Our approved topic is [TOPIC AND WHAT WE WILL DEMONSTRATE]. Our names are [BOTH 
 
 Read class-10/README.md and its lesson template, and consult Classes 1–7 for the audience's background. Create our first lesson draft in student-lessons/<my GitHub username>. Aim for about 30 minutes: introduce one useful idea, demonstrate it live, and give classmates a small activity with an answer and a compact reference. Aim for familiarity and recognition, not mastery. Use and link reliable original sources.
 
-Include all necessary files. For a Python example, use demo.py, fictional input data located relative to the script, concise English # comments, and requirements.txt listing only external packages. For an oTree improvement, copy the clean Class 9 experiment into our lesson's experiment folder, preserve the original, and explain which methodological weakness the change addresses and what it helps us learn. For Python history or a GitHub tutorial, use a live illustration and audience activity without unnecessary code.
+Include all necessary files. For a Python example, use demo.py, fictional input data located relative to the script, concise English # comments, and requirements.txt listing only external packages. For an oTree improvement, copy the clean Class 9 experiment into our lesson's experiment folder and preserve the original. Plan a local screen-shared demonstration by the presenters, followed by discussion of the methodological weakness, the change, and its scientific merit. Do not require online deployment or classmates' participation in the experiment. For Python history, follow the topic outline in class-10/README.md and illustrate research uses with examples from this course. For a GitHub tutorial, use a guided live tour and audience activity.
 
 Save the draft; we will prepare and test it in the next step. Change only our lesson folder, do not use real participant data, and do not commit or publish. Show me the lesson and files to review.
 ```
@@ -354,7 +356,7 @@ git push origin add-my-lesson
 
 When the owner merges the PR, your folder appears in **[Student lessons](../student-lessons/)** in the official course. A PR marked **Closed** without **Merged** was not added.
 
-For your **30-minute presentation**, introduce the problem, demonstrate a small example live, let classmates try something, and discuss the result. Both partners should present. Rehearse with the actual files, aiming for recognition and understanding of the basic idea rather than covering every feature.
+For your **30-minute presentation**, introduce the problem, demonstrate a small example live, and lead the activity or discussion described in your lesson. For an experiment improvement, run it locally on your laptop and explain the design change and its scientific merit. Both partners should present. Rehearse with the actual files, aiming for recognition and understanding of the basic idea rather than covering every feature.
 
 ## Before you finish
 
