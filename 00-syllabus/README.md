@@ -10,7 +10,7 @@ Technion – Israel Institute of Technology · Faculty of Data and Decision Scie
 - **Instructor:** Eden Heilprin
 - **Email:** [edenheilprin@campus.technion.ac.il](mailto:edenheilprin@campus.technion.ac.il)
 - **Office hours:** By appointment upon request by email
-- **Timetable:** Wednesdays, 16:30–18:30; Fridays 6, 13, and 27 November, 09:00–13:00
+- **Timetable:** Wednesdays, 16:30–18:30; Fridays 6, 13, and 27 November\*, 09:00–13:00
 - **First meeting:** Wednesday, 28 October 2026
 - **Location:** Room 424, Bloomfield (all Wednesday and Friday classes)
 - **Language:** Teaching in Hebrew; course materials and code in English
@@ -54,7 +54,7 @@ Classes combine short explanations, demonstrations, and hands-on practice. The c
 | [7](../class-07/README.md) | Fri 13 Nov | Debugging with AI: identifying errors, interpreting tracebacks, and checking fixes |
 | [8](../class-08/README.md) | Wed 18 Nov | From Answers to Delegation: a Codex demonstration of experiment building and deployment, R analysis, and research writing |
 | [9](../class-09/README.md) | Wed 25 Nov | Codex, oTree, and GitHub setup; running and editing the local experiment |
-| [10](../class-10/README.md) | Fri 27 Nov | Create and contribute your own lesson using GitHub forks and pull requests |
+| [10](../class-10/README.md) | Fri 27 Nov\* | Create and contribute your own lesson using GitHub forks and pull requests |
 | [11](../student-lessons/README.md) | To be confirmed | Student-led lessons on approved topics with live examples and activities or discussion |
 | [12](../student-lessons/README.md) | To be confirmed | Student-led lessons on approved topics with live examples and activities or discussion |
 | [13](../student-lessons/README.md) | To be confirmed | Student-led lessons on approved topics with live examples and activities or discussion |
