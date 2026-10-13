@@ -12,7 +12,7 @@ Technion – Israel Institute of Technology · Faculty of Data and Decision Scie
 - **Office hours:** By appointment upon request by email
 - **Timetable:** Wednesdays, 16:30–18:30; Fridays 6, 13, and 27 November, 09:00–13:00
 - **First meeting:** Wednesday, 28 October 2026
-- **Location:** To be announced
+- **Location:** Room 424, Bloomfield (all Wednesday and Friday classes)
 - **Language:** Teaching in Hebrew; course materials and code in English
 
 ## Course description
