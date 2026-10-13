@@ -40,7 +40,7 @@ Classes combine short explanations, demonstrations, and hands-on practice. The c
 
 ## Course outline and schedule
 
-**This plan is tentative:** content, sequence, pacing, and dates may change. The current syllabus and schedule are available in the GitHub course repository. All dates are in 2026. Classes 3–4 and 6–7 share Friday sessions; dates and presentation order for Classes 11–13 remain to be confirmed.
+**This plan is tentative:** content, sequence, pacing, and dates may change. All dates are in 2026. Classes 3–4 and 6–7 share Friday sessions; dates and presentation order for Classes 11–13 remain to be confirmed.
 
 | Class | Date | Topic |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ Classes combine short explanations, demonstrations, and hands-on practice. The c
 
 ## Preparation and course materials
 
-Start with the public **[GitHub course repository](https://github.com/EdenHeilprin/technion-096609-python-ai)**. It contains the current syllabus, setup guides, lesson instructions, code, exercises, and companion tutorials. No account is needed to read or download the materials.
+The **[course home](../README.md)** contains setup guides, lesson instructions, code, exercises, and companion tutorials. No account is needed to read or download the materials.
 
 Before the first meeting, complete **[Class 0 — Computer Setup](../class-00-setup/README.md)** using the guide for your computer to install and check Python and VS Code. Bring your laptop. If you need help, contact the instructor using the email template in Class 0.
 
