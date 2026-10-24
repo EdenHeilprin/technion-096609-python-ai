@@ -10,7 +10,7 @@ Technion – Israel Institute of Technology · Faculty of Data and Decision Scie
 - **Instructor:** Eden Heilprin
 - **Email:** [edenheilprin@campus.technion.ac.il](mailto:edenheilprin@campus.technion.ac.il)
 - **Office hours:** By appointment upon request by email
-- **Timetable:** Wednesdays, 16:30–18:30; Fridays 6, 13, and 27 November\*, 09:00–13:00
+- **Timetable:** Wednesdays, 16:30–18:30; Fridays 6\*, 13, and 27 November\*, 09:00–13:00
 - **First meeting:** Wednesday, 28 October 2026
 - **Location:** Room 424, Bloomfield (all Wednesday and Friday classes)
 - **Language:** Teaching in Hebrew; course materials and code in English
@@ -47,8 +47,8 @@ Classes combine short explanations, demonstrations, and hands-on practice. The c
 | [0](../class-00-setup/README.md) | Before 28 Oct | Before the course: computer setup and first Python run |
 | [1](../class-01/README.md) | Wed 28 Oct | First Python programs, variables, output, and simple calculations |
 | [2](../class-02/README.md) | Wed 4 Nov | Types, user input, and conversion between text and numbers |
-| [3](../class-03/README.md) | Fri 6 Nov | Lists, dictionaries, and structured research records |
-| [4](../class-04/README.md) | Fri 6 Nov | Comparisons, Boolean values, and conditional decisions |
+| [3](../class-03/README.md) | Fri 6 Nov\* | Lists, dictionaries, and structured research records |
+| [4](../class-04/README.md) | Fri 6 Nov\* | Comparisons, Boolean values, and conditional decisions |
 | [5](../class-05/README.md) | Wed 11 Nov | Loops, counters, and running totals |
 | [6](../class-06/README.md) | Fri 13 Nov | Functions, parameters, return values, and documentation |
 | [7](../class-07/README.md) | Fri 13 Nov | Debugging with AI: identifying errors, interpreting tracebacks, and checking fixes |
