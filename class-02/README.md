@@ -68,16 +68,18 @@ trials_completed = 6
 response_time = 1.42
 ```
 
-Run the file and compare the output with your predictions. In output such as `<class 'str'>`, focus on the short name inside the quotation marks.
+Before the first run, check that the last two `print` lines start with `#`. If you downloaded an earlier copy, add `# ` at the start of each of those two lines and save. A line that starts with `#` is a **comment**: Python skips it.
 
-The file also compares these two expressions:
+Run the file and compare the three type lines with your predictions. In output such as `<class 'str'>`, focus on the short name inside the quotation marks.
+
+Now look at the two commented-out lines:
 
 ```python
-6 + 2
-"6" + "2"
+# print(6 + 2)
+# print("6" + "2")
 ```
 
-Predict both results before running them. Explain why the results differ even though the characters look similar.
+Predict what each line will print. Then remove `# ` from both lines, save, and run the file again. How do the two new output lines compare with your predictions?
 
 <details>
 <summary>Check your prediction</summary>
