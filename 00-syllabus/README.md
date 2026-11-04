@@ -40,7 +40,7 @@ Classes combine short explanations, demonstrations, and hands-on practice. The c
 
 ## Course outline and schedule
 
-**This plan is tentative:** content, sequence, pacing, and dates may change. All dates are in 2026. Classes 6–7 share the Friday, 13 November session; dates and presentation order for Classes 11–13 remain to be confirmed.
+**This plan is tentative:** content, sequence, pacing, and dates may change. All dates are in 2026. Classes 4–5 share the Friday, 6 November session, and Classes 7–8 share the Friday, 13 November session. Dates and presentation order for Classes 11–13 remain to be confirmed.
 
 | Class | Date | Topic |
 | --- | --- | --- |
@@ -49,12 +49,12 @@ Classes combine short explanations, demonstrations, and hands-on practice. The c
 | [2](../class-02/README.md) | Wed 4 Nov | Types, user input, and conversion between text and numbers |
 | [3](../class-03/README.md) | Wed 4 Nov | Lists, dictionaries, and structured research records |
 | [4](../class-04/README.md) | Fri 6 Nov\* | Comparisons, Boolean values, and conditional decisions |
-| [5](../class-05/README.md) | Wed 11 Nov | Loops, counters, and running totals |
-| [6](../class-06/README.md) | Fri 13 Nov | Functions, parameters, return values, and documentation |
+| [5](../class-05/README.md) | Fri 6 Nov\* | Loops, counters, and running totals |
+| [6](../class-06/README.md) | Wed 11 Nov | Functions, parameters, return values, and documentation |
 | [7](../class-07/README.md) | Fri 13 Nov | Debugging with AI: identifying errors, interpreting tracebacks, and checking fixes |
-| [8](../class-08/README.md) | Wed 18 Nov | From Answers to Delegation: a Codex demonstration of experiment building and deployment, R analysis, and research writing |
-| [9](../class-09/README.md) | Wed 25 Nov | Codex, oTree, and GitHub setup; running and editing the local experiment |
-| [10](../class-10/README.md) | Fri 27 Nov\* | Create and contribute your own lesson using GitHub forks and pull requests |
+| [8](../class-08/README.md) | Fri 13 Nov | From Answers to Delegation: a Codex demonstration of experiment building and deployment, R analysis, and research writing |
+| [9](../class-09/README.md) | Wed 18 Nov | Codex, oTree, and GitHub setup; running and editing the local experiment |
+| [10](../class-10/README.md) | Wed 25 Nov | Create and contribute your own lesson using GitHub forks and pull requests |
 | [11](../student-lessons/README.md) | To be confirmed | Student-led lessons on approved topics with live examples and activities or discussion |
 | [12](../student-lessons/README.md) | To be confirmed | Student-led lessons on approved topics with live examples and activities or discussion |
 | [13](../student-lessons/README.md) | To be confirmed | Student-led lessons on approved topics with live examples and activities or discussion |
