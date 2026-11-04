@@ -293,18 +293,12 @@ Run the program with these cases. Compare its message with the required decision
 
 | Term | Simple meaning | Example |
 | --- | --- | --- |
-| Boolean | A value that is either `True` or `False` | `6 >= 5` produces `True` |
-| `bool` | Python's name for the Boolean type | `type(6 >= 5)` |
-| Comparison | A yes-or-no question about values | `condition == "control"` |
-| Comparison operator | A symbol that compares values | `==`, `!=`, `<`, `<=`, `>`, `>=` |
-| Condition | A Boolean expression used to make a decision | `rating <= 7` |
-| Conditional | Code that chooses a branch according to a condition | `if`/`else` |
+| Boolean (`bool`) | A value that is either `True` or `False` | `6 >= 5` produces `True` |
+| Comparison | A yes-or-no question about values, using an operator such as `==` or `>=` | `condition == "control"` |
+| Conditional | Code that chooses what to run based on a `True` or `False` result | `if`/`elif`/`else` |
 | Branch | One possible path through a conditional | The indented code under `if` |
 | `elif` | Checks another condition if earlier branches were not selected | `elif rating <= 5:` |
 | Indentation | Spaces at the start of a line that show which block it belongs to | The four spaces before `print()` |
-| Edge case | A value at or near a boundary | `1` and `7` for an allowed range of `1`–`7` |
-| Validation | Checking whether information follows a rule | Is the rating inside the allowed range? |
-| Comment | Explanatory text after `#` that Python does not execute | `# include both boundaries` |
 
 ### Assignment is not equality testing
 
