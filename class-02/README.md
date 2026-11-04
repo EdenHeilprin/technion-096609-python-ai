@@ -68,7 +68,7 @@ trials_completed = 6
 response_time = 1.42
 ```
 
-Before the first run, check that the last two `print` lines start with `#`. If you downloaded an earlier copy, add `# ` at the start of each of those two lines and save. A line that starts with `#` is a **comment**: Python skips it.
+The last two `print` lines start with `#`. A line that starts with `#` is a **comment**: Python skips it.
 
 Run the file and compare the three type lines with your predictions. In output such as `<class 'str'>`, focus on the short name inside the quotation marks.
 
@@ -103,6 +103,8 @@ Before running the next line, predict which type Python will report. Then add th
 ```python
 print(type(participant_code))
 ```
+
+Use the variable name **without quotation marks**: `type(participant_code)` checks the value stored in the variable. Writing `type("participant_code")` checks the literal text `"participant_code"` instead, so it always reports `str`. The quotes in `input("Participant code: ")` enclose the message shown to the user.
 
 <details>
 <summary>Check your prediction</summary>
