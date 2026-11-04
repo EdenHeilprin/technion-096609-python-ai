@@ -2,8 +2,6 @@
 
 Today you will ask yes-or-no questions in Python, use the answers to choose which code runs, and test whether a small program behaves correctly at its boundaries.
 
-For the rehearsal, try to find the mistake yourself first.
-
 ## By the end of class
 
 You should be able to:
