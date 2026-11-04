@@ -40,14 +40,14 @@ Classes combine short explanations, demonstrations, and hands-on practice. The c
 
 ## Course outline and schedule
 
-**This plan is tentative:** content, sequence, pacing, and dates may change. All dates are in 2026. Classes 3–4 and 6–7 share Friday sessions; dates and presentation order for Classes 11–13 remain to be confirmed.
+**This plan is tentative:** content, sequence, pacing, and dates may change. All dates are in 2026. Classes 6–7 share the Friday, 13 November session; dates and presentation order for Classes 11–13 remain to be confirmed.
 
 | Class | Date | Topic |
 | --- | --- | --- |
 | [0](../class-00-setup/README.md) | Before 28 Oct | Before the course: computer setup and first Python run |
 | [1](../class-01/README.md) | Wed 28 Oct | First Python programs, variables, output, and simple calculations |
 | [2](../class-02/README.md) | Wed 4 Nov | Types, user input, and conversion between text and numbers |
-| [3](../class-03/README.md) | Fri 6 Nov\* | Lists, dictionaries, and structured research records |
+| [3](../class-03/README.md) | Wed 4 Nov | Lists, dictionaries, and structured research records |
 | [4](../class-04/README.md) | Fri 6 Nov\* | Comparisons, Boolean values, and conditional decisions |
 | [5](../class-05/README.md) | Wed 11 Nov | Loops, counters, and running totals |
 | [6](../class-06/README.md) | Fri 13 Nov | Functions, parameters, return values, and documentation |
