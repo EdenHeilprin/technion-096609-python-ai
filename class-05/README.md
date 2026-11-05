@@ -294,16 +294,12 @@ Replace the list with each case below, run the program, and compare its output w
 
 | Term | Simple meaning | Example |
 | --- | --- | --- |
-| Loop | Code that repeats a block | `for response in responses:` |
-| `for` loop | A loop that processes items from a collection | `for score in scores:` |
-| Loop variable | The variable holding the current item | `score` |
+| `for` loop | Repeats a block of code for each item | `for response_time in response_times:` |
+| Loop variable | The variable holding the current item | `response_time` |
 | Loop body | The indented code repeated during each iteration | The lines below the loop header |
 | Iteration | One pass through the loop body | Processing one response time |
-| Initialize | Give a variable its starting value before repetition begins | `count = 0` |
-| Update | Replace a variable's value with a new value | `count = count + 1` |
 | Counter | A variable that records how many times something happens | Number of fast responses |
 | Running total | A variable that adds values over time | Total response time |
-| Accumulator | A variable that stores a result as it is built | A counter or running total |
 
 ### Read a loop header
 
