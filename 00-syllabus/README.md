@@ -42,17 +42,27 @@ Classes combine short explanations, demonstrations, and hands-on practice. The c
 
 **This plan is tentative:** content, sequence, pacing, and dates may change. All dates are in 2026. Dates and presentation order for Classes 11–13 remain to be confirmed.
 
-| Date | Classes | Topics |
-| --- | --- | --- |
-| Before 28 Oct | [0](../class-00-setup/README.md) | Before the course: computer setup and first Python run |
-| Wed 28 Oct | [1](../class-01/README.md) | First Python programs, variables, output, and simple calculations |
-| Wed 4 Nov | [2](../class-02/README.md), [3](../class-03/README.md) | Types, user input, and conversion between text and numbers.<br>Lists, dictionaries, and structured research records. |
-| Fri 6 Nov\* | [4](../class-04/README.md), [5](../class-05/README.md) | Comparisons, Boolean values, and conditional decisions.<br>Loops, counters, and running totals. |
-| Wed 11 Nov | [6](../class-06/README.md) | Functions, parameters, return values, and documentation |
-| Fri 13 Nov | [7](../class-07/README.md), [8](../class-08/README.md) | Debugging with AI: identifying errors, interpreting tracebacks, and checking fixes.<br>From Answers to Delegation: a Codex demonstration of experiment building and deployment, R analysis, and research writing. |
-| Wed 18 Nov | [9](../class-09/README.md) | Codex, oTree, and GitHub setup; running and editing the local experiment |
-| Wed 25 Nov | [10](../class-10/README.md) | Create and contribute your own lesson using GitHub forks and pull requests |
-| Dates to be confirmed | [11–13](../student-lessons/README.md) | Student-led lessons on approved topics with live examples and activities or discussion |
+<table>
+<thead>
+<tr><th>Date</th><th>Class</th><th>Topic</th></tr>
+</thead>
+<tbody>
+<tr><td>Before 28 Oct</td><td><a href="../class-00-setup/README.md">0</a></td><td>Before the course: computer setup and first Python run</td></tr>
+<tr><td>Wed 28 Oct</td><td><a href="../class-01/README.md">1</a></td><td>First Python programs, variables, output, and simple calculations</td></tr>
+<tr><td rowspan="2">Wed 4 Nov</td><td><a href="../class-02/README.md">2</a></td><td>Types, user input, and conversion between text and numbers</td></tr>
+<tr><td><a href="../class-03/README.md">3</a></td><td>Lists, dictionaries, and structured research records</td></tr>
+<tr><td rowspan="2">Fri 6 Nov*</td><td><a href="../class-04/README.md">4</a></td><td>Comparisons, Boolean values, and conditional decisions</td></tr>
+<tr><td><a href="../class-05/README.md">5</a></td><td>Loops, counters, and running totals</td></tr>
+<tr><td>Wed 11 Nov</td><td><a href="../class-06/README.md">6</a></td><td>Functions, parameters, return values, and documentation</td></tr>
+<tr><td rowspan="2">Fri 13 Nov</td><td><a href="../class-07/README.md">7</a></td><td>Debugging with AI: identifying errors, interpreting tracebacks, and checking fixes</td></tr>
+<tr><td><a href="../class-08/README.md">8</a></td><td>From Answers to Delegation: a Codex demonstration of experiment building and deployment, R analysis, and research writing</td></tr>
+<tr><td>Wed 18 Nov</td><td><a href="../class-09/README.md">9</a></td><td>Codex, oTree, and GitHub setup; running and editing the local experiment</td></tr>
+<tr><td>Wed 25 Nov</td><td><a href="../class-10/README.md">10</a></td><td>Create and contribute your own lesson using GitHub forks and pull requests</td></tr>
+<tr><td rowspan="3">Dates to be confirmed</td><td><a href="../student-lessons/README.md">11</a></td><td>Student-led lessons on approved topics with live examples and activities or discussion</td></tr>
+<tr><td><a href="../student-lessons/README.md">12</a></td><td>Student-led lessons on approved topics with live examples and activities or discussion</td></tr>
+<tr><td><a href="../student-lessons/README.md">13</a></td><td>Student-led lessons on approved topics with live examples and activities or discussion</td></tr>
+</tbody>
+</table>
 
 ## Preparation and course materials
 
