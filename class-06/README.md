@@ -337,17 +337,13 @@ Replace the argument in the example call with each list below. Predict the resul
 
 | Term | Simple meaning | Example |
 | --- | --- | --- |
-| Function | A named block of instructions that performs a task | `count_fast_responses` |
-| Function definition | The code that teaches Python the task | `def count_fast_responses(response_times):` |
-| Function header | The first line of a definition | The line beginning with `def` |
-| Function body | The indented instructions belonging to the function | The loop and `return` below the header |
+| Function (`def`) | A named, reusable block of code, defined with `def` | `def count_fast_responses(response_times):` |
 | Function call | An instruction to perform the function now | `count_fast_responses(session_a)` |
 | Parameter | A name for incoming information in the definition | `response_times` |
 | Argument | An actual value supplied in a call | `session_a` |
-| Return value | The result sent back to the caller | The final count |
-| Local scope | The region inside one function call where its parameters and variables exist | `fast_count` inside the function |
-| Contract | A concise description of expected inputs, behavior, and returned result | “Returns the number of times at or below 1000” |
-| Docstring | A concise description placed inside a function to record its purpose or contract | `"""Return the number of fast responses."""` |
+| Return value | The result sent back to the caller by `return` | `return fast_count` |
+| Local scope | A function's parameters and local variables are available inside that function | `fast_count` inside the function |
+| Docstring | A description of the function, placed first in its body inside triple quotes | `"""Return the number of fast responses."""` |
 
 ### Definition and call
 
