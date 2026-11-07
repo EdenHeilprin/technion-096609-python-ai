@@ -1,6 +1,6 @@
 # Class 6 — Functions, Parameters, and Return Values
 
-At the end of a game, you need to convert each participant's points into a bonus payment. Instead of copying the same calculation for every participant, you can write it once as a **function** and reuse it. If the payment rule changes, you update it in one place.
+Each participant earns points across several trials of an experiment. To calculate their bonus, we first add up their points, then convert the total into pence. We already know how to do this with a loop. Today we will turn those steps into a named, reusable **function**.
 
 Today you will build that function, learn how to pass in different values and return results, and use functions to process more than one dataset.
 
@@ -62,26 +62,73 @@ Total points: 10
 
 </details>
 
-## Write the payment rule once, use it for every participant
+## Give the whole calculation a name
 
-The game pays **10 pence for each point**. Two participants earned 12 and 25 points. This function calculates and displays a bonus for either score:
+The experiment pays **10 pence for each point**. The rehearsal already adds up one participant's trial points. To calculate their bonus, we multiply that total by 10.
+
+Here is a working program that repeats those steps for two participants:
 
 ```python
-def show_bonus(points):
-    bonus_pence = points * 10
-    print("Bonus (pence):", bonus_pence)
+# Calculate the first participant's bonus.
+first_points = [3, 5, 2]
+first_total = 0
+for points in first_points:
+    first_total = first_total + points
+first_bonus = first_total * 10
 
-show_bonus(12)
-show_bonus(25)
+# Calculate the second participant's bonus.
+second_points = [4, 1, 3]
+second_total = 0
+for points in second_points:
+    second_total = second_total + points
+second_bonus = second_total * 10
+
+print("First bonus (pence):", first_bonus)
+print("Second bonus (pence):", second_bonus)
 ```
 
-A **function** is a named, reusable block of instructions. The first three lines form its **definition**:
+Which instructions do the same job? If the rate changes to **15 pence per point**, how many calculations must we edit? What would happen if we changed only one?
 
-- `def` begins the definition, and `show_bonus` is the function name.
-- `points` is a **parameter**: a name for the information this function receives.
-- The colon `:` starts the body; the indented lines are the instructions that belong to it.
+We can give the complete calculation a name: `calculate_bonus`. Its **definition** contains the instructions for doing the job:
 
-The final two lines are **function calls**. Each call supplies a score and runs the same calculation. For another participant, add another call—not another copy of the calculation and output code.
+```python
+def calculate_bonus(trial_points):
+    # Start a fresh total for this participant.
+    total_points = 0
+
+    # Add each trial's points to the total.
+    for points in trial_points:
+        total_points = total_points + points
+
+    # Convert the total to pence at 10 pence per point.
+    bonus_pence = total_points * 10
+    # Send the calculated bonus back to the code that called the function.
+    return bonus_pence
+```
+
+Now we can use that whole calculation with a **function call**:
+
+```python
+# Calculate and store a bonus for each participant.
+first_bonus = calculate_bonus([3, 5, 2])
+second_bonus = calculate_bonus([4, 1, 3])
+
+print("First bonus (pence):", first_bonus)
+print("Second bonus (pence):", second_bonus)
+```
+
+Each call starts a fresh total, adds the supplied trial points, and calculates the bonus. **`return` sends the result back**, so it can be stored in `first_bonus` or `second_bonus`. The outputs are 100 and 80 pence.
+
+**Loops repeat instructions. Functions let us define a task once and use it by name wherever we need it.** A loop can also call a function for each item. The loop inside `calculate_bonus` still does the adding; the function packages the whole bonus calculation into one meaningful operation. Changing the payment rule in the definition changes it for every call.
+
+You already call `input()`, `type()`, and `print()` without writing the instructions inside them. Now you can create your own function. Its name tells you **what** it does; its definition specifies **how** it works.
+
+### Read the definition and the calls
+
+- `def` begins a function definition; `calculate_bonus` is the function's name.
+- `trial_points` is a **parameter**: a name for the information the function receives.
+- The colon `:` starts the body. The indented lines belong to the function; the update inside the loop is indented one level further.
+- `calculate_bonus([3, 5, 2])` is a **call**: it runs the function with that list.
 
 A definition tells Python how to perform the task; a call tells it to perform the task now. Reading the definition alone does not run its body.
 
@@ -89,10 +136,10 @@ A definition tells Python how to perform the task; a call tells it to perform th
 
 | Term | Where it appears | Example |
 | --- | --- | --- |
-| Parameter | In the definition; a name for incoming information | `points` |
-| Argument | In a call; the value or expression supplied | `12` in `show_bonus(12)` |
+| Parameter | In a definition; a name for incoming information | `trial_points` |
+| Argument | In a call; the actual information supplied | `[3, 5, 2]` in `calculate_bonus([3, 5, 2])` |
 
-During `show_bonus(12)`, `points` has the value `12`. During `show_bonus(25)`, it has the value `25`. The definition stays the same.
+During the first call, `trial_points` holds `[3, 5, 2]`. During the second, it holds `[4, 1, 3]`. The definition stays the same.
 
 ## Activity 1 — calculate bonuses for different participants
 
@@ -102,38 +149,47 @@ Open [`function_call_demo.py`](function_call_demo.py). Predict its output before
 <summary>Check your prediction</summary>
 
 ```text
-Bonus (pence): 120
-Bonus (pence): 250
+First bonus (pence): 100
+Second bonus (pence): 80
 ```
 
-Python first reads the definition. The first call then uses 12 points; the second uses 25 points.
+Python first reads the definition. Each call then calculates a bonus from its own list of trial points.
 
 </details>
 
-Run the file, then add `show_bonus(8)` for a third participant. Predict the new bonus and run it again.
+Run the file. Then add a call for a third participant who earned `[2, 4]`: store the result in `third_bonus` and print it. Predict the bonus before running it again.
 
-What would happen if the file contained only the definition, with no calls? Test this by temporarily placing `#` at the beginning of each call line, then restore the calls.
+What would happen if the file contained only the definition? Temporarily comment out **all the lines below the definition**, including the calls and the print lines. Run the file, then restore those lines.
 
 ## A docstring records the function's job
 
-We can document the payment function's job with a **docstring** immediately after its header:
+A **docstring** describes the function as a whole. Put it immediately after the header, before the other instructions:
 
 ```python
-def show_bonus(points):
-    """Display the bonus in pence at 10 pence per point."""
-    bonus_pence = points * 10
-    print("Bonus (pence):", bonus_pence)
+def calculate_bonus(trial_points):
+    """Return the bonus in pence for a list of trial points, at 10 pence per point."""
+    # Start a fresh total for this participant.
+    total_points = 0
+
+    # Add each trial's points to the total.
+    for points in trial_points:
+        total_points = total_points + points
+
+    # Convert the total to pence at 10 pence per point.
+    bonus_pence = total_points * 10
+    # Send the calculated bonus back to the code that called the function.
+    return bonus_pence
 ```
 
-Use `#` comments to explain individual lines or choices. A **docstring** uses triple quotes as the first statement in a function and describes the function as a whole; Python also makes it available through `help()`. Neither prints a message when you call the function.
+Use `#` comments to explain individual lines or choices. A **docstring** uses triple quotes as the first statement in a function; Python also makes it available through `help()`. Neither prints a message when you call the function.
 
 A function's **contract** is its agreement with the caller: what it accepts and what it does or returns. A useful docstring summarizes that agreement.
 
 ## Activity 2 — change the payment rule in one place
 
-Open [`parameter_demo.py`](parameter_demo.py). It contains the documented function and calls for scores of `12`, `25`, and `8`.
+Open [`parameter_demo.py`](parameter_demo.py). It contains the documented function and calls with `[3, 5, 2]`, `[4, 1, 3]`, and `[2, 4]`.
 
-For the next game, the rate increases to **15 pence per point**. Change the calculation inside the function and update its docstring to match. Leave all three calls unchanged.
+For the next experiment, the rate increases to **15 pence per point**. Change the calculation inside the function and update its docstring and conversion comment to match. Leave all three calls unchanged.
 
 Predict the new bonuses, then run the program.
 
@@ -141,83 +197,79 @@ Predict the new bonuses, then run the program.
 <summary>Check the complete output</summary>
 
 ```text
-Bonus (pence): 180
-Bonus (pence): 375
-Bonus (pence): 120
+First bonus (pence): 150
+Second bonus (pence): 120
+Third bonus (pence): 90
 ```
 
-One change to the calculation updates all three bonuses. The payment rule lives in the function; the calls provide the different scores.
+One change to the calculation updates all three bonuses. Each call still means “calculate this participant's bonus,” even though the payment rule has changed.
 
 </details>
 
-## A returned value leaves the function
+## Use the returned value in another calculation
 
-Our payment function displays a bonus. If we wanted to add that bonus to a participation fee, the rest of the program would need the calculated number—not just a printed message. The `return` statement sends a value back to the line that called the function.
-
-The same idea applies to a response-time label that another part of an experiment needs:
+The experiment also pays a fixed participation fee of **100 pence**. We need the bonus as a number so we can add that fee. Our function already gives us that number through `return`:
 
 ```python
-def classify_response_time(response_time):
-    """Return `fast` for times at or below 1000 ms; otherwise return `slow`."""
-    if response_time <= 1000:
-        speed_label = "fast"
-    else:
-        speed_label = "slow"
-
-    return speed_label
-
-label = classify_response_time(850)
-print("Speed:", label)
+# Store the bonus returned by the function.
+first_bonus = calculate_bonus([3, 5, 2])
+# Add the fixed participation fee, also in pence.
+total_payment = 100 + first_bonus
+print("Total payment (pence):", total_payment)
 ```
 
-Read the call from right to left:
+With the original rate of **10 pence per point**, the bonus is 100 pence and the total payment is 200 pence.
 
-1. `850` is passed into the parameter `response_time`.
-2. The function chooses and stores a value in `speed_label`.
-3. `return speed_label` sends that text back to the caller.
-4. The returned text is assigned to `label`.
-5. The final line displays the stored result.
+Follow the information through the call:
 
-`return` and `print()` are not interchangeable:
+1. `[3, 5, 2]` is passed into the parameter `trial_points`.
+2. The function adds the points and calculates `bonus_pence`.
+3. `return bonus_pence` sends the number `100` back to the caller.
+4. That number is assigned to `first_bonus`.
+5. The following lines add the fee and display the total payment.
+
+`return` and `print()` do different jobs:
 
 | Operation | What it does |
 | --- | --- |
 | `return value` | Sends a value back to the caller so it can be stored or used |
 | `print(value)` | Displays a value in the output area |
 
+Printing a bonus inside the function would display it, but would not send that number back for the payment calculation. Returning it lets the calling code decide how to use it.
+
 ## Activity 3 — trace two function calls
 
-Open [`return_value_demo.py`](return_value_demo.py). Do not run it yet. Complete the prediction table:
+Open [`return_value_demo.py`](return_value_demo.py), which uses the original rate of **10 pence per point**. Do not run it yet. Complete the prediction table. Each total payment includes a participation fee of **100 pence**.
 
-| Call | Argument | Returned value | Variable receiving the result |
-| --- | ---: | --- | --- |
-| First | `850` | | `first_label` |
-| Second | `1200` | | `second_label` |
+| Call | Argument | Returned bonus (pence) | Variable receiving the bonus | Total payment (pence) |
+| --- | --- | --- | --- | --- |
+| First | `[3, 5, 2]` | | `first_bonus` | |
+| Second | `[4, 1, 3]` | | `second_bonus` | |
 
 <details>
 <summary>Check the completed table and output</summary>
 
-| Call | Argument | Returned value | Variable receiving the result |
-| --- | ---: | --- | --- |
-| First | `850` | `"fast"` | `first_label` |
-| Second | `1200` | `"slow"` | `second_label` |
+| Call | Argument | Returned bonus (pence) | Variable receiving the bonus | Total payment (pence) |
+| --- | --- | ---: | --- | ---: |
+| First | `[3, 5, 2]` | 100 | `first_bonus` | 200 |
+| Second | `[4, 1, 3]` | 80 | `second_bonus` | 180 |
 
 ```text
-First response: fast
-Second response: slow
+First total payment (pence): 200
+Second total payment (pence): 180
 ```
 
 </details>
 
-Run the file. Change the first argument to `1000`, predict whether its returned value changes, and run the file again. Then try `1001`.
+Run the file. Change the first argument to `[3, 5, 3]`. Predict which payment changes and by how much, then run it again. Finally, try an empty list `[]` for the first participant: what happens to the bonus and the participation fee?
 
 ## Each call has its own local values
 
-The parameter `response_time` and the variable `speed_label` are created inside the function. They have **local scope**: they belong to the current function call.
+The parameter `trial_points` and the variables `total_points`, `points`, and `bonus_pence` belong to the function call. They have **local scope**: these names are used inside the function.
 
-When the function is called again, Python creates a new local `response_time` and a new local `speed_label`. The first call's values do not become the second call's values. Information enters through arguments and leaves through the returned value.
+Each call starts again with `total_points = 0`. The second participant's calculation does not continue adding to the first participant's total. Information enters through arguments and leaves through the returned value.
 
-The variables `first_label` and `second_label` are created outside the function. They preserve the two returned results after the calls finish.
+The variables `first_bonus` and `second_bonus` are created outside the function. They preserve the two returned results after the calls finish.
 
 ## Activity 4 — turn a Class 5 counter into a function
 
@@ -298,13 +350,13 @@ The local counter begins at `0` during every call. An empty list produces zero l
 
 ## Use AI to build a reusable bonus calculator
 
-Your next experiment records points separately for each trial. You need to turn each participant's list of points into a payment: **10 pence per point**, a maximum bonus of **300 pence**, and a fixed participation fee of **100 pence** on top.
+Your experiment now adds a rule: the bonus cannot exceed **300 pence**. Keep the original rate of **10 pence per point** and the fixed participation fee of **100 pence** on top. Use AI to extend your bonus calculator with this cap.
 
 ### 1. Describe the task to AI
 
-Open your preferred AI tool. You can write your own request or start with this:
+Open your preferred AI tool and provide the code from `return_value_demo.py`. You can write your own request or start with this:
 
-> Write a Python function named `calculate_bonus(trial_points)` for an experiment. Its input is a list of non-negative whole-number points earned on individual trials.
+> Extend my Python function `calculate_bonus(trial_points)` for an experiment. Its input is a list of non-negative whole-number points earned on individual trials.
 >
 > Add the points, convert the total at 10 pence per point, and cap the bonus at 300 pence. Return the bonus as a whole number of pence. An empty list should return 0.
 >
@@ -348,17 +400,23 @@ Replace the argument in the example call with each list below. Predict the resul
 ### Definition and call
 
 ```python
-def classify_response_time(response_time):
-    """Return `fast` for times at or below 1000 ms; otherwise return `slow`."""
-    if response_time <= 1000:
-        speed_label = "fast"
-    else:
-        speed_label = "slow"
+def calculate_bonus(trial_points):
+    """Return the bonus in pence for a list of trial points, at 10 pence per point."""
+    # Start a fresh total for this participant.
+    total_points = 0
 
-    return speed_label
+    # Add each trial's points to the total.
+    for points in trial_points:
+        total_points = total_points + points
+
+    # Convert the total to pence at 10 pence per point.
+    bonus_pence = total_points * 10
+    # Send the calculated bonus back to the code that called the function.
+    return bonus_pence
 
 
-label = classify_response_time(850)
+# Call the function and keep its returned value.
+bonus = calculate_bonus([3, 5, 2])
 ```
 
 The definition describes a reusable task. The call supplies one argument and receives one returned value.
@@ -367,7 +425,7 @@ The definition describes a reusable task. The call supplies one argument and rec
 
 ```text
 argument → parameter → function body → return value → receiving variable
-   850   → response_time → classify →   "fast"    → label
+[3, 5, 2] → trial_points → add and convert → 100 → bonus
 ```
 
 Each call follows the same route with its own argument and local values.
@@ -375,15 +433,10 @@ Each call follows the same route with its own argument and local values.
 ### `return` versus `print()`
 
 ```python
-def double_points(points):
-    return points * 2
-
-
-doubled = double_points(4)
-print(doubled)
+bonus = calculate_bonus([3, 5, 2])  # Receive and store the returned number.
+print(bonus)                     # Display that number.
+total_payment = 100 + bonus       # Use it in another calculation.
 ```
-
-The function returns `8`; the final line chooses to display it. Because the result was returned, the rest of the program could instead store it, compare it, or use it in another calculation.
 
 ### A function can contain familiar structures
 
