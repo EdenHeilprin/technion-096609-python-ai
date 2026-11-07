@@ -362,54 +362,44 @@ The local counter begins at `0` during every call. An empty list produces zero l
 
 </details>
 
-## Use AI to read and write CSV files
+## Use AI to read trial points from a CSV
 
-Your script already calculates bonuses and adds the participation fee. Now use AI to read the trial points from a **CSV file** instead of lists typed into the code, then display the payments in the terminal and save them to a new CSV.
+Your script already calculates bonuses and adds the participation fee. Now use AI to read each participant's list of points from a **CSV file** instead of typing those lists into the code. The calculations stay the same, and the results still appear in the terminal.
 
 ### 1. Give AI the script and the data
 
-Open [`trial_results.csv`](trial_results.csv) from your `class-06` folder in VS Code. A CSV is a plain-text table with columns separated by commas. Here, each participant has three trials:
+Open [`trial_results.csv`](trial_results.csv) from your `class-06` folder in VS Code. A CSV is a plain-text table with columns separated by commas. Each row below contains one participant's ID and their three trial scores:
 
 ```csv
-participant_id,trial,points
-P001,1,3
-P001,2,5
-P001,3,2
-P002,1,12
-P002,2,9
-P002,3,15
-P003,1,2
-P003,2,0
-P003,3,2
+participant_id,trial_1,trial_2,trial_3
+P001,3,5,2
+P002,12,9,15
+P003,2,0,2
 ```
 
-Open your preferred AI chat in your browser. Attach **`return_value_demo.py` and `trial_results.csv`**, then send the prompt below. If the chat does not accept a file, paste its contents into the message instead.
+For example, P001's row supplies the familiar list `[3, 5, 2]`.
 
-> Adapt the attached `return_value_demo.py` to read its trial points from the attached `trial_results.csv` instead of hard-coded lists.
+Open your preferred AI chat in your browser. Attach **`return_value_demo.py` and `trial_results.csv`**, then send this prompt. If the chat does not accept a file, paste its contents into the message instead.
+
+> Adapt the attached `return_value_demo.py` to read each participant's three trial scores from the attached `trial_results.csv` instead of hard-coded lists.
 >
-> Keep `calculate_bonus` unchanged, including its comments and docstring. Gather each participant's trial points into a list and call that function. Keep the existing payment rule: 10 pence per point, plus a participation fee of 100 pence outside the function.
+> Keep `calculate_bonus` unchanged, including its comments and docstring. For each CSV row, convert `trial_1`, `trial_2`, and `trial_3` to integers, put them in a list, and call the function. Keep the existing 100-pence participation fee. Print the participant's ID, bonus, and total payment in pence. Only print results; do not create output files.
 >
-> Return one complete replacement script. Print each participant's ID, bonus, and total payment in the terminal, clearly labeled in pence. Save the same information to `payments.csv` with the columns `participant_id`, `bonus_pence`, and `total_payment_pence`, with one row per participant. Replace the output file each time the script runs.
+> Return one complete replacement script. Use the built-in `csv.DictReader` and a simple `for row in reader:` loop. Build the three-item list explicitly; avoid comprehensions, `.items()`, and unpacking multiple loop variables. No additional installations should be needed.
 >
-> Use lists, dictionaries, ordinary `for` loops, conditions, and functions, with simple statements and one operation per line. Avoid comprehensions and unpacking multiple variables in a loop. For the participant loop, use `for participant_id in participant_points:` and then `trial_points = participant_points[participant_id]` inside it, rather than `.items()`.
+> Read the CSV from beside the script using `Path(__file__).resolve().parent` from `pathlib`, regardless of the terminal's current folder.
 >
-> Use the built-in `csv` module; no additional installations should be needed. Include brief function docstrings and clear English `#` comments.
->
-> File handling is new to me. At the first use of unfamiliar syntax, add short `#` comments explaining both what the line does and how to read it. Explain `import`, `Path(__file__).resolve().parent`, joining paths with `/`, `with ... as`, file-opening options, and CSV readers/writers and their methods. Prefer familiar syntax whenever it can do the same job.
->
-> Use `Path(__file__).resolve().parent` from `pathlib` to find the script's folder. Read `trial_results.csv` from that folder and save `payments.csv` there. Do not use a hard-coded path or depend on the terminal's current folder.
+> File handling is new to me. Add short English `#` comments at the first use of unfamiliar syntax, explaining both what it does and how to read it: imports, the file path, `with ... as`, file-opening options, and `csv.DictReader`. Explain why CSV scores need `int()` before calculation. Keep the code simple and readable.
 
 ### 2. Run it in VS Code
 
 Replace the contents of **`return_value_demo.py`** with the returned Python code and save. Keep `trial_results.csv` beside it in `class-06`.
 
-With `return_value_demo.py` open, click the **▶ button at the top right of the editor** to run the whole file. Open the generated `payments.csv` in VS Code's Explorer panel.
+With `return_value_demo.py` open, click the **▶ button at the top right of the editor** to run the whole file. Read the results in the terminal.
 
-### 3. Check the payments
+### 3. Check the results
 
-Find where the script reads the trial points, calls your unchanged `calculate_bonus` function, and writes the payments. Use the comments to understand the new file-handling lines.
-
-Compare both the terminal output and `payments.csv` with these expected payments:
+Find the list built from each CSV row and the call that passes it to your unchanged `calculate_bonus` function. Compare the printed results with these expected payments:
 
 | Participant | Bonus (pence) | Total payment including fee (pence) |
 | --- | ---: | ---: |
@@ -417,13 +407,7 @@ Compare both the terminal output and `payments.csv` with these expected payments
 | P002 | 360 | 460 |
 | P003 | 40 | 140 |
 
-Now add this trial as a new line at the bottom of `trial_results.csv` and save:
-
-```csv
-P001,4,2
-```
-
-Run the script again. In both the terminal and `payments.csv`, P001's total payment should increase to **220 pence**; the other payments should stay unchanged. The CSV should still contain one row for each of the three participants.
+In `trial_results.csv`, change P001's third trial score from **2 to 4**, then save and rerun the script. P001's bonus should become **120 pence** and their total payment **220 pence**. The other participants' results should stay unchanged.
 
 ## Class 6 reference
 
