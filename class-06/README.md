@@ -234,25 +234,13 @@ One change to the calculation updates all three bonuses. Each call still means â
 
 ## Use the returned value in another calculation
 
-The experiment also pays a fixed participation fee of **100 pence**. We need the bonus as a number so we can add that fee. Our function already gives us that number through `return`:
+The experiment also pays a fixed participation fee of **100 pence**. Add these lines at the end of `parameter_demo.py` to use the bonus already stored in `first_bonus`:
 
 ```python
-# Store the bonus returned by the function.
-first_bonus = calculate_bonus([3, 5, 2])
-# Add the fixed participation fee, also in pence.
+# Add the participation fee to the bonus (both in pence).
 total_payment = 100 + first_bonus
 print("Total payment (pence):", total_payment)
 ```
-
-With the original rate of **10 pence per point**, the bonus is 100 pence and the total payment is 200 pence.
-
-Follow the information through the call:
-
-1. `[3, 5, 2]` is passed into the parameter `trial_points`.
-2. The function adds the points and calculates `bonus_pence`.
-3. `return bonus_pence` sends the number `100` back to the caller.
-4. That number is assigned to `first_bonus`.
-5. The following lines add the fee and display the total payment.
 
 `return` and `print()` do different jobs:
 
