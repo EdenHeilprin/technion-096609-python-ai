@@ -362,9 +362,9 @@ The local counter begins at `0` during every call. An empty list produces zero l
 
 </details>
 
-## Use AI to prepare participant payments
+## Use AI to read and write CSV files
 
-The experiment has finished. Its results contain **one row per trial**, but you need a payment file with **one row per participant**. Your bonus function can do the calculation; AI can help connect it to reading and writing files.
+Your script already calculates bonuses and adds the participation fee. Now use AI to read the trial points from a **CSV file** instead of lists typed into the code, then display the payments in the terminal and save them to a new CSV.
 
 ### 1. Give AI the script and the data
 
@@ -385,13 +385,13 @@ P003,3,2
 
 Open your preferred AI chat in your browser. Attach **`return_value_demo.py` and `trial_results.csv`**, then send the prompt below. If the chat does not accept a file, paste its contents into the message instead.
 
-> Adapt the attached Python script to prepare participant payments from the attached `trial_results.csv`.
+> Adapt the attached `return_value_demo.py` to read its trial points from the attached `trial_results.csv` instead of hard-coded lists.
 >
-> Gather each participant's trial points and pass their list to `calculate_bonus`. Use 10 pence per point, cap the bonus at 300 pence, and add a participation fee of 100 pence outside the function.
+> Keep `calculate_bonus` unchanged, including its comments and docstring. Gather each participant's trial points into a list and call that function. Keep the existing payment rule: 10 pence per point, plus a participation fee of 100 pence outside the function.
 >
-> Return one complete replacement script. It should write `payments.csv` with the columns `participant_id`, `bonus_pence`, and `total_payment_pence`, with one row per participant. Print the participant count and total amount to pay in pence. Replace the output file each time the script runs.
+> Return one complete replacement script. Print each participant's ID, bonus, and total payment in the terminal, clearly labeled in pence. Save the same information to `payments.csv` with the columns `participant_id`, `bonus_pence`, and `total_payment_pence`, with one row per participant. Replace the output file each time the script runs.
 >
-> Keep the existing bonus function recognizable. Use lists, dictionaries, ordinary `for` loops, conditions, and functions, with simple statements and one operation per line. Avoid comprehensions and unpacking multiple variables in a loop. For the participant loop, use `for participant_id in participant_points:` and then `trial_points = participant_points[participant_id]` inside it, rather than `.items()`.
+> Use lists, dictionaries, ordinary `for` loops, conditions, and functions, with simple statements and one operation per line. Avoid comprehensions and unpacking multiple variables in a loop. For the participant loop, use `for participant_id in participant_points:` and then `trial_points = participant_points[participant_id]` inside it, rather than `.items()`.
 >
 > Use the built-in `csv` module; no additional installations should be needed. Include brief function docstrings and clear English `#` comments.
 >
@@ -407,17 +407,15 @@ With `return_value_demo.py` open, click the **▶ button at the top right of the
 
 ### 3. Check the payments
 
-Follow three connections in the code: where CSV rows become each participant's list of points, where that list is passed to `calculate_bonus`, and where the returned bonus becomes a payment row. Use the comments to understand unfamiliar lines. Check that the participation fee is added **after** the bonus cap is applied.
+Find where the script reads the trial points, calls your unchanged `calculate_bonus` function, and writes the payments. Use the comments to understand the new file-handling lines.
 
-Compare the generated file with these expected payments:
+Compare both the terminal output and `payments.csv` with these expected payments:
 
 | Participant | Bonus (pence) | Total payment including fee (pence) |
 | --- | ---: | ---: |
 | P001 | 100 | 200 |
-| P002 | 300 | 400 |
+| P002 | 360 | 460 |
 | P003 | 40 | 140 |
-
-The printed summary should report **3 participants** and **740 pence** in total.
 
 Now add this trial as a new line at the bottom of `trial_results.csv` and save:
 
@@ -425,7 +423,7 @@ Now add this trial as a new line at the bottom of `trial_results.csv` and save:
 P001,4,2
 ```
 
-Run the script again. P001's payment should increase to **220 pence**; the other payments should stay unchanged. The output should still contain three participants, with a total payment of **760 pence**.
+Run the script again. In both the terminal and `payments.csv`, P001's total payment should increase to **220 pence**; the other payments should stay unchanged. The CSV should still contain one row for each of the three participants.
 
 ## Class 6 reference
 
