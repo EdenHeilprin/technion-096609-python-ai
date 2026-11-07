@@ -26,7 +26,7 @@ If you already have these files, use your existing copy.
 
 Create `class_07_rehearsal.py` inside `class-07`. Try this from memory before opening the example below.
 
-A game pays **10 pence per point**. Two participants earned `12` and `25` points.
+An experiment pays **10 pence per point**. Two participants earned `12` and `25` points.
 
 1. Define `points_to_bonus(points)` to **return** the bonus in pence. Add a short docstring describing its purpose.
 2. Call the same function for both scores and store the results in `first_bonus` and `second_bonus`.
@@ -204,21 +204,11 @@ In the same chat, ask:
 
 > Propose two small trial lists and their expected totals to check this repair. Include one case where the original program would appear correct and one where it would lose points. Explain why each case matters. Show simple `print()` calls with labeled expected and actual results.
 
-Calculate the expected totals yourself, then run the suggested calls. Also add these checks below your function:
+Calculate the expected totals yourself, then run the suggested calls. Finally, check that the function returns `0` when there are no trials:
 
 ```python
-print("One trial — expected: 7 actual:", calculate_total_points([{"points": 7}]))
-print("Two trials — expected: 5 actual:", calculate_total_points([{"points": 2}, {"points": 3}]))
 print("No trials — expected: 0 actual:", calculate_total_points([]))
 ```
-
-The one-trial case also works in the original program. The two-trial case reveals lost points; the empty case checks that the function still returns a useful zero when there is nothing to process.
-
-## Keep this debugging habit
-
-**Run → collect evidence → ask for an explanation and repair → inspect the change → rerun and compare.**
-
-You decide what the program should do. AI can help locate the cause, make execution easier to follow, and suggest revealing tests. The output—not the confidence of the explanation—shows whether a tested case works.
 
 ## Class 7 reference
 
