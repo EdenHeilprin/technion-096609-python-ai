@@ -125,6 +125,19 @@ You already call `input()`, `type()`, and `print()` without writing the instruct
 
 ### Read the definition and the calls
 
+```python
+def calculate_bonus(trial_points):  # trial_points is the parameter.
+    total_points = 0                # Start a fresh total.
+    for points in trial_points:
+        total_points = total_points + points
+    bonus_pence = total_points * 10  # Convert points to pence.
+    return bonus_pence              # Send the result back to the caller.
+
+# Each call supplies a list as its argument and stores the returned bonus.
+first_bonus = calculate_bonus([3, 5, 2])
+second_bonus = calculate_bonus([4, 1, 3])
+```
+
 - `def` begins a function definition; `calculate_bonus` is the function's name.
 - `trial_points` is a **parameter**: a name for the information the function receives.
 - The colon `:` starts the body. The indented lines belong to the function; the update inside the loop is indented one level further.
