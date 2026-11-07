@@ -172,7 +172,20 @@ Python first reads the definition. Each call then calculates a bonus from its ow
 
 Run the file. Then add a call for a third participant who earned `[2, 4]`: store the result in `third_bonus` and print it. Predict the bonus before running it again.
 
-What would happen if the file contained only the definition? Temporarily comment out **all the lines below the definition**, including the calls and the print lines. Run the file, then restore those lines.
+Inside `calculate_bonus`, comment out **only** `return bonus_pence` by adding `#` before it:
+
+```python
+    # return bonus_pence
+```
+
+Keep the function calls and print lines active. Predict the output, then run the file. What appears in place of each bonus? Remove the `#` and run it again to compare.
+
+<details>
+<summary>Why does the output change?</summary>
+
+Without `return bonus_pence`, the function still calculates the bonus, but it does not send that number back. Python returns `None` instead, so each printed bonus is `None`. Restoring `return bonus_pence` sends the calculated number back to the caller.
+
+</details>
 
 ## A docstring records the function's job
 
