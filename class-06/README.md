@@ -456,27 +456,6 @@ argument → parameter → function body → return value → receiving variable
 
 Each call follows the same route with its own argument and local values.
 
-### `return` versus `print()`
-
-```python
-bonus = calculate_bonus([3, 5, 2])  # Receive and store the returned number.
-print(bonus)                     # Display that number.
-total_payment = 100 + bonus       # Use it in another calculation.
-```
-
-### A function can contain familiar structures
-
-Function bodies may contain assignments, comparisons, conditionals, and loops. The syntax inside Activity 4 is not a new kind of counter—it is the Class 5 counter placed inside a named, reusable task.
-
-### Test through calls
-
-Test a function by calling it with chosen arguments and comparing its actual return values with expected values. Useful cases often include:
-
-- an ordinary input;
-- a boundary value;
-- an empty collection, when the contract allows one;
-- a second ordinary input that differs from the first.
-
 ## Companion tutorial
 
 For another concise explanation, watch Khan Academy's 4:41 **[Functions | Intro to CS — Python](https://www.youtube.com/watch?v=UmNKiV7Lekk)**.
