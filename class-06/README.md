@@ -362,40 +362,66 @@ The local counter begins at `0` during every call. An empty list produces zero l
 
 </details>
 
-## Use AI to build a reusable bonus calculator
+## Use AI to prepare participant payments
 
-Your experiment now adds a rule: the bonus cannot exceed **300 pence**. Keep the original rate of **10 pence per point** and the fixed participation fee of **100 pence** on top. Use AI to extend your bonus calculator with this cap.
+The experiment has finished. Its results contain **one row per trial**, but you need a payment file with **one row per participant**. Your bonus function can do the calculation; AI can help connect it to reading and writing files.
 
-### 1. Describe the task to AI
+### 1. Give AI the script and the data
 
-Open your preferred AI tool and provide the code from `return_value_demo.py`. You can write your own request or start with this:
+Open [`trial_results.csv`](trial_results.csv) from your `class-06` folder in VS Code. A CSV is a plain-text table with columns separated by commas. Here, each participant has three trials:
 
-> Extend my Python function `calculate_bonus(trial_points)` for an experiment. Its input is a list of non-negative whole-number points earned on individual trials.
+```csv
+participant_id,trial,points
+P001,1,3
+P001,2,5
+P001,3,2
+P002,1,12
+P002,2,9
+P002,3,15
+P003,1,2
+P003,2,0
+P003,3,2
+```
+
+Open your preferred AI chat in your browser. Attach **`return_value_demo.py` and `trial_results.csv`**, then send the prompt below. If the chat does not accept a file, paste its contents into the message instead.
+
+> Adapt the attached Python script to prepare participant payments from the attached `trial_results.csv`.
 >
-> Add the points, convert the total at 10 pence per point, and cap the bonus at 300 pence. Return the bonus as a whole number of pence. An empty list should return 0.
+> Gather each participant's trial points and pass their list to `calculate_bonus`. Use 10 pence per point, cap the bonus at 300 pence, and add a participation fee of 100 pence outside the function.
 >
-> Use one `for` loop with a running total, multiplication, an `if` statement for the cap, and one final `return`. Keep printing outside the function.
+> Return one complete replacement script. It should write `payments.csv` with the columns `participant_id`, `bonus_pence`, and `total_payment_pence`, with one row per participant. Print the participant count and total amount to pay in pence. Replace the output file each time the script runs.
 >
-> Add a concise docstring stating the input, payment rule, and returned value. Include clear English `#` comments explaining each code line and its purpose, so a beginner can understand the code itself.
+> Keep the code beginner-readable, using lists, dictionaries, loops, conditions, and functions. Use the built-in `csv` module. Include clear English `#` comments explaining the steps and brief function docstrings. No additional installations should be needed.
 >
-> Below the function, show a call with `[3, 5, 2]`. Store the returned bonus, add a participation fee of 100 pence outside the function, and print both the bonus and the total payment, clearly labeled in pence.
+> Use `Path(__file__).resolve().parent` from `pathlib` to find the script's folder. Read `trial_results.csv` from that folder and save `payments.csv` there. Do not use a hard-coded path or depend on the terminal's current folder.
 
-### 2. Read it, then run it
+### 2. Run it in VS Code
 
-Create `bonus_calculator.py` inside `class-06` and paste the proposed code.
+Replace the contents of **`return_value_demo.py`** with the returned Python code and save. Keep `trial_results.csv` beside it in `class-06`.
 
-Read its documentation and locate the running total, conversion, cap, and returned value. Check that the participation fee is added **after** the function returns, so it is not included in the bonus cap. Then run it.
+With `return_value_demo.py` open, click the **▶ button at the top right of the editor** to run the whole file. Open the generated `payments.csv` in VS Code's Explorer panel.
 
-### 3. Check the payment rules
+### 3. Check the payments
 
-Replace the argument in the example call with each list below. Predict the result, run the program, and compare both printed amounts with the table.
+Find the line where the script calls `calculate_bonus` for each participant. Check that the participation fee is added **after** the bonus cap is applied.
 
-| Trial points | Expected bonus (pence) | Total payment including fee (pence) |
+Compare the generated file with these expected payments:
+
+| Participant | Bonus (pence) | Total payment including fee (pence) |
 | --- | ---: | ---: |
-| `[3, 5, 2]` | 100 | 200 |
-| `[12, 9, 15]` | 300 | 400 |
-| `[10, 20]` | 300 | 400 |
-| `[]` | 0 | 100 |
+| P001 | 100 | 200 |
+| P002 | 300 | 400 |
+| P003 | 40 | 140 |
+
+The printed summary should report **3 participants** and **740 pence** in total.
+
+Now add this trial as a new line at the bottom of `trial_results.csv` and save:
+
+```csv
+P001,4,2
+```
+
+Run the script again. P001's payment should increase to **220 pence**; the other payments should stay unchanged. The output should still contain three participants, with a total payment of **760 pence**.
 
 ## Class 6 reference
 
