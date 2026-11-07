@@ -391,7 +391,11 @@ Open your preferred AI chat in your browser. Attach **`return_value_demo.py` and
 >
 > Return one complete replacement script. It should write `payments.csv` with the columns `participant_id`, `bonus_pence`, and `total_payment_pence`, with one row per participant. Print the participant count and total amount to pay in pence. Replace the output file each time the script runs.
 >
-> Keep the code beginner-readable, using lists, dictionaries, loops, conditions, and functions. Use the built-in `csv` module. Include clear English `#` comments explaining the steps and brief function docstrings. No additional installations should be needed.
+> Keep the existing bonus function recognizable. Use lists, dictionaries, ordinary `for` loops, conditions, and functions, with simple statements and one operation per line. Avoid comprehensions and unpacking multiple variables in a loop. For the participant loop, use `for participant_id in participant_points:` and then `trial_points = participant_points[participant_id]` inside it, rather than `.items()`.
+>
+> Use the built-in `csv` module; no additional installations should be needed. Include brief function docstrings and clear English `#` comments.
+>
+> File handling is new to me. At the first use of unfamiliar syntax, add short `#` comments explaining both what the line does and how to read it. Explain `import`, `Path(__file__).resolve().parent`, joining paths with `/`, `with ... as`, file-opening options, and CSV readers/writers and their methods. Prefer familiar syntax whenever it can do the same job.
 >
 > Use `Path(__file__).resolve().parent` from `pathlib` to find the script's folder. Read `trial_results.csv` from that folder and save `payments.csv` there. Do not use a hard-coded path or depend on the terminal's current folder.
 
@@ -403,7 +407,7 @@ With `return_value_demo.py` open, click the **▶ button at the top right of the
 
 ### 3. Check the payments
 
-Find the line where the script calls `calculate_bonus` for each participant. Check that the participation fee is added **after** the bonus cap is applied.
+Follow three connections in the code: where CSV rows become each participant's list of points, where that list is passed to `calculate_bonus`, and where the returned bonus becomes a payment row. Use the comments to understand unfamiliar lines. Check that the participation fee is added **after** the bonus cap is applied.
 
 Compare the generated file with these expected payments:
 
