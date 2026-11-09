@@ -1,6 +1,6 @@
 # Class 7 — Debugging with AI
 
-A payment calculator crashes. A variable looks correctly spelled, but Python cannot find it. A trial summary runs without complaint—and reports the wrong total.
+A payment calculator crashes. A trial summary runs without complaint—and reports the wrong total. A CSV column looks correctly named, but Python cannot find it.
 
 Today you will diagnose familiar errors yourself, use AI to investigate harder-to-see problems, and check that the repairs produce the right results.
 
@@ -145,31 +145,7 @@ Give AI **the relevant code + the exact error or output + what should happen ins
 
 Ask for a short diagnosis, a small repair, and clear English `#` comments explaining the purpose of each line in any replacement code. Read the change, run the original case again, and check another input. A program that stops crashing is not necessarily correct.
 
-## Activity 2 — a tiny error that is hard to see
-
-You copied a few lines into a payment script. Open [`copied_name_demo.py`](copied_name_demo.py) and run it. Python reports a `NameError`, even though the variable names look alike.
-
-Paste the exact code and error into AI:
-
-> These variable names look identical, but I get a `NameError`. Compare their exact characters, identify any difference, and show the corrected lines using ordinary English letters. Explain the change in a short `#` comment.
-
-Inspect the proposed spelling, apply the repair, and rerun. Twelve points should produce `120` pence; changing the score to `7` should produce `70`.
-
-<details>
-<summary>Reveal the hard-to-see difference</summary>
-
-The name on the calculation line contains a Cyrillic `о` where the definition uses an English `o`. They look almost identical, but they are different characters and create different Python names.
-
-Retype the name on that line using English letters:
-
-```python
-# Use the same English-letter variable name as the definition above.
-bonus_pence = participant_points * 10
-```
-
-</details>
-
-## Activity 3 — investigate a wrong result with no error message
+## Activity 2 — investigate a wrong result with no error message
 
 Open [`trial_points_debug.py`](trial_points_debug.py). Each dictionary describes one trial. The function should add the points from **every** trial and return the total.
 
@@ -232,6 +208,74 @@ Calculate the expected totals yourself, then try the suggested calls with each v
 print("No trials — expected: 0 actual:", calculate_total_points([]))
 ```
 
+## Activity 3 — investigate errors that are hard to see
+
+### A CSV column that looks correct
+
+A CSV exported from another program may contain small differences in its column names. Open [`csv_header_demo.py`](csv_header_demo.py) and [`trial_results.csv`](trial_results.csv). As in Class 6, each row holds one participant's ID and three trial scores. The script should calculate the bonus and add the participation fee.
+
+Run the Python file with VS Code's **▶** button. It stops with `KeyError: 'trial_1'`. This means the dictionary has no key exactly matching `trial_1`. Compare the CSV header with the names used in the code. Can you spot the mismatch?
+
+Attach **both files** to an AI chat in your browser and paste the error, followed by this prompt:
+
+> This script should read each participant's three trial scores, calculate a bonus at 10 pence per point, and print the bonus and total payment including a 100-pence fee. It stops with `KeyError: 'trial_1'`, although the CSV seems to have that column. Inspect the attached files and compare the exact header names with the dictionary keys used in the code. Explain the mismatch and show the smallest repair, keeping the scores and payment calculation unchanged. If you change Python code, explain any unfamiliar syntax in clear English `#` comments.
+
+If your chat cannot accept files, paste their contents instead. Apply the repair, save, and rerun. Check the printed amounts:
+
+| Participant | Bonus (pence) | Total payment (pence) |
+| --- | ---: | ---: |
+| P001 | 100 | 200 |
+| P002 | 360 | 460 |
+| P003 | 40 | 140 |
+
+Then change P001's third score from `2` to `4` in the CSV and save it. Rerun: P001's bonus should become `120` and total payment `220`; the other participants' payments should stay the same.
+
+<details>
+<summary>Check the mismatch and repair</summary>
+
+The CSV header contains `trial_1 `, with a space before the comma. `csv.DictReader` uses the header text exactly as written, including that space. The first row therefore becomes:
+
+```python
+{"participant_id": "P001", "trial_1 ": "3", "trial_2": "5", "trial_3": "2"}
+```
+
+The code asks for `row["trial_1"]`, which is a different key. Remove the extra space in the CSV header and save:
+
+```csv
+participant_id,trial_1,trial_2,trial_3
+```
+
+The Python code can stay unchanged. To make hidden spaces visible when investigating a header, you can temporarily add `print(reader.fieldnames)` immediately below the `reader = csv.DictReader(input_file)` line, with the same indentation. It displays the column names in quotes, including any spaces inside them.
+
+</details>
+
+<details>
+<summary>Another example — identical-looking variable names</summary>
+
+You copied a few lines into a payment script. Open [`copied_name_demo.py`](copied_name_demo.py) and run it. Python reports a `NameError`, even though the variable names look alike.
+
+Paste the exact code and error into AI:
+
+> These variable names look identical, but I get a `NameError`. Compare their exact characters, identify any difference, and show the corrected lines using ordinary English letters. Explain the change in a short `#` comment.
+
+Inspect the proposed spelling, apply the repair, and rerun. Twelve points should produce `120` pence; changing the score to `7` should produce `70`.
+
+<details>
+<summary>Reveal the hard-to-see difference</summary>
+
+The name on the calculation line contains a Cyrillic `о` where the definition uses an English `o`. They look almost identical, but they are different characters and create different Python names.
+
+Retype the name on that line using English letters:
+
+```python
+# Use the same English-letter variable name as the definition above.
+bonus_pence = participant_points * 10
+```
+
+</details>
+
+</details>
+
 ## Class 7 reference
 
 ### Central terms
@@ -243,6 +287,7 @@ print("No trials — expected: 0 actual:", calculate_total_points([]))
 | Logic error | Code that runs but does not produce the intended result | Returning the first trial's points instead of the total |
 | Traceback | A report showing the calls and line locations leading to a runtime error, followed by its type and message | Find the last `File ... line ...` entry for your file; the cause may be earlier |
 | `TypeError` | A runtime error caused by using a value of an unsuitable type for an operation | `100 + "120"` cannot add a number to text |
+| `KeyError` | A runtime error raised when a dictionary does not contain the requested key | `"trial_1"` does not match the CSV header `"trial_1 "` |
 | `NameError` | A runtime error raised when Python cannot find a name where it is used | A copied variable name contains a lookalike character and does not match the defined name |
 
 ## Companion tutorial
