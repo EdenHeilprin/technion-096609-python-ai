@@ -253,9 +253,9 @@ bonus_pence = participant_points * 10
 
 | Term | Simple meaning | Example |
 | --- | --- | --- |
+| Traceback | A report showing the calls and line locations leading to a runtime error, followed by its type and message | Find the last `File ... line ...` entry for your file; the cause may be earlier |
 | Syntax error | Code that breaks Python's writing rules and prevents the file from running | A missing colon after an `if` header |
 | Logic error | Code that runs but does not produce the intended result | Returning the first trial's points instead of the total |
-| Traceback | A report showing the calls and line locations leading to a runtime error, followed by its type and message | Find the last `File ... line ...` entry for your file; the cause may be earlier |
 | Runtime error | An error raised when execution reaches an operation Python cannot perform | Adding an integer fee to a text bonus |
 | `TypeError` | A runtime error caused by using a value of an unsuitable type for an operation | `100 + "120"` cannot add a number to text |
 | `KeyError` | A runtime error raised when a dictionary does not contain the requested key | `"trial_1"` does not match the CSV header `"trial_1 "` |
