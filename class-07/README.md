@@ -2,7 +2,7 @@
 
 A payment calculator crashes. A variable looks correctly spelled, but Python cannot find it. A trial summary runs without complaint—and reports the wrong total.
 
-Today you will use AI to investigate these problems, understand the proposed repairs, and check that the results are right.
+Today you will diagnose familiar errors yourself, use AI to investigate harder-to-see problems, and check that the repairs produce the right results.
 
 ## By the end of class
 
@@ -92,23 +92,30 @@ The repaired program prints `Left option selected`. Change `choice` to `"right"`
 
 A **traceback** shows where execution reached a runtime error. Start with its final line—the error type and message—then find the last `File ... line ...` entry referring to your file. That is where the failure appeared; its cause may be earlier in the code.
 
-## Working with AI on a bug
-
-Give AI **the relevant code + the exact error or output + what should happen instead**. Paste code as text so indentation and individual characters can be inspected.
-
-Ask for a short diagnosis, a small repair, and clear English `#` comments explaining the purpose of each line in any replacement code. Read the change, run the original case again, and check another input. A program that stops crashing is not necessarily correct.
-
-## Activity 1 — turn a traceback into a useful repair
+## Activity 1 — repair a familiar error yourself
 
 You are calculating a participant's payment: **10 pence per point**, plus a **100-pence participation fee**.
 
 Open [`runtime_error_demo.py`](runtime_error_demo.py), run it, and enter `12`. You expect a bonus of `120` pence and a total payment of `220` pence, but the program stops.
 
-Copy the code and the full traceback into AI, then add:
+Use what you already know about `input()`, types, and conversion to find the repair yourself:
 
-> I entered `12`. The bonus should be 120 pence and the total payment 220 pence. Explain this traceback in plain English. Trace the value and type from `input()` through the calculation to the failing line. Find the cause, not just a way to hide the error. Show the smallest repair, with an English `#` comment explaining it.
+1. Read the traceback's final line and find the line in your script where execution stopped.
+2. Trace the value from `input()` through `points_to_bonus`. What value and type does each step produce? Why does the program reach the addition before it crashes?
+3. Fix the cause, then check all three cases below.
 
-Apply the repair you understand, then run these cases:
+<details>
+<summary>Need a hint?</summary>
+
+Add this line immediately before `total_payment = 100 + bonus`, then run the file again:
+
+```python
+print("Bonus before addition:", bonus, type(bonus))
+```
+
+Does multiplying text by `10` do the same thing as multiplying a number by `10`?
+
+</details>
 
 | Points entered | Bonus (pence) | Total payment (pence) |
 | --- | ---: | ---: |
@@ -131,6 +138,12 @@ participant_points = int(input("Points earned: "))
 Changing the fee to text might remove the error, but would join pieces of text rather than calculate a payment. The expected amounts reveal why that is not a repair.
 
 </details>
+
+## Working with AI on a bug
+
+Give AI **the relevant code + the exact error or output + what should happen instead**. Paste code as text so indentation and individual characters can be inspected.
+
+Ask for a short diagnosis, a small repair, and clear English `#` comments explaining the purpose of each line in any replacement code. Read the change, run the original case again, and check another input. A program that stops crashing is not necessarily correct.
 
 ## Activity 2 — a tiny error that is hard to see
 
