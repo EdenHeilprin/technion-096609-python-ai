@@ -179,18 +179,6 @@ def calculate_total_points(trials):
 
 </details>
 
-### Check the fix with different inputs
-
-A program can pass one test and still be wrong. Add these calls below the function and compare the printed results with the expected totals:
-
-```python
-print("One trial — expected: 4 actual:", calculate_total_points([{"points": 4}]))
-print("Two trials — expected: 14 actual:", calculate_total_points([{"points": 4}, {"points": 10}]))
-print("No trials — expected: 0 actual:", calculate_total_points([]))
-```
-
-Which test would also pass with the original, broken function? Why is that test alone not enough?
-
 ## Activity 3 — investigate errors that are hard to see
 
 ### A CSV column that looks correct
