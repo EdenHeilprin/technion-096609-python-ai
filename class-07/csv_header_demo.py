@@ -19,10 +19,8 @@ def calculate_bonus(trial_points):
     return bonus_pence
 
 
-# __file__ is this script's path; .parent gives its folder.
-script_folder = Path(__file__).resolve().parent
-# Joining the folder and filename locates the CSV beside this script.
-input_path = script_folder / "trial_results.csv"
+# __file__ identifies this script; with_name selects the CSV in the same folder.
+input_path = Path(__file__).with_name("trial_results.csv")
 
 # Open the CSV for reading; with closes it automatically when this block ends.
 # newline="" lets csv handle line endings; encoding="utf-8" reads the text format.
