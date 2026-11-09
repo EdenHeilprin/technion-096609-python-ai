@@ -90,6 +90,8 @@ The repaired program prints `Left option selected`. Change `choice` to `"right"`
 | **Runtime error** | The program starts, then stops at an operation it cannot perform | Adding a number to text (`TypeError`), or using an undefined name (`NameError`) |
 | **Logic error** | The program runs, but does the wrong thing | Adding only the first trial's points instead of all trials |
 
+**`IndexError`** is another runtime error: it occurs when you request a list position that does not exist. Remember that positions start at `0`, so a list with four items has positions `0` through `3`.
+
 A **traceback** shows where execution reached a runtime error. Start with its final line—the error type and message—then find the last `File ... line ...` entry referring to your file. That is where the failure appeared; its cause may be earlier in the code.
 
 ## Activity 1 — repair a familiar error yourself
@@ -258,6 +260,7 @@ bonus_pence = participant_points * 10
 | Logic error | Code that runs but does not produce the intended result | Returning the first trial's points instead of the total |
 | Runtime error | An error raised when execution reaches an operation Python cannot perform | Adding an integer fee to a text bonus |
 | `TypeError` | A runtime error caused by using a value of an unsuitable type for an operation | `100 + "120"` cannot add a number to text |
+| `IndexError` | A runtime error raised when you request a list position that does not exist | `responses[4]` fails if the list has only four items (positions `0`–`3`) |
 | `KeyError` | A runtime error raised when a dictionary does not contain the requested key | `"trial_1"` does not match the CSV header `"trial_1 "` |
 | `NameError` | A runtime error raised when Python cannot find a name where it is used | A copied variable name contains a lookalike character and does not match the defined name |
 
