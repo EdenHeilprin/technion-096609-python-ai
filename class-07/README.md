@@ -175,13 +175,22 @@ Open [`trial_points_debug.py`](trial_points_debug.py). Each dictionary describes
 
 The supplied points are `4`, `10`, and `1`: the expected total is `15`. Run the file. It prints `4` instead, without raising an error.
 
-### Use AI to make execution visible
+### Trace it yourself first
 
-Paste the program into AI and ask:
+Follow the function one line at a time with the supplied trials. Which lines run during the first iteration? Does execution reach the second trial? Use the indentation to explain the result, then make the smallest repair you can.
+
+<details>
+<summary>Stuck? Ask AI to make execution visible</summary>
+
+Paste the program into your preferred AI chat and ask:
 
 > This function should total every trial's points. The supplied trials contain 4, 10, and 1 points: I expect 15, but the program prints 4. Trace the current code in a small table showing which trials are reached, the running total, and when the function exits. Identify the cause and show the smallest repair. Keep the existing function and loop; add clear English `#` comments explaining each line of the repaired function and its purpose.
 
-Compare the table with the code's indentation, then apply the repair. Rerun the file: the actual total should now match the expected `15`.
+Compare the table with the code's indentation before applying a repair.
+
+</details>
+
+Run your repaired file: the actual total should now match the expected `15`.
 
 <details>
 <summary>Check the execution trace and repair</summary>
@@ -213,11 +222,11 @@ def calculate_total_points(trials):
 
 ### Let AI help you challenge the fix
 
-In the same chat, ask:
+A program can pass one test and still be wrong. Give AI both the original and repaired functions, labeled clearly, and ask:
 
 > Propose two small trial lists and their expected totals to check this repair. Include one case where the original program would appear correct and one where it would lose points. Explain why each case matters. Show simple `print()` calls with labeled expected and actual results.
 
-Calculate the expected totals yourself, then run the suggested calls. Finally, check that the function returns `0` when there are no trials:
+Calculate the expected totals yourself, then try the suggested calls with each version of the function. Which test distinguishes the broken version from the repaired one? Finish with the repaired function and check that it returns `0` when there are no trials:
 
 ```python
 print("No trials — expected: 0 actual:", calculate_total_points([]))
