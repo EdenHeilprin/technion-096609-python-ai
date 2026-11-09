@@ -30,35 +30,47 @@ Read the files in this working folder and inspect the available Python environme
 ```text
 Build the experiment described in this folder using oTree.
 
-Keep its Python logic understandable to a beginner: variables, basic types and arithmetic, lists and dictionaries, if/elif/else, for loops, and simple functions with parameters and return values. Use only what the task needs. Add concise English # comments explaining each meaningful step and unfamiliar oTree structure.
+Follow the brief’s beginner-level Python and commenting requirements.
 
-Make it runnable without Codex. Save a short experiment/README.md with the exact VS Code terminal commands for my computer: which folder to start in, how to activate the Python environment, and how to start and stop otree devserver. Verify the commands in a fresh terminal and open the app's __init__.py in VS Code for inspection.
-
-Test it in a laptop browser, then start otree devserver and give me the local participant link. Stop for my review.
+Set up the environment, test both conditions in a laptop browser, and verify that the choices are saved. Open the experiment’s Python code in VS Code and prepare its integrated terminal in experiment/ with the environment activated. Stop the test server and leave that terminal ready for me to type otree devserver. Give me a fresh local participant link and stop for my review.
 ```
 
-Try all seven decisions in each condition. Then open the Python file: find the prize list, follow how the assigned condition determines the order, and locate where the response is stored.
+In the prepared VS Code terminal, run:
+
+```text
+otree devserver
+```
+
+Open the participant link and try the experiment. In the Python file, find the prize list, condition assignment, and where each response is stored.
 
 ## 3. Improve the design
 
 ```text
-Give the experiment a cleaner, more polished design for laptop screens: a centered layout, larger readable text, generous spacing, and two matching choice cards with a clear selected state. Keep both options equally prominent and retain the Next button to confirm the choice. Use simple HTML and CSS with clear comments. Do not change the wording, choices, order, or recorded data. Let me test the result.
+Give the experiment a cleaner, more polished design for laptop screens: a centered layout, larger readable text, generous spacing, and two matching choice cards with a clear selected state. Keep both options equally prominent and retain the Next button to confirm the choice. Use simple HTML and CSS with clear comments. Do not change the wording, choices, order, or recorded data. Check both conditions, then open a participant page for me to review.
 ```
 
-Compare the updated design with the original. Try all seven decisions and check the opening and thank-you pages. Keep the generated files in this same **class-08** project.
+Try the updated design and compare it with the original.
 
 **Possible extension:** Add a third condition with randomly ordered decisions.
 
+### 3b. Put the experiment online
+
+```text
+Prepare this experiment for deployment through my Heroku CLI setup. Check the target app with me, deploy it, verify that it works online, and give me the participant link.
+```
+
+Open the participant link on the shared screen. Once responses are collected, continue below in the same project.
+
 ## Analyze the responses
 
-After collecting responses, download the experiment's CSV from oTree. Continue in the same **class-08** project; the analysis files will live beside the experiment, not inside it.
+The analysis files will live beside the experiment, not inside it.
 
 ### 4. Organize the analysis workspace
 
 ```text
-Find the oTree CSV in Downloads. If several files match, ask me which to use.
+Create an analysis folder beside experiment, with raw and outputs subfolders.
 
-Create an analysis folder beside the experiment folder, with raw and outputs subfolders. Copy the CSV unchanged into raw.
+Retrieve the choice_task CSV export from the live experiment using the available authenticated access and save it unchanged in raw. If access is unavailable, open the export page for me to download it; then find the CSV in Downloads and copy it into raw. If several exports match, ask me which to use.
 
 Read the project documents and inspect the export. Briefly summarize what it contains and how you will prepare it for the preregistered analyses. Do not run the analyses yet.
 ```
@@ -70,9 +82,9 @@ Create analysis.R in the analysis folder to prepare the data and run the analyse
 
 Keep the code simple and readable, with descriptive variable names and concise English # comments explaining each meaningful step. Use as few packages as practical.
 
-Save the cleaned data, tables, and figures in outputs; leave raw unchanged. Also create a short results.html with readable tables and figures, plain-language headings, percentages rounded to one decimal place, and a brief explanation of each result and its measures. Put notes in captions rather than repeating them in every row.
+Save the cleaned data, tables, and figures in outputs; leave raw unchanged. Create a short results.html with readable tables and figures, sensible rounding, and brief explanations.
 
-Make the script runnable from start to finish in RStudio without Codex, using relative paths and brief run instructions at the top. Test it in a fresh R session, then open the R script in RStudio and results.html in my browser.
+Keep the R script independently runnable, using relative paths. Run it from start to finish in a fresh R session, then open the script in RStudio and results.html in my browser.
 ```
 
 ### 6. Branch in new chat — Explore beyond the preregistration
@@ -96,14 +108,14 @@ Return to the original chat for Prompt 7. The exploratory analysis can continue 
 ```text
 Read the project documents and create a writing folder beside analysis. Spawn four subagents, working in parallel as capacity allows:
 
-1. Journal guidelines: Read the current official Journal of Experimental Psychology: General submission guidelines. Save a concise, actionable summary in journal-guidelines.md, including the source links and access date.
-2. Literature: Find and read 5–8 relevant primary papers. Summarize the findings and limitations that will support our Introduction in literature.md, with verified references and DOI or source links.
-3. Method: Inspect the experiment, project documents, and data-preparation rules. Draft method.md with enough detail to replicate what was actually done, noting any departures from the preregistration.
-4. Results: Check the preregistered analysis code and outputs. Draft results.md, tracing reported numbers to their source tables or data and identifying the relevant tables and figures.
+1. Journal guidelines: Summarize the current official Journal of Experimental Psychology: General submission requirements in journal-guidelines.md, with source links and access date.
+2. Literature: Read 5–8 relevant primary papers and summarize their findings and limitations in literature.md, with verified references and DOI or source links.
+3. Method: Inspect the experiment and data-preparation rules; write method.md with enough detail to replicate the study, noting departures from the preregistration.
+4. Results: Check the preregistered analysis and write results.md, tracing reported numbers to the outputs and identifying relevant tables and figures.
 
-Each agent writes only its assigned file in writing; all other project files are read-only. Do not use the exploratory folder.
+Each agent writes only its assigned file in writing; other files are read-only. Do not use exploratory outputs.
 
-Wait for all four agents. Then act as lead author: verify citations and numerical claims, resolve inconsistencies, and integrate the work into a coherent manuscript.docx in writing. Include a title, abstract, Introduction, Method, Results, Discussion, references, and relevant tables and figures, following the journal guidelines. Keep conclusions proportionate to the design and evidence. Mark missing facts as [TO CONFIRM] rather than inventing them. Inspect the document's layout, then open it for me.
+Wait for all four agents. As lead author, verify citations and numbers, resolve inconsistencies, and assemble writing/manuscript.docx following the journal guidelines. Include a title, abstract, Introduction, Method, Results, Discussion, references, tables and figures. Keep conclusions proportionate to the evidence and mark missing facts as [TO CONFIRM]. Inspect the layout, then open the manuscript for me.
 ```
 
 ### 8. Revise with a custom skill
