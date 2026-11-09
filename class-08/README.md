@@ -32,10 +32,16 @@ Build the experiment described in this folder using oTree.
 
 Follow the brief’s beginner-level Python and commenting requirements.
 
-Set up the environment, test both conditions in a laptop browser, and verify that the choices are saved. Open the experiment’s Python code in VS Code and prepare its integrated terminal in experiment/ with the environment activated. Stop the test server and leave that terminal ready for me to type otree devserver. Give me a fresh local participant link and stop for my review.
+Set up the environment, test both conditions in a laptop browser, and verify that the choices are saved.
+
+Open this project folder in a new VS Code window and show choice_task/__init__.py. Configure this workspace’s new terminals to start in experiment/ and use this project’s Python and otree commands. Do not create a setup README.
+
+Before handing over, save the test data and stop this experiment’s test servers, including child processes. Check port 8000; identify any remaining listener and ask before stopping an unrelated program. Do not silently switch ports.
+
+In a fresh VS Code terminal, verify the folder and otree executable, run otree devserver successfully, then stop it. Confirm port 8000 is free and leave that terminal ready for me to run the same command. If you cannot control the integrated terminal, say so rather than claiming it is ready. Give me a fresh local participant link and stop for my review.
 ```
 
-In the prepared VS Code terminal, run:
+In the new Class 8 VS Code window, use the prepared terminal to run:
 
 ```text
 otree devserver
