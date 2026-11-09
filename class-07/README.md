@@ -86,11 +86,13 @@ The repaired program prints `Left option selected`. Change `choice` to `"right"`
 
 | Type | What you see | Example |
 | --- | --- | --- |
-| **Syntax error** | Python cannot read the file as valid code, so it does not start running it | A missing colon after `if` |
+| **Syntax error** | Python cannot read the file as valid code, so it does not start running it | A missing colon after `if`, or invalid indentation (`IndentationError`) |
 | **Runtime error** | The program starts, then stops at an operation it cannot perform | Adding a number to text (`TypeError`), or using an undefined name (`NameError`) |
 | **Logic error** | The program runs, but does the wrong thing | Adding only the first trial's points instead of all trials |
 
 **`IndexError`** is another runtime error: it occurs when you request a list position that does not exist. Remember that positions start at `0`, so a list with four items has positions `0` through `3`.
+
+Two other common runtime errors: **`ValueError`**, such as `int("hello")`, and **`FileNotFoundError`**, when a requested CSV cannot be found.
 
 A **traceback** shows where execution reached a runtime error. Start with its final line—the error type and message—then find the last `File ... line ...` entry referring to your file. That is where the failure appeared; its cause may be earlier in the code.
 
@@ -256,10 +258,12 @@ bonus_pence = participant_points * 10
 | Term | Simple meaning | Example |
 | --- | --- | --- |
 | Traceback | A report showing the calls and line locations leading to a runtime error, followed by its type and message | Find the last `File ... line ...` entry for your file; the cause may be earlier |
-| Syntax error | Code that breaks Python's writing rules and prevents the file from running | A missing colon after an `if` header |
+| Syntax error | Code that breaks Python's writing rules and prevents the file from running | A missing colon after `if`, or invalid indentation (`IndentationError`) |
 | Logic error | Code that runs but does not produce the intended result | Returning the first trial's points instead of the total |
 | Runtime error | An error raised when execution reaches an operation Python cannot perform | Adding an integer fee to a text bonus |
 | `TypeError` | A runtime error caused by using a value of an unsuitable type for an operation | `100 + "120"` cannot add a number to text |
+| `ValueError` | The value cannot be used by the operation | `int("hello")` cannot convert this text to an integer |
+| `FileNotFoundError` | The requested file cannot be found | Reading a CSV that was renamed or moved |
 | `IndexError` | A runtime error raised when you request a list position that does not exist | `responses[4]` fails if the list has only four items (positions `0`–`3`) |
 | `KeyError` | A runtime error raised when a dictionary does not contain the requested key | `"trial_1"` does not match the CSV header `"trial_1 "` |
 | `NameError` | A runtime error raised when Python cannot find a name where it is used | A copied variable name contains a lookalike character and does not match the defined name |
