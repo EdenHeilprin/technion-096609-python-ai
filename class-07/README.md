@@ -263,10 +263,10 @@ bonus_pence = participant_points * 10
 | Runtime error | An error raised when execution reaches an operation Python cannot perform | Adding an integer fee to a text bonus |
 | `TypeError` | A runtime error caused by using a value of an unsuitable type for an operation | `100 + "120"` cannot add a number to text |
 | `ValueError` | The value cannot be used by the operation | `int("hello")` cannot convert this text to an integer |
-| `FileNotFoundError` | The requested file cannot be found | Reading a CSV that was renamed or moved |
+| `NameError` | A runtime error raised when Python cannot find a name where it is used | A copied variable name contains a lookalike character and does not match the defined name |
 | `IndexError` | A runtime error raised when you request a list position that does not exist | `responses[4]` fails if the list has only four items (positions `0`–`3`) |
 | `KeyError` | A runtime error raised when a dictionary does not contain the requested key | `"trial_1"` does not match the CSV header `"trial_1 "` |
-| `NameError` | A runtime error raised when Python cannot find a name where it is used | A copied variable name contains a lookalike character and does not match the defined name |
+| `FileNotFoundError` | The requested file cannot be found | Reading a CSV that was renamed or moved |
 
 ## Companion tutorial
 
