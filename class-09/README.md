@@ -70,7 +70,7 @@ Return to **VS Code**, with `class-09` still open.
 
 Your saved responses remain after a restart. Use `otree devserver` to start again, not `resetdb`, which deletes the database. If you open a **new terminal** instead of reusing the same one, activate `.venv` again using your setup guide before starting oTree.
 
-A small wording change is often quicker to make directly. Next, you will ask Codex to format one part of that sentence.
+A small wording change is often quicker to make directly. Next, you will ask Codex to redesign the completion page.
 
 ## 6. Install Codex and open this folder
 
@@ -82,35 +82,67 @@ On Mac, check **Apple menu → About This Mac**: the [current Mac desktop downlo
 
 The [Free plan currently includes limited Codex access](https://learn.chatgpt.com/docs/pricing), subject to availability and usage limits. No paid subscription or API key is required for this activity. If access is unavailable or you reach a limit, use the manual alternative below and try the Codex step when access returns.
 
-## 7. Describe a formatting change to Codex
+## 7. Redesign the completion page with Codex
 
 In your Class 9 Codex project, send this prompt:
 
 ```text
-In choice_task/ThankYou.html, make only the word “saved” in “Your seven
-decisions have been saved.” bold and dark green.
+Redesign choice_task/ThankYou.html as a clear, welcoming completion page for
+laptop screens. Change “Your seven decisions have been recorded.” to “Your
+seven decisions have been saved.” if needed.
 
-Keep all wording, other styling, and experiment logic unchanged. Edit only
-this file; do not access exports or the database.
+Use a large green checkmark, a prominent thank-you heading, and a centered
+pale-green panel with dark-green text and generous spacing. Make “saved” bold.
+Keep the message telling participants they may close the tab.
 
-Show me the changed code and briefly explain how it makes the word bold and
-changes its color.
+Edit only this file, so the design change affects only the final page. Keep
+the experiment logic and saved responses unchanged. Do not access exports or
+the database.
+
+Add brief comments explaining the new styling. Show me what changed and
+explain it in simple terms.
 ```
 
-Open `ThankYou.html` in VS Code and inspect the edit. The sentence should still have exactly the same words; only **saved** should have added formatting.
+Open `ThankYou.html` in VS Code and inspect the changes. Find the confirmation sentence and the code responsible for the checkmark, colors, and spacing.
 
-Repeat the check from Step 5: save the file, stop oTree with **Control+C** in the VS Code terminal, run `otree devserver` again, and refresh the thank-you tab. Only **saved** should now appear **bold and dark green**.
+Repeat the check from Step 5: stop oTree with **Control+C** in the VS Code terminal, run `otree devserver` again, and refresh the thank-you tab. Compare it with the original page. Does it clearly confirm that the decisions have been **saved** and that the participant can close the tab?
 
 <details>
-<summary>Manual alternative — one possible solution</summary>
+<summary>Manual alternative — one possible design</summary>
 
-Replace the paragraph with:
+Replace the contents of `choice_task/ThankYou.html` with this code and save:
 
 ```html
-<p>Your seven decisions have been <strong style="color: #166534;">saved</strong>.</p>
+{{ block title }}Thank you!{{ endblock }}
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'choice_task/design.css' }}">
+<style>
+/* These styles appear only on the thank-you page. */
+.otree-title { text-align: center; color: #166534; }
+.completion-card {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 36px;
+    text-align: center;
+    background: #eef7ef;
+    color: #166534;
+    border-radius: 18px;
+}
+/* Make the checkmark the page's main visual signal. */
+.completion-check { font-size: 64px; margin-bottom: 20px; }
+</style>
+{{ endblock }}
+{{ block content }}
+<section class="completion-card">
+    <!-- The text also confirms completion; the symbol is decorative. -->
+    <div class="completion-check" aria-hidden="true">✓</div>
+    <p>Your seven decisions have been <strong>saved</strong>.</p>
+    <p>Thank you for participating. You may now close this tab.</p>
+</section>
+{{ endblock }}
 ```
 
-`<strong>` marks the word as important and displays it in bold by default. The `color` style sets its text color. Save and check the page using the same steps above. This uses no Codex allowance.
+The HTML groups the completion message; the CSS inside `<style>` controls its appearance. These styles are included only on this page. Restart oTree and refresh the thank-you tab as described above.
 
 </details>
 
@@ -137,7 +169,7 @@ In `__init__.py`, find `PRIZES` and `prize_for_round`. Recognize the list, funct
 - [ ] I can start and stop this experiment from VS Code's terminal.
 - [ ] I completed both presentation orders and found my saved decisions in the per-app CSV.
 - [ ] I changed the thank-you text by hand and saw the new wording in the browser.
-- [ ] I checked the bold, green word after the Codex edit or manual alternative.
+- [ ] I compared the redesigned thank-you page with the original and checked its completion message.
 - [ ] Git and GitHub CLI are installed, and `gh auth status` shows my own account.
 - [ ] I have my GitHub username and noreply address ready for Class 10.
 

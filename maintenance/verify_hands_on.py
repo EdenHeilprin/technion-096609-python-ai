@@ -147,18 +147,25 @@ def check_experiment(project):
                 check(revised in get(client, url)[1], "Saved HTML edit appears after restart/refresh")
         finally:
             save_and_stop(process, port)
-        # Check the subsequent formatting task separately from the manual edit.
-        formatted = 'Your seven decisions have been <strong style="color: #166534;">saved</strong>.'
-        thanks.write_text(original.replace("Your seven decisions have been recorded.", formatted), encoding="utf-8")
+        # Run the manual redesign exactly as supplied in the lesson.
+        lesson = (project / "README.md").read_text(encoding="utf-8")
+        redesign_section = lesson.split("<summary>Manual alternative — one possible design</summary>", 1)[1]
+        redesigned = redesign_section.split("```html\n", 1)[1].split("\n```", 1)[0]
+        thanks.write_text(redesigned + "\n", encoding="utf-8")
         process = start_server(project, port, log)
         try:
-            check(get(client, export_url)[1] == raw, "Formatting leaves saved responses unchanged")
+            check(get(client, export_url)[1] == raw, "Page redesign leaves saved responses unchanged")
             for _, _, url in expected.values():
-                check(formatted in get(client, url)[1], "Bold, dark-green saved word renders")
+                page_html = get(client, url)[1]
+                check('class="completion-card"' in page_html and 'class="completion-check"' in page_html,
+                      "Completion panel and checkmark render")
+                check('Your seven decisions have been <strong>saved</strong>.' in page_html
+                      and 'You may now close this tab.' in page_html,
+                      "Redesigned page confirms saving and completion")
         finally:
             save_and_stop(process, port)
             thanks.write_text(original, encoding="utf-8")
-    print("PASS: Class 9 single configuration, both orders, per-app CSV, restart, manual and formatting edits")
+    print("PASS: Class 9 single configuration, both orders, per-app CSV, restart, manual edit and page redesign")
 
 
 if __name__ == "__main__":
