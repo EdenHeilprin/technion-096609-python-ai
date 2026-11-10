@@ -385,11 +385,11 @@ Open your preferred AI chat in your browser. Attach **`return_value_demo.py` and
 >
 > Keep `calculate_bonus` unchanged, including its comments and docstring. For each CSV row, convert `trial_1`, `trial_2`, and `trial_3` to integers, put them in a list, and call the function. Keep the existing 100-pence participation fee. Print the participant's ID, bonus, and total payment in pence. Only print results; do not create output files.
 >
-> Return one complete replacement script. Keep the code beginner-readable: process one participant per row using a simple loop and an explicit list of three scores. Use only Python’s built-in tools; no additional installations should be needed.
+> Return one complete replacement script. Use the built-in `csv.DictReader` and a simple `for row in reader:` loop. Build the three-item list explicitly; avoid comprehensions, `.items()`, and unpacking multiple loop variables. No additional installations should be needed.
 >
-> Find the CSV beside the script, wherever I save the class folder and regardless of the terminal’s current folder.
+> Read the CSV from beside the script using `Path(__file__).resolve().parent` from `pathlib`, regardless of the terminal's current folder.
 >
-> File handling is new to me. Add short English `#` comments at the first use of unfamiliar syntax, explaining both what it does and how to read it. Explain how the script finds, opens, and reads the CSV, and why the scores need conversion to numbers before calculation.
+> File handling is new to me. Add short English `#` comments at the first use of unfamiliar syntax, explaining both what it does and how to read it: imports, the file path, `with ... as`, file-opening options, and `csv.DictReader`. Explain why CSV scores need `int()` before calculation. Keep the code simple and readable.
 
 ### 2. Run it in VS Code
 
