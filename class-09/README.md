@@ -82,12 +82,19 @@ On Mac, check **Apple menu → About This Mac**: the [current Mac desktop downlo
 
 The [Free plan currently includes limited Codex access](https://learn.chatgpt.com/docs/pricing), subject to availability and usage limits. No paid subscription or API key is required for this activity. If access is unavailable or you reach a limit, use the manual alternative below and try the Codex step when access returns.
 
-## 7. Ask Codex for a precise formatting change
+## 7. Describe a formatting change to Codex
 
 In your Class 9 Codex project, send this prompt:
 
 ```text
-In choice_task/ThankYou.html, make only the word “saved” in “Your seven decisions have been saved.” bold and dark green (#166534). Use a <strong> tag with an inline color style. Keep all wording, other styling, and experiment logic unchanged. Edit only this file; do not access exports or the database. Show me the changed line and briefly explain the HTML tag and the color style.
+In choice_task/ThankYou.html, make only the word “saved” in “Your seven
+decisions have been saved.” bold and dark green.
+
+Keep all wording, other styling, and experiment logic unchanged. Edit only
+this file; do not access exports or the database.
+
+Show me the changed code and briefly explain how it makes the word bold and
+changes its color.
 ```
 
 Open `ThankYou.html` in VS Code and inspect the edit. The sentence should still have exactly the same words; only **saved** should have added formatting.
@@ -95,7 +102,7 @@ Open `ThankYou.html` in VS Code and inspect the edit. The sentence should still 
 Repeat the check from Step 5: save the file, stop oTree with **Control+C** in the VS Code terminal, run `otree devserver` again, and refresh the thank-you tab. Only **saved** should now appear **bold and dark green**.
 
 <details>
-<summary>Manual alternative and expected HTML</summary>
+<summary>Manual alternative — one possible solution</summary>
 
 Replace the paragraph with:
 
@@ -138,7 +145,7 @@ If oTree is still running, stop it with **Control+C** in its VS Code terminal. Y
 
 ## Companion tutorials
 
-**[HTML in 100 Seconds — Fireship](https://www.youtube.com/watch?v=ok-plXXHlWw).** Watch the full short video for an overview of how tags structure a web page. Connect it to the `<p>` and `<strong>` tags you edited today. Pause or slow playback when needed.
+**[HTML in 100 Seconds — Fireship](https://www.youtube.com/watch?v=ok-plXXHlWw).** Watch the full short video for an overview of how tags structure a web page. Connect it to the paragraph and text formatting on the thank-you page. Pause or slow playback when needed.
 
 **Before Class 10, strongly recommended: [A brief introduction to Git for beginners — GitHub](https://www.youtube.com/watch?v=r8jQ9hVA2qs).** Watch **00:00–03:06** for version control, repositories, commits, and branches, then **08:29 to the end** for Git versus GitHub. These ideas explain how a change on your laptop eventually reaches the course online. Use our setup guide for installation; focus here on recognizing what each tool does. After watching, can you explain why saving an edited file does not update GitHub?
 
