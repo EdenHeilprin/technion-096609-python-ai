@@ -30,17 +30,18 @@ short bullets. Ask about any missing decision. Do not change anything yet.
 ## 2. Build the experiment
 
 ```text
-Build the experiment described in this folder using oTree.
-Follow the brief’s beginner-level Python and commenting requirements.
+Build the experiment from this folder’s brief, following its beginner-level
+Python and commenting requirements. Create only necessary files.
 
-Set up the environment and configure this project’s new VS Code
-terminals to activate it automatically.
+Set up automatic environment activation and verify the start command
+in a new terminal in my current VS Code window.
 
-Test both conditions and verify that choices are saved. Stop any
-servers you started for testing, and check that port 8000 is free.
+Test one complete run per condition: check the seven choices and confirm
+responses remain saved after one restart. Repeat checks only after fixes.
+Stop test servers afterward; leave deployment for later.
 
-Give me the exact cd command to enter the experiment folder,
-so I can run otree devserver myself.
+Give me the commands to enter the experiment folder and start it myself,
+and a link to its Python code.
 ```
 
 In a new VS Code terminal, use the supplied `cd` command, then run `otree devserver` to try the experiment. In the Python file, find the prize list, condition assignment, and where each response is stored.
