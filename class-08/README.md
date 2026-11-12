@@ -37,11 +37,11 @@ Set up automatic environment activation and verify the start command
 in a new terminal in my current VS Code window.
 
 Test one complete run per condition: check the seven choices and confirm
-responses remain saved after one restart. Repeat checks only after fixes.
+responses remain saved after one restart.
 Stop test servers afterward; leave deployment for later.
 
 Give me the commands to enter the experiment folder and start it myself,
-and a link to its Python code.
+and the path to the experiment’s Python file.
 ```
 
 In a new VS Code terminal, use the supplied `cd` command, then run `otree devserver` to try the experiment. In the Python file, find the prize list, condition assignment, and where each response is stored.
