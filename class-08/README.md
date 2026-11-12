@@ -83,12 +83,8 @@ The analysis files will live beside the experiment, not inside it.
 ```text
 Create an analysis folder beside experiment, with raw and outputs subfolders.
 
-Retrieve the choice_task CSV export from the live experiment using the
-available authenticated access and save it unchanged in raw.
-
-If access is unavailable, open the export page for me to download it; then
-find the CSV in Downloads and copy it into raw. If several exports match, ask
-me which to use.
+Find the choice_task CSV I downloaded in Downloads and copy it unchanged
+into raw. If several exports match, ask me which to use.
 
 Read the project documents and inspect the export. Briefly summarize what it
 contains and how you will prepare it for the preregistered analyses.
