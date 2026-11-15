@@ -1,6 +1,8 @@
 # [A clear title describing what the lesson teaches]
 
-**Presenters:** [Both names]
+**Presenter(s):** [Name(s)]
+
+**Length:** 40–50 minutes, including the live example and activity or discussion.
 
 [Introduce the practical problem in two sentences. Explain why this tool or idea helps.]
 

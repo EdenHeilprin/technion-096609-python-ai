@@ -12,7 +12,7 @@ Technion – Israel Institute of Technology · Faculty of Data and Decision Scie
 - **Office hours:** By appointment upon request by email
 - **Timetable:** Wednesdays, 16:30–18:30; Fridays 6\*, 13, and 27 November\*, 09:00–13:00
 - **First meeting:** Wednesday, 28 October 2026
-- **Location:** Room 424, Bloomfield (all Wednesday and Friday classes)
+- **Location:** Room 424, Bloomfield, for in-person meetings; meetings marked \* are held on Zoom.
 - **Language:** Teaching in Hebrew; course materials and code in English
 
 ## Course description
@@ -36,11 +36,11 @@ Alongside Python fundamentals, the course develops practical research skills: di
 Classes combine short explanations, demonstrations, and hands-on practice. The course is assessed on a pass/fail basis; passing requires both of the following:
 
 - **Attendance:** Up to two classes may be missed without justification. Missing a Friday session that covers two classes counts as two absences. More than two absences prevent a passing grade unless justified, for example by reserve military service.
-- **Teaching:** Prepare and teach an approximately 30-minute lesson in pairs, with both partners presenting. Assignment details will be provided in Class 10.
+- **Teaching:** Prepare and teach a 40–50-minute lesson, normally in pairs with both partners presenting. Individual presentations are possible by prior agreement. Submit the lesson for review through a GitHub pull request by 25 November; see Class 10 for instructions.
 
 ## Course outline and schedule
 
-**This plan is tentative:** content, sequence, pacing, and dates may change. All dates are in 2026. Dates and presentation order for Classes 11–13 remain to be confirmed.
+**This plan is tentative:** content, sequence, pacing, and dates may change. All dates are in 2026. Student presentations take place on 27 November and 2 December; the presentation order will be arranged through signup.
 
 <!-- Empty layout rows keep GitHub zebra striping aligned with date groups; include them in the date rowspans. -->
 <table>
@@ -60,15 +60,14 @@ Classes combine short explanations, demonstrations, and hands-on practice. The c
 <tr><td rowspan="3">Fri 13 Nov</td><td><a href="../class-07/README.md">7</a></td><td>Debugging with AI: identifying errors, interpreting tracebacks, and checking fixes</td></tr>
 <tr></tr>
 <tr><td><a href="../class-08/README.md">8</a></td><td>From Answers to Delegation: a Codex demonstration of experiment building and deployment, R analysis, and research writing</td></tr>
-<tr><td>Wed 18 Nov</td><td><a href="../class-09/README.md">9</a></td><td>Codex, oTree, and GitHub setup; running and editing the local experiment</td></tr>
-<tr><td>Wed 25 Nov</td><td><a href="../class-10/README.md">10</a></td><td>Create and contribute your own lesson using GitHub forks and pull requests</td></tr>
-<tr><td rowspan="5">Dates to be confirmed</td><td><a href="../student-lessons/README.md">11</a></td><td>Student-led lessons on approved topics with live examples and activities or discussion</td></tr>
-<tr></tr>
-<tr><td><a href="../student-lessons/README.md">12</a></td><td>Student-led lessons on approved topics with live examples and activities or discussion</td></tr>
-<tr></tr>
-<tr><td><a href="../student-lessons/README.md">13</a></td><td>Student-led lessons on approved topics with live examples and activities or discussion</td></tr>
+<tr><td>Wed 18 Nov*</td><td><a href="../class-09/README.md">9</a></td><td>Codex, oTree, and GitHub setup; running and editing the local experiment</td></tr>
+<tr><td>Wed 25 Nov*</td><td><a href="../class-10/README.md">10</a></td><td>Student lesson pull requests due. GitHub submission support through Zoom consultations by prior appointment.</td></tr>
+<tr><td>Fri 27 Nov*</td><td><a href="../student-lessons/README.md">11</a></td><td>Student-led lessons on approved topics with live examples and activities or discussion</td></tr>
+<tr><td>Wed 2 Dec</td><td><a href="../student-lessons/README.md">12</a></td><td>Student-led lessons on approved topics with live examples and activities or discussion</td></tr>
 </tbody>
 </table>
+
+Work through Class 10 independently before 25 November. If you have not yet submitted your pull request, book a Zoom consultation in advance. Students who have submitted do not need to attend the consultation session.
 
 ## Preparation and course materials
 

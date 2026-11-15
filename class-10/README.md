@@ -1,12 +1,16 @@
 # Class 10 — Create and Contribute Your Own Lesson
 
-Until now, you have used GitHub to get course materials. Today, you will use it to contribute your own: prepare a lesson with a partner and submit it for the **repository owner** to review. In Classes 11–13, each pair will teach an approximately **30-minute lesson**.
+Until now, you have used GitHub to get course materials. Use this guide to contribute your own: prepare a lesson and submit it for the **repository owner** to review. In Classes 11–12, you will teach a **40–50-minute lesson**, normally in pairs. Individual presentations are possible by prior agreement.
+
+**Submission deadline: Wednesday, 25 November 2026.** Work through this guide independently and **submit a pull request** to the course repository for review by that date. Saving files or pushing them to your fork alone does not submit them for review.
+
+The **25 November Zoom meeting (16:30–18:30)** is for consultations by advance appointment. **If you have not yet submitted your pull request, book an appointment in advance** by [emailing the instructor](mailto:edenheilprin@campus.technion.ac.il). Include your name(s), the step you reached, and what is blocking submission. Students who have submitted do not need to attend.
 
 The aim is **familiarity through a live demonstration and a small activity**. Help classmates recognize a useful tool, see what its code does, and follow it when working with AI. Choose a manageable introduction, not a complete course on your topic.
 
-You can use **Codex, an online AI chatbot, or no AI**. Start with a small working draft today; develop and rehearse it before your presentation. Git and GitHub sign-in should already be ready from [Class 9](../class-09/git-setup.md).
+You can use **Codex, an online AI chatbot, or no AI**. Start with a small working draft, then develop and rehearse it before your presentation. Git and GitHub sign-in should already be ready from [Class 9](../class-09/git-setup.md).
 
-## By the end of class
+## By the end of this guide
 
 - Make your own GitHub copy of the course and edit it on your laptop.
 - Prepare a first lesson draft with a live example and a short activity.
@@ -20,13 +24,15 @@ In Class 9, you changed the thank-you page on your laptop. If a classmate now do
 <details>
 <summary>Check your answer</summary>
 
-No. You changed the copy on **your computer**, not the copy on **GitHub**. Saving a file does not upload it. Today, you will learn how to send a change and ask the repository owner to include it in the course.
+No. You changed the copy on **your computer**, not the copy on **GitHub**. Saving a file does not upload it. This guide shows how to send a change and ask the repository owner to include it in the course.
 
 </details>
 
 ## 1. Choose one useful thing to introduce
 
-Work in pairs. **Get the instructor's approval before building your lesson**, including when choosing from this list. Send both names, your topic, and one sentence about what you will demonstrate. Each pair needs a different topic.
+Work in pairs, or request an individual presentation. **Get the instructor's approval before building your lesson**, including when choosing from this list. Send the presenter name(s), your topic, and one sentence about what you will demonstrate. Each lesson needs a different topic.
+
+Choose a presentation date: **Friday, 27 November, 09:00–13:00 (Zoom)** or **Wednesday, 2 December, 16:30–18:30 (in person)**. Send your preferred date with your topic proposal to the instructor.
 
 ### Topic pool
 
@@ -76,7 +82,7 @@ Course repository → your fork on GitHub → your local copy
 
 You upload to **your fork**, not directly to the course. The owner decides whether to merge your pull request. **Your fork and pull request are public**, even while awaiting review. Until the owner accepts them, your changes are **not part of the official course**. Use fictional data; do not upload participant IDs, passwords, or private files.
 
-Choose one partner's account and laptop for the submission. Both partners develop and present the lesson; submit **one PR per pair**.
+For a pair, choose one partner's account and laptop for the submission; both partners develop and present the lesson. Submit **one PR per lesson**, including for an approved individual presentation.
 
 ## 3. Open a fresh folder and terminal
 
@@ -165,12 +171,12 @@ Choose **A or B**, then continue to Step 6.
 In the same Codex project, replace the two bracketed placeholders and send:
 
 ```text
-Our approved topic is [TOPIC AND WHAT WE WILL DEMONSTRATE]. Our names are
-[BOTH NAMES].
+Our approved topic is [TOPIC AND WHAT WE WILL DEMONSTRATE]. Presenter(s):
+[NAME(S)].
 
 Read class-10/README.md and its lesson template, and consult Classes 1–7 for
 the audience's background. Create our first lesson draft in
-student-lessons/<my GitHub username>. Aim for about 30 minutes: introduce
+student-lessons/<my GitHub username>. Aim for 40–50 minutes: introduce
 one useful idea, demonstrate it live, and give classmates a small activity
 with an answer and a compact reference. Aim for familiarity and recognition,
 not mastery. Use and link reliable original sources.
@@ -362,7 +368,7 @@ gh pr create --repo EdenHeilprin/technion-096609-python-ai --base main --head YO
 
 In the browser, the destination (**base**) should be **EdenHeilprin/technion-096609-python-ai → main**. The source (**head**) should be **your fork → add-my-lesson**.
 
-Title it **Student lesson: your topic**. In the description, include both names, your goal, live example, activity, and what you tested. Also paste a link to your lesson: open your fork using Step 4, choose **add-my-lesson** from the branch dropdown above its files, open **student-lessons → your username**, and copy the browser address.
+Title it **Student lesson: your topic**. In the description, include the presenter name(s), your goal, live example, activity, and what you tested. Also paste a link to your lesson: open your fork using Step 4, choose **add-my-lesson** from the branch dropdown above its files, open **student-lessons → your username**, and copy the browser address.
 
 Click **Create pull request**. This asks for review; it does not add your lesson to the official course yet.
 
@@ -403,11 +409,12 @@ git push origin add-my-lesson
 
 When the owner merges the PR, your folder appears in **[Student lessons](../student-lessons/)** in the official course. A PR marked **Closed** without **Merged** was not added.
 
-For your **30-minute presentation**, introduce the problem, demonstrate a small example live, and lead the activity or discussion described in your lesson. For an experiment improvement, run it locally on your laptop and explain the design change and its scientific merit. Both partners should present. Rehearse with the actual files, aiming for recognition and understanding of the basic idea rather than covering every feature.
+For your **40–50-minute presentation**, introduce the problem, demonstrate a small example live, and lead the activity or discussion described in your lesson. For an experiment improvement, run it locally on your laptop and explain the design change and its scientific merit. In a pair, both partners should present. Rehearse with the actual files, aiming for recognition and understanding of the basic idea rather than covering every feature.
 
 ## Before you finish
 
-- [ ] Our topic was approved and is different from other pairs' topics.
+- [ ] Our topic was approved and is different from the other lessons' topics.
+- [ ] Our presentation date is arranged, and the lesson is planned for 40–50 minutes.
 - [ ] Our lesson introduces a useful idea with a live example and a small activity.
 - [ ] We checked the example ourselves and can explain what it does.
 - [ ] Our PR appears in the course repository and contains only our lesson.

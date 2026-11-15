@@ -34,6 +34,8 @@ This phase connects building an experiment, collecting responses, analyzing data
 - **[Class 8 — From Answers to Delegation](class-08/README.md)**
 - **[Class 9 — Codex, oTree, and GitHub Setup](class-09/README.md)**
 - **[Class 10 — Create and Contribute Your Own Lesson](class-10/README.md)**
-- **[Classes 11–13 — Student-led Lessons](student-lessons/)** — pairs teach approximately 30-minute lessons on distinct, approved topics.
+- **[Classes 11–12 — Student-led Lessons](student-lessons/)** — 40–50-minute lessons on distinct, approved topics, normally in pairs; individual presentations by prior agreement.
 
 Class 8 contains prompts and a two-file download for a fresh Codex project. Class 9 provides a working experiment. In Class 10, you fork and clone this repository, build your lesson, and submit a pull request for review. Keep earlier class work intact.
+
+Complete Class 10 independently and submit your pull request by **25 November**. That day's Zoom meeting provides submission support by advance appointment for students who have not yet submitted. Presentations are on **27 November (Zoom)** and **2 December (in person)**.
