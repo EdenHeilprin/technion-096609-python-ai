@@ -76,7 +76,7 @@ otree devserver
 
 This starts oTree on your laptop. Wait for **Open your browser to http://localhost:8000/**. The terminal stays occupied because oTree is now serving the experiment's pages; that is expected. Leave it open and [continue at Step 3 of the lesson](README.md#3-complete-a-run-and-find-your-answers), where you will open the browser and create a session.
 
-To stop: click this terminal and press **Ctrl+C**. To start again in the same terminal: run `otree devserver`. If you open a **new Command Prompt terminal**, activate `.venv` again first. You do not need to reinstall oTree or recreate `.venv`.
+To stop: close all browser tabs showing this local experiment, including its administrator page. Then click this terminal, press **Ctrl+C**, and wait for the command prompt. To start again in the same terminal: run `otree devserver`. If you open a **new Command Prompt terminal**, activate `.venv` again first. You do not need to reinstall oTree or recreate `.venv`.
 
 **Note:** use `otree devserver`, not the editor's Play button on `__init__.py`, to run this experiment. Command Prompt uses `activate.bat`, so no PowerShell execution-policy change is needed.
 

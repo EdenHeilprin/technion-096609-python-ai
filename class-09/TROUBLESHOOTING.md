@@ -16,7 +16,7 @@ Use the exact commands in your [Mac](macos.md) or [Windows](windows.md) guide. A
 
 The Class 9 download has one configuration, **Sure or gamble**, and no separate **TEST ONLY** entry. A different list can mean an earlier project's oTree is still running at `localhost:8000`; changing the folder in VS Code does not stop it.
 
-Find the VS Code terminal where you started the earlier experiment and press **Control+C** there. Then open `class-09` in VS Code, create a new terminal, check the folder with `pwd` on Mac or `cd` in Windows Command Prompt, activate this folder's `.venv`, and run `otree devserver`. Refresh the browser. Do not delete the earlier project's database.
+Close the earlier experiment’s browser tabs, including its administrator page. Find the VS Code terminal where you started it and press **Control+C** there. Then open `class-09` in VS Code, create a new terminal, check the folder with `pwd` on Mac or `cd` in Windows Command Prompt, activate this folder's `.venv`, and run `otree devserver`. Refresh the browser. Do not delete the earlier project's database.
 
 ## Package installation fails
 
@@ -28,11 +28,11 @@ Open a **Command Prompt** terminal using the dropdown beside the terminal's **+*
 
 ## The browser cannot open localhost
 
-In VS Code, look at the terminal where you entered `otree devserver`. It should show the browser address, not an error. Use `http://localhost:8000`, not `https`. If port 8000 is already in use, stop your earlier experiment with Control+C in its terminal. To keep that experiment running instead, use `otree devserver 8001` for Class 9 and open `http://localhost:8001`.
+In VS Code, look at the terminal where you entered `otree devserver`. It should show the browser address, not an error. Use `http://localhost:8000`, not `https`. If port 8000 is already in use, close its browser tabs, then stop your earlier experiment with Control+C in its terminal. To keep that experiment running instead, use `otree devserver 8001` for Class 9 and open `http://localhost:8001`.
 
 ## My edit is not visible
 
-Save the file. Check that VS Code and Codex opened the same `class-09` folder. Stop and restart the server, then refresh the participant page. For changes to prizes or saved fields, use a new session; ask for help if oTree requests a database change. Preserve exports before any database reset.
+Save the file. Check that VS Code and Codex opened the same `class-09` folder, then refresh the participant page. HTML edits do not need a server restart. If you do need to restart, close all local experiment tabs before pressing Control+C. After restarting, open `http://localhost:8000`, then **Sessions**, select your existing session, and use its **Links** tab to reopen the participant page. Do not use `resetdb`: it deletes saved responses.
 
 ## Codex cannot access the project, or has no usage left
 

@@ -59,16 +59,7 @@ Return to **VS Code**, with `class-09` still open.
 1. In the Explorer on the left, expand `choice_task`. Which file looks like it controls the final page? Open **ThankYou.html**.
 2. Find `Your seven decisions have been recorded.` Change only that text to **Your seven decisions have been saved.** Keep the surrounding `<p>` and `</p>` tags; they mark a paragraph.
 3. Save the file with **Cmd+S** on Mac or **Ctrl+S** on Windows.
-4. Open VS Code's **Terminal** panel, where you previously typed `otree devserver`. If the panel is hidden, choose **View → Terminal**. Click inside that same terminal and press **Control+C** on either operating system. This stops oTree and returns you to a command prompt.
-5. In that terminal, type the command below and press Enter:
-
-   ```bash
-   otree devserver
-   ```
-
-6. When the terminal displays the browser address again, return to your completed participant's thank-you tab and **refresh** it. Does it show your new sentence?
-
-Your saved responses remain after a restart. Use `otree devserver` to start again, not `resetdb`, which deletes the database. If you open a **new terminal** instead of reusing the same one, activate `.venv` again using your setup guide before starting oTree.
+4. Return to the completed participant’s thank-you tab and **refresh** it. Does it show your new sentence? Keep oTree running; HTML text and styling changes appear on refresh.
 
 A small wording change is often quicker to make directly. Next, you will ask Codex to redesign the completion page.
 
@@ -105,7 +96,7 @@ explain it in simple terms.
 
 Open `ThankYou.html` in VS Code and inspect the changes. Find the confirmation sentence and the code responsible for the checkmark, colors, and spacing.
 
-Repeat the check from Step 5: stop oTree with **Control+C** in the VS Code terminal, run `otree devserver` again, and refresh the thank-you tab. Compare it with the original page. Does it clearly confirm that the decisions have been **saved** and that the participant can close the tab?
+Save `ThankYou.html` and refresh the thank-you tab while oTree is still running. Compare it with the original page. Does it clearly confirm that the decisions have been **saved** and that the participant can close the tab?
 
 <details>
 <summary>Manual alternative — one possible design</summary>
@@ -142,7 +133,7 @@ Replace the contents of `choice_task/ThankYou.html` with this code and save:
 {{ endblock }}
 ```
 
-The HTML groups the completion message; the CSS inside `<style>` controls its appearance. These styles are included only on this page. Restart oTree and refresh the thank-you tab as described above.
+The HTML groups the completion message; the CSS inside `<style>` controls its appearance. These styles are included only on this page. Refresh the thank-you tab while oTree is still running.
 
 </details>
 
@@ -173,7 +164,7 @@ In `__init__.py`, find `PRIZES` and `prize_for_round`. Recognize the list, funct
 - [ ] Git and GitHub CLI are installed, and `gh auth status` shows my own account.
 - [ ] I have my GitHub username and noreply address ready for Class 10.
 
-If oTree is still running, stop it with **Control+C** in its VS Code terminal. Your files and saved responses stay on your computer. For help with a step, see [Troubleshooting](TROUBLESHOOTING.md).
+To stop oTree, first close **all browser tabs showing this local experiment**, including the administrator tab. Then press **Control+C** in its VS Code terminal and wait for the command prompt. This lets oTree finish saving your responses. To start again, run `otree devserver` in the same terminal and reopen `http://localhost:8000`. For help with a step, see [Troubleshooting](TROUBLESHOOTING.md).
 
 ## Companion tutorials
 

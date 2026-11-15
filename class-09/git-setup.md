@@ -8,7 +8,7 @@ Sign in to **[GitHub](https://github.com)**, or create an account and verify you
 
 ## 2. Open VS Code's terminal
 
-First stop the experiment: click the VS Code terminal where `otree devserver` is running and press **Control+C**.
+First close all browser tabs showing the local experiment, including its administrator page. Then click the VS Code terminal where `otree devserver` is running, press **Control+C**, and wait for the command prompt.
 
 Choose **Terminal → New Terminal** in VS Code. This opens a panel below your code. At the top right of that panel, click the small arrow beside **+** and choose **zsh (Mac)** or **Command Prompt (Windows)**. These are names for the programs that read terminal commands; they open inside VS Code, not in a separate app. Use this same choice in Class 10.
 

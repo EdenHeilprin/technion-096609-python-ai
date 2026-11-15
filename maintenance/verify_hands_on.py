@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import signal
 import socket
 import subprocess
 import sys
@@ -19,13 +20,19 @@ from verify_release import check, get, stop_server, submit
 
 
 def save_and_stop(process, port):
-    # The non-interactive runner stops a process tree, not a terminal's Ctrl+C.
-    # Flush via oTree's own devserver reload endpoint first; Windows taskkill
-    # otherwise discards the in-memory database and creates a fake bug.
+    # Mac/Linux: exercise Control+C without pre-saving via an admin endpoint.
+    # HTTP clients are already closed, matching the lesson's close-tabs step.
+    # Windows CI uses forced process-tree cleanup, so flush there explicitly;
+    # it does not reproduce the interactive Windows terminal's Control+C.
     try:
         if process.poll() is None:
-            with urllib.request.urlopen(f"http://127.0.0.1:{port}/SaveDB", data=b"save", timeout=10) as response:
-                check(response.status == 200, "oTree flushes the development database")
+            if os.name == "nt":
+                with urllib.request.urlopen(f"http://127.0.0.1:{port}/SaveDB", data=b"save", timeout=10) as response:
+                    check(response.status == 200, "oTree flushes before Windows CI cleanup")
+            else:
+                os.killpg(process.pid, signal.SIGINT)
+                process.wait(timeout=10)
+                check(process.returncode == 0, "Control+C shuts down cleanly")
     finally:
         stop_server(process)
         # The launcher can exit before its child closes the listening socket.
@@ -133,35 +140,33 @@ def check_experiment(project):
             export_page = get(client, base + "/ExportIndex")[1]
             check("Per-app data" in export_page and 'id="app-choice_task"' in export_page,
                   "Per-app CSV button matches lesson")
+            # Both HTML edits should appear on refresh without restarting oTree.
+            thanks = project / "choice_task/ThankYou.html"
+            original = thanks.read_text(encoding="utf-8")
+            revised = "Your seven decisions have been saved."
+            thanks.write_text(original.replace("Your seven decisions have been recorded.", revised), encoding="utf-8")
+            for _, _, url in expected.values():
+                check(revised in get(client, url)[1], "Manual HTML edit appears on refresh")
+
+            lesson = (project / "README.md").read_text(encoding="utf-8")
+            redesign_section = lesson.split("<summary>Manual alternative — one possible design</summary>", 1)[1]
+            redesigned = redesign_section.split("```html\n", 1)[1].split("\n```", 1)[0]
+            thanks.write_text(redesigned + "\n", encoding="utf-8")
+            for _, _, url in expected.values():
+                page_html = get(client, url)[1]
+                check('class="completion-card"' in page_html and 'class="completion-check"' in page_html,
+                      "Completion panel and checkmark appear on refresh")
+                check('Your seven decisions have been <strong>saved</strong>.' in page_html
+                      and 'You may now close this tab.' in page_html,
+                      "Redesigned page confirms saving and completion")
+            check(get(client, export_url)[1] == raw, "Both edits leave saved responses unchanged")
         finally:
             save_and_stop(process, port)
-        # Apply the manual wording edit only inside the disposable test copy.
-        thanks = project / "choice_task/ThankYou.html"
-        original = thanks.read_text(encoding="utf-8")
-        revised = "Your seven decisions have been saved."
-        thanks.write_text(original.replace("Your seven decisions have been recorded.", revised), encoding="utf-8")
         process = start_server(project, port, log)
         try:
             check(get(client, export_url)[1] == raw, "Restart preserves all saved responses")
             for _, _, url in expected.values():
-                check(revised in get(client, url)[1], "Saved HTML edit appears after restart/refresh")
-        finally:
-            save_and_stop(process, port)
-        # Run the manual redesign exactly as supplied in the lesson.
-        lesson = (project / "README.md").read_text(encoding="utf-8")
-        redesign_section = lesson.split("<summary>Manual alternative — one possible design</summary>", 1)[1]
-        redesigned = redesign_section.split("```html\n", 1)[1].split("\n```", 1)[0]
-        thanks.write_text(redesigned + "\n", encoding="utf-8")
-        process = start_server(project, port, log)
-        try:
-            check(get(client, export_url)[1] == raw, "Page redesign leaves saved responses unchanged")
-            for _, _, url in expected.values():
-                page_html = get(client, url)[1]
-                check('class="completion-card"' in page_html and 'class="completion-check"' in page_html,
-                      "Completion panel and checkmark render")
-                check('Your seven decisions have been <strong>saved</strong>.' in page_html
-                      and 'You may now close this tab.' in page_html,
-                      "Redesigned page confirms saving and completion")
+                check('class="completion-check"' in get(client, url)[1], "Participant page reopens after restart")
         finally:
             save_and_stop(process, port)
             thanks.write_text(original, encoding="utf-8")

@@ -1,7 +1,7 @@
 {
   ".gitignore": "083ec999fa2bc301005dd8e6f816f123e56cc58ffb5cac8ad3ff221c78dbbd68",
-  "README.md": "746ea5b3e5772a295763bf4f8da1d8fa5adc68d5c355eb09bab9530b4bf40396",
-  "TROUBLESHOOTING.md": "bd6cef3de6dabb5da264ed69ecdd230fdd5bd0b8af50be70ba022dd92707c379",
+  "README.md": "7b56272468eb7f81cc060543fd55d080d09c16c3998476e54e539af42ded938e",
+  "TROUBLESHOOTING.md": "ecc635d58a0046cc7fe749dfc07e743d02679a1c5df2ab3dc8b94ff55d4de140",
   "_static/choice_task/design.css": "9f94dcd3cb0eba6d0315b47c93bb833861e71e0026bb76f1156184a9d1d05f69",
   "check_setup.py": "3315e033a414a5ca215fe534326686219855e64b28928af00e0e575b4ce938e0",
   "choice_task/Consent.html": "20f341f5c5200aab946f460cefabcd0a376eadfb2298499e465c09e3c1a2ba07",
@@ -9,9 +9,9 @@
   "choice_task/Details.html": "5cda43f2bc6b8fe69f671315a8122f4ec52b5ae4c7c4562cc8efe17a29af96e3",
   "choice_task/ThankYou.html": "ec9a0e750f1add4ba4c4485de6a758abd0da24f4bbe3860a3d7ea8acb44c9675",
   "choice_task/__init__.py": "c5d487ec333a740208f6bf6d73443d805f7ea2819ad0679bb74c34f6e0407b86",
-  "git-setup.md": "168eba0476d04ea8c561f46fc63bbb8cd7c26b0db3fed3766c05d15bdb62e226",
-  "macos.md": "47e40c0a941552cac9a419a6758730249ea2d33f9b2fcb5e7edc4dac382b36cc",
+  "git-setup.md": "4dce04c2431817401b2e95f15161d5e9b76eb335331622ef26342860b77ca8ff",
+  "macos.md": "7bce9a40db19b4a6ed822fce4459a3a0646a5044ecaf635c5544429cbbe47475",
   "requirements.txt": "921163943036e7777c24f6232f14af83cbc3cfbabea867b3e33b204697f4afc1",
   "settings.py": "0f03c414587cec87d02ddaea38b65eb409841386edf6c419663e665b53cab39e",
-  "windows.md": "2d5f15ad57564a84ea487ffbb3df1c5ae4315ec8a67b86ac871af0880091803c"
+  "windows.md": "0600b09f9ad48a9ea2d0ff2d13494457bd1d626560e9edd93d66a7952581ee1b"
 }
