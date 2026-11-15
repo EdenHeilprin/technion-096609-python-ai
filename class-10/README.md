@@ -99,9 +99,17 @@ Choose **one** route below. After it, both routes continue at **Check your copy*
 Open the same empty folder as a **local project** in Codex. Start a local chat and paste:
 
 ```text
-Use local Git and GitHub CLI to prepare this empty folder for contributing to https://github.com/EdenHeilprin/technion-096609-python-ai. Confirm my signed-in GitHub username. Fork the course into that account and clone it directly here: origin must be my fork, and upstream the original course. Reuse my fork if it already exists. Create branch add-my-lesson from the latest upstream/main.
+Use local Git and GitHub CLI to prepare this empty folder for contributing
+to https://github.com/EdenHeilprin/technion-096609-python-ai. Confirm my
+signed-in GitHub username. Fork the course into that account and clone it
+directly here: origin must be my fork, and upstream the original course.
+Reuse my fork if it already exists. Create branch add-my-lesson from the
+latest upstream/main.
 
-Ask for my name and the GitHub noreply address I copied during setup; configure them only for this repository. Preserve existing work and stop if the folder is not empty. Do not edit course files or push anything. Show me the folder, branch, and both remotes.
+Ask for my name and the GitHub noreply address I copied during setup;
+configure them only for this repository. Preserve existing work and stop if
+the folder is not empty. Do not edit course files or push anything. Show me
+the folder, branch, and both remotes.
 ```
 
 </details>
@@ -157,16 +165,34 @@ Choose **A or B**, then continue to Step 6.
 In the same Codex project, replace the two bracketed placeholders and send:
 
 ```text
-Our approved topic is [TOPIC AND WHAT WE WILL DEMONSTRATE]. Our names are [BOTH NAMES].
+Our approved topic is [TOPIC AND WHAT WE WILL DEMONSTRATE]. Our names are
+[BOTH NAMES].
 
-Read class-10/README.md and its lesson template, and consult Classes 1–7 for the audience's background. Create our first lesson draft in student-lessons/<my GitHub username>. Aim for about 30 minutes: introduce one useful idea, demonstrate it live, and give classmates a small activity with an answer and a compact reference. Aim for familiarity and recognition, not mastery. Use and link reliable original sources.
+Read class-10/README.md and its lesson template, and consult Classes 1–7 for
+the audience's background. Create our first lesson draft in
+student-lessons/<my GitHub username>. Aim for about 30 minutes: introduce
+one useful idea, demonstrate it live, and give classmates a small activity
+with an answer and a compact reference. Aim for familiarity and recognition,
+not mastery. Use and link reliable original sources.
 
-Include all necessary files. For a Python example, use demo.py, fictional input data located relative to the script, concise English # comments, and requirements.txt listing only external packages. For an oTree improvement, copy the clean Class 9 experiment into our lesson's experiment folder and preserve the original. Plan a local screen-shared demonstration by the presenters, followed by discussion of the methodological weakness, the change, and its scientific merit. Do not require online deployment or classmates' participation in the experiment. For Python history, follow the topic outline in class-10/README.md and illustrate research uses with examples from this course. For a GitHub tutorial, use a guided live tour and audience activity.
+Include all necessary files. For a Python example, use demo.py, fictional
+input data located relative to the script, concise English # comments, and
+requirements.txt listing only external packages. For an oTree improvement,
+copy the clean Class 9 experiment into our lesson's experiment folder and
+preserve the original. Plan a local screen-shared demonstration by the
+presenters, followed by discussion of the methodological weakness, the
+change, and its scientific merit. Do not require online deployment or
+classmates' participation in the experiment. For Python history, follow the
+topic outline in class-10/README.md and illustrate research uses with
+examples from this course. For a GitHub tutorial, use a guided live tour and
+audience activity.
 
-Save the draft; we will prepare and test it in the next step. Change only our lesson folder, do not use real participant data, and do not commit or publish. Show me the lesson and files to review.
+Save the draft; we will prepare and test it in the next step. Change only
+our lesson folder, do not use real participant data, and do not commit or
+publish. Show me the lesson and files to review.
 ```
 
-For an **online chat with an AI chatbot**, such as ChatGPT in your browser, upload the [lesson template](lesson-template/README.md) and relevant course pages. Explain that the chatbot should return file contents for you to save, rather than edit your computer. Create those files in VS Code inside your lesson folder. Continue with the manual setup and submission steps below.
+For an **online chat with an AI chatbot**, upload the [lesson template](lesson-template/README.md) and relevant course pages. Explain that the chatbot should return file contents for you to save. In VS Code's Explorer, right-click **student-lessons → New Folder** and name it with your GitHub username. Right-click that new folder → **New File** for each returned file, paste its contents, and save. Continue with the manual setup and submission steps below.
 
 </details>
 
@@ -197,7 +223,7 @@ For a Python topic, right-click your lesson folder in the Explorer, choose **New
 
 For an external library, put its package name on its own line in `requirements.txt`, such as `pandas` or `matplotlib`. Built-in modules such as `random`, `csv`, and `pathlib` do not need installing.
 
-For an experiment improvement, create **experiment** inside your lesson folder. Copy these clean items from the repository's **class-09** folder into it: `settings.py`, `requirements.txt`, `check_setup.py`, `choice_task`, and `_static`. Edit this copy, not Class 9 or the experiment in your personal student-work folder. Explain the original weakness, the change, and what new comparison or interpretation it enables.
+For an experiment improvement, right-click your lesson folder in VS Code's Explorer → **New Folder**, and name it **experiment**. Copy these clean items from the repository's **class-09** folder into it: `settings.py`, `requirements.txt`, `check_setup.py`, `choice_task`, and `_static`. Edit this copy, not Class 9 or the experiment in your personal student-work folder. Explain the original weakness, the change, and what new comparison or interpretation it enables.
 
 </details>
 
@@ -211,9 +237,19 @@ This step applies **whether or not AI wrote your files**. First prepare the file
 <summary><strong>A — Ask Codex to prepare and test it</strong></summary>
 
 ```text
-Prepare our student lesson to run independently of Codex. For a Python script, use Python 3.13 and a .venv in the outer course-copy folder; install only our lesson's requirements and test demo.py. For an oTree project, use Python 3.13 and oTree 6.0.15 in a .venv inside our lesson's experiment folder, test it locally, and provide the exact VS Code terminal commands and starting folder for otree devserver. For a noncoding lesson, check its links and live example instead.
+Prepare our student lesson to run independently of Codex. For a Python
+script, use Python 3.13 and a .venv in the outer course-copy folder; install
+only our lesson's requirements and test demo.py. For an oTree project, use
+Python 3.13 and oTree 6.0.15 in a .venv inside our lesson's experiment
+folder, test it locally, and provide the exact VS Code terminal commands and
+starting folder for otree devserver. For a noncoding lesson, check its links
+and live example instead.
 
-Update our lesson's Get ready section with short numbered instructions: which folder and file to open, what to run, and what should appear. Explain new steps in ordinary language. Record tested external package versions in requirements.txt. Show the results and tell me how to repeat the check myself. Do not commit or publish.
+Update our lesson's Get ready section with short numbered instructions:
+which folder and file to open, what to run, and what should appear. Explain
+new steps in ordinary language. Record tested external package versions in
+requirements.txt. Show the results and tell me how to repeat the check
+myself. Do not commit or publish.
 ```
 
 </details>
@@ -241,7 +277,7 @@ py -3.13 -m venv .venv
 
 The first command creates the package folder; the second installs what your example needs. Wait until the terminal is ready for another command. If repeating this step, you can skip the first command when `.venv` already exists here.
 
-**If your lesson changes the oTree experiment:** choose **File → New Window** in VS Code, then **File → Open Folder** and open your lesson's **experiment** folder. Follow the [Class 9 Mac setup](../class-09/macos.md) or [Windows setup](../class-09/windows.md), using this **experiment** folder wherever the guide says `class-09`. It contains the same setup files. Use `otree devserver` to start it and complete a participant run. Stop another oTree server first if port 8000 is already in use. Return to the original VS Code window for the Git commands in Step 7.
+**If your lesson changes the oTree experiment:** choose **File → New Window** in VS Code, then **File → Open Folder** and open your lesson's **experiment** folder. Follow the [Class 9 Mac setup](../class-09/macos.md) or [Windows setup](../class-09/windows.md), using this **experiment** folder wherever the guide says `class-09`. It contains the same setup files. Use `otree devserver` to start it and complete a participant run. If another oTree experiment is still running, close its browser tabs, then press **Control+C** in its terminal before starting this one.
 
 **If your lesson is Python history or a GitHub tour:** there are no Python packages to install unless your own example needs them. Check the pages and live demonstration you plan to show.
 
@@ -256,7 +292,7 @@ For a **`demo.py` example**, do this yourself even if Codex already tested it:
 3. Click the **triangle ▶ in the upper-right corner of the code editor**. If needed, use its adjacent arrow and choose **Run Python File in Terminal**. VS Code runs the file and opens its output below. You do not need to type a run command.
 4. Does the result match your lesson? Make the small change from your activity, save, run again, and check the new result. Restore the starting example afterward.
 
-For an **oTree example**, repeat the local participant test using your lesson's written instructions. Check both the behavior you changed and the saved responses. Use `otree devserver`, not the triangle on a Python file.
+For an **oTree example**, repeat the local participant test using your lesson's written instructions. Check both the behavior you changed and the saved responses. Use `otree devserver`, not the triangle on a Python file. When finished, close all its browser tabs, then press **Control+C** in its terminal and wait for the prompt. Return to the original VS Code window for Step 7.
 
 For **every topic**, have your partner follow the page. Improve any instruction they cannot follow. Both of you should be able to explain the live example in simple terms.
 
@@ -277,13 +313,24 @@ Choose **A or B**, then continue to Step 8.
 First ask it to show you what will be submitted:
 
 ```text
-Review our student lesson against class-10/README.md. Check that the instructions match the files and our example and activity work. Use local Git and GitHub CLI. Confirm the account, origin is my fork, and the branch is add-my-lesson. Show only our lesson's proposed changes, excluding private data, credentials, environments, and unrelated files. Stop for my approval before committing or publishing.
+Review our student lesson against class-10/README.md. Check that the
+instructions match the files and our example and activity work. Use local
+Git and GitHub CLI. Confirm the account, origin is my fork, and the branch
+is add-my-lesson. Show only our lesson's proposed changes, excluding private
+data, credentials, environments, and unrelated files. Stop for my approval
+before committing or publishing.
 ```
 
 After you inspect the changes, replace `[TOPIC]` and send:
 
 ```text
-Commit only our reviewed lesson folder inside student-lessons and push add-my-lesson to my fork using GitHub CLI's signed-in account. Open one pull request to EdenHeilprin/technion-096609-python-ai, base main, titled “Student lesson: [TOPIC]”. Include our names, the goal, the live example, the activity, and checks we completed. Add a link to the lesson in my branch for the reviewer. Give me the PR link. Do not merge or push directly to the course. If a PR already exists for this branch, update it instead.
+Commit only our reviewed lesson folder inside student-lessons and push
+add-my-lesson to my fork using GitHub CLI's signed-in account. Open one pull
+request to EdenHeilprin/technion-096609-python-ai, base main, titled
+“Student lesson: [TOPIC]”. Include our names, the goal, the live example,
+the activity, and checks we completed. Add a link to the lesson in my branch
+for the reviewer. Give me the PR link. Do not merge or push directly to the
+course. If a PR already exists for this branch, update it instead.
 ```
 
 </details>

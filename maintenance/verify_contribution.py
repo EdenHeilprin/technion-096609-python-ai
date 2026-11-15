@@ -1,7 +1,8 @@
 """Rehearse Class 10 Git commands locally; never create a real fork or PR.
 
 Two disposable bare repositories stand in for the course and a student's fork.
-This checks local commands and branch isolation, not GitHub login or its GUI.
+This checks local commands, branch isolation, and acceptance in a disposable
+course copy, not GitHub login or its GUI.
 """
 import os
 from pathlib import Path
@@ -136,7 +137,19 @@ def rehearse():
         require(git(upstream, "rev-parse", "main") == original, "Original course changed before review")
         require(git(fork, "rev-parse", "main") == original, "Fork main changed")
         require(git(local, "status", "--porcelain") == "", "Unexpected leftover changes")
-        print("PASS: clone, branch, shell copy commands, scoped commit, push, and revision; original main unchanged")
+        # Rehearse the owner's acceptance only in the disposable course copy.
+        reviewer = root / "reviewer"
+        git(root, "clone", str(upstream), str(reviewer))
+        git(reviewer, "config", "user.name", "Course test")
+        git(reviewer, "config", "user.email", "course@example.invalid")
+        git(reviewer, "fetch", str(fork), "add-my-lesson")
+        git(reviewer, "merge", "--no-ff", "-m", "Accept reviewed lesson", "FETCH_HEAD")
+        changed = git(reviewer, "diff", "--name-only", original, "HEAD").splitlines()
+        require(changed == staged, "Acceptance changes files outside the submitted lesson")
+        git(reviewer, "push", "origin", "main")
+        accepted = git(upstream, "show", "main:student-lessons/student-demo/README.md")
+        require("Revised after feedback." in accepted, "Accepted lesson lacks the reviewed revision")
+        print("PASS: clone, branch, shell copy commands, scoped commit, push, revision, and acceptance; course unchanged until acceptance")
 
 
 if __name__ == "__main__":
