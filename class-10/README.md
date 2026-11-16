@@ -2,7 +2,7 @@
 
 Until now, you have used GitHub to get course materials. Use this guide to contribute your own: prepare a lesson and submit it for the **repository owner** to review. In Classes 11–12, you will teach a **40–50-minute lesson**, normally in pairs. Individual presentations are possible by prior agreement.
 
-**Submission deadline: Wednesday, 25 November 2026, at 14:00 (Israel time).** Work through this guide independently and **submit a pull request** to the course repository for review by that time. Saving files or pushing them to your fork alone does not submit them for review.
+**Submission deadline: Wednesday, 25 November 2026, at 14:00.** Work through this guide independently and **submit a pull request** to the course repository for review by that time. Saving files or pushing them to your fork alone does not submit them for review.
 
 The **25 November Zoom meeting (16:30–18:30)** is for consultations by advance appointment. **If you have not yet submitted your pull request, book an appointment in advance** by emailing **edenheilprin@campus.technion.ac.il**. Include your name(s), the step you reached, and what is blocking submission. Students who have submitted do not need to attend.
 
@@ -45,6 +45,8 @@ For **Python's history**, organize the lesson around three questions: **Who crea
 To propose a topic outside the dropdown, email **edenheilprin@campus.technion.ac.il** before building it; the instructor can add an agreed topic to the list. `random` is a built-in **module**; libraries such as pandas need installation.
 
 ### What to prepare
+
+Read the **[presentation rubric (מחוון)](https://docs.google.com/spreadsheets/d/1vkcC55Gd-iZu6kRpCSCWmCe3EtZ5suXuisObGJ1j2_s/edit#gid=1675096184)** before preparing your lesson. It describes the four criteria and performance levels used to assess your presentation.
 
 Use the [lesson template](lesson-template/README.md): **one clear goal, a live example, and a small activity with an answer or expected result**. For the experiment-improvement topic, the activity is a discussion of the design you demonstrate. Keep the code short and explain it with concise English `#` comments. Include the files needed to repeat it and links to your sources. Slides are optional; your lesson page can be your presentation.
 

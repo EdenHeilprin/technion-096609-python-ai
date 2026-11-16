@@ -6,7 +6,7 @@ The formal catalog title is **Quantitative Models in Behavioral Sciences**. In p
 
 ## New students: start here
 
-1. Read the **[Course syllabus](00-syllabus/README.md)** for the current schedule, learning outcomes, and pass/fail requirements. The plan is tentative and may be updated during the course.
+1. Read the **[Course syllabus](00-syllabus/README.md)** for the current schedule, learning outcomes, and assessment requirements. The plan is tentative and may be updated during the course.
 2. Before the first meeting, complete **[Class 0 — Computer Setup](class-00-setup/README.md)**.
 
 Class 0 will help you check or install the required free software and run one small Python file. You do not need a GitHub account yet, and you are not expected to understand the code yet. We will introduce free GitHub accounts later in the course.
@@ -38,4 +38,4 @@ This phase connects building an experiment, collecting responses, analyzing data
 
 Class 8 contains prompts and a two-file download for a fresh Codex project. Class 9 provides a working experiment. In Class 10, you fork and clone this repository, build your lesson, and submit a pull request for review. Keep earlier class work intact.
 
-Complete Class 10 independently and submit your pull request by **25 November at 14:00 (Israel time)**. That day's Zoom meeting provides submission support by advance appointment for students who have not yet submitted. Presentations are on **27 November (Zoom)** and **2 December (in person)**.
+Complete Class 10 independently and submit your pull request by **25 November at 14:00**. That day's Zoom meeting provides submission support by advance appointment for students who have not yet submitted. Presentations are on **27 November (Zoom)** and **2 December (in person)**.
