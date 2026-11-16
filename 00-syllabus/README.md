@@ -36,7 +36,9 @@ Alongside Python fundamentals, the course develops practical research skills: di
 Classes combine short explanations, demonstrations, and hands-on practice. The course is graded on a 1–100 scale. Attendance and the teaching assignment are both required:
 
 - **Attendance:** Up to two classes may be missed without justification. Missing a Friday session that covers two classes counts as two absences. More than two absences prevent a passing grade unless justified, for example by reserve military service.
-- **Teaching:** Prepare and teach a 40–50-minute lesson, normally in pairs with both partners presenting. Individual presentations are possible by prior agreement. Submit the lesson for review through a GitHub pull request by 25 November at 14:00; see Class 10 for instructions.
+- **Teaching:** Prepare and teach a 40–50-minute lesson, including questions and discussion, normally in pairs with both partners presenting. Individual presentations are possible by prior agreement. Submit the lesson for review through a GitHub pull request by 25 November at 14:00; see [Class 10](../class-10/README.md) for instructions.
+
+Presentations are assessed on timing and pacing, clarity and flow, understanding and accuracy, and audience engagement (**25% each**), using the four descriptive levels in the [presentation rubric](https://docs.google.com/spreadsheets/d/1vkcC55Gd-iZu6kRpCSCWmCe3EtZ5suXuisObGJ1j2_s/edit#gid=1675096184).
 
 ## Course outline and schedule
 

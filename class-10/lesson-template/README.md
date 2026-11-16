@@ -2,7 +2,7 @@
 
 **Presenter(s):** [Name(s)]
 
-**Length:** 40–50 minutes, including the live example and activity or discussion.
+**Length:** 40–50 minutes, including the live example, activity, questions, and discussion.
 
 [Introduce the practical problem in two sentences. Explain why this tool or idea helps.]
 

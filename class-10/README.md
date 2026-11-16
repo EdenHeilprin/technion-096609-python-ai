@@ -1,6 +1,6 @@
 # Class 10 — Create and Contribute Your Own Lesson
 
-Until now, you have used GitHub to get course materials. Use this guide to contribute your own: prepare a lesson and submit it for the **repository owner** to review. In Classes 11–12, you will teach a **40–50-minute lesson**, normally in pairs. Individual presentations are possible by prior agreement.
+Until now, you have used GitHub to get course materials. Use this guide to contribute your own: prepare a lesson and submit it for the **repository owner** to review. In Classes 11–12, you will teach a **40–50-minute lesson, including questions and discussion**, normally in pairs. Individual presentations are possible by prior agreement.
 
 **Submission deadline: Wednesday, 25 November 2026, at 14:00.** Work through this guide independently and **submit a pull request** to the course repository for review by that time. Saving files or pushing them to your fork alone does not submit them for review.
 
@@ -46,7 +46,7 @@ To propose a topic outside the dropdown, email **edenheilprin@campus.technion.ac
 
 ### What to prepare
 
-Read the **[presentation rubric (מחוון)](https://docs.google.com/spreadsheets/d/1vkcC55Gd-iZu6kRpCSCWmCe3EtZ5suXuisObGJ1j2_s/edit#gid=1675096184)** before preparing your lesson. It describes the four criteria and performance levels used to assess your presentation.
+Read the **[presentation rubric (מחוון)](https://docs.google.com/spreadsheets/d/1vkcC55Gd-iZu6kRpCSCWmCe3EtZ5suXuisObGJ1j2_s/edit#gid=1675096184)** before preparing your lesson. Your presentation receives a **1–100 grade** based equally on **timing and pacing, clarity and flow, understanding and accuracy, and audience engagement (25% each)**. The rubric describes four performance levels without numerical score bands.
 
 Use the [lesson template](lesson-template/README.md): **one clear goal, a live example, and a small activity with an answer or expected result**. For the experiment-improvement topic, the activity is a discussion of the design you demonstrate. Keep the code short and explain it with concise English `#` comments. Include the files needed to repeat it and links to your sources. Slides are optional; your lesson page can be your presentation.
 
@@ -167,10 +167,11 @@ Our selected topic is [TOPIC AND WHAT WE WILL DEMONSTRATE]. Presenter(s):
 
 Read class-10/README.md and its lesson template, and consult Classes 1–7 for
 the audience's background. Create our first lesson draft in
-student-lessons/<my GitHub username>. Aim for 40–50 minutes: introduce
-one useful idea, demonstrate it live, and give classmates a small activity
-with an answer and a compact reference. Aim for familiarity and recognition,
-not mastery. Use and link reliable original sources.
+student-lessons/<my GitHub username>. Aim for 40–50 minutes, including
+questions and discussion: introduce one useful idea, demonstrate it live,
+and give classmates a small activity with an answer and a compact reference.
+Aim for familiarity and recognition, not mastery. Use and link reliable
+original sources.
 
 Include all necessary files. For a Python example, use demo.py, fictional
 input data located relative to the script, concise English # comments, and
@@ -405,10 +406,10 @@ For your **40–50-minute presentation**, introduce the problem, demonstrate a s
 ## Before you finish
 
 - [ ] Our names, topic, and presentation date are in the signup sheet; nobody else has selected our topic.
-- [ ] Our presentation date is arranged, and the lesson is planned for 40–50 minutes.
+- [ ] Our lesson fits 40–50 minutes, including questions and discussion, and follows the rubric.
 - [ ] Our lesson introduces a useful idea with a live example and a small activity.
 - [ ] We checked the example ourselves and can explain what it does.
-- [ ] Our PR appears in the course repository and contains only our lesson.
+- [ ] Our PR is submitted by 25 November at 14:00, appears in the course repository, and contains only our lesson.
 - [ ] We know how to update that same PR after feedback.
 
 ## Class 10 reference

@@ -1,6 +1,6 @@
 # Classes 11–12 — Student-led Lessons
 
-In Classes 11–12, prepare a **40–50-minute lesson** on a selected topic, normally in pairs. Individual presentations are possible by prior agreement. Introduce one useful idea through a live example and an activity or discussion. In a pair, both partners present.
+In Classes 11–12, prepare a **40–50-minute lesson, including questions and discussion**, on a selected topic, normally in pairs. Individual presentations are possible by prior agreement. Introduce one useful idea through a live example and an activity or discussion. In a pair, both partners present.
 
 Presentations take place on **Friday, 27 November (Zoom)** and **Wednesday, 2 December (in person)**. Follow [Class 10](../class-10/README.md) for topic selection and signup instructions. Submit your lesson for review through a pull request by **25 November at 14:00**.
 
