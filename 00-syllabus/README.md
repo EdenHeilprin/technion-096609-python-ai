@@ -36,7 +36,7 @@ Alongside Python fundamentals, the course develops practical research skills: di
 Classes combine short explanations, demonstrations, and hands-on practice. The course is assessed on a pass/fail basis; passing requires both of the following:
 
 - **Attendance:** Up to two classes may be missed without justification. Missing a Friday session that covers two classes counts as two absences. More than two absences prevent a passing grade unless justified, for example by reserve military service.
-- **Teaching:** Prepare and teach a 40–50-minute lesson, normally in pairs with both partners presenting. Individual presentations are possible by prior agreement. Submit the lesson for review through a GitHub pull request by 25 November; see Class 10 for instructions.
+- **Teaching:** Prepare and teach a 40–50-minute lesson, normally in pairs with both partners presenting. Individual presentations are possible by prior agreement. Submit the lesson for review through a GitHub pull request by 25 November at 14:00 (Israel time); see Class 10 for instructions.
 
 ## Course outline and schedule
 
@@ -61,7 +61,7 @@ Classes combine short explanations, demonstrations, and hands-on practice. The c
 <tr></tr>
 <tr><td><a href="../class-08/README.md">8</a></td><td>From Answers to Delegation: a Codex demonstration of experiment building and deployment, R analysis, and research writing</td></tr>
 <tr><td>Wed 18 Nov*</td><td><a href="../class-09/README.md">9</a></td><td>Codex, oTree, and GitHub setup; running and editing the local experiment</td></tr>
-<tr><td>Wed 25 Nov*</td><td><a href="../class-10/README.md">10</a></td><td>Student lesson pull requests due. GitHub submission support through Zoom consultations by prior appointment.</td></tr>
+<tr><td>Wed 25 Nov*</td><td><a href="../class-10/README.md">10</a></td><td>Student lesson pull requests due at 14:00 (Israel time). GitHub submission support through Zoom consultations by prior appointment.</td></tr>
 <tr><td>Fri 27 Nov*</td><td><a href="../student-lessons/README.md">11</a></td><td>Student-led lessons on approved topics with live examples and activities or discussion</td></tr>
 <tr><td>Wed 2 Dec</td><td><a href="../student-lessons/README.md">12</a></td><td>Student-led lessons on approved topics with live examples and activities or discussion</td></tr>
 </tbody>
