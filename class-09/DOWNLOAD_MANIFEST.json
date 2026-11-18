@@ -1,7 +1,7 @@
 {
   ".gitignore": "083ec999fa2bc301005dd8e6f816f123e56cc58ffb5cac8ad3ff221c78dbbd68",
   "README.md": "7b56272468eb7f81cc060543fd55d080d09c16c3998476e54e539af42ded938e",
-  "TROUBLESHOOTING.md": "ecc635d58a0046cc7fe749dfc07e743d02679a1c5df2ab3dc8b94ff55d4de140",
+  "TROUBLESHOOTING.md": "7127a111f78efd571036189c4bffa860c083846cfcb4fb6ba49a0ad5e984e55e",
   "_static/choice_task/design.css": "9f94dcd3cb0eba6d0315b47c93bb833861e71e0026bb76f1156184a9d1d05f69",
   "check_setup.py": "3315e033a414a5ca215fe534326686219855e64b28928af00e0e575b4ce938e0",
   "choice_task/Consent.html": "20f341f5c5200aab946f460cefabcd0a376eadfb2298499e465c09e3c1a2ba07",
@@ -13,5 +13,5 @@
   "macos.md": "7bce9a40db19b4a6ed822fce4459a3a0646a5044ecaf635c5544429cbbe47475",
   "requirements.txt": "921163943036e7777c24f6232f14af83cbc3cfbabea867b3e33b204697f4afc1",
   "settings.py": "0f03c414587cec87d02ddaea38b65eb409841386edf6c419663e665b53cab39e",
-  "windows.md": "0600b09f9ad48a9ea2d0ff2d13494457bd1d626560e9edd93d66a7952581ee1b"
+  "windows.md": "70978c42ba5ec104d756cf6be603bdc863a5e45c79d08192b48bd53749ea4c84"
 }

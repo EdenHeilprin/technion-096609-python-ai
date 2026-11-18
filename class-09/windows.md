@@ -4,7 +4,21 @@ Start with the **extracted** `class-09` folder open in VS Code, not the ZIP prev
 
 ## 1. Check Python and the folder
 
-In VS Code, open the dropdown beside the terminal's **+** button and choose **Command Prompt**. If no terminal is visible, choose **Terminal → New Terminal** first. Use Command Prompt for the commands below, not PowerShell. Run each command separately, pressing Enter after each:
+1. In VS Code's top menu, choose **Terminal → New Terminal**. A terminal panel opens below your code.
+2. At the top right of that panel, click the small **down arrow beside +**, then choose **Command Prompt**. Clicking **+** alone may open PowerShell again.
+3. Check the line where you type: **PowerShell starts with `PS C:\...>`**; **Command Prompt shows `C:\...>` without `PS`**.
+
+If you already have PowerShell open, or cannot find Command Prompt in the menu, type this in the terminal and press Enter:
+
+```text
+cmd
+```
+
+This switches to Command Prompt in the same folder. The `PS` prefix should disappear.
+
+**Run each command below once, on its own line.** Press Enter and wait for it to finish before pasting the next command. Never paste several copies together.
+
+Check Python:
 
 ```bat
 py -3.13 --version
@@ -56,7 +70,9 @@ In the same Command Prompt terminal, run:
 .\.venv\Scripts\activate.bat
 ```
 
-You should see `(.venv)` at the start of the prompt. Activation makes this terminal use the Python and packages inside `.venv`. Check them by running the supplied setup-check file:
+**Before continuing, check that `(.venv)` appears at the start of the line**, for example `(.venv) C:\...\class-09>`. If it does not, check that you are in Command Prompt, then run the activation command once again. `activate.bat` does not activate the environment in PowerShell.
+
+Activation makes this terminal use the Python and packages inside `.venv`. Keep using this same terminal for the remaining commands. Check the environment:
 
 ```bat
 python check_setup.py

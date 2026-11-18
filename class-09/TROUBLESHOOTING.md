@@ -22,9 +22,27 @@ Close the earlier experiment’s browser tabs, including its administrator page.
 
 Check your connection and the complete error message. Retry the same install command after restoring access. Do not disable certificate verification or download replacement installers from an unofficial site. A managed university laptop may need IT help.
 
-## PowerShell says scripts are disabled
+## Windows: activation fails, `otree` is not recognized, or startup gives `WinError 2`
 
-Open a **Command Prompt** terminal using the dropdown beside the terminal's **+** button. Follow the Windows guide there, using `activate.bat` before `otree devserver`. You do not need `Activate.ps1` or a PowerShell execution-policy change.
+If the terminal line starts with **`PS`**, you are in PowerShell. In that terminal, type `cmd` and press Enter to switch to Command Prompt. Confirm the folder is `class-09`, then run these commands **one at a time**:
+
+```bat
+.\.venv\Scripts\activate.bat
+```
+
+Check that **`(.venv)`** appears before continuing:
+
+```bat
+python check_setup.py
+```
+
+After **CLASS 9 SETUP PASSED**, run:
+
+```bat
+otree devserver
+```
+
+If `.venv` is missing, complete [Windows setup](windows.md) first. If it is already installed, you do not need to reinstall it. Selecting an interpreter in VS Code or running `otree.exe` by its full path does not replace activation: oTree also needs to find its own command when starting. This route also avoids PowerShell's script-policy restrictions; no policy change is needed.
 
 ## The browser cannot open localhost
 
