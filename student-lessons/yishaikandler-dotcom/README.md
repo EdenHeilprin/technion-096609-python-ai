@@ -2,7 +2,8 @@
 
 **Yishai Kandler · 45 minutes · Live demo and two games**
 
-A classmate types `yes`. Another types ` YES `. A third writes “Yes, if I can work with a partner.” If the survey question is “Would you try another Python puzzle?”, which differences can Python tidy up? Which ones change the meaning?
+Say you're collecting data. If the survey question is “Would you like to try a Python puzzle?”, A classmate types `yes`. Another types ` YES `. A third writes “Yes, if I can work with a partner.”
+ which differences can Python tidy up? Which ones change the meaning?
 
 ## By the end of this lesson
 
