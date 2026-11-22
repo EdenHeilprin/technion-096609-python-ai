@@ -1,0 +1,6 @@
+"question","A","B","C","D","correct","explanation"
+"What is the main purpose of text cleaning?","To translate text","To make text consistent","To make Python run faster","To delete all text","B","Consistent labels let equivalent answers count together."
+"What does .strip() remove by default?","All spaces everywhere","Spaces at the beginning and end","Capital letters","Punctuation marks","B","It trims surrounding whitespace, including tabs. Interior spaces stay."
+"What is the output of ""ChatGPT!"".lower()?","chatgpt","ChatGPT!","chatgpt!","Error","C","Only the letters change case."
+"What is the output of ""yes!!!"".replace(""!"", """")?","yes!!","YES","yes","yes!","C","Each exclamation mark is replaced by an empty string."
+"What is the output of ""  YES!!  "".strip().lower().replace(""!"", """")?","YES!!","yes!!","""  yes  ""","yes","D","The steps remove edge spaces, lowercase the letters, then remove both marks."
