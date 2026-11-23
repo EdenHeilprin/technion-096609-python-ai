@@ -16,7 +16,7 @@ Join at **[kahoot.it](https://kahoot.it)**. The game PIN and QR code will appear
 
 (Please view it in slideshow mode, one slide at a time, and don't scroll ahead to the answers.)
 
-## The Zen of Python
+## 🧪 Activity: The Zen of Python
 
 1. In VS Code, create a new file named `poem.py`.
 2. Type this line into it:
@@ -49,8 +49,8 @@ import this
 
 | Milestone | What happened |
 | --- | --- |
-| 1975–1985 | ABC, a language for beginners, is designed in Amsterdam. Python inherits its readability and indentation. |
-| 1989–1991 | Guido van Rossum writes Python over a Christmas break and posts it publicly in February 1991. |
+| 1991 | Guido van Rossum releases Python publicly, after starting it over the 1989 Christmas break. He builds it on ABC, a teaching language, to keep its readability and accessibility. |
+| 2003 | Neurobiologist John D. Hunter releases matplotlib to analyze brain signals without paid software, and scientists start adopting Python. |
 | 2008–2020 | Python 3 deliberately breaks compatibility; the move from Python 2 takes more than a decade. |
 | 2018–2019 | Guido steps down as "Benevolent Dictator For Life"; a five-person Steering Council takes over. |
 
