@@ -1,7 +1,6 @@
 # Text Cleaning in Python
 
 **Presenter** · yishai kandler  
-**Length** · 45 minutes including questions and discussion, plus a five-minute optional bonus
 
 If three students answer `"YES"`, `" yes "`, and `"Yes!"`, how many said yes? A Python counter sees three distinct labels. In this workshop we give equivalent answers one spelling before counting them.
 
@@ -20,11 +19,11 @@ Given a messy survey label, predict what three short string methods will return.
 
 ## Opening quiz
 
-**0–5 min · Kahoot.** Join using the presenter’s game PIN. Opening game link: _to be added during preparation_. Pick your best guess on each of the five questions. We’ll revisit the same questions at minute 40.
+**Kahoot.** Join using the presenter’s game PIN. Opening game link: https://kahoot.it/. Pick your best guess on each of the five questions. We’ll revisit the same questions at minute 40.
 
 ## Live example
 
-**5–9 min · STOP & DISCUSS.** How often does the exact label `"yes"` appear in the three opening answers? Zero. How often did someone mean yes? Three. Counting exact text answers a different question until we decide which spellings belong together.
+**STOP & DISCUSS.** How often does the exact label `"yes"` appear in the three opening answers? Zero. How often did someone mean yes? Three. Counting exact text answers a different question until we decide which spellings belong together.
 
 Display the first fictional row of the CSV. The survey asks whether the student uses AI for studying and which tool they use most. For these fixed-choice questions, edge spaces, capitalization, and exclamation marks carry no category information. Run the demo and predict each line before revealing it.
 
@@ -40,7 +39,7 @@ Each method returns a string. Saving that result lets the next step use it. The 
 
 ## Practice
 
-**9–21 min · LEARN / TRY IT NOW.** Open [practice.py](practice.py). For each row below, predict the result, edit the matching TODO, save, and run `python practice.py`. The quotes in the output help you see spaces.
+**LEARN / TRY IT NOW.** Open [practice.py](practice.py). For each row below, predict the result, edit the matching TODO, save, and run `python practice.py`. The quotes in the output help you see spaces.
 
 | Minutes | Example | Expected value | Where it helps |
 | --- | --- | --- | --- |
@@ -48,7 +47,7 @@ Each method returns a string. Saving that result lets the next step use it. The 
 | 13–17 | `"YES!".lower()` | `"yes!"` | Group uppercase and lowercase entries. |
 | 17–21 | `"no!!".replace("!", "")` | `"no"` | Remove every occurrence of one known punctuation mark. |
 
-**21–25 min · TRY IT NOW.** For exercise 4, start with `"  CHATGPT!!!  "`. Write one line that passes the result of each method to the next. Can you predict the intermediate value just before the exclamation marks disappear?
+**TRY IT NOW.** For exercise 4, start with `"  CHATGPT!!!  "`. Write one line that passes the result of each method to the next. Can you predict the intermediate value just before the exclamation marks disappear?
 
 <details>
 <summary>Check the chain</summary>
@@ -63,7 +62,7 @@ The intermediate value is `"chatgpt!!!"`. The final value is `"chatgpt"`.
 
 ## Survey challenge
 
-**25–40 min · Work independently, then compare answers.** Can one cleaning function recover the intended choices across 40 fictional responses? The CSV reader and counters are provided. Edit only the three assignments in [starter.py](starter.py).
+**min · Work independently, then compare answers.** Can one cleaning function recover the intended choices across 40 fictional responses? The CSV reader and counters are provided. Edit only the three assignments in [starter.py](starter.py).
 
 1. **CHECKPOINT 1 · Inspect.** Run `python starter.py`. Find two labels under `uses_ai` that you would count together. BEFORE and AFTER initially match because the function returns its input.
 2. **CHECKPOINT 2 · Edit.** Inside `clean_text`, replace each `text = text` with one assignment. Trim the ends, lowercase the result, then remove every `!`. Save.
@@ -92,11 +91,11 @@ Sixteen of the 40 responses named ChatGPT. Each row still contributes one vote p
 
 ## Closing quiz
 
-**40–45 min · Kahoot.** Closing game link: _reuse the opening quiz during preparation_. Answer the same five questions. Which prediction would you change now, and which step explains why?
+**Kahoot.** Closing game link: https://kahoot.it/. Answer the same five questions. Which prediction would you change now, and which step explains why?
 
 ## Bonus
 
-**45–50 min · Optional.** A regular expression (regex) describes a pattern. For three fictional phone formats, predict what `re.sub(r"\D", "", phone)` keeps. Run `python regex_bonus.py`. Each line should read `0541234567`. The pattern matches each non-digit and substitutes an empty string. One rule handles spaces, hyphens, and parentheses without listing each separator. [Bonus script](regex_bonus.py) · [Python regular expression operations](https://docs.python.org/3.13/library/re.html#re.sub)
+**Optional.** A regular expression (regex) describes a pattern. For three fictional phone formats, predict what `re.sub(r"\D", "", phone)` keeps. Run `python regex_bonus.py`. Each line should read `0541234567`. The pattern matches each non-digit and substitutes an empty string. One rule handles spaces, hyphens, and parentheses without listing each separator. [Bonus script](regex_bonus.py) · [Python regular expression operations](https://docs.python.org/3.13/library/re.html#re.sub)
 
 ## Quick reference
 
