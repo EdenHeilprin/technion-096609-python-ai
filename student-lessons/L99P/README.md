@@ -3,7 +3,7 @@
 **Presenters:** Lisa Passov and Tal Ayala Shafran  
 **Length:** About 50 minutes, including the live tour, activities, questions, and discussion.
 
-Ever had a file called `project_final_final_really-final.py`? GitHub helps teams keep track of project files and changes without naming every new version “final.” In this lesson, you’ll follow a small proposed change and see how a pull request gives people a place to review and discuss it before it joins the shared version.
+Ever had a file called `project_final_final_really-final.py`? GitHub helps teams keep track of project files and changes without naming every new version “final.” In this lesson, you’ll follow the journey of a small proposed change and see how a pull request gives people a place to review and discuss it before it joins the shared version.
 
 The goal is familiarity, not mastery. You do not need to know Git commands, write code, or have a GitHub account.
 
@@ -28,24 +28,23 @@ Now suppose you spot a typo. You probably don’t want to rewrite the shared ins
 
 When you’ve made a useful change, you save a **commit**. Think of it as a checkpoint in the project’s history, with a short message such as “Clarify the start button instruction.” If you make several commits, the team can follow the steps you took.
 
-Ready for another pair of eyes? Open a **pull request (PR)** to propose bringing your branch’s changes into `main`. The PR lays out what changed, shows the added and removed lines, and gives reviewers a place to ask questions or suggest edits. You can revise your branch after feedback. Opening a PR is like putting your draft on the review table; it does not mean the change has been accepted. If the team agrees, someone merges the change into `main`, and it becomes part of the shared version.
+When you are ready for another pair of eyes, open a **pull request (PR)** to propose bringing your branch’s changes into `main`. The PR lays out what changed, shows the added and removed lines, and gives reviewers a place to ask questions or suggest edits. You can revise your branch after feedback. Opening a PR is like putting your draft on the review table; it does not mean the change has been accepted. If the team agrees, someone merges the change into `main`, and it becomes part of the shared version.
 
 **The journey:** shared repository → branch for your work → commit checkpoints → pull request for review → merge if accepted.
 
-During the live tour, follow this route:
+Now let's follow the rote of our lesson PR!
 
-1. **The project:** On the demo repository page, spot `octocat / Hello-World`, the **Code** tab, and the README. A repository is a home for related project files and their history.
-2. **One file:** Open `README` and read its short “Hello World!” message. GitHub can show many kinds of files right in the browser.
-3. **Its history:** Open the file’s **History** view. Each entry is a commit with a message and author. Open one to see a **diff**, a comparison between versions: added lines are green and removed lines are red. This helps answer “what changed?”
-4. **From past changes to a proposed one:** The history you just explored shows changes that were already recorded. What happens while a new change is still being considered? Open GitHub’s official [Hello World tutorial](https://docs.github.com/en/get-started/using-github/hello-world) and follow the illustrated path from a new branch to a pull request: someone makes and commits a change on their branch, then opens a PR so others can inspect the diff and discuss it. If the team accepts the proposal, it can be merged into `main`. The PR is the review table between “I changed this” and “let’s add it to the shared version.”
+1. **The project:** On the repository page, we can spot the **Code** tab for example. A repository is the home for related project files and their history.
+2. **One file:** Since we are interested in the journey of our PR we can go to the **Pull requests** tab.
+3. **Its history:** We can now go to the **Commits** tab where each entry is a commit with a message and author. Clicking on one of the commits or on **Files changed** will show a comparison between versions: added lines are green and removed lines are red. This helps answer “what changed?”
+4. **And now we wait:** If the team accepts the proposal, it can be merged into `main`. The PR is the review table between “I changed this” and “let’s add it to the shared version.”
 
-**Expected result:** You can trace `repository → file → history / diff → pull request → review → possible merge` and tell the difference between proposing a change and accepting it.
 
 ## Try it yourself
 
 ### Pull request detective
 
-Work with a partner for 4 minutes, then compare your answer with the group. This fictional example uses no real participant data.
+Think about the following questions for a few minutes, then we will compare your answers with those of the group.
 
 Imagine a fictional repository called “Shape Study.” Its README has an instruction: **“Press Begin.”** Mira makes a branch and changes the line to **“Select Begin.”** She records the edit in a commit and opens a pull request to `main`. The PR shows one red line (`Press Begin`) and one green line (`Select Begin`). A reviewer comments: “The button in the study says **Start**. Should the instruction match the button?” Mira replies and updates her proposed change.
 
@@ -66,7 +65,8 @@ Imagine a fictional repository called “Shape Study.” Its README has an instr
 
 ### Final activity: GitHub true or false?
 
-Finish with a 5-minute game of four behind-the-scenes claims. For each one, vote **true** or **false** (show a thumb up/down, or say your answer), then open the **Reveal answer** dropdown immediately below it. Keep score if you like. The claims are worded carefully: a true headline can still have an exaggerated detail.
+Let's finish with a short game of four behind-the-scenes claims!
+The claims are worded carefully: a true headline can still have an exaggerated detail.
 
 **1. Code on Mars:** NASA’s Ingenuity helicopter used F´ (F Prime), an open-source flight-software framework developed at NASA’s Jet Propulsion Laboratory. Its source code is available on GitHub.
 
@@ -104,7 +104,6 @@ Finish with a 5-minute game of four behind-the-scenes claims. For each one, vote
 
 </details>
 
-**Discuss:** Which claim felt most believable at first, and what clue helped you decide?
 
 ## Quick reference
 
