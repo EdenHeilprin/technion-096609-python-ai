@@ -14,11 +14,7 @@ The goal is familiarity, not mastery. You do not need to know Git commands, writ
 
 ## Get ready
 
-1. Open the public [octocat/Hello-World demo repository](https://github.com/octocat/Hello-World) in a browser tab. You should see the repository name, a **Code** tab, and its short README, “Hello World!”
-2. Open the README’s [file history](https://github.com/octocat/Hello-World/commits/master/README) in another tab. You should see a list of saved changes. Select a commit to compare versions: the **diff** highlights added and removed lines.
-3. Open GitHub’s [Hello World pull request tutorial](https://docs.github.com/en/get-started/using-github/hello-world) in another tab. Find its steps for creating a branch, committing a change, opening a pull request, and merging. Follow the illustrated workflow as a tour; you do not need to create anything.
-
-There is nothing to install or run for this noncoding lesson. The live example is the read-only browser tour above; no sign-in is needed.
+There is nothing to install or run for this noncoding lesson. Just watch and follow along!
 
 ## A worked example
 
@@ -32,7 +28,7 @@ When you are ready for another pair of eyes, open a **pull request (PR)** to pro
 
 **The journey:** shared repository → branch for your work → commit checkpoints → pull request for review → merge if accepted.
 
-Now let's follow the rote of our lesson PR!
+Now let's follow the route of our lesson PR!
 
 1. **The project:** On the repository page, we can spot the **Code** tab for example. A repository is the home for related project files and their history.
 2. **One file:** Since we are interested in the journey of our PR we can go to the **Pull requests** tab.
