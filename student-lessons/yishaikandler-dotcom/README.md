@@ -12,14 +12,13 @@ Given a messy survey label, predict what three short string methods will return.
 
 ## Get ready
 
-1. In Windows VS Code, choose **File → Open Folder** and open the outer course copy, the folder containing `student-lessons`. If you downloaded a course ZIP, extract it first. In Explorer, open **student-lessons → yishaikandler-dotcom → demo.py**. Keep [survey_responses.csv](survey_responses.csv) beside [demo.py](demo.py).
-2. Choose **Terminal → New Terminal**. The terminal should start in the outer course folder (`dir` should list `student-lessons`). If this copy does not yet have a `.venv`, run `py -3.13 -m venv .venv`. This creates a local Python environment for the course. Run `.\.venv\Scripts\python.exe -m pip install --no-index -r student-lessons\yishaikandler-dotcom\requirements.txt`. The lesson uses only the standard library, so an empty requirements file is expected.
-3. From that same terminal, run `.\.venv\Scripts\python.exe student-lessons\yishaikandler-dotcom\demo.py`. Look for five lines, starting with `Original: ' CLAUDE!! '`. The cleaned value is `'claude'`, and the last line shows the original again. Compare your output with the [live example](#live-example).
-4. For the exercises below, select the course Python with **Ctrl+Shift+P → Python: Select Interpreter → .venv**. Open a **Command Prompt** terminal from the dropdown beside **+**, run `.venv\Scripts\activate.bat`, then `cd student-lessons\yishaikandler-dotcom`. Run `python practice.py`. Four quoted labels should appear. Keep this terminal open for `python starter.py` later.
+1. In VS Code, choose **File → Open Folder** and open `student-lessons/yishaikandler-dotcom` inside your course copy.
+2. Open [demo.py](demo.py), choose **Terminal → New Terminal**, and run `python demo.py` with your course Python.
+3. Look for `' CLAUDE!! '` becoming `'claude'`. Keep the terminal open for the exercises.
 
 ## Opening quiz
 
-**Kahoot.** Join using the presenter’s game PIN. Opening game link: https://kahoot.it/. Pick your best guess on each of the five questions. We’ll revisit the same questions at minute 40.
+[Join the opening Kahoot](https://kahoot.it/) and enter the PIN on the presenter's screen. Pick your best guess. We'll revisit the same questions at the end.
 
 ## Live example
 
@@ -41,11 +40,11 @@ Each method returns a string. Saving that result lets the next step use it. The 
 
 **LEARN / TRY IT NOW.** Open [practice.py](practice.py). For each row below, predict the result, edit the matching TODO, save, and run `python practice.py`. The quotes in the output help you see spaces.
 
-| Minutes | Example | Expected value | Where it helps |
-| --- | --- | --- | --- |
-| 9–13 | `"  AI tools  ".strip()` | `"AI tools"` | Trim a pasted label and keep the space between words. |
-| 13–17 | `"YES!".lower()` | `"yes!"` | Group uppercase and lowercase entries. |
-| 17–21 | `"no!!".replace("!", "")` | `"no"` | Remove every occurrence of one known punctuation mark. |
+| Example | Expected value | Where it helps |
+| --- | --- | --- |
+| `"  AI tools  ".strip()` | `"AI tools"` | Trim a pasted label and keep the space between words. |
+| `"YES!".lower()` | `"yes!"` | Group uppercase and lowercase entries. |
+| `"no!!".replace("!", "")` | `"no"` | Remove every occurrence of one known punctuation mark. |
 
 **TRY IT NOW.** For exercise 4, start with `"  CHATGPT!!!  "`. Write one line that passes the result of each method to the next. Can you predict the intermediate value just before the exclamation marks disappear?
 
@@ -62,7 +61,7 @@ The intermediate value is `"chatgpt!!!"`. The final value is `"chatgpt"`.
 
 ## Survey challenge
 
-**min · Work independently, then compare answers.** Can one cleaning function recover the intended choices across 40 fictional responses? The CSV reader and counters are provided. Edit only the three assignments in [starter.py](starter.py).
+**Work independently, then compare answers.** Can one cleaning function recover the intended choices across 40 fictional responses? The CSV reader and counters are provided. Edit only the three assignments in [starter.py](starter.py).
 
 1. **CHECKPOINT 1 · Inspect.** Run `python starter.py`. Find two labels under `uses_ai` that you would count together. BEFORE and AFTER initially match because the function returns its input.
 2. **CHECKPOINT 2 · Edit.** Inside `clean_text`, replace each `text = text` with one assignment. Trim the ends, lowercase the result, then remove every `!`. Save.
@@ -91,7 +90,7 @@ Sixteen of the 40 responses named ChatGPT. Each row still contributes one vote p
 
 ## Closing quiz
 
-**Kahoot.** Closing game link: https://kahoot.it/. Answer the same five questions. Which prediction would you change now, and which step explains why?
+[Join the closing Kahoot](https://kahoot.it/) and enter the new PIN on screen. Answer the same questions again. Which prediction would you change now, and why?
 
 ## Bonus
 

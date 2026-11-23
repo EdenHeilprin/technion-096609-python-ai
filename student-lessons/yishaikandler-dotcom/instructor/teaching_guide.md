@@ -15,7 +15,7 @@ Keep one question visible throughout the lesson: “How many students meant the 
 | 17–21 | Exercise 3 | Ask how many marks disappear in one call. Run it with an empty replacement. Expected: `'yes'`. |
 | 21–25 | Exercise 4 | Give a minute of quiet work. Ask a volunteer to read the chain from left to right. Expected: `'chatgpt'`. |
 | 25–40 | README checkpoints, then starter.py and terminal | Use 3 minutes to inspect raw labels, 6 to edit, 3 to compare totals, and 3 for interpretation and questions. Ask which labels merged and whether removing punctuation suits free text. |
-| 40–45 | Closing Kahoot | Replay the original five questions in the same order. Invite one explanation of a changed answer. |
+| 40–45 | Closing Kahoot | Replay the same questions in the same order. Invite one explanation of a changed answer. |
 | 45–50 | VS Code with regex_bonus.py, time permitting | Predict the result for the parenthesized number. Run the file. Each of three lines reads `0541234567`. Ask what the pattern removes. |
 
 ## Answer desk
@@ -30,7 +30,10 @@ If running behind, demonstrate exercise 4 aloud and give students the first assi
 
 ## Quiz for both rounds
 
-During preparation, manually enter [the question bank](kahoot_questions.csv) into one Kahoot. Use that same quiz twice with question and answer order fixed. If Kahoot is unavailable, read each question and its choices below, take an A–D vote, then discuss the key.
+1. **Opening round.** Open [Text Cleaning in Python](https://create.kahoot.it/share/text-cleaning-in-python/3d83207e-39e8-4f5e-9cb9-64db8e54f5a4) and choose **Host live**. Turn off question and answer randomization. Share the lobby screen so students can enter the PIN at [kahoot.it](https://kahoot.it/).
+2. **Closing round.** Open the same saved quiz and start a fresh live session with the same settings. Show the new PIN and invite everyone to answer again.
+
+If Kahoot is unavailable, use the [offline question bank](kahoot_questions.csv) for both rounds. Read the choices below and ask students to vote A–D.
 
 **1. What is the main purpose of text cleaning?**
 
