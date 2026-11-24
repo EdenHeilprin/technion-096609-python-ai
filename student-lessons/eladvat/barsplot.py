@@ -2,8 +2,8 @@ import csv
 import matplotlib.pyplot as plt
 
 # Read the CSV file
-with open("student-lessons\eladvat\evac_data.csv", newline="", encoding="utf-8-sig") as csvfile:
-	rows = list(csv.DictReader(csvfile))
+with open("student-lessons\\eladvat\\evac_data.csv", newline="", encoding="utf-8") as file:
+	rows = list(csv.DictReader(file))
 
 # read the evacuated and Anx_Dep_mean columns
 evacuated = [row["evacuated"] for row in rows]

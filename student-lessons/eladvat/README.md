@@ -19,7 +19,7 @@ One clear advantage this has over SPSS, for example, is once you create the cust
 1. download the lesson folder and open it in VS code as your working folder.
 2. install MAPLOTLIB in your project - paste the following into a new terminal:
 ```
-pip install matlplotlib
+pip install matplotlib
 ```
 - (this tells the Python Install Package, or PIP, to find matplotlib and install it for you)  
   
@@ -37,6 +37,10 @@ split up into three groups. each group will open a different demo file: bar plot
 run the demo and examine the result. then think together about an improvement you'd like to make to the figure, or a different research question (on the current data) you'd want to look into with your figure type.
 **Expected result:** each demo produces a basic figure in a new window. notice the axis labels and the different attributes of the figure - almost anything can be changed here.
 
+NOTE: notice that psychological needs (autonomy, relatedness, competence, and their mean) can be negative in value. this is because in this dataset, 0 represents the baseline.  
+that means in order to include one of the needs in a bar chart, you have to first transform the data.  
+I recommend adding 10 to all values (in code! keep your data clean and let python do the work).
+
 ## Try it yourself
 each group will now change/add one variable in their figure *manually*. look for their mentions in the code and edit accordingly.  
 also, change the color of your figure to something nicer. 
@@ -53,6 +57,11 @@ histogram:
 scatterplot: 
 - add a regression line.
 
+### Finally - utilize the reusability of python:
+- keep your custom code ready. then go online and pull a data csv that seems interesting to you (fictional or real). got your own data? also goes.
+  -  a good place to start is [kaggle](https://www.kaggle.com/datasets).
+- now import your new data instead of the old one, and create a figure with your code. only change what you must to make it run - let technology do the rest.
+- after you got a figure, just change the labels accordingly and you're done!
 <details>
 <summary>Answer and discussion</summary>
 now you should have a new figure which describes your chosen analysis, is clear, has matching labels and titles, and looks great.

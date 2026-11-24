@@ -2,7 +2,7 @@ import csv
 import matplotlib.pyplot as plt
 
 # Read the CSV file
-with open("evac_data.csv", newline="", encoding="utf-8-sig") as file:
+with open("student-lessons\\eladvat\\evac_data.csv", newline="", encoding="utf-8") as file:
     data = list(csv.DictReader(file))
 
 # read the needs_mean column
