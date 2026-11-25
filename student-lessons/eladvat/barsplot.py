@@ -1,8 +1,9 @@
 import csv
+from pathlib import Path
 import matplotlib.pyplot as plt
 
 # Read the CSV file
-with open("student-lessons\\eladvat\\evac_data.csv", newline="", encoding="utf-8") as file:
+with open(Path(__file__).with_name("evac_data.csv"), newline="", encoding="utf-8") as file:
 	rows = list(csv.DictReader(file))
 
 # read the evacuated and Anx_Dep_mean columns
