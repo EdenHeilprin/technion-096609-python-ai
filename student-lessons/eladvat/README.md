@@ -15,6 +15,8 @@ One clear advantage this has over SPSS, for example, is once you create the cust
 
 ## Get ready
 
+**[Download the lesson files (ZIP)](https://github.com/EdenHeilprin/technion-096609-python-ai/raw/refs/heads/main/student-lessons/eladvat/elad-matplotlib-files.zip)**
+
 
 1. download the lesson folder and open it in VS code as your working folder.
 2. install MAPLOTLIB in your project - paste the following into a new terminal:
